@@ -1,0 +1,320 @@
+{
+  "head": {
+    "type": 1,
+    "title": "ESP32 Forklift Telemetry",
+    "description": "PCB Schematic for ESP32 Forklift (Chariot Élévateur) Telemetry System",
+    "version": "EasyEDA v6.5.49",
+    "c_para": {},
+    "docType": "2"
+  },
+  "components": [
+    {
+      "ref": "U1",
+      "name": "ESP32-DevKitC",
+      "value": "ESP32-DEVKITC-32D",
+      "footprint": "Module:ESP32-DevKitC-32D",
+      "description": "Main microcontroller - ESP32 with WiFi and BT",
+      "pins": {
+        "GPIO4":  "SIM808_PWR_KEY",
+        "GPIO13": "JSN_ECHO",
+        "GPIO14": "JSN_TRIG",
+        "GPIO16": "SIM808_RX",
+        "GPIO17": "SIM808_TX",
+        "GPIO21": "I2C_SDA",
+        "GPIO22": "I2C_SCL",
+        "GPIO25": "OIL_LED",
+        "GPIO26": "ALARM_BUZZER",
+        "GPIO32": "TRANS_FWD",
+        "GPIO33": "TRANS_REV",
+        "GPIO35": "RPM_SENSOR",
+        "3V3":    "VCC_3V3",
+        "GND":    "GND",
+        "5V":     "VCC_5V"
+      }
+    },
+    {
+      "ref": "U2",
+      "name": "SIM808",
+      "value": "SIM808 GPS+GPRS Module",
+      "description": "GSM/GPRS + GPS module for connectivity and positioning",
+      "pins": {
+        "TX":      "SIM808_RX",
+        "RX":      "SIM808_TX",
+        "PWRKEY":  "SIM808_PWR_KEY",
+        "VCC":     "VCC_5V",
+        "GND":     "GND"
+      },
+      "notes": "Connect antenna for GPS and GSM. Insert SIM card (Ooredoo TN, APN: internet.ooredoo.tn)"
+    },
+    {
+      "ref": "U3",
+      "name": "ADS1115",
+      "value": "ADS1115 16-bit ADC",
+      "description": "4-channel 16-bit I2C ADC - Address 0x48 (ADDR pin to GND)",
+      "pins": {
+        "SDA":  "I2C_SDA",
+        "SCL":  "I2C_SCL",
+        "ADDR": "GND",
+        "VDD":  "VCC_3V3",
+        "GND":  "GND",
+        "A0":   "OIL_PRESSURE_SIGNAL",
+        "A1":   "FUEL_LEVEL_SIGNAL",
+        "A2":   "SPARE_ADC",
+        "A3":   "NTC_TEMP_SIGNAL"
+      }
+    },
+    {
+      "ref": "U4",
+      "name": "JSN-SR04T",
+      "value": "JSN-SR04T Ultrasonic",
+      "description": "Waterproof ultrasonic proximity sensor - rear obstacle detection",
+      "pins": {
+        "TRIG": "JSN_TRIG",
+        "ECHO": "JSN_ECHO_5V",
+        "VCC":  "VCC_5V",
+        "GND":  "GND"
+      },
+      "notes": "ECHO pin is 5V! Use voltage divider (2kΩ + 1kΩ) to bring to 3.3V before GPIO13"
+    },
+    {
+      "ref": "R1",
+      "name": "Resistor",
+      "value": "1kΩ (Oil Pressure Pullup)",
+      "description": "Pullup resistor for oil pressure sensor on ADS1115 A0",
+      "pins": {
+        "1": "VCC_3V3",
+        "2": "OIL_PRESSURE_SIGNAL"
+      }
+    },
+    {
+      "ref": "R2",
+      "name": "Resistor",
+      "value": "1kΩ (Fuel Level Pullup)",
+      "description": "Pullup resistor for fuel level sensor on ADS1115 A1",
+      "pins": {
+        "1": "VCC_3V3",
+        "2": "FUEL_LEVEL_SIGNAL"
+      }
+    },
+    {
+      "ref": "R3",
+      "name": "Resistor",
+      "value": "1kΩ (NTC Fixed Resistor)",
+      "description": "Fixed resistor in NTC voltage divider on ADS1115 A3",
+      "pins": {
+        "1": "NTC_TEMP_SIGNAL",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "R4",
+      "name": "Resistor",
+      "value": "2kΩ (Echo Voltage Divider - Top)",
+      "description": "Top resistor of voltage divider for JSN-SR04T ECHO (5V→3.3V)",
+      "pins": {
+        "1": "JSN_ECHO_5V",
+        "2": "JSN_ECHO"
+      }
+    },
+    {
+      "ref": "R5",
+      "name": "Resistor",
+      "value": "1kΩ (Echo Voltage Divider - Bottom)",
+      "description": "Bottom resistor of voltage divider for JSN-SR04T ECHO",
+      "pins": {
+        "1": "JSN_ECHO",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "R6",
+      "name": "Resistor",
+      "value": "10kΩ (RPM Pullup)",
+      "description": "External pullup for RPM sensor on GPIO35 (input-only pin)",
+      "pins": {
+        "1": "VCC_3V3",
+        "2": "RPM_SENSOR"
+      }
+    },
+    {
+      "ref": "LS1",
+      "name": "Buzzer",
+      "value": "Buzzer 5V Active",
+      "description": "Geofence/alert buzzer driven by GPIO26 via transistor",
+      "pins": {
+        "+": "ALARM_5V",
+        "-": "GND"
+      },
+      "notes": "Use NPN transistor (2N2222 or BC547) to drive buzzer from GPIO26 (3.3V logic)"
+    },
+    {
+      "ref": "Q1",
+      "name": "NPN Transistor",
+      "value": "2N2222 / BC547",
+      "description": "Transistor to drive 5V buzzer from 3.3V GPIO26",
+      "pins": {
+        "B":  "ALARM_BUZZER",
+        "C":  "ALARM_5V",
+        "E":  "GND"
+      }
+    },
+    {
+      "ref": "R7",
+      "name": "Resistor",
+      "value": "1kΩ (Buzzer Base Resistor)",
+      "description": "Base resistor for buzzer transistor Q1",
+      "pins": {
+        "1": "GPIO26_RAW",
+        "2": "ALARM_BUZZER"
+      }
+    },
+    {
+      "ref": "LED1",
+      "name": "LED",
+      "value": "LED Green (Oil Pressure OK)",
+      "description": "Green LED indicator - lights when oil pressure is OK (GPIO25)",
+      "pins": {
+        "A": "OIL_LED",
+        "K": "GND"
+      }
+    },
+    {
+      "ref": "R8",
+      "name": "Resistor",
+      "value": "330Ω (LED Current Limiter)",
+      "description": "Current limiting resistor for OIL_PRESSURE_OK_LED",
+      "pins": {
+        "1": "OIL_LED",
+        "2": "LED1_A"
+      }
+    },
+    {
+      "ref": "SW1",
+      "name": "Switch",
+      "value": "Transmission FWD Switch",
+      "description": "Forward gear switch (Closes to GND when engaged) - GPIO32",
+      "pins": {
+        "1": "TRANS_FWD",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "SW2",
+      "name": "Switch",
+      "value": "Transmission REV Switch",
+      "description": "Reverse gear switch (Closes to GND when engaged) - GPIO33",
+      "pins": {
+        "1": "TRANS_REV",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "J1",
+      "name": "Connector",
+      "value": "SENS_OIL (2-pin)",
+      "description": "Connector for oil pressure sensor (Isuzu T30 manocontact)",
+      "pins": {
+        "1": "OIL_PRESSURE_SIGNAL",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "J2",
+      "name": "Connector",
+      "value": "SENS_FUEL (2-pin)",
+      "description": "Connector for fuel level sensor (resistive float)",
+      "pins": {
+        "1": "FUEL_LEVEL_SIGNAL",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "J3",
+      "name": "Connector",
+      "value": "SENS_NTC (2-pin)",
+      "description": "Connector for NTC temperature sensor",
+      "pins": {
+        "1": "NTC_TEMP_SIGNAL",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "J4",
+      "name": "Connector",
+      "value": "SENS_RPM (2-pin)",
+      "description": "Connector for RPM hall effect sensor",
+      "pins": {
+        "1": "RPM_SENSOR",
+        "2": "GND"
+      }
+    },
+    {
+      "ref": "C1",
+      "name": "Capacitor",
+      "value": "100µF / 16V (Decoupling SIM808)",
+      "description": "Bulk capacitor for SIM808 power supply (handles GSM burst current)",
+      "pins": {
+        "+": "VCC_5V",
+        "-": "GND"
+      }
+    },
+    {
+      "ref": "C2",
+      "name": "Capacitor",
+      "value": "100nF (Decoupling ADS1115)",
+      "description": "Bypass capacitor near ADS1115 VDD pin",
+      "pins": {
+        "+": "VCC_3V3",
+        "-": "GND"
+      }
+    }
+  ],
+  "nets": {
+    "GND":                  "Common ground",
+    "VCC_3V3":              "3.3V supply (from ESP32 3V3 pin)",
+    "VCC_5V":               "5V supply (USB or external 5V regulator)",
+    "I2C_SDA":              "I2C Data - ESP32 GPIO21 ↔ ADS1115 SDA",
+    "I2C_SCL":              "I2C Clock - ESP32 GPIO22 ↔ ADS1115 SCL",
+    "SIM808_RX":            "ESP32 GPIO16 → SIM808 TX",
+    "SIM808_TX":            "ESP32 GPIO17 → SIM808 RX",
+    "SIM808_PWR_KEY":       "ESP32 GPIO4 → SIM808 PWRKEY",
+    "OIL_PRESSURE_SIGNAL":  "Oil sensor → R1 divider → ADS1115 A0",
+    "FUEL_LEVEL_SIGNAL":    "Fuel sensor → R2 divider → ADS1115 A1",
+    "NTC_TEMP_SIGNAL":      "NTC sensor → R3 divider → ADS1115 A3",
+    "RPM_SENSOR":           "RPM Hall sensor → R6 pullup → ESP32 GPIO35",
+    "JSN_TRIG":             "ESP32 GPIO14 → JSN-SR04T TRIG",
+    "JSN_ECHO_5V":          "JSN-SR04T ECHO (5V!) → R4 top",
+    "JSN_ECHO":             "R4/R5 junction → ESP32 GPIO13 (3.3V max)",
+    "TRANS_FWD":            "Forward switch → ESP32 GPIO32 (pull-up internal)",
+    "TRANS_REV":            "Reverse switch → ESP32 GPIO33 (pull-up internal)",
+    "OIL_LED":              "ESP32 GPIO25 → R8 → LED1_A",
+    "ALARM_BUZZER":         "ESP32 GPIO26 → R7 → Q1 base",
+    "ALARM_5V":             "Q1 collector → Buzzer +"
+  },
+  "power_requirements": {
+    "input_voltage": "5V DC (USB or 12V→5V Buck Converter for vehicle)",
+    "esp32_current": "~240mA peak",
+    "sim808_current": "~2A peak (GSM burst - needs 100µF cap!)",
+    "total_estimated": "~500mA average, ~2.5A peak",
+    "recommendation": "Use 12V→5V 3A DC-DC Buck Converter (LM2596 or XL4016) for vehicle installation"
+  },
+  "bom": {
+    "components": [
+      {"qty": 1, "ref": "U1",  "value": "ESP32-DevKitC-32D",    "lcsc": "C701341"},
+      {"qty": 1, "ref": "U2",  "value": "SIM808 Module",         "note": "Search LCSC or AliExpress"},
+      {"qty": 1, "ref": "U3",  "value": "ADS1115 SOIC-16",       "lcsc": "C37593"},
+      {"qty": 1, "ref": "U4",  "value": "JSN-SR04T Sensor",      "note": "AliExpress"},
+      {"qty": 2, "ref": "R1,R2","value": "1kΩ 0805",             "lcsc": "C17513"},
+      {"qty": 1, "ref": "R3",  "value": "1kΩ 0805",              "lcsc": "C17513"},
+      {"qty": 1, "ref": "R4",  "value": "2kΩ 0805",              "lcsc": "C17514"},
+      {"qty": 3, "ref": "R5,R7,R8","value": "1kΩ 0805",         "lcsc": "C17513"},
+      {"qty": 1, "ref": "R6",  "value": "10kΩ 0805",             "lcsc": "C17414"},
+      {"qty": 1, "ref": "Q1",  "value": "2N2222 TO-92",          "lcsc": "C5907"},
+      {"qty": 1, "ref": "LED1","value": "LED Green 3mm",         "lcsc": "C99798"},
+      {"qty": 1, "ref": "C1",  "value": "100µF 16V Electrolytic","lcsc": "C131230"},
+      {"qty": 1, "ref": "C2",  "value": "100nF 0805 MLCC",       "lcsc": "C49678"},
+      {"qty": 1, "ref": "LS1", "value": "Buzzer 5V Active",      "lcsc": "C96093"},
+      {"qty": 4, "ref": "J1-J4","value": "2-pin JST Connector",  "lcsc": "C265055"}
+    ]
+  }
+}

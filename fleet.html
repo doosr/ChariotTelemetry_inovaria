@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Flotte — IntelliMettry Manager</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+        }
+
+        [data-theme="light"] body {
+            background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        [data-theme="light"] .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .forklift-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-c);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info {
+            text-align: right;
+            margin-right: 1rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .user-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-view,
+        .btn-techs,
+        .btn-delete {
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-view {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            flex: 2;
+        }
+
+        .btn-view:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-techs {
+            background: rgba(127, 90, 240, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(127, 90, 240, 0.2);
+            flex: 1;
+        }
+
+        .btn-techs:hover {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(127, 90, 240, 0.4);
+        }
+
+        .btn-delete {
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            padding: 0.6rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);
+        }
+
+        .btn-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.55);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Search Bar */
+        .search-section {
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem 1rem 1rem 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-c);
+            text-align: center;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.04);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Forklift Grid */
+        .forklift-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .forklift-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-c);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forklift-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .forklift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0.6;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-info h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .card-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.1rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge.online {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-badge.offline {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .forklift-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value-small {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label-small {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .last-seen {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .forklift-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-view {
+            flex: 1;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-delete {
+            padding: 0.75rem 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(8, 12, 25, 0.97);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            position: relative;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        .notification-bell:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+            }
+        }
+
+        /* Notification Panel */
+        .notification-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: rgba(5, 8, 18, 0.97);
+            border-left: 1px solid rgba(0, 212, 255, 0.12);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .notification-panel.open {
+            right: 0;
+        }
+
+        .notification-header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .notification-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notification-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .notification-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .notification-close:hover {
+            color: var(--text-primary);
+        }
+
+        .notification-list {
+            padding: 1rem;
+        }
+
+        .notification-item {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-left: 3px solid;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(-5px);
+        }
+
+        .notification-item.warning {
+            border-left-color: var(--warning);
+        }
+
+        .notification-item.danger {
+            border-left-color: var(--danger);
+        }
+
+        .notification-item.success {
+            border-left-color: var(--success);
+        }
+
+        .notification-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-item-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .notification-item-time {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .notification-item-message {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .notification-item-forklift {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .notification-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-dim);
+        }
+
+        .notification-empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .notification-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+        }
+
+        .notification-overlay.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .forklift-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .notification-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Search Bar and Top Actions -->
+        <div class="search-section" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Rechercher un chariot..."
+                oninput="filterForklifts()" style="flex: 1; min-width: 250px;">
+
+
+            <button class="btn btn-admin" id="btnManagePersonnel" onclick="togglePersonnelSection()"
+                style="background: linear-gradient(135deg, #10b981, #059669); border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); height: 50px; padding: 0 1.5rem; white-space: nowrap;">
+                ⌚ Personnel & Bracelets
+            </button>
+        </div>
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">Total Chariots</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="onlineCount" style="color: var(--success);">0</div>
+                <div class="stat-label">En Ligne</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="offlineCount" style="color: var(--danger);">0</div>
+                <div class="stat-label">Hors Ligne</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="alertCount" style="color: var(--warning);">0</div>
+                <div class="stat-label">Alertes Actives</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="activeBraceletsCount" style="color: var(--primary);">0</div>
+                <div class="stat-label">Bracelets Actifs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="healthAlertsCount" style="color: var(--danger);">0</div>
+                <div class="stat-label">Alertes Santé</div>
+            </div>
+        </div>
+        <!-- Forklift Grid -->
+        <div class="forklift-grid" id="forkliftGrid">
+            <!-- Cards will be generated here -->
+        </div>
+        <!-- Personnel & Bracelet Section (Initially Hidden) -->
+        <div id="personnelSection"
+            style="display:none; margin-top: 3rem; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 2rem;">
+            <div style="display:flex; justify-content:between; align-items:center; margin-bottom: 2rem;">
+                <h2
+                    style="font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #10b981, #059669); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    ⌚ Gestion du Personnel & Bracelets</h2>
+                <div style="display:flex; gap: 1rem; margin-left: auto;">
+                    <button class="btn btn-primary" onclick="openAddWorkerModal()" style="background: var(--success);">+
+                        Nouveau Travailleur</button>
+                    <button class="btn btn-primary" onclick="openAddBraceletModal()"
+                        style="background: var(--primary);">+ Nouveau Bracelet</button>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <h3
+                        style="margin-bottom: 1rem; color: var(--text-secondary); display:flex; align-items:center; gap:0.5rem;">
+                        👥 Travailleurs</h3>
+                    <div id="workerGrid" class="forklift-grid" style="grid-template-columns: 1fr;">
+                        <!-- Worker list will be here -->
+                    </div>
+                </div>
+                <div>
+                    <h3
+                        style="margin-bottom: 1rem; color: var(--text-secondary); display:flex; align-items:center; gap:0.5rem;">
+                        ⌚ Bracelets Actifs</h3>
+                    <div id="braceletGrid" class="forklift-grid" style="grid-template-columns: 1fr;">
+                        <!-- Bracelet list will be here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">➕ Ajouter un Chariot</h2>
+                <span class="modal-close" onclick="closeAddModal()">✕</span>
+            </div>
+            <form id="addForkliftForm">
+                <div class="form-group" id="ownerSection" style="display:none;">
+                    <label class="form-label" for="forkliftOwner">Propriétaire (Admin)</label>
+                    <select id="forkliftOwner" class="form-select">
+                        <option value="">Chargement des admins...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="forkliftName">Nom du Chariot</label>
+                    <input type="text" id="forkliftName" class="form-input" placeholder="ISUZU-V4" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="forkliftModel">Modèle</label>
+                    <select id="forkliftModel" class="form-select" required onchange="onModelChange(this.value)">
+                        <option value="">Sélectionnez un modèle</option>
+                        <optgroup label="─── ISUZU ───">
+                            <option value="ISUZU V1">ISUZU V1</option>
+                            <option value="ISUZU V2">ISUZU V2</option>
+                            <option value="ISUZU V3">ISUZU V3</option>
+                            <option value="ISUZU V4">ISUZU V4</option>
+                        </optgroup>
+                        <optgroup label="─── Chinois ───">
+                            <option value="Chinois Type A">Chinois Type A (Moteur Isuzu C240)</option>
+                            <option value="Chinois Type B">Chinois Type B (Moteur Xinchai 490)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <!-- Calibration standard affichée selon le modèle -->
+                <div id="calibrationInfo"
+                    style="display:none; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.3); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.5rem; font-size: 0.82rem;">
+                    <div style="font-weight:600; color: var(--primary); margin-bottom:0.4rem;">📐 Calibration Standard
+                    </div>
+                    <div
+                        style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1rem; color: var(--text-secondary);">
+                        <span>🌡️ Beta NTC</span><span id="calBeta"
+                            style="color:var(--text-primary); font-weight:500;"></span>
+                        <span>🌡️ R0 (25°C)</span><span id="calR0"
+                            style="color:var(--text-primary); font-weight:500;"></span>
+                        <span>⛽ Jauge Vide</span><span id="calFuelEmpty"
+                            style="color:var(--text-primary); font-weight:500;"></span>
+                        <span>⛽ Jauge Plein</span><span id="calFuelFull"
+                            style="color:var(--text-primary); font-weight:500;"></span>
+                        <span>⛽ Capacité</span><span id="calTank"
+                            style="color:var(--text-primary); font-weight:500;"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="forkliftDeviceId">Device ID (ESP32)</label>
+                    <input type="text" id="forkliftDeviceId" class="form-input" placeholder="truck_01" required>
+                    <small style="color:var(--text-secondary); font-size:0.75rem;">Configuré dans BSP.h → #define
+                        DEVICE_ID</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="forkliftSerial">Numéro de Série (optionnel)</label>
+                    <input type="text" id="forkliftSerial" class="form-input" placeholder="SN-2024-001">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="forkliftDescription">Description (optionnel)</label>
+                    <input type="text" id="forkliftDescription" class="form-input"
+                        placeholder="Chariot principal entrepôt A">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddModal()" style="flex: 1">
+                        Annuler
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1">
+                        Ajouter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Notification Panel -->
+    <div class="notification-overlay" id="notificationOverlay" onclick="closeNotificationPanel()"></div>
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header">
+            <div class="notification-header-content">
+                <h3 class="notification-title">🔔 Notifications</h3>
+                <span class="notification-close" onclick="closeNotificationPanel()">✕</span>
+            </div>
+        </div>
+        <div class="notification-list" id="notificationList">
+            <div class="notification-empty">
+                <div class="notification-empty-icon">🔕</div>
+                <p>Aucune notification</p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ajouter Admin -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">👤 Ajouter un Administrateur</h2>
+                <span class="modal-close" onclick="closeAdminModal()">✕</span>
+            </div>
+            <form id="addAdminForm">
+                <div id="adminError"
+                    style="display:none; background:rgba(239,68,68,0.15); border:1px solid #ef4444; border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; color:#ef4444; font-size:0.9rem;">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" class="form-input" placeholder="admin@exemple.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="adminPassword">Mot de passe</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="Minimum 6 caractères"
+                        minlength="6" required>
+                </div>
+                <div class="form-group" id="adminRoleGroup">
+                    <label class="form-label" for="adminRole">Rôle</label>
+                    <select id="adminRole" class="form-select" onchange="toggleCreateUserMachines()">
+                        <option value="Admin">Admin</option>
+                        <option value="Super Admin">Super Admin</option>
+                        <option value="Technicien">Technicien</option>
+                        <option value="Lecture seule">Lecture seule</option>
+                    </select>
+                </div>
+                <!-- Section machines pour Technicien -->
+                <div class="form-group" id="userMachinesSection" style="display:none; margin-top: 1rem;">
+                    <label class="form-label">Assigner des Chariots (Technicien seulement)</label>
+                    <div id="createUserMachinesList"
+                        style="max-height: 200px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                        <!-- Liste générée en JS -->
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAdminModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-admin" style="flex:1">✅ Créer Admin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Assignation Techniciens à une Machine -->
+    <div class="modal" id="assignTechsToMachineModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">👨‍🔧 Techniciens Assignés</h2>
+                <span class="modal-close" onclick="closeAssignTechsToMachineModal()">✕</span>
+            </div>
+            <div id="assignTechsMachineName"
+                style="color: var(--primary); font-weight: 700; margin-bottom: 1rem; font-size: 1.1rem;">Machine Name
+            </div>
+            <form id="assignTechsToMachineForm">
+                <input type="hidden" id="assignTechsDeviceId">
+                <div id="assignTechsError"
+                    style="display:none; background:rgba(239,68,68,0.15); border:1px solid #ef4444; border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; color:#ef4444; font-size:0.9rem;">
+                </div>
+                <div id="techsCheckboxList"
+                    style="max-height: 300px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem;">
+                    <!-- Liste générée en JS -->
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAssignTechsToMachineModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="workerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">👨‍🔧 Nouveau Travailleur</h2>
+                <span class="modal-close" onclick="closeWorkerModal()">✕</span>
+            </div>
+            <form id="addWorkerForm">
+                <div class="form-group">
+                    <label class="form-label" for="workerName">Nom Complet</label>
+                    <input type="text" id="workerName" class="form-input" placeholder="Jean Dupont" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="workerRole">Poste / Rôle</label>
+                    <select id="workerRole" class="form-select" required>
+                        <option value="">Sélectionnez un poste</option>
+                        <option value="Chauffeur">Chauffeur</option>
+                        <option value="Magasinier">Magasinier</option>
+                        <option value="Mécanicien">Mécanicien</option>
+                        <option value="Agent de sécurité">Agent de sécurité</option>
+                        <option value="Personnel Administratif">Personnel Administratif</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeWorkerModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="braceletModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">⌚ Nouveau Bracelet</h2>
+                <span class="modal-close" onclick="closeBraceletModal()">✕</span>
+            </div>
+            <form id="addBraceletForm">
+                <div class="form-group">
+                    <label class="form-label">Device ID du Bracelet</label>
+                    <input type="text" id="braceletDeviceId" class="form-input" placeholder="BRAC_01" required>
+                    <small style="color:var(--text-secondary); font-size:0.75rem;">Utilisez un ID unique écrit au dos du
+                        bracelet</small>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeBraceletModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="fleet.js"></script>
+    <script src="nav.js"></script>
+</body>
+
+</html>

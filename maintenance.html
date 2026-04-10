@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Préventive — IntelliMettry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+            --border-glass: rgba(255,255,255,0.08);
+        }
+
+        [data-theme="light"] { --border-glass: rgba(0,0,0,0.08); }
+        [data-theme="light"] body { background: #f1f5f9; }
+        [data-theme="light"] .maint-card { background: #fff; border-color: rgba(0,0,0,0.08); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        [data-theme="light"] .stat-box, [data-theme="light"] .kpi-card { background: #f8fafc; border-color: rgba(0,0,0,0.07); }
+        [data-theme="light"] .alert-banner { background: rgba(255,59,48,0.07); border-color: rgba(255,59,48,0.2); }
+        [data-theme="light"] .toolbar { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
+        [data-theme="light"] .filter-btn { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); color: #475569; }
+        [data-theme="light"] .filter-btn.active { background: rgba(0,102,255,0.1); color: #0066ff; border-color: rgba(0,102,255,0.3); }
+        [data-theme="light"] .modal-content { background: #fff; border-color: rgba(0,0,0,0.1); }
+        [data-theme="light"] .form-input, [data-theme="light"] .form-select { background: #f8fafc; border-color: rgba(0,0,0,0.12); color: #0f172a; }
+        [data-theme="light"] .tech-sheet { background: #fff; }
+
+        body { font-family: 'Inter', sans-serif; background: var(--body-bg); color: var(--text-main); min-height: 100vh; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+
+        /* ── Header ── */
+        .page-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
+        }
+        .page-header h1 {
+            font-size: 1.8rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+        }
+        .page-header p { color: var(--text-muted); font-size: 0.88rem; }
+        .header-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+        /* ── KPI Cards ── */
+        .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .kpi-card {
+            background: var(--card-bg); border: 1px solid var(--border-c);
+            border-radius: 16px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem;
+            transition: transform 0.2s;
+        }
+        .kpi-card:hover { transform: translateY(-2px); }
+        .kpi-icon { font-size: 1.6rem; }
+        .kpi-val { font-family: 'Orbitron', monospace; font-size: 1.7rem; font-weight: 900; }
+        .kpi-lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ── Alert Banner ── */
+        .alert-banner {
+            background: rgba(255,59,48,0.08); border: 1px solid rgba(255,59,48,0.25);
+            border-radius: 14px; padding: 1rem 1.4rem; margin-bottom: 1.5rem;
+            display: flex; align-items: center; gap: 12px; cursor: pointer;
+            animation: pulse-border 2s infinite;
+        }
+        .alert-banner.hidden { display: none; }
+        @keyframes pulse-border { 0%,100%{border-color:rgba(255,59,48,0.25)} 50%{border-color:rgba(255,59,48,0.6)} }
+        .alert-banner-text { flex:1; font-size: 0.9rem; font-weight: 600; color: var(--danger); }
+        .alert-banner-count { background: var(--danger); color: #fff; border-radius: 20px; padding: 2px 10px; font-size: 0.78rem; font-weight: 800; }
+
+        /* ── Toolbar ── */
+        .toolbar {
+            background: var(--card-bg); border: 1px solid var(--border-c);
+            border-radius: 14px; padding: 0.8rem 1.2rem; margin-bottom: 1.5rem;
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .filter-group { display: flex; gap: 0.4rem; }
+        .filter-btn {
+            padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid var(--border-glass);
+            background: rgba(255,255,255,0.04); color: var(--text-muted);
+            font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .filter-btn.active { background: rgba(0,102,255,0.12); color: var(--primary); border-color: rgba(0,102,255,0.3); }
+        .filter-btn:hover:not(.active) { background: rgba(255,255,255,0.08); color: var(--text-main); }
+        .sort-select {
+            padding: 0.45rem 0.8rem; border-radius: 10px; border: 1px solid var(--border-glass);
+            background: rgba(255,255,255,0.04); color: var(--text-muted);
+            font-size: 0.78rem; font-family: 'Inter', sans-serif; cursor: pointer; outline: none;
+        }
+        .toolbar-sep { width: 1px; height: 24px; background: var(--border-glass); }
+        .auto-badge {
+            display: flex; align-items: center; gap: 6px; font-size: 0.72rem;
+            color: var(--success); margin-left: auto;
+        }
+        .auto-dot { width:7px;height:7px;border-radius:50%;background:var(--success);animation:navPulse 2s infinite; }
+
+        /* ── Grid ── */
+        .maint-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px,1fr)); gap: 1.5rem; }
+
+        .maint-card {
+            background: var(--card-bg); border: 1px solid var(--border-c);
+            border-radius: 20px; padding: 1.4rem; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 1rem;
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .maint-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .maint-card::before {
+            content:''; position:absolute; top:0;left:0;width:100%;height:3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); opacity:0.7;
+        }
+        .maint-card.is-overdue::before { background: linear-gradient(90deg,#ff3b30,#ff6b6b); opacity:1; }
+        .maint-card.is-due::before { background: linear-gradient(90deg,#ffa500,#ffcc00); opacity:1; }
+
+        /* Card top */
+        .card-top { display:flex; justify-content:space-between; align-items:flex-start; }
+        .machine-name { font-size:1.1rem; font-weight:800; }
+        .machine-sub { font-size:0.72rem; color:var(--text-muted); font-family:monospace; margin-top:2px; }
+        .machine-model { font-size:0.78rem; color:var(--text-muted); margin-top:1px; }
+
+        .status-pill {
+            padding:5px 12px; border-radius:20px; font-size:0.68rem;
+            font-weight:800; text-transform:uppercase; letter-spacing:1px; white-space:nowrap;
+        }
+        .status-pill.ok { background:rgba(52,199,89,0.1); color:var(--success); border:1px solid var(--success); }
+        .status-pill.due { background:rgba(255,165,0,0.1); color:var(--warning); border:1px solid var(--warning); animation:blink 2s infinite; }
+        .status-pill.overdue { background:rgba(255,59,48,0.1); color:var(--danger); border:1px solid var(--danger); animation:blink 1s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+        /* Progress stats */
+        .stats-2col { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
+        .stat-box {
+            background:rgba(0,0,0,0.12); border:1px solid var(--border-c);
+            border-radius:12px; padding:0.8rem;
+        }
+        .stat-label { font-size:0.6rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.3rem; }
+        .stat-value { font-family:'Orbitron',monospace; font-size:1.1rem; font-weight:700; color:var(--primary); }
+        .stat-target { font-size:0.65rem; color:var(--text-muted); margin-top:0.3rem; }
+        .pbar-wrap { width:100%;height:6px;background:rgba(255,255,255,0.07);border-radius:6px;margin-top:0.4rem;overflow:hidden; }
+        .pbar { height:100%;border-radius:6px;transition:width .5s ease; }
+        .pbar.ok-bar { background:linear-gradient(90deg,var(--primary),var(--secondary)); }
+        .pbar.due-bar { background:linear-gradient(90deg,#ffa500,#ffcc00); }
+        .pbar.overdue-bar { background:linear-gradient(90deg,#ff3b30,#ff6b6b); }
+
+        /* Sensor row */
+        .sensor-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; }
+        .sensor-chip {
+            text-align:center; padding:0.6rem 0.4rem;
+            background:rgba(0,0,0,0.1); border:1px solid var(--border-c);
+            border-radius:10px;
+        }
+        .sensor-chip .sv { font-family:'Orbitron',monospace; font-size:0.82rem; font-weight:700; display:block; }
+        .sensor-chip .sl { font-size:0.55rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+
+        /* Last maint badge */
+        .last-maint {
+            font-size:0.72rem; color:var(--text-muted);
+            display:flex; align-items:center; gap:6px;
+        }
+        .last-maint span { color:var(--text-main); font-weight:600; }
+
+        /* Card actions */
+        .card-actions { display:flex; gap:0.6rem; margin-top:auto; }
+        .btn-maint {
+            flex:1; padding:0.75rem; border:none; border-radius:11px;
+            font-size:0.82rem; font-weight:700; cursor:pointer;
+            transition:all .25s; display:flex; align-items:center; justify-content:center; gap:6px;
+            font-family:'Inter',sans-serif;
+        }
+        .btn-primary { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,102,255,0.35); }
+        .btn-secondary {
+            background:rgba(255,255,255,0.05); border:1px solid var(--border-glass);
+            color:var(--text-muted);
+        }
+        .btn-secondary:hover { background:rgba(255,255,255,0.1); color:var(--text-main); }
+        .btn-danger-soft { background:rgba(255,59,48,0.08); border:1px solid rgba(255,59,48,0.2); color:var(--danger); }
+        .btn-danger-soft:hover { background:rgba(255,59,48,0.16); }
+        .btn-sm {
+            padding:0.5rem 1rem; border-radius:10px; border:none;
+            font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:700;
+            cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; gap:5px;
+        }
+
+        /* ── Modals ── */
+        .modal {
+            display:none; position:fixed; inset:0;
+            background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+            z-index:1100; align-items:center; justify-content:center; padding:1.5rem;
+        }
+        .modal.open { display:flex; }
+        .modal-content {
+            background:#080c19; border:1px solid var(--border-glass);
+            border-radius:24px; width:100%; padding:2rem;
+            box-shadow:0 30px 60px rgba(0,0,0,0.5);
+            animation:modalSlide .25s ease-out; overflow-y:auto; max-height:90vh;
+        }
+        @keyframes modalSlide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+        .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+        .modal-title { font-size:1.3rem; font-weight:800; color:var(--primary); }
+        .modal-close {
+            width:32px;height:32px;border-radius:8px;border:none;
+            background:rgba(255,255,255,0.06); color:var(--text-muted);
+            font-size:1.1rem; cursor:pointer; display:flex;align-items:center;justify-content:center;
+            transition:all .2s;
+        }
+        .modal-close:hover { background:rgba(255,59,48,0.15); color:var(--danger); }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .form-group { margin-bottom:1.2rem; }
+        .form-label { display:block; margin-bottom:.45rem; color:var(--text-muted); font-size:.82rem; font-weight:600; }
+        .form-input, .form-select {
+            width:100%; padding:.75rem 1rem;
+            background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            border-radius:11px; color:#f5f5f7; font-family:'Inter',sans-serif; font-size:.9rem; outline:none;
+            transition:all .2s;
+        }
+        .form-input:focus, .form-select:focus { border-color:var(--primary); background:rgba(0,102,255,0.06); box-shadow:0 0 0 3px rgba(0,102,255,0.12); }
+        .form-hint { font-size:0.7rem; color:var(--text-muted); margin-top:0.3rem; }
+        .modal-actions { display:flex; gap:.8rem; margin-top:1.5rem; }
+
+        /* Tech sheet modal */
+        .tech-modal .modal-content { max-width:620px; }
+        .tech-section { margin-bottom:1.5rem; }
+        .tech-section-title {
+            font-family:'Orbitron',monospace; font-size:.75rem; font-weight:700;
+            color:var(--primary); letter-spacing:1px; margin-bottom:.8rem;
+            padding-bottom:.4rem; border-bottom:1px solid var(--border-glass);
+        }
+        .tech-row { display:flex; justify-content:space-between; align-items:center; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+        .tech-key { font-size:.82rem; color:var(--text-muted); }
+        .tech-val { font-size:.85rem; font-weight:600; }
+        .history-log { max-height:200px; overflow-y:auto; }
+        .history-entry {
+            display:flex; gap:12px; padding:.7rem .8rem;
+            background:rgba(255,255,255,0.03); border-radius:10px; margin-bottom:.5rem;
+            border-left:3px solid var(--primary);
+        }
+        .history-entry .he-date { font-size:.7rem; color:var(--text-muted); white-space:nowrap; }
+        .history-entry .he-info { font-size:.82rem; }
+
+        /* ── Toast ── */
+        #toast {
+            position:fixed; bottom:30px; right:30px; padding:1rem 1.8rem;
+            border-radius:12px; background:#080c19; border:1px solid var(--primary);
+            color:#fff; font-weight:600; z-index:3000;
+            transform:translateY(100px); opacity:0;
+            transition:all .4s cubic-bezier(.4,0,.2,1); font-size:.88rem;
+            display:flex; align-items:center; gap:10px;
+        }
+        #toast.show { transform:translateY(0); opacity:1; }
+
+        /* ── Empty state ── */
+        .empty-state { text-align:center; padding:5rem 2rem; color:var(--text-muted); grid-column:1/-1; }
+        .empty-state .es-icon { font-size:4rem; margin-bottom:1rem; opacity:0.3; }
+
+        @media (max-width:768px) {
+            .maint-grid { grid-template-columns:1fr; }
+            .form-row { grid-template-columns:1fr; }
+            .kpi-row { grid-template-columns:1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1>🔧 Maintenance Préventive</h1>
+            <p>Gestion des cycles de révision, vidanges et suivi technique de la flotte.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-maint btn-secondary btn-sm" onclick="exportPDF()" style="flex:unset;">
+                🖨️ Exporter PDF
+            </button>
+            <button class="btn-maint btn-primary btn-sm" onclick="refreshData()" style="flex:unset;" id="btnRefresh">
+                🔄 Actualiser
+            </button>
+        </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-row" id="kpiRow">
+        <div class="kpi-card">
+            <div class="kpi-icon">🚜</div>
+            <div class="kpi-val" id="kpiTotal" style="color:var(--primary)">—</div>
+            <div class="kpi-lbl">Total Chariots</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">✅</div>
+            <div class="kpi-val" id="kpiOk" style="color:var(--success)">—</div>
+            <div class="kpi-lbl">État Optimal</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">⚠️</div>
+            <div class="kpi-val" id="kpiDue" style="color:var(--warning)">—</div>
+            <div class="kpi-lbl">Bientôt Dû</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">🚨</div>
+            <div class="kpi-val" id="kpiOverdue" style="color:var(--danger)">—</div>
+            <div class="kpi-lbl">En Retard</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">⏱️</div>
+            <div class="kpi-val" id="kpiHours" style="color:var(--secondary)">—</div>
+            <div class="kpi-lbl">Heures Totales</div>
+        </div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner hidden" id="alertBanner" onclick="setFilter('overdue')">
+        <span style="font-size:1.4rem">🚨</span>
+        <div class="alert-banner-text" id="alertBannerText">Machines en retard de maintenance</div>
+        <span class="alert-banner-count" id="alertBannerCount">0</span>
+        <span style="font-size:.8rem;color:var(--danger);opacity:.7">Voir →</span>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="filter-group">
+            <button class="filter-btn active" onclick="setFilter('all')" data-f="all">🔵 Tout</button>
+            <button class="filter-btn" onclick="setFilter('ok')" data-f="ok">✅ OK</button>
+            <button class="filter-btn" onclick="setFilter('due')" data-f="due">⚠️ Bientôt</button>
+            <button class="filter-btn" onclick="setFilter('overdue')" data-f="overdue">🚨 En retard</button>
+        </div>
+        <div class="toolbar-sep"></div>
+        <select class="sort-select" onchange="sortMachines(this.value)" id="sortSelect">
+            <option value="name">Trier par Nom</option>
+            <option value="hours_asc">↑ Heures moteur</option>
+            <option value="hours_desc">↓ Heures moteur</option>
+            <option value="pct_desc">↓ % Maintenance</option>
+            <option value="status">Priorité urgence</option>
+        </select>
+        <div class="auto-badge">
+            <div class="auto-dot"></div>
+            <span id="autoRefreshLabel">Rafraîchissement auto: 30s</span>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="maint-grid" id="maintGrid">
+        <div class="empty-state">
+            <div class="es-icon">⚙️</div>
+            <p>Chargement des données de maintenance...</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ MODAL VIDANGE ═══════════ -->
+<div class="modal" id="maintModal">
+    <div class="modal-content" style="max-width:520px;">
+        <div class="modal-header">
+            <div class="modal-title" id="modalMachineName">🔧 Valider Maintenance</div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <form id="maintForm">
+            <input type="hidden" id="editDeviceId">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Heures Moteur Actuelles (h)</label>
+                    <input type="number" id="engineHours" class="form-input" step="0.1" min="0" required>
+                    <div class="form-hint" id="hintHours"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Kilométrage Actuel (km)</label>
+                    <input type="number" id="odometer" class="form-input" min="0" required>
+                    <div class="form-hint" id="hintKm"></div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Intervalle Révision (heures)</label>
+                    <select id="intervalHours" class="form-select">
+                        <option value="250">250 h (intensif)</option>
+                        <option value="500" selected>500 h (standard)</option>
+                        <option value="750">750 h (léger)</option>
+                        <option value="1000">1000 h (neuf)</option>
+                        <option value="custom">Personnalisé...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Intervalle Révision (km)</label>
+                    <select id="intervalKm" class="form-select">
+                        <option value="5000">5 000 km</option>
+                        <option value="10000" selected>10 000 km</option>
+                        <option value="15000">15 000 km</option>
+                        <option value="20000">20 000 km</option>
+                        <option value="custom">Personnalisé...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row" id="customIntervalRow" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">Intervalles heures (custom)</label>
+                    <input type="number" id="customIntervalH" class="form-input" placeholder="ex: 600" min="50">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Intervalles km (custom)</label>
+                    <input type="number" id="customIntervalKm" class="form-input" placeholder="ex: 12000" min="1000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Notes de maintenance</label>
+                <input type="text" id="maintNotes" class="form-input" placeholder="ex: Vidange + filtre air changé...">
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-maint btn-secondary" onclick="closeModal()">Annuler</button>
+                <button type="submit" class="btn-maint btn-primary" id="btnSave">✅ Enregistrer Vidange</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ═══════════ MODAL FICHE TECH ═══════════ -->
+<div class="modal tech-modal" id="techModal">
+    <div class="modal-content" style="max-width:620px;">
+        <div class="modal-header">
+            <div class="modal-title">📋 Fiche Technique</div>
+            <button class="modal-close" onclick="closeTechModal()">✕</button>
+        </div>
+        <div id="techSheetContent"></div>
+        <div class="modal-actions">
+            <button class="btn-maint btn-secondary" onclick="closeTechModal()">Fermer</button>
+            <button class="btn-maint btn-primary" onclick="printTechSheet()">🖨️ Imprimer fiche</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast">✅ Message</div>
+
+<script src="nav.js"></script>
+<script>
+    let machines = [];
+    let currentFilter = 'all';
+    let currentSort = 'name';
+    let autoRefreshTimer = null;
+    let countdown = 30;
+    let maintHistory = JSON.parse(localStorage.getItem('maint-history') || '{}');
+
+    // ─── Data ───
+    async function refreshData() {
+        const btn = document.getElementById('btnRefresh');
+        if (btn) { btn.disabled = true; btn.textContent = '⌛ Chargement...'; }
+        try {
+            const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+            const ownerId = session.role === 'Admin' ? session.userId : (session.parentAdminId || session.userId);
+            const res = await fetch(`/api/machines?ownerId=${ownerId}`);
+            machines = await res.json();
+            updateKPIs();
+            renderGrid();
+        } catch (e) {
+            showToast('❌ Erreur de chargement', 'danger');
+        } finally {
+            if (btn) { btn.disabled = false; btn.textContent = '🔄 Actualiser'; }
+        }
+    }
+
+    function getMaintStatus(m) {
+        const maint = m.maintenance || {};
+        const h = maint.engineHours || 0;
+        const km = m.odometer || 0;
+        const nextH = maint.nextOilChangeHours || 500;
+        const nextKm = maint.nextOilChangeKm || 10000;
+        const lastH = maint.lastOilChangeHours || 0;
+        const lastKm = maint.lastOilChangeKm || 0;
+        const pctH = Math.min(100, Math.max(0, ((h - lastH) / Math.max(nextH - lastH, 1)) * 100));
+        const pctKm = Math.min(100, Math.max(0, ((km - lastKm) / Math.max(nextKm - lastKm, 1)) * 100));
+        const maxPct = Math.max(pctH, pctKm);
+        const isOverdue = h >= nextH || km >= nextKm;
+        const isDue = !isOverdue && maxPct >= 85;
+        return { pctH, pctKm, maxPct, isOverdue, isDue, h, km, nextH, nextKm };
+    }
+
+    function updateKPIs() {
+        if (!Array.isArray(machines)) return;
+        let ok = 0, due = 0, overdue = 0, totalH = 0;
+        machines.forEach(m => {
+            const s = getMaintStatus(m);
+            totalH += s.h;
+            if (s.isOverdue) overdue++;
+            else if (s.isDue) due++;
+            else ok++;
+        });
+        document.getElementById('kpiTotal').textContent = machines.length;
+        document.getElementById('kpiOk').textContent = ok;
+        document.getElementById('kpiDue').textContent = due;
+        document.getElementById('kpiOverdue').textContent = overdue;
+        document.getElementById('kpiHours').textContent = totalH.toFixed(0) + 'h';
+
+        const banner = document.getElementById('alertBanner');
+        if (overdue > 0) {
+            banner.classList.remove('hidden');
+            document.getElementById('alertBannerText').textContent =
+                `${overdue} chariot(s) en retard de maintenance — Intervention requise !`;
+            document.getElementById('alertBannerCount').textContent = overdue;
+        } else {
+            banner.classList.add('hidden');
+        }
+    }
+
+    function renderGrid() {
+        const grid = document.getElementById('maintGrid');
+        if (!Array.isArray(machines) || machines.length === 0) {
+            grid.innerHTML = '<div class="empty-state"><div class="es-icon">🔧</div><p>Aucun chariot trouvé.</p></div>';
+            return;
+        }
+
+        let list = machines.filter(m => {
+            const s = getMaintStatus(m);
+            if (currentFilter === 'ok') return !s.isOverdue && !s.isDue;
+            if (currentFilter === 'due') return s.isDue;
+            if (currentFilter === 'overdue') return s.isOverdue;
+            return true;
+        });
+
+        // Sort
+        list.sort((a, b) => {
+            const sa = getMaintStatus(a), sb = getMaintStatus(b);
+            if (currentSort === 'name') return (a.name||'').localeCompare(b.name||'');
+            if (currentSort === 'hours_asc') return sa.h - sb.h;
+            if (currentSort === 'hours_desc') return sb.h - sa.h;
+            if (currentSort === 'pct_desc') return sb.maxPct - sa.maxPct;
+            if (currentSort === 'status') {
+                const rank = x => x.isOverdue ? 0 : x.isDue ? 1 : 2;
+                return rank(sa) - rank(sb);
+            }
+            return 0;
+        });
+
+        if (list.length === 0) {
+            grid.innerHTML = '<div class="empty-state"><div class="es-icon">✅</div><p>Aucun chariot dans cette catégorie.</p></div>';
+            return;
+        }
+
+        grid.innerHTML = '';
+        list.forEach(m => {
+            const s = getMaintStatus(m);
+            const statusCls = s.isOverdue ? 'overdue' : s.isDue ? 'due' : 'ok';
+            const statusTxt = s.isOverdue ? '🚨 En retard' : s.isDue ? '⚠️ Bientôt dû' : '✅ Optimal';
+            const cardCls = s.isOverdue ? 'is-overdue' : s.isDue ? 'is-due' : '';
+            const barCls = s.isOverdue ? 'overdue-bar' : s.isDue ? 'due-bar' : 'ok-bar';
+
+            const hist = maintHistory[m.deviceId] || [];
+            const lastEntry = hist[hist.length - 1];
+            const lastDate = lastEntry ? new Date(lastEntry.date).toLocaleDateString('fr-FR') : 'Jamais';
+
+            const card = document.createElement('div');
+            card.className = `maint-card ${cardCls}`;
+            card.innerHTML = `
+                <div class="card-top">
+                    <div>
+                        <div class="machine-name">${m.name}</div>
+                        <div class="machine-model">${m.model || ''} ${m.serial ? '· S/N: '+m.serial : ''}</div>
+                        <div class="machine-sub">${m.deviceId}</div>
+                    </div>
+                    <span class="status-pill ${statusCls}">${statusTxt}</span>
+                </div>
+
+                <div class="stats-2col">
+                    <div class="stat-box">
+                        <div class="stat-label">⏱ Heures Moteur</div>
+                        <div class="stat-value">${s.h.toFixed(1)}h</div>
+                        <div class="pbar-wrap"><div class="pbar ${barCls}" style="width:${s.pctH}%"></div></div>
+                        <div class="stat-target">Prochain: <strong>${m.maintenance?.nextOilChangeHours||500}h</strong> · ${s.pctH.toFixed(0)}%</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">🛣 Kilométrage</div>
+                        <div class="stat-value">${Math.floor(s.km)} km</div>
+                        <div class="pbar-wrap"><div class="pbar ${barCls}" style="width:${s.pctKm}%"></div></div>
+                        <div class="stat-target">Prochain: <strong>${m.maintenance?.nextOilChangeKm||10000}km</strong> · ${s.pctKm.toFixed(0)}%</div>
+                    </div>
+                </div>
+
+                <div class="sensor-row">
+                    <div class="sensor-chip">
+                        <span class="sv" style="color:${getTempColor(m.health?.temp)}">${m.health?.temp ?? '--'} °C</span>
+                        <span class="sl">🌡 Moteur</span>
+                    </div>
+                    <div class="sensor-chip">
+                        <span class="sv">${m.health?.oil ?? '--'} Bar</span>
+                        <span class="sl">🛢 Huile</span>
+                    </div>
+                    <div class="sensor-chip">
+                        <span class="sv" style="color:${getFuelColor(m.health?.fuel)}">${m.health?.fuel != null ? m.health.fuel+'%' : '--'}</span>
+                        <span class="sl">⛽ Carburant</span>
+                    </div>
+                </div>
+
+                <div class="last-maint">
+                    🕓 Dernière vidange: <span>${lastDate}</span>
+                    ${lastEntry ? `· ${lastEntry.km} km · ${lastEntry.hours}h` : ''}
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn-maint btn-primary" onclick="openMaintModal('${m.deviceId}',${s.h},${s.km},'${m.name}')">
+                        🔧 Valider Vidange
+                    </button>
+                    <button class="btn-maint btn-secondary" onclick="openTechModal('${m.deviceId}')" title="Fiche technique">
+                        📋 Fiche
+                    </button>
+                    <button class="btn-maint btn-secondary" onclick="goToDashboard('${m.deviceId}')" title="Voir dashboard live" style="flex:unset;padding:.75rem .9rem;">
+                        📊
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function getTempColor(t) {
+        if (!t || t === '--') return 'var(--text-main)';
+        const n = parseFloat(t);
+        if (n > 100) return 'var(--danger)';
+        if (n > 85) return 'var(--warning)';
+        return 'var(--success)';
+    }
+    function getFuelColor(f) {
+        if (f == null) return 'var(--text-main)';
+        if (f < 15) return 'var(--danger)';
+        if (f < 30) return 'var(--warning)';
+        return 'var(--success)';
+    }
+
+    // ─── Filters & Sort ───
+    function setFilter(f) {
+        currentFilter = f;
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.f === f);
+        });
+        renderGrid();
+    }
+    function sortMachines(val) {
+        currentSort = val;
+        renderGrid();
+    }
+
+    // ─── Modal Vidange ───
+    function openMaintModal(id, h, km, name) {
+        const m = machines.find(x => x.deviceId === id) || {};
+        document.getElementById('editDeviceId').value = id;
+        document.getElementById('engineHours').value = h;
+        document.getElementById('odometer').value = km;
+        document.getElementById('modalMachineName').textContent = `🔧 Vidange — ${name || id}`;
+        document.getElementById('hintHours').textContent = `Dernier: ${m.maintenance?.lastOilChangeHours || 0}h · Prochain: ${m.maintenance?.nextOilChangeHours || 500}h`;
+        document.getElementById('hintKm').textContent = `Dernier: ${m.maintenance?.lastOilChangeKm || 0}km · Prochain: ${m.maintenance?.nextOilChangeKm || 10000}km`;
+        document.getElementById('maintModal').classList.add('open');
+    }
+    function closeModal() { document.getElementById('maintModal').classList.remove('open'); }
+
+    document.getElementById('intervalHours').addEventListener('change', function() {
+        checkCustomRow();
+    });
+    document.getElementById('intervalKm').addEventListener('change', function() {
+        checkCustomRow();
+    });
+    function checkCustomRow() {
+        const hv = document.getElementById('intervalHours').value;
+        const kv = document.getElementById('intervalKm').value;
+        document.getElementById('customIntervalRow').style.display = (hv === 'custom' || kv === 'custom') ? 'grid' : 'none';
+    }
+
+    document.getElementById('maintForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('editDeviceId').value;
+        const h = parseFloat(document.getElementById('engineHours').value);
+        const km = parseFloat(document.getElementById('odometer').value);
+        const notes = document.getElementById('maintNotes').value;
+
+        let intervalH = parseInt(document.getElementById('intervalHours').value) || 500;
+        let intervalKm = parseInt(document.getElementById('intervalKm').value) || 10000;
+        if (document.getElementById('intervalHours').value === 'custom') {
+            intervalH = parseInt(document.getElementById('customIntervalH').value) || 500;
+        }
+        if (document.getElementById('intervalKm').value === 'custom') {
+            intervalKm = parseInt(document.getElementById('customIntervalKm').value) || 10000;
+        }
+
+        const btn = document.getElementById('btnSave');
+        btn.disabled = true; btn.textContent = '⌛ Enregistrement...';
+
+        try {
+            const res = await fetch(`/api/machines/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    maintenance: {
+                        lastOilChangeHours: h,
+                        nextOilChangeHours: h + intervalH,
+                        lastOilChangeKm: km,
+                        nextOilChangeKm: km + intervalKm,
+                        engineHours: h
+                    },
+                    odometer: km
+                })
+            });
+            if (res.ok) {
+                // Save to local history
+                if (!maintHistory[id]) maintHistory[id] = [];
+                maintHistory[id].push({ date: new Date().toISOString(), hours: h, km, notes, intervalH, intervalKm });
+                localStorage.setItem('maint-history', JSON.stringify(maintHistory));
+                showToast('✅ Vidange enregistrée avec succès !', 'success');
+                closeModal();
+                await refreshData();
+            } else {
+                showToast('❌ Erreur lors de la sauvegarde', 'danger');
+            }
+        } catch (e) {
+            showToast('❌ Erreur serveur', 'danger');
+        } finally {
+            btn.disabled = false; btn.textContent = '✅ Enregistrer Vidange';
+        }
+    };
+
+    // ─── Modal Fiche Tech ───
+    function openTechModal(deviceId) {
+        const m = machines.find(x => x.deviceId === deviceId);
+        if (!m) return;
+        const s = getMaintStatus(m);
+        const hist = maintHistory[deviceId] || [];
+
+        const histHtml = hist.length === 0
+            ? '<p style="color:var(--text-muted);font-size:.82rem;text-align:center;padding:1rem 0">Aucune vidange enregistrée</p>'
+            : [...hist].reverse().slice(0,10).map(e => `
+                <div class="history-entry">
+                    <div class="he-date">${new Date(e.date).toLocaleDateString('fr-FR')}</div>
+                    <div class="he-info">
+                        <strong>${e.hours}h · ${e.km}km</strong>
+                        ${e.notes ? `<br><span style="color:var(--text-muted);font-size:.75rem">${e.notes}</span>` : ''}
+                    </div>
+                </div>`
+            ).join('');
+
+        document.getElementById('techSheetContent').innerHTML = `
+            <div class="tech-section">
+                <div class="tech-section-title">🚜 IDENTIFICATION</div>
+                <div class="tech-row"><span class="tech-key">Nom</span><span class="tech-val">${m.name}</span></div>
+                <div class="tech-row"><span class="tech-key">Modèle</span><span class="tech-val">${m.model||'—'}</span></div>
+                <div class="tech-row"><span class="tech-key">N° Série</span><span class="tech-val">${m.serial||'—'}</span></div>
+                <div class="tech-row"><span class="tech-key">Device ID</span><span class="tech-val" style="font-family:monospace;font-size:.78rem">${m.deviceId}</span></div>
+                <div class="tech-row"><span class="tech-key">Statut</span><span class="tech-val" style="color:${m.status==='online'?'var(--success)':'var(--danger)'}">${m.status==='online'?'🟢 En ligne':'🔴 Hors ligne'}</span></div>
+                <div class="tech-row"><span class="tech-key">Ajouté le</span><span class="tech-val">${m.addedDate ? new Date(m.addedDate).toLocaleDateString('fr-FR') : '—'}</span></div>
+            </div>
+            <div class="tech-section">
+                <div class="tech-section-title">📊 ÉTAT ACTUEL</div>
+                <div class="tech-row"><span class="tech-key">Heures moteur</span><span class="tech-val">${s.h.toFixed(1)} h</span></div>
+                <div class="tech-row"><span class="tech-key">Kilométrage</span><span class="tech-val">${Math.floor(s.km)} km</span></div>
+                <div class="tech-row"><span class="tech-key">Température</span><span class="tech-val" style="color:${getTempColor(m.health?.temp)}">${m.health?.temp ?? '—'} °C</span></div>
+                <div class="tech-row"><span class="tech-key">Pression huile</span><span class="tech-val">${m.health?.oil ?? '—'} Bar</span></div>
+                <div class="tech-row"><span class="tech-key">Carburant</span><span class="tech-val" style="color:${getFuelColor(m.health?.fuel)}">${m.health?.fuel != null ? m.health.fuel+'%' : '—'}</span></div>
+            </div>
+            <div class="tech-section">
+                <div class="tech-section-title">🔧 PLAN DE MAINTENANCE</div>
+                <div class="tech-row"><span class="tech-key">Dernière vidange (h)</span><span class="tech-val">${m.maintenance?.lastOilChangeHours||0} h</span></div>
+                <div class="tech-row"><span class="tech-key">Prochaine vidange (h)</span><span class="tech-val">${m.maintenance?.nextOilChangeHours||500} h</span></div>
+                <div class="tech-row"><span class="tech-key">Dernière vidange (km)</span><span class="tech-val">${m.maintenance?.lastOilChangeKm||0} km</span></div>
+                <div class="tech-row"><span class="tech-key">Prochaine vidange (km)</span><span class="tech-val">${m.maintenance?.nextOilChangeKm||10000} km</span></div>
+                <div class="tech-row"><span class="tech-key">Avancement heures</span>
+                    <span class="tech-val" style="color:${s.isOverdue?'var(--danger)':s.isDue?'var(--warning)':'var(--success)'}">${s.pctH.toFixed(0)}%</span>
+                </div>
+            </div>
+            <div class="tech-section">
+                <div class="tech-section-title">📅 HISTORIQUE DES VIDANGES</div>
+                <div class="history-log">${histHtml}</div>
+            </div>
+        `;
+        document.getElementById('techModal').classList.add('open');
+    }
+    function closeTechModal() { document.getElementById('techModal').classList.remove('open'); }
+    function printTechSheet() { window.print(); }
+
+    function goToDashboard(deviceId) {
+        window.location.href = `dashboard.html?id=${deviceId}`;
+    }
+
+    // ─── Export PDF ───
+    function exportPDF() {
+        const win = window.open('', '_blank');
+        const rows = machines.map(m => {
+            const s = getMaintStatus(m);
+            const status = s.isOverdue ? 'EN RETARD 🚨' : s.isDue ? 'BIENTÔT DÛ ⚠️' : 'OPTIMAL ✅';
+            return `<tr>
+                <td><strong>${m.name}</strong></td>
+                <td>${m.model||'—'}</td>
+                <td>${m.deviceId}</td>
+                <td>${s.h.toFixed(1)}h</td>
+                <td>${Math.floor(s.km)} km</td>
+                <td>${m.maintenance?.nextOilChangeHours||500}h</td>
+                <td>${s.pctH.toFixed(0)}%</td>
+                <td>${status}</td>
+            </tr>`;
+        }).join('');
+        win.document.write(`
+            <html><head><title>Rapport Maintenance — IntelliMettry</title>
+            <style>
+                body{font-family:Arial,sans-serif;padding:2rem;color:#222}
+                h1{font-size:1.5rem;margin-bottom:.5rem}
+                p{color:#666;font-size:.85rem;margin-bottom:1.5rem}
+                table{width:100%;border-collapse:collapse;font-size:.82rem}
+                th{background:#0066ff;color:#fff;padding:.6rem .8rem;text-align:left}
+                td{padding:.5rem .8rem;border-bottom:1px solid #eee}
+                tr:hover td{background:#f5f5f5}
+            </style></head><body>
+            <h1>🔧 Rapport de Maintenance Préventive</h1>
+            <p>IntelliMettry — Généré le ${new Date().toLocaleString('fr-FR')}</p>
+            <table>
+                <tr><th>Nom</th><th>Modèle</th><th>Device ID</th><th>Heures</th><th>Km</th><th>Prochain</th><th>%</th><th>Statut</th></tr>
+                ${rows}
+            </table></body></html>`);
+        win.document.close();
+        win.print();
+    }
+
+    // ─── Toast ───
+    function showToast(msg, type) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.style.borderColor = type === 'success' ? 'var(--success)' : 'var(--danger)';
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    // ─── Auto Refresh ───
+    function startAutoRefresh() {
+        countdown = 30;
+        clearInterval(autoRefreshTimer);
+        autoRefreshTimer = setInterval(() => {
+            countdown--;
+            const lbl = document.getElementById('autoRefreshLabel');
+            if (lbl) lbl.textContent = `Rafraîchissement auto: ${countdown}s`;
+            if (countdown <= 0) {
+                refreshData();
+                countdown = 30;
+            }
+        }, 1000);
+    }
+
+    // ─── Init ───
+    document.addEventListener('DOMContentLoaded', () => {
+        refreshData();
+        startAutoRefresh();
+    });
+</script>
+</body>
+</html>

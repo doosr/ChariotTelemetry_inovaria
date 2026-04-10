@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin — IntelliMettry</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --gold: #ffa500;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+        }
+
+        [data-theme="light"] body {
+            background: linear-gradient(160deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        [data-theme="light"] .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom-color: rgba(168, 85, 247, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-c);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .super-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168, 85, 247, .12);
+            border: 1px solid rgba(168, 85, 247, .4);
+            border-radius: 20px;
+            padding: 5px 14px 5px 10px;
+        }
+
+        .super-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+            animation: glow 1.5s infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 6px var(--gold)
+            }
+
+            50% {
+                box-shadow: 0 0 16px var(--gold)
+            }
+        }
+
+        .super-text {
+            font-family: 'Orbitron', monospace;
+            font-size: .68rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.15rem;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(168, 85, 247, .5);
+        }
+
+        .sub {
+            font-size: .8rem;
+            color: var(--text-muted);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .user-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-c);
+            border-radius: 40px;
+            padding: 5px 14px 5px 5px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: .9rem;
+        }
+
+        .btn {
+            padding: .6rem 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .85rem;
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(124, 58, 237, .35);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(124, 58, 237, .55);
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #00d4ff, #0891b2);
+            color: #000;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(0, 212, 255, .25);
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 212, 255, .45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-c);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .07);
+            color: var(--text-primary);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, .12);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, .3);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #ffffff;
+        }
+
+        .btn-fleet {
+            background: rgba(0, 212, 255, .08);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, .25);
+        }
+
+        .btn-fleet:hover {
+            background: rgba(0, 212, 255, .18);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-c);
+            border-radius: 14px;
+            padding: 4px;
+            margin-bottom: 2rem;
+            width: fit-content;
+        }
+
+        .tab-btn {
+            padding: .5rem 1.4rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: .85rem;
+            cursor: pointer;
+            transition: all .25s;
+            color: var(--text-secondary);
+            background: transparent;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(168, 85, 247, .2), rgba(124, 58, 237, .2));
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-c);
+            border-radius: 16px;
+            padding: 1.4rem;
+            transition: all .3s;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(127, 90, 240, 0.35);
+            background: rgba(127, 90, 240, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-val {
+            font-size: 1.9rem;
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: .82rem;
+            margin-top: .4rem;
+        }
+
+        /* SEC HEADER */
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sec-title {
+            font-family: 'Orbitron', monospace;
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border-c);
+        }
+
+        /* FLEET */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .truck-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-c);
+            border-radius: 16px;
+            padding: 1.3rem;
+            transition: all .3s;
+        }
+
+        .truck-card:hover {
+            border-color: rgba(127, 90, 240, .4);
+            background: rgba(127, 90, 240, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(127, 90, 240, .15);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: .9rem;
+        }
+
+        .truck-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .truck-model {
+            font-size: .78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .truck-id {
+            font-family: monospace;
+            font-size: .68rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: .7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .pill.online {
+            background: rgba(16, 185, 129, .15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, .3);
+        }
+
+        .pill.offline {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .pdot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: glow2 2s infinite;
+        }
+
+        @keyframes glow2 {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .sensors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .7rem;
+            margin: .9rem 0;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: .85rem;
+        }
+
+        .sensor {
+            text-align: center;
+        }
+
+        .s-icon {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+
+        .s-val {
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .s-lbl {
+            font-size: .65rem;
+            color: var(--text-dim);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: .5rem;
+            margin-top: .9rem;
+        }
+
+        /* ADMIN TABLE */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            text-align: left;
+            padding: .8rem 1rem;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-c);
+        }
+
+        .admin-table td {
+            padding: .9rem 1rem;
+            border-bottom: 1px solid rgba(168, 85, 247, .06);
+            font-size: .9rem;
+        }
+
+        .admin-table tr:hover td {
+            background: rgba(168, 85, 247, .04);
+        }
+
+        .role-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 700;
+        }
+
+        .role-tag.super {
+            background: rgba(245, 158, 11, .15);
+            color: var(--gold);
+            border: 1px solid rgba(245, 158, 11, .3);
+        }
+
+        .role-tag.admin {
+            background: rgba(168, 85, 247, .15);
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .role-tag.tech {
+            background: rgba(6, 182, 212, .15);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, .3);
+        }
+
+        .role-tag.readonly {
+            background: rgba(148, 163, 184, .1);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, .2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-dim);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: rgba(6, 10, 24, 0.98);
+            border: 1px solid rgba(127, 90, 240, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 480px;
+            width: 90%;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .modal-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: .45rem;
+            color: var(--text-secondary);
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: .75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: .95rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .form-select option {
+            background: #08101f;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: .8rem;
+            margin-top: 1.5rem;
+        }
+
+        .err-box {
+            background: rgba(239, 68, 68, .12);
+            border: 1px solid rgba(239, 68, 68, .3);
+            border-radius: 8px;
+            padding: .7rem 1rem;
+            margin-bottom: 1rem;
+            color: #ef4444;
+            font-size: .85rem;
+        }
+
+        /* MAP */
+        .map-section {
+            margin-bottom: 2rem;
+            background: #e8edf0;
+            border: 1px solid var(--border-c);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .15);
+        }
+
+        #map-admin {
+            width: 100%;
+            height: 460px;
+            z-index: 10;
+        }
+
+        .map-header {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(18, 10, 30, 0.85);
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .map-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .leaflet-container {
+            background: #e8edf0 !important;
+        }
+
+        /* Map legend */
+        .map-legend {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 10px 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            min-width: 130px;
+        }
+
+        .map-legend-title {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 4px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-line {
+            width: 24px;
+            height: 3px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Leaflet dark popup override */
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+            padding: 0 !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 0 !important;
+        }
+
+        .leaflet-popup-tip {
+            background: #fff !important;
+        }
+
+        .custom-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* SYSTEM INFO */
+        .sys-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .sys-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .sys-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: .85rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .sys-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem 0;
+            border-bottom: 1px solid rgba(168, 85, 247, .06);
+        }
+
+        .sys-row:last-child {
+            border-bottom: none;
+        }
+
+        .sys-key {
+            font-size: .82rem;
+            color: var(--text-secondary);
+        }
+
+        .sys-val {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sys-val.ok {
+            color: var(--success);
+        }
+
+        .sys-val.warn {
+            color: var(--warning);
+        }
+
+        @media(max-width:768px) {
+            .fleet-grid {
+                grid-template-columns: 1fr
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem
+            }
+
+            .sys-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('fleet')"> Flotte</button>
+            <button class="tab-btn" onclick="showTab('admins')"> Administrateurs</button>
+            <button class="tab-btn" onclick="showTab('system')"> Système</button>
+        </div>
+
+        <!-- ===== FLOTTE TAB ===== -->
+        <div class="tab-panel active" id="tab-fleet">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val" id="totalCount">0</div>
+                    <div class="stat-lbl"> Total Chariots</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="onlineCount"
+                        style="background:linear-gradient(135deg,#10b981,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+                        0</div>
+                    <div class="stat-lbl"> En Ligne</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="offlineCount"
+                        style="background:linear-gradient(135deg,#ef4444,#dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+                        0</div>
+                    <div class="stat-lbl"> Hors Ligne</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="alertCount"
+                        style="background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+                        0</div>
+                    <div class="stat-lbl"> Alertes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="adminCount"
+                        style="background:linear-gradient(135deg,#a855f7,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+                        0</div>
+                    <div class="stat-lbl"> Admins</div>
+                </div>
+            </div>
+            <div class="sec-header">
+                <span class="sec-title">FLOTTE</span>
+                <div class="divider"></div>
+                <button class="btn btn-purple" onclick="window.location.href='fleet.html'"
+                    style="padding:.5rem 1rem;font-size:.82rem;"> Gérer dans Fleet Manager</button>
+            </div>
+
+            <!-- MAP SECTION -->
+            <div class="map-section">
+                <div class="map-header">
+                    <span class="map-title">📍 LOCALISATION EN TEMPS RÉEL</span>
+                    <span id="mapChariotCount" style="font-size:.7rem;color:#86868b;margin-left:10px;"></span>
+                </div>
+                <div id="map-admin"></div>
+                <!-- Légende carte -->
+                <div class="map-legend">
+                    <div class="map-legend-title">🚜 Chariots</div>
+                    <div id="mapLegendItems"></div>
+                    <div style="margin-top:8px;padding-top:6px;border-top:1px solid #e5e7eb;">
+                        <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+                            <div class="legend-line" style="background:#0066ff;"></div>
+                            <span style="color:#64748b;">Trajet parcouru</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;">
+                            <div class="legend-line" style="background:#94a3b8;border-top:2px dashed #94a3b8;height:0;">
+                            </div>
+                            <span style="color:#64748b;">Trajet hors ligne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fleet-grid" id="fleetGrid"></div>
+        </div>
+
+        <!-- ===== ADMINS TAB ===== -->
+        <div class="tab-panel" id="tab-admins">
+            <div class="sec-header">
+                <span class="sec-title">ADMINISTRATEURS</span>
+                <div class="divider"></div>
+            </div>
+            <div class="table-header"
+                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h2>Team IntelliMettry</h2>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <input type="text" id="adminSearch" placeholder="Rechercher..." oninput="renderAdmins()"
+                        style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 6px; padding: 5px 12px; color: white; font-size: 0.85rem;">
+                    <button class="btn btn-purple" onclick="openAdminModal()"
+                        style="padding:.5rem 1rem;font-size:.82rem;">
+                        Ajouter Admin</button>
+                </div>
+            </div>
+            <table class="admin-table" id="adminTable">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Créé le</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTbody"></tbody>
+            </table>
+        </div>
+
+        <!-- ===== SYSTEM TAB ===== -->
+        <div class="tab-panel" id="tab-system">
+            <div class="sys-grid">
+                <div class="sys-card">
+                    <h3> CONFIGURATION</h3>
+                    <div class="sys-row"><span class="sys-key">Backend URL</span><span
+                            class="sys-val">http://localhost:3000</span></div>
+                    <div class="sys-row"><span class="sys-key">Interval Fetch</span><span class="sys-val">500ms</span>
+                    </div>
+                    <div class="sys-row"><span class="sys-key">Timeout Données</span><span class="sys-val">60s</span>
+                    </div>
+                    <div class="sys-row"><span class="sys-key">Max Historique</span><span class="sys-val">200
+                            points</span></div>
+                    <div class="sys-row"><span class="sys-key">MQTT Broker</span><span
+                            class="sys-val">mqtt-dashboard.com</span></div>
+                </div>
+                <div class="sys-card">
+                    <h3> ÉTAT DU SYSTÈME</h3>
+                    <div class="sys-row"><span class="sys-key">Backend</span><span class="sys-val ok"
+                            id="backendStatus"> Test...</span></div>
+                    <div class="sys-row"><span class="sys-key">Chariots en mémoire</span><span class="sys-val"
+                            id="storedForklifts">0</span></div>
+                    <div class="sys-row"><span class="sys-key">Admins en mémoire</span><span class="sys-val"
+                            id="storedAdmins">0</span></div>
+                    <div class="sys-row"><span class="sys-key">Dernière connexion</span><span class="sys-val"
+                            id="lastLogin">--</span></div>
+                    <div class="sys-row"><span class="sys-key">Version</span><span class="sys-val ok">IntelliMettry
+                            v1.0</span></div>
+                </div>
+                <div class="sys-card">
+                    <h3> ACTIONS SYSTÈME</h3>
+                    <div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem;">
+                        <button class="btn btn-outline" onclick="clearNotifications()"
+                            style="width:100%;justify-content:center;"> Vider les notifications</button>
+                        <button class="btn btn-outline" onclick="exportAllData()"
+                            style="width:100%;justify-content:center;"> Exporter toutes les données</button>
+                        <button class="btn btn-danger" onclick="resetFleet()"
+                            style="width:100%;justify-content:center;"> Réinitialiser la flotte</button>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <h3> ACCÈS PAR RÔLE</h3>
+                    <div class="sys-row"><span class="sys-key">Super Admin</span><span class="sys-val ok">Accès
+                            total</span></div>
+                    <div class="sys-row"><span class="sys-key">Admin</span><span class="sys-val ok">Flotte +
+                            Chariots</span></div>
+                    <div class="sys-row"><span class="sys-key">Technicien</span><span class="sys-val warn">Lecture
+                            seule</span></div>
+                    <div class="sys-row"><span class="sys-key">Lecture seule</span><span class="sys-val warn">Dashboard
+                            uniquement</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ADMIN -->
+    <div class="modal" id="adminModal">
+        <div class="modal-box">
+            <div class="modal-hdr">
+                <h2 class="modal-title"> Nouvel Administrateur</h2>
+                <span class="modal-close" onclick="closeAdminModal()"></span>
+            </div>
+            <form id="addAdminForm">
+                <div id="adminError" class="err-box" style="display:none"></div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="adminEmail" class="form-input" placeholder="admin@exemple.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mot de passe</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="Minimum 6 caractères"
+                        minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Rôle</label>
+                    <select id="adminRole" class="form-select" onchange="toggleCreateUserMachines()">
+                        <option value="Admin">Admin</option>
+                        <option value="Super Admin">Super Admin</option>
+                        <option value="Technicien">Technicien</option>
+                        <option value="Lecture seule">Lecture seule</option>
+                    </select>
+                </div>
+                <div id="createUserMachinesSection" class="form-group" style="display:none;">
+                    <label class="form-label">Assigner Chariots</label>
+                    <div id="createUserMachinesList"
+                        style="max-height: 150px; overflow-y: auto; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px;">
+                        <!-- Machines will be listed here -->
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeAdminModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" style="flex:1"> Créer Admin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL ASSIGNER MACHINES -->
+    <div class="modal" id="assignMachinesModal">
+        <div class="modal-box">
+            <div class="modal-hdr">
+                <h2 class="modal-title">Assigner des Chariots</h2>
+                <span class="modal-close" onclick="closeAssignMachinesModal()"></span>
+            </div>
+            <div style="margin-bottom:1rem;color:var(--text-secondary);font-size:0.9rem;">
+                Technicien: <strong id="assignTechEmail" style="color:var(--text-primary);"></strong>
+            </div>
+            <form id="assignMachinesForm">
+                <div id="assignError" class="err-box" style="display:none"></div>
+                <input type="hidden" id="assignTechId">
+                <div class="form-group"
+                    style="max-height: 250px; overflow-y: auto; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px;"
+                    id="machinesCheckboxList">
+                    <!-- Checkboxes will be rendered here -->
+                    <div style="text-align:center; padding: 20px; color: var(--text-dim);">Chargement des chariots...
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeAssignMachinesModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" style="flex:1">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL TRANSFERER PROPRIETE -->
+    <div class="modal" id="transferOwnerModal">
+        <div class="modal-box">
+            <div class="modal-hdr">
+                <h2 class="modal-title">Transférer Chariot</h2>
+                <span class="modal-close" onclick="closeTransferOwnerModal()"></span>
+            </div>
+            <div style="margin-bottom:1rem;color:var(--text-secondary);font-size:0.9rem;">
+                Chariot: <strong id="transferMachineName" style="color:var(--text-primary);"></strong>
+            </div>
+            <form id="transferOwnerForm">
+                <div id="transferError" class="err-box" style="display:none"></div>
+                <input type="hidden" id="transferDeviceId">
+                <div class="form-group">
+                    <label class="form-label">Sélectionner le nouvel Admin</label>
+                    <select id="transferNewOwnerId" class="form-select" required>
+                        <option value="">Chargement des admins...</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeTransferOwnerModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" style="flex:1">Transférer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL GERER TECHNICIENS DU CHARIOT -->
+    <div class="modal" id="assignTechsToMachineModal">
+        <div class="modal-box">
+            <div class="modal-hdr">
+                <h2 class="modal-title">Accès Techniciens</h2>
+                <span class="modal-close" onclick="closeAssignTechsToMachineModal()"></span>
+            </div>
+            <div style="margin-bottom:1rem;color:var(--text-secondary);font-size:0.9rem;">
+                Chariot: <strong id="assignTechsMachineName" style="color:var(--text-primary);"></strong>
+            </div>
+            <form id="assignTechsToMachineForm">
+                <div id="assignTechsError" class="err-box" style="display:none"></div>
+                <input type="hidden" id="assignTechsDeviceId">
+                <div class="form-group"
+                    style="max-height: 250px; overflow-y: auto; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px;"
+                    id="techsCheckboxList">
+                    <!-- Checkboxes will be rendered here -->
+                    <div style="text-align:center; padding: 20px; color: var(--text-dim);">Chargement des techniciens...
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeAssignTechsToMachineModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" style="flex:1">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══ MODAL RENOMMER CHARIOT ═══ -->
+    <div class="modal" id="renameModal">
+        <div class="modal-box" style="max-width:420px;">
+            <div class="modal-hdr">
+                <h2 class="modal-title">✏️ Renommer le Chariot</h2>
+                <span class="modal-close" onclick="closeRenameModal()">✕</span>
+            </div>
+            <p style="color:var(--text-secondary);font-size:.85rem;margin-bottom:1.2rem;">
+                Nom actuel&nbsp;: <strong id="renameOldName" style="color:var(--text-primary);"></strong>
+            </p>
+            <form id="renameForm">
+                <input type="hidden" id="renameDeviceId">
+                <div class="form-group">
+                    <label class="form-label">Nouveau nom</label>
+                    <input type="text" id="renameInput" class="form-input" placeholder="ex: Chariot-A1" maxlength="50"
+                        required style="font-size:1rem;font-weight:700;">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeRenameModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" id="renameSaveBtn" style="flex:1">✅ Renommer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // AUTH
+        function checkAuth() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) { window.location.href = 'login.html'; return false; }
+            const d = JSON.parse(s);
+            if (!d.loggedIn) { window.location.href = 'login.html'; return false; }
+
+            // FILTRE STRICT : Seuls Super Admin et System Admin
+            if (d.role === 'Admin') {
+                window.location.href = 'fleet.html';
+                return false;
+            } else if (d.role === 'Technicien' || d.role === 'Lecture seule') {
+                window.location.href = 'technicien.html';
+                return false;
+            }
+
+            const n = d.email.split('@')[0];
+            const nameEl = document.querySelector('.user-chip div[style*="font-weight:700"]');
+            const initialEl = document.querySelector('.avatar');
+            if (nameEl) nameEl.textContent = n;
+            if (initialEl) initialEl.textContent = n[0].toUpperCase();
+            return true;
+        }
+        function logout() { if (confirm('Déconnecter?')) { localStorage.removeItem('admin-session'); window.location.href = 'login.html'; } }
+
+        // TABS
+        function showTab(name) {
+            document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', ['fleet', 'admins', 'system'][i] === name));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+            if (name === 'system') checkSystem();
+            // Fix carte Leaflet quand on revient sur l'onglet Flotte
+            if (name === 'fleet' && adminMap) {
+                setTimeout(() => adminMap.invalidateSize(), 100);
+            }
+        }
+
+        // HELPERS ISOLATION
+        function getCurrentOwnerId() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) return null;
+            const d = JSON.parse(s);
+            return (d.role === 'Admin') ? d.userId : (d.parentAdminId || d.userId);
+        }
+
+        // DATA
+        async function getForklifts() {
+            try {
+                const ownerId = getCurrentOwnerId();
+                const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+                let url = ownerId ? `/api/machines?ownerId=${ownerId}&includeTelemetry=true` : '/api/machines?includeTelemetry=true';
+                if (session.role) url += `&requesterRole=${session.role}&technicianId=${session.userId || session.id}`;
+                const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
+                if (r.ok) return await r.json();
+            } catch (e) { } return [];
+        }
+
+        let adminMap = null;
+        let mapLayers = []; // markers + polylines
+
+        // Palette de couleurs uniques par chariot
+        const CHARIOT_COLORS = [
+            '#0066ff', '#ff3b30', '#34c759', '#ff9500', '#af52de',
+            '#00c7be', '#ff2d55', '#5ac8fa', '#ffcc00', '#30d158'
+        ];
+        const chariotColors = {}; // deviceId -> color
+        const chariotTrails = {}; // deviceId -> [{ lat, lon, ts }]
+        const MAX_TRAIL = 100;   // points max par chariot
+
+        function getChariotColor(deviceId, index) {
+            if (!chariotColors[deviceId]) {
+                chariotColors[deviceId] = CHARIOT_COLORS[Object.keys(chariotColors).length % CHARIOT_COLORS.length];
+            }
+            return chariotColors[deviceId];
+        }
+
+        function recordTrail(f) {
+            if (!f.telemetry || !f.telemetry.lat || !f.telemetry.lon) return;
+            if (!chariotTrails[f.deviceId]) chariotTrails[f.deviceId] = [];
+            const trail = chariotTrails[f.deviceId];
+            const last = trail[trail.length - 1];
+            // Ajouter seulement si position a changé
+            if (!last || last.lat !== f.telemetry.lat || last.lon !== f.telemetry.lon) {
+                trail.push({ lat: f.telemetry.lat, lon: f.telemetry.lon, ts: Date.now() });
+                if (trail.length > MAX_TRAIL) trail.shift();
+                // Persister localement
+                try { localStorage.setItem('im_trails_' + f.deviceId, JSON.stringify(trail.slice(-50))); } catch (_) { }
+            }
+        }
+
+        function loadPersistedTrails(forks) {
+            forks.forEach(f => {
+                if (!chariotTrails[f.deviceId]) {
+                    try {
+                        const saved = localStorage.getItem('im_trails_' + f.deviceId);
+                        if (saved) chariotTrails[f.deviceId] = JSON.parse(saved);
+                    } catch (_) { }
+                }
+            });
+        }
+
+        function renderMap(forks) {
+            if (!adminMap) {
+                adminMap = L.map('map-admin', {
+                    zoomControl: true,
+                    attributionControl: false
+                }).setView([33.5731, -7.5898], 13);
+
+                // ✅ Tuiles claires CartoDB Light (compatibles local)
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 20,
+                    subdomains: 'abcd',
+                    attribution: '© CartoDB'
+                }).addTo(adminMap);
+
+                L.control.attribution({ prefix: false }).addTo(adminMap);
+            }
+
+            // Fix taille après rendu DOM — plusieurs délais pour être sûr
+            setTimeout(() => adminMap.invalidateSize(), 100);
+            setTimeout(() => adminMap.invalidateSize(), 500);
+            setTimeout(() => { adminMap.invalidateSize(); adminMap._resetView(adminMap.getCenter(), adminMap.getZoom()); }, 1000);
+
+            // Charger les trajets sauvegardés
+            loadPersistedTrails(forks);
+
+            // Enregistrer positions actuelles
+            forks.forEach(f => recordTrail(f));
+
+            // Supprimer anciens layers
+            mapLayers.forEach(l => adminMap.removeLayer(l));
+            mapLayers = [];
+
+            const validForks = forks.filter(f => f.telemetry && f.telemetry.lat && f.telemetry.lon);
+            const legendEl = document.getElementById('mapLegendItems');
+            if (legendEl) legendEl.innerHTML = '';
+
+            validForks.forEach((f, idx) => {
+                const color = getChariotColor(f.deviceId, idx);
+                const isOnline = f.status === 'online';
+
+                // ── Tracer le trajet ──
+                const trail = chariotTrails[f.deviceId] || [];
+                if (trail.length >= 2) {
+                    const latlngs = trail.map(p => [p.lat, p.lon]);
+                    const poly = L.polyline(latlngs, {
+                        color,
+                        weight: 3,
+                        opacity: 0.7,
+                        dashArray: isOnline ? null : '6, 6',
+                        lineJoin: 'round',
+                        lineCap: 'round'
+                    }).addTo(adminMap);
+                    mapLayers.push(poly);
+
+                    // Point de départ du trajet
+                    const startPt = trail[0];
+                    const startIcon = L.divIcon({
+                        className: '',
+                        html: `<div style="width:8px;height:8px;border-radius:50%;background:${color};opacity:0.5;border:2px solid white;"></div>`,
+                        iconSize: [8, 8], iconAnchor: [4, 4]
+                    });
+                    const startMark = L.marker([startPt.lat, startPt.lon], { icon: startIcon }).addTo(adminMap);
+                    mapLayers.push(startMark);
+                }
+
+                // ── Marqueur principal (forklift SVG) ──
+                const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36">
+                  <rect x="2" y="28" width="38" height="22" rx="4" fill="${color}" stroke="white" stroke-width="2"/>
+                  <rect x="8" y="20" width="14" height="10" rx="2" fill="white" opacity="0.9"/>
+                  <rect x="38" y="14" width="4" height="36" rx="2" fill="${color}" stroke="white" stroke-width="1.5"/>
+                  <rect x="34" y="12" width="12" height="4" rx="2" fill="${color}" stroke="white" stroke-width="1.5"/>
+                  <circle cx="14" cy="52" r="7" fill="#334155" stroke="white" stroke-width="2"/>
+                  <circle cx="14" cy="52" r="3" fill="#94a3b8"/>
+                  <circle cx="34" cy="52" r="7" fill="#334155" stroke="white" stroke-width="2"/>
+                  <circle cx="34" cy="52" r="3" fill="#94a3b8"/>
+                  ${isOnline ? '<circle cx="56" cy="8" r="6" fill="#34c759" stroke="white" stroke-width="2"/>' : '<circle cx="56" cy="8" r="6" fill="#ef4444" stroke="white" stroke-width="2"/>'}
+                </svg>`;
+
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<div style="filter:drop-shadow(0 3px 6px rgba(0,0,0,0.35));">${svgIcon}</div>`,
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 36]
+                });
+
+                const fp = f.health?.fuel ?? null;
+                const tempVal = f.health?.temp || '--';
+                const fuelBar = fp != null ? `
+                    <div style="margin-top:6px;">
+                        <div style="display:flex;justify-content:space-between;font-size:.65rem;color:#666;margin-bottom:3px;">
+                            <span>⛽ Carburant</span><span>${fp}%</span>
+                        </div>
+                        <div style="height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden;">
+                            <div style="height:100%;width:${fp}%;background:${fp < 15 ? '#ef4444' : fp < 30 ? '#f59e0b' : '#10b981'};border-radius:3px;"></div>
+                        </div>
+                    </div>` : '';
+
+                const popup = L.popup({ maxWidth: 200, className: 'im-popup' }).setContent(`
+                    <div style="padding:12px;font-family:'Inter',sans-serif;min-width:170px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                            <div style="width:10px;height:10px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+                            <div style="font-weight:800;font-size:.9rem;color:#0f172a;">${f.name}</div>
+                        </div>
+                        <div style="font-size:.72rem;color:#64748b;margin-bottom:4px;">${f.model}</div>
+                        <div style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:700;
+                            background:${isOnline ? 'rgba(52,199,89,0.12)' : 'rgba(239,68,68,0.1)'};
+                            color:${isOnline ? '#16a34a' : '#dc2626'};
+                            border:1px solid ${isOnline ? 'rgba(52,199,89,0.3)' : 'rgba(239,68,68,0.2)'};
+                            margin-bottom:8px;">
+                            <div style="width:6px;height:6px;border-radius:50%;background:currentColor;"></div>
+                            ${isOnline ? 'EN LIGNE' : 'HORS LIGNE'}
+                        </div>
+                        <div style="font-size:.72rem;color:#374151;">🌡 Temp: <strong>${tempVal} °C</strong></div>
+                        ${fuelBar}
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <button onclick="location.href='dashboard.html?id=${f.deviceId}'" 
+                                style="flex:1;background:${color};border:none;color:#fff;padding:6px;border-radius:7px;cursor:pointer;font-size:.72rem;font-weight:700;">📊 Dashboard</button>
+                            <button onclick="clearTrail('${f.deviceId}')" 
+                                style="flex:0;background:#f1f5f9;border:1px solid #e2e8f0;color:#475569;padding:6px 8px;border-radius:7px;cursor:pointer;font-size:.72rem;" title="Effacer trajet">🗑️</button>
+                        </div>
+                    </div>
+                `);
+
+                const marker = L.marker([f.telemetry.lat, f.telemetry.lon], { icon })
+                    .addTo(adminMap)
+                    .bindPopup(popup);
+                mapLayers.push(marker);
+
+                // Légende
+                if (legendEl) {
+                    const trailLen = (chariotTrails[f.deviceId] || []).length;
+                    const item = document.createElement('div');
+                    item.className = 'legend-item';
+                    item.title = `Voir ${f.name} sur la carte`;
+                    item.innerHTML = `
+                        <div class="legend-dot" style="background:${color};"></div>
+                        <div>
+                            <div style="font-weight:700;color:#0f172a;font-size:.72rem;">${f.name}</div>
+                            <div style="color:#94a3b8;font-size:.62rem;">${trailLen} pts · ${isOnline ? '🟢 En ligne' : '🔴 Hors ligne'}</div>
+                        </div>
+                    `;
+                    item.onclick = () => marker.openPopup();
+                    legendEl.appendChild(item);
+                }
+            });
+
+            if (validForks.length > 0) {
+                const allMarkers = mapLayers.filter(l => l instanceof L.Marker);
+                if (allMarkers.length > 0) {
+                    const group = new L.featureGroup(allMarkers);
+                    try { adminMap.fitBounds(group.getBounds().pad(0.3)); } catch (_) { }
+                }
+            }
+        }
+
+        function clearTrail(deviceId) {
+            chariotTrails[deviceId] = [];
+            try { localStorage.removeItem('im_trails_' + deviceId); } catch (_) { }
+        }
+
+        async function getAdmins() {
+            try {
+                const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+                const parentId = getCurrentOwnerId();
+                const url = parentId ? `/api/users?parentAdminId=${parentId}&requesterRole=${session.role}` : `/api/users?requesterRole=${session.role}`;
+                const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
+                if (r.ok) return await r.json();
+            } catch (e) { } return [];
+        }
+        function ago(date) { const s = Math.floor((new Date() - new Date(date)) / 1000); if (s < 60) return `Il y a ${s}s`; if (s < 3600) return `Il y a ${Math.floor(s / 60)}min`; if (s < 86400) return `Il y a ${Math.floor(s / 3600)}h`; return `Il y a ${Math.floor(s / 86400)}j`; }
+
+        // FLEET
+        async function renderFleet() {
+            const forks = await getForklifts(); const grid = document.getElementById('fleetGrid');
+            const admins = await getAdmins();
+            document.getElementById('totalCount').textContent = forks.length;
+            document.getElementById('onlineCount').textContent = forks.filter(f => f.status === 'online').length;
+            document.getElementById('offlineCount').textContent = forks.filter(f => f.status === 'offline').length;
+            document.getElementById('alertCount').textContent = forks.filter(f => f.status === 'online' && ((f.health?.temp === 'warning' || f.health?.temp === 'danger') || (f.health?.oil === 'warning' || f.health?.oil === 'danger') || (f.health?.fuel || 0) < 20)).length;
+            document.getElementById('adminCount').textContent = admins.length;
+            renderMap(forks);
+            if (!forks.length) { grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem">📦</div><p>Aucun chariot. Utilisez Fleet Manager.</p></div>'; return; }
+            grid.innerHTML = forks.map(f => {
+                const ti = f.health?.temp === 'ok' ? '✅' : f.health?.temp === 'warning' ? '⚠️' : f.health?.temp === 'danger' ? '🚨' : '—';
+                const oi = f.health?.oil === 'ok' ? '✅' : f.health?.oil === 'warning' ? '⚠️' : f.health?.oil === 'danger' ? '🚨' : '—';
+                const fp = f.health?.fuel || 0;
+                const fc = fp < 10 ? '#ef4444' : fp < 20 ? '#fbbf24' : '#10b981';
+                const ft = fp <= 0 ? '<span style="color:#ef4444;font-weight:700">VIDE</span>' : `<span style="color:${fc};font-weight:700">${fp}%</span>`;
+
+                const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+                const isSuperAdmin = session.role === 'Super Admin' || session.role === 'System Admin';
+
+                const ownerAdmin = admins.find(a => a._id === f.ownerId);
+                let ownerLabel = '';
+                if (isSuperAdmin) {
+                    const ownerName = ownerAdmin ? ownerAdmin.email.split('@')[0] : (f.ownerId === session.userId ? 'Moi' : 'Inconnu');
+                    ownerLabel = `<span style="color:var(--primary); margin-left:8px; font-weight:600;">👤 ${ownerName}</span>`;
+                }
+
+                return `<div class="truck-card">
+            <div class="card-top"><div><div class="truck-name" id="name-${f.deviceId}">${f.name}</div><div class="truck-model">${f.model}</div><div class="truck-id">📟 ${f.deviceId || f._id} ${ownerLabel}</div></div>
+            <div class="pill ${f.status}"><div class="pdot"></div>${f.status === 'online' ? 'EN LIGNE' : 'HORS LIGNE'}</div></div>
+            <div class="sensors"><div class="sensor"><div class="s-icon">🌡️</div><div class="s-val">${ti}</div><div class="s-lbl">Temp</div></div><div class="sensor"><div class="s-icon">🛢️</div><div class="s-val">${oi}</div><div class="s-lbl">Huile</div></div><div class="sensor"><div class="s-icon">⛽</div><div class="s-val">${ft}</div><div class="s-lbl">Carburant</div></div></div>
+            <div class="card-actions" style="flex-wrap: wrap;">
+                <button class="btn btn-outline" onclick="openRenameModal('${f.deviceId}', '${f.name.replace(/'/g, "\\'")}')"
+                    style="flex:1;justify-content:center;font-size:.7rem;min-width:48%" title="Renommer ce chariot">✏️ Renommer</button>
+                ${isSuperAdmin ? `<button class="btn btn-outline" onclick="openTransferOwnerModal('${f.deviceId}', '${f.name}')" style="flex:1;justify-content:center;font-size:.7rem;min-width:48%">Transférer</button>` : ''}
+                <button class="btn btn-outline" onclick="openAssignTechsToMachineModal('${f.deviceId}', '${f.name}')" style="flex:1;justify-content:center;font-size:.7rem;min-width:48%">Techniciens</button>
+                <button class="btn btn-fleet" onclick="location.href='dashboard.html?id=${f.deviceId}'" style="flex:1;justify-content:center;font-size:.8rem;min-width:48%">📊 Dashboard</button>
+                <button class="btn btn-danger" onclick="deleteForklift('${f.deviceId}')" style="font-size:.8rem;flex-basis:content">🗑️</button>
+            </div>
+        </div>`;
+            }).join('');
+        }
+
+        async function deleteForklift(deviceId) {
+            if (!confirm('Supprimer ce chariot?')) return;
+            try {
+                const r = await fetch(`/api/machines/${deviceId}`, { method: 'DELETE' });
+                if (!r.ok) { const j = await r.json(); alert('❌ ' + j.error); return; }
+                await renderFleet();
+            } catch (e) { alert('❌ Erreur serveur'); }
+        }
+
+        // ── Renommer un chariot ──
+        function openRenameModal(deviceId, currentName) {
+            document.getElementById('renameDeviceId').value = deviceId;
+            document.getElementById('renameInput').value = currentName;
+            document.getElementById('renameOldName').textContent = currentName;
+            document.getElementById('renameModal').classList.add('show');
+            setTimeout(() => document.getElementById('renameInput').select(), 100);
+        }
+        function closeRenameModal() {
+            document.getElementById('renameModal').classList.remove('show');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('renameForm');
+            if (form) form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const id = document.getElementById('renameDeviceId').value;
+                const newName = document.getElementById('renameInput').value.trim();
+                if (!newName) return;
+                const btn = document.getElementById('renameSaveBtn');
+                btn.disabled = true; btn.textContent = '⌛...';
+                try {
+                    const r = await fetch(`/api/machines/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: newName })
+                    });
+                    if (r.ok) {
+                        // Mise à jour en temps réel sans reload complet
+                        const el = document.getElementById('name-' + id);
+                        if (el) el.textContent = newName;
+                        closeRenameModal();
+                        showToast('✅ Chariot renommé en "' + newName + '"');
+                        renderFleet();
+                    } else {
+                        const j = await r.json();
+                        alert('❌ ' + (j.error || 'Erreur'));
+                    }
+                } catch (e) { alert('❌ Erreur serveur'); }
+                finally { btn.disabled = false; btn.textContent = '✅ Renommer'; }
+            });
+        });
+        function showToast(msg) {
+            let t = document.getElementById('simpleToast');
+            if (!t) { t = document.createElement('div'); t.id = 'simpleToast'; t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#0f172a;color:#fff;padding:.75rem 1.5rem;border-radius:12px;font-size:.85rem;font-weight:600;z-index:9999;transition:all .3s;border:1px solid rgba(255,255,255,.1);'; document.body.appendChild(t); }
+            t.textContent = msg;
+            t.style.transform = 'translateX(-50%) translateY(0)';
+            t.style.opacity = '1';
+            setTimeout(() => { t.style.transform = 'translateX(-50%) translateY(80px)'; t.style.opacity = '0'; }, 3000);
+        }
+
+        // ADMINS
+        async function renderAdmins() {
+            const admins = await getAdmins();
+            const tbody = document.getElementById('adminTbody');
+            const search = document.getElementById('adminSearch')?.value.toLowerCase() || '';
+
+            const filtered = admins.filter(a => a.email.toLowerCase().includes(search) || a.role.toLowerCase().includes(search));
+
+            if (!filtered.length) { tbody.innerHTML = '<tr><td colspan="4" class="empty-state">Aucun admin trouvé</td></tr>'; return; }
+
+            const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+            const isSuperAdmin = session.role === 'Super Admin' || session.role === 'System Admin';
+            const roleClass = { 'Super Admin': 'super', 'Admin': 'admin', 'Technicien': 'tech', 'Lecture seule': 'readonly' };
+
+            tbody.innerHTML = filtered.map((a, i) => `<tr>
+        <td>
+            <strong>${a.email}</strong>
+            ${isSuperAdmin && a.parentAdminId ? `<div style="font-size:0.7rem; color:var(--text-dim); margin-top:2px;">👤 Créé par: ${a.parentAdminId === session.userId || a.parentAdminId === session.id ? '<span style="color:var(--primary)">Moi</span>' : (admins.find(p => p._id === a.parentAdminId)?.email || 'Admin')}</div>` : ''}
+        </td>
+        <td><span class="role-tag ${roleClass[a.role] || 'admin'}">${a.role}</span></td>
+        <td>${a.createdAt ? new Date(a.createdAt).toLocaleDateString('fr-FR') : '--'}</td>
+        <td style="display:flex; gap:0.5rem; align-items:center;">
+            ${a.role === 'Technicien' ? `<button class="btn btn-outline" onclick="openAssignMachinesModal('${a._id}', '${a.email}', '${(a.assignedMachines || []).join(',')}')" style="padding:.35rem .75rem;font-size:.78rem">Gérer Chariots</button>` : ''}
+            <button class="btn btn-danger" onclick="deleteAdmin('${a._id}','${a.email}')" style="padding:.35rem .75rem;font-size:.78rem">${(i === 0 && a.role !== 'Technicien') ? '🔒' : '🗑️'}</button>
+        </td>
+    </tr>`).join('');
+        }
+
+        async function deleteAdmin(id, email) {
+            if (!id || id === 'undefined') { alert('Le premier admin ne peut pas être supprimé.'); return; }
+            if (!confirm(`Supprimer ${email} ?`)) return;
+            try {
+                const r = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+                if (!r.ok) { const j = await r.json(); alert('❌ ' + j.error); return; }
+                await renderAdmins();
+                const admins = await getAdmins();
+                document.getElementById('adminCount').textContent = admins.length;
+            } catch (e) { alert('❌ Erreur serveur'); }
+        }
+
+        // ADMIN MODAL
+        async function toggleCreateUserMachines() {
+            const role = document.getElementById('adminRole').value;
+            const section = document.getElementById('createUserMachinesSection');
+            const list = document.getElementById('createUserMachinesList');
+
+            if (role === 'Technicien') {
+                section.style.display = 'block';
+                list.innerHTML = '<div style="text-align:center; font-size:0.8rem; color:gray;">Chargement...</div>';
+                try {
+                    const forks = await getForklifts();
+                    if (!forks.length) {
+                        list.innerHTML = '<div style="text-align:center; font-size:0.8rem; color:var(--danger);">Aucun chariot disponible.</div>';
+                        return;
+                    }
+                    list.innerHTML = forks.map(f => `
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                            <input type="checkbox" value="${f.deviceId}" class="create-machine-chk" id="create_chk_${f.deviceId}">
+                            <label for="create_chk_${f.deviceId}" style="font-size:0.85rem; cursor:pointer;">${f.name}</label>
+                        </div>
+                    `).join('');
+                } catch (e) {
+                    list.innerHTML = 'Erreur';
+                }
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.add('show');
+            toggleCreateUserMachines(); // Check role on open
+        }
+        function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); document.getElementById('addAdminForm').reset(); document.getElementById('adminError').style.display = 'none'; }
+        document.getElementById('addAdminForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value.trim().toLowerCase();
+            const password = document.getElementById('adminPassword').value;
+            const role = document.getElementById('adminRole').value;
+            const assignedMachines = Array.from(document.querySelectorAll('.create-machine-chk:checked')).map(c => c.value);
+
+            const errEl = document.getElementById('adminError');
+            const btn = e.target.querySelector('[type=submit]');
+            btn.disabled = true; btn.textContent = '⏳ Création...';
+            try {
+                const parentAdminId = getCurrentOwnerId();
+                const res = await fetch('/api/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, role, parentAdminId, assignedMachines })
+                });
+                const json = await res.json();
+                if (!res.ok) { errEl.textContent = json.error || 'Erreur'; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = '✅ Créer Admin'; return; }
+                closeAdminModal(); await renderAdmins();
+                const admins = await getAdmins();
+                document.getElementById('adminCount').textContent = admins.length;
+                alert(`✅ Utilisateur "${email}" créé !`);
+            } catch (err) { errEl.textContent = 'Erreur réseau'; errEl.style.display = 'block'; }
+            finally { btn.disabled = false; btn.textContent = '✅ Créer Admin'; }
+        });
+        document.getElementById('adminModal').addEventListener('click', e => { if (e.target.id === 'adminModal') closeAdminModal(); });
+
+        // ASSIGN MACHINES MODAL
+        async function openAssignMachinesModal(techId, techEmail, assignedStr) {
+            document.getElementById('assignMachinesModal').classList.add('show');
+            document.getElementById('assignTechEmail').textContent = techEmail;
+            document.getElementById('assignTechId').value = techId;
+            const assignedArray = assignedStr ? assignedStr.split(',') : [];
+            const container = document.getElementById('machinesCheckboxList');
+            container.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--text-dim);">Chargement...</div>';
+            try {
+                const forks = await getForklifts();
+                if (!forks.length) {
+                    container.innerHTML = '<div style="color: var(--warning); text-align:center;">Aucun chariot dans votre flotte.</div>';
+                    return;
+                }
+                container.innerHTML = forks.map(f => {
+                    const isChecked = assignedArray.includes(f.deviceId) ? 'checked' : '';
+                    return `<div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <input type="checkbox" id="chk_${f.deviceId}" value="${f.deviceId}" class="machine-chkbx" ${isChecked} style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="chk_${f.deviceId}" style="cursor: pointer; display: flex; flex-direction: column;">
+                            <span style="color: var(--primary); font-weight: 700;">${f.name}</span>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">${f.model} • ${f.deviceId}</span>
+                        </label>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                container.innerHTML = '<div style="color: red; text-align:center;">Erreur de chargement des chariots.</div>';
+            }
+        }
+        function closeAssignMachinesModal() { document.getElementById('assignMachinesModal').classList.remove('show'); }
+        document.getElementById('assignMachinesModal').addEventListener('click', e => { if (e.target.id === 'assignMachinesModal') closeAssignMachinesModal(); });
+        document.getElementById('assignMachinesForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const btn = e.target.querySelector('[type=submit]');
+            const errEl = document.getElementById('assignError');
+            const techId = document.getElementById('assignTechId').value;
+            const checkboxes = document.querySelectorAll('.machine-chkbx:checked');
+            const assignedMachines = Array.from(checkboxes).map(chk => chk.value);
+
+            btn.disabled = true; btn.textContent = 'Enregistrement...';
+            try {
+                const res = await fetch(`/api/users/${techId}/machines`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ assignedMachines })
+                });
+                const json = await res.json();
+                if (!res.ok) { errEl.textContent = json.error || 'Erreur'; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Enregistrer'; return; }
+                closeAssignMachinesModal();
+                await renderAdmins(); // Refresh the table to update the string
+                alert(`✅ Chariots assignés avec succès !`);
+            } catch (err) { errEl.textContent = 'Erreur de configuration'; errEl.style.display = 'block'; }
+            finally { btn.disabled = false; btn.textContent = 'Enregistrer'; }
+        });
+
+        // TRANSFERER CHARIOT MODAL
+        async function openTransferOwnerModal(deviceId, machineName) {
+            document.getElementById('transferOwnerModal').classList.add('show');
+            document.getElementById('transferMachineName').textContent = machineName;
+            document.getElementById('transferDeviceId').value = deviceId;
+            const select = document.getElementById('transferNewOwnerId');
+
+            select.innerHTML = '<option value="">Chargement...</option>';
+            try {
+                const adminsList = await getAdmins();
+                // On peut transférer à un Admin (pas à un Technicien)
+                const validAdmins = adminsList.filter(a => a.role === 'Admin');
+                if (!validAdmins.length) {
+                    select.innerHTML = '<option value="">Aucun Admin disponible</option>';
+                    return;
+                }
+
+                let html = '<option value="">Choisir un Admin</option>';
+                // Add the Super Admin himself as an option to take it back
+                const currentOwnerId = getCurrentOwnerId();
+                const superAdminInfo = adminsList.find(a => a._id === currentOwnerId);
+                if (!superAdminInfo && currentOwnerId) {
+                    html += `<option value="${currentOwnerId}"> Moi-même (Restituer) </option>`;
+                }
+                html += validAdmins.map(a => `<option value="${a._id}">${a.email} (${a.role})</option>`).join('');
+                select.innerHTML = html;
+            } catch (e) {
+                select.innerHTML = '<option value="">Erreur</option>';
+            }
+        }
+        function closeTransferOwnerModal() { document.getElementById('transferOwnerModal').classList.remove('show'); document.getElementById('transferError').style.display = 'none'; }
+        document.getElementById('transferOwnerModal').addEventListener('click', e => { if (e.target.id === 'transferOwnerModal') closeTransferOwnerModal(); });
+        document.getElementById('transferOwnerForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const btn = e.target.querySelector('[type=submit]');
+            const errEl = document.getElementById('transferError');
+            const deviceId = document.getElementById('transferDeviceId').value;
+            const newOwnerId = document.getElementById('transferNewOwnerId').value;
+
+            if (!newOwnerId) return;
+
+            btn.disabled = true; btn.textContent = 'Transfert...';
+            try {
+                const res = await fetch(`/api/machines/${deviceId}/owner`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ newOwnerId })
+                });
+                const json = await res.json();
+                if (!res.ok) { errEl.textContent = json.error || 'Erreur'; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Transférer'; return; }
+                closeTransferOwnerModal();
+                await renderFleet(); // Refresh fleet
+                alert(`✅ Chariot transféré avec succès !`);
+            } catch (err) { errEl.textContent = 'Erreur réseau'; errEl.style.display = 'block'; }
+            finally { btn.disabled = false; btn.textContent = 'Transférer'; }
+        });
+
+        // ACCES TECHNICIENS DEPUIS CHARIOT MODAL
+        async function openAssignTechsToMachineModal(deviceId, machineName) {
+            document.getElementById('assignTechsToMachineModal').classList.add('show');
+            document.getElementById('assignTechsMachineName').textContent = machineName;
+            document.getElementById('assignTechsDeviceId').value = deviceId;
+            const container = document.getElementById('techsCheckboxList');
+            container.innerHTML = '<div style="text-align:center; padding: 20px; color: var(--text-dim);">Chargement...</div>';
+
+            try {
+                const adminsList = await getAdmins();
+                const techniciens = adminsList.filter(a => a.role === 'Technicien');
+                if (!techniciens.length) {
+                    container.innerHTML = '<div style="color: var(--warning); text-align:center;">Aucun technicien dans votre équipe.</div>';
+                    return;
+                }
+
+                container.innerHTML = techniciens.map(t => {
+                    const assignedArray = t.assignedMachines || [];
+                    const isChecked = assignedArray.includes(deviceId) ? 'checked' : '';
+                    return `<div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <input type="checkbox" id="tech_chk_${t._id}" value="${t._id}" class="tech-chkbx" ${isChecked} style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="tech_chk_${t._id}" style="cursor: pointer; display: flex; flex-direction: column;">
+                            <span style="color: var(--primary); font-weight: 700;">${t.email}</span>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">Ajouté le ${new Date(t.createdAt).toLocaleDateString()}</span>
+                        </label>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                container.innerHTML = '<div style="color: red; text-align:center;">Erreur de chargement des techniciens.</div>';
+            }
+        }
+        function closeAssignTechsToMachineModal() { document.getElementById('assignTechsToMachineModal').classList.remove('show'); document.getElementById('assignTechsError').style.display = 'none'; }
+        document.getElementById('assignTechsToMachineModal').addEventListener('click', e => { if (e.target.id === 'assignTechsToMachineModal') closeAssignTechsToMachineModal(); });
+        document.getElementById('assignTechsToMachineForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const btn = e.target.querySelector('[type=submit]');
+            const errEl = document.getElementById('assignTechsError');
+            const deviceId = document.getElementById('assignTechsDeviceId').value;
+            const checkboxes = document.querySelectorAll('.tech-chkbx:checked');
+            const technicianIds = Array.from(checkboxes).map(chk => chk.value);
+
+            btn.disabled = true; btn.textContent = 'Enregistrement...';
+            try {
+                const res = await fetch(`/api/machines/${deviceId}/technicians`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ technicianIds })
+                });
+                const json = await res.json();
+                if (!res.ok) { errEl.textContent = json.error || 'Erreur'; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Enregistrer'; return; }
+                closeAssignTechsToMachineModal();
+                await renderAdmins(); // Important: mettre à jour la liste des admins/techs en cache
+                alert(`✅ Accès techniciens mis à jour pour ce chariot.`);
+            } catch (err) { errEl.textContent = 'Erreur réseau'; errEl.style.display = 'block'; }
+            finally { btn.disabled = false; btn.textContent = 'Enregistrer'; }
+        });
+
+        // SYSTEM
+        async function checkSystem() {
+            const el = document.getElementById('backendStatus');
+            const [forks, admins] = await Promise.all([getForklifts(), getAdmins()]);
+            document.getElementById('storedForklifts').textContent = forks.length;
+            document.getElementById('storedAdmins').textContent = admins.length;
+            const s = localStorage.getItem('admin-session');
+            if (s) { const d = JSON.parse(s); document.getElementById('lastLogin').textContent = d.email.split('@')[0]; }
+            try {
+                const r = await fetch('/api/machines', { signal: AbortSignal.timeout(2000) });
+                el.textContent = r.ok ? '✅ En ligne' : '⚠️ Erreur';
+                el.className = 'sys-val ' + (r.ok ? 'ok' : 'warn');
+            } catch (e) { el.textContent = '❌ Hors ligne'; el.className = 'sys-val'; el.style.color = '#ef4444'; }
+        }
+
+        function clearNotifications() { if (confirm('Vider toutes les notifications locales?')) { localStorage.removeItem('notifications'); alert(' Notifications vidées.'); } }
+        async function exportAllData() {
+            // Load jsPDF if missing
+            if (!window.jspdf) {
+                await new Promise((resolve) => {
+                    const s1 = document.createElement('script');
+                    s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                    s1.onload = resolve;
+                    document.head.appendChild(s1);
+                });
+                await new Promise((resolve) => {
+                    const s2 = document.createElement('script');
+                    s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js';
+                    s2.onload = resolve;
+                    document.head.appendChild(s2);
+                });
+            }
+
+            const [forks, admins] = await Promise.all([getForklifts(), getAdmins()]);
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('portrait');
+            let currentY = 15;
+
+            try {
+                const res = await fetch('logo.png');
+                const blob = await res.blob();
+                const logoBase64 = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(blob);
+                });
+                doc.addImage(logoBase64, 'PNG', 14, currentY, 40, 15);
+                currentY += 20;
+            } catch (e) { console.warn("Logo non chargé", e); }
+
+            doc.setFontSize(22);
+            doc.setTextColor(0, 114, 170);
+            doc.setFont("helvetica", "bold");
+            doc.text("IntelliMettry - Rapport Global", 14, currentY);
+            currentY += 8;
+
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.setFont("helvetica", "normal");
+            doc.text(`Généré le: ${new Date().toLocaleString('fr-FR')} | Comptes: ${admins.length} | Chariots: ${forks.length}`, 14, currentY);
+            currentY += 12;
+
+            // SECTION COMPTES
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Utilisateurs & Administrateurs", 14, currentY);
+            currentY += 5;
+
+            doc.autoTable({
+                startY: currentY,
+                head: [['Email', 'Rôle', 'Dernière IP', 'Chariots Autorisés']],
+                body: admins.map(a => [
+                    a.email,
+                    a.role,
+                    a.lastIp || '-',
+                    (a.assignedMachines || []).length ? a.assignedMachines.join(', ') : (a.role === 'Super Admin' ? 'Tous / Racine' : 'Aucun / Restreint')
+                ]),
+                theme: 'striped',
+                headStyles: { fillColor: [50, 70, 90] },
+                styles: { fontSize: 9 }
+            });
+            currentY = doc.lastAutoTable.finalY + 15;
+
+            // SECTION FLOTTE
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Flotte de Chariots", 14, currentY);
+            currentY += 5;
+
+            doc.autoTable({
+                startY: currentY,
+                head: [['Numéro', 'Nom', 'Modèle', 'Status', 'Ajout le']],
+                body: forks.map(f => [
+                    f.deviceId,
+                    f.name,
+                    f.model,
+                    f.status === 'online' ? 'LIGNE' : 'HORS',
+                    new Date(f.addedDate).toLocaleDateString('fr-FR')
+                ]),
+                theme: 'striped',
+                headStyles: { fillColor: [0, 140, 200] },
+                styles: { fontSize: 9 }
+            });
+
+            doc.save(`IntelliMettry_Report_${Date.now()}.pdf`);
+        }
+        async function resetFleet() {
+            if (!confirm('⚠️ ATTENTION: Supprimer tous les chariots?')) return;
+            if (!confirm('Êtes-vous vraiment sûr? Cette action est irréversible.')) return;
+            const forks = await getForklifts();
+            await Promise.all(forks.map(f => fetch(`/api/machines/${f.deviceId}`, { method: 'DELETE' })));
+            await renderFleet(); alert('Flotte réinitialisée.');
+        }
+
+        // INIT
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (!checkAuth()) return;
+            await renderFleet();
+            await renderAdmins();
+            setInterval(async () => { await renderFleet(); }, 30000);
+        });
+    </script>
+    <script src="nav.js"></script>
+</body>
+
+</html>

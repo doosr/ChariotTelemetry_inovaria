@@ -1,0 +1,1141 @@
+/* ============================================================
+   INTELLIMETTRY — SHARED NAVIGATION SIDEBAR
+   nav.css — used by fleet.html, technicien.html, superadmin.html
+   ============================================================ */
+
+/* ── Reset layout ── */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Root tokens ── */
+:root {
+    --nav-w: 240px;
+    --nav-w-mini: 68px;
+    --nav-bg: rgba(2, 5, 14, 0.96);
+    --nav-border: rgba(255, 255, 255, 0.07);
+    --nav-accent: #0066ff;
+    --nav-red: #ff0033;
+    --nav-green: #34c759;
+    --nav-gold: #ffa500;
+    --nav-text: #f5f5f7;
+    --nav-muted: #86868b;
+    --nav-hover: rgba(0, 212, 255, 0.08);
+    --nav-active: rgba(0, 212, 255, 0.13);
+
+    /* --- GLOABL THEME VARIABLES --- */
+    --body-bg: #020508;
+    --card-bg: rgba(10, 15, 30, 0.82);
+    --text-main: #f5f5f7;
+    --text-muted: #86868b;
+    --border-c: rgba(255, 255, 255, 0.08);
+    --glass-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+[data-theme="light"] {
+    --nav-bg: rgba(248, 250, 252, 0.98);
+    --nav-border: rgba(0, 0, 0, 0.06);
+    --nav-text: #0f172a;
+    --nav-muted: #64748b;
+    --nav-hover: rgba(0, 100, 160, 0.04);
+    --nav-active: rgba(0, 100, 160, 0.08);
+    --nav-accent: #0066ff;
+
+    /* --- THEME OVERRIDES --- */
+    --body-bg: #f4f6f9;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-c: rgba(0, 0, 0, 0.09);
+    --glass-grad: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.005) 100%);
+}
+
+/* ── Wrapper: sidebar + main ── */
+.intellimettry-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.intellimettry-sidebar {
+    width: var(--nav-w);
+    min-height: 100vh;
+    background: var(--nav-bg);
+    border-right: 1px solid var(--nav-border);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    transition: width 0.3s cubic-bezier(.4, 0, .2, 1);
+    overflow: hidden;
+}
+
+.intellimettry-sidebar.mini {
+    width: var(--nav-w-mini);
+}
+
+/* ── Brand ── */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid var(--nav-border);
+    min-height: 66px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.nav-brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--nav-red), #ff6600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(255, 0, 51, 0.35);
+}
+
+.nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.25s, max-width 0.25s;
+    white-space: nowrap;
+}
+
+.nav-brand-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--nav-text);
+}
+
+.nav-brand-sub {
+    font-size: 0.6rem;
+    color: var(--nav-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.intellimettry-sidebar.mini .nav-brand-text {
+    opacity: 0;
+    max-width: 0;
+}
+
+/* ── Toggle ── */
+.nav-toggle {
+    position: absolute;
+    top: 18px;
+    right: -14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--nav-accent);
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.nav-toggle:hover {
+    background: rgba(0, 212, 255, 0.22);
+}
+
+.nav-toggle svg {
+    transition: transform 0.3s;
+}
+
+.intellimettry-sidebar.mini .nav-toggle svg {
+    transform: rotate(180deg);
+}
+
+/* ── Live status bar ── */
+.nav-status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(52, 199, 89, 0.05);
+    border-bottom: 1px solid var(--nav-border);
+    min-height: 38px;
+    flex-shrink: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.nav-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--nav-green);
+    box-shadow: 0 0 8px var(--nav-green);
+    flex-shrink: 0;
+    animation: navPulse 2s infinite;
+}
+
+@keyframes navPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--nav-green);
+    }
+
+    50% {
+        box-shadow: 0 0 14px var(--nav-green);
+    }
+}
+
+.nav-status-text {
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--nav-green);
+    text-transform: uppercase;
+}
+
+.intellimettry-sidebar.mini .nav-status-text {
+    display: none;
+}
+
+/* ── Navigation list ── */
+.nav-menu {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+/* ── Section headers ── */
+.nav-section-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--nav-muted);
+    text-transform: uppercase;
+    padding: 12px 10px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.25s;
+}
+
+.intellimettry-sidebar.mini .nav-section-label {
+    opacity: 0;
+}
+
+/* ── Nav item ── */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--nav-muted);
+    font-size: 0.84rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 42px;
+}
+
+.nav-item:hover {
+    background: var(--nav-hover);
+    color: var(--nav-text);
+}
+
+.nav-item.active {
+    background: var(--nav-active);
+    color: var(--nav-accent);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: var(--nav-accent);
+}
+
+.nav-item-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.nav-item-label {
+    flex: 1;
+    transition: opacity 0.25s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.intellimettry-sidebar.mini .nav-item-label {
+    opacity: 0;
+    width: 0;
+}
+
+.nav-item-badge {
+    background: var(--nav-red);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 20px;
+    line-height: 1.4;
+    flex-shrink: 0;
+    transition: opacity 0.25s;
+    animation: navPulse 2s infinite;
+}
+
+.intellimettry-sidebar.mini .nav-item-badge {
+    opacity: 0;
+}
+
+/* ── Mini stats (live counter cards) ── */
+.nav-stats-mini {
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    border-top: 1px solid var(--nav-border);
+    border-bottom: 1px solid var(--nav-border);
+    transition: opacity 0.25s;
+}
+
+.intellimettry-sidebar.mini .nav-stats-mini {
+    display: none;
+}
+
+.ns-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+    cursor: default;
+}
+
+.ns-val {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.ns-lbl {
+    font-size: 0.58rem;
+    color: var(--nav-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* ── Quick actions ── */
+.nav-actions {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid var(--nav-border);
+    transition: opacity 0.25s;
+}
+
+.intellimettry-sidebar.mini .nav-actions {
+    display: none;
+}
+
+.nav-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.nav-action-btn.primary {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    color: var(--nav-accent);
+}
+
+.nav-action-btn.primary:hover {
+    background: rgba(0, 212, 255, 0.18);
+    transform: translateX(2px);
+}
+
+.nav-action-btn.danger {
+    background: rgba(255, 59, 48, 0.08);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+.nav-action-btn.danger:hover {
+    background: rgba(255, 59, 48, 0.16);
+    transform: translateX(2px);
+}
+
+/* ── Footer (user chip) ── */
+.nav-footer {
+    padding: 12px 10px;
+    border-top: 1px solid var(--nav-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.nav-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--nav-accent), #7f5af0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--nav-text);
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+}
+
+.nav-user-info {
+    flex: 1;
+    overflow: hidden;
+    transition: opacity 0.25s;
+}
+
+.intellimettry-sidebar.mini .nav-user-info {
+    opacity: 0;
+    width: 0;
+}
+
+.nav-user-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--nav-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-user-role {
+    font-size: 0.65rem;
+    color: var(--nav-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ── Main content area ── */
+.intellimettry-main {
+    flex: 1;
+    margin-left: var(--nav-w);
+    transition: margin-left 0.3s cubic-bezier(.4, 0, .2, 1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.intellimettry-sidebar.mini~.intellimettry-main,
+body.nav-mini .intellimettry-main {
+    margin-left: var(--nav-w-mini);
+}
+
+/* ── Topbar inside main ── */
+.intellimettry-topbar {
+    height: 58px;
+    background: rgba(2, 5, 14, 0.92);
+    border-bottom: 1px solid var(--nav-border);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.topbar-page-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--nav-text);
+}
+
+.topbar-breadcrumb {
+    font-size: 0.72rem;
+    color: var(--nav-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Clock in topbar */
+.topbar-clock {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.78rem;
+    color: var(--nav-accent);
+    letter-spacing: 1px;
+    background: rgba(0, 212, 255, 0.06);
+    border: 1px solid rgba(0, 212, 255, 0.12);
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+
+/* Bell in topbar */
+.topbar-bell {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    color: var(--nav-muted);
+    font-size: 1rem;
+}
+
+.topbar-bell:hover {
+    background: rgba(0, 212, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.2);
+    color: var(--nav-accent);
+}
+
+.topbar-bell-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--nav-red);
+    color: white;
+    font-size: 0.55rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+/* ── Content wrapper ── */
+.intellimettry-content {
+    flex: 1;
+    padding: 24px;
+}
+
+/* ── Quick-Panel (slide from right) ── */
+.intellimettry-quick-panel {
+    position: fixed;
+    top: 0;
+    right: -380px;
+    width: 380px;
+    height: 100vh;
+    background: rgba(5, 8, 20, 0.98);
+    border-left: 1px solid rgba(0, 212, 255, 0.12);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    z-index: 600;
+    transition: right 0.35s cubic-bezier(.4, 0, .2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.intellimettry-quick-panel.open {
+    right: 0;
+}
+
+.qp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+}
+
+.qp-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--nav-text);
+}
+
+.qp-close {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    cursor: pointer;
+    color: var(--nav-muted);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.qp-close:hover {
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff3b30;
+}
+
+.qp-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.qp-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--nav-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.qp-tab.active {
+    color: var(--nav-accent);
+    border-bottom-color: var(--nav-accent);
+}
+
+.qp-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.qp-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.qp-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+.qp-tab-panel {
+    display: none;
+}
+
+.qp-tab-panel.active {
+    display: block;
+}
+
+/* Notif items */
+.notif-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 3px solid;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+
+.notif-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.notif-item.danger {
+    border-left-color: #ff3b30;
+}
+
+.notif-item.warning {
+    border-left-color: #ffa500;
+}
+
+.notif-item.info {
+    border-left-color: #00d4ff;
+}
+
+.notif-item.success {
+    border-left-color: #34c759;
+}
+
+.notif-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.notif-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--nav-text);
+}
+
+.notif-msg {
+    font-size: 0.76rem;
+    color: var(--nav-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.notif-time {
+    font-size: 0.65rem;
+    color: #555560;
+    margin-top: 4px;
+}
+
+/* System status items */
+.sys-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.8rem;
+}
+
+.sys-item:last-child {
+    border-bottom: none;
+}
+
+.sys-key {
+    color: var(--nav-muted);
+}
+
+.sys-val-ok {
+    color: var(--nav-green);
+    font-weight: 700;
+}
+
+.sys-val-warn {
+    color: var(--nav-gold);
+    font-weight: 700;
+}
+
+.sys-val-err {
+    color: #ff3b30;
+    font-weight: 700;
+}
+
+/* Overlay */
+.intellimettry-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+.intellimettry-overlay.show {
+    display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .intellimettry-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s, width 0.3s;
+        width: var(--nav-w) !important;
+    }
+
+    .gti-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .gti-main {
+        margin-left: 0 !important;
+    }
+
+    .topbar-hamburger {
+        display: flex !important;
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--nav-muted);
+        font-size: 1.2rem;
+    }
+}
+
+.topbar-hamburger {
+    display: none;
+}
+
+/* ── Notifications ── */
+.notif-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.notif-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.notif-item.warning {
+    border-left: 3px solid rgba(255, 165, 0, 0.8);
+    background: rgba(255, 165, 0, 0.05);
+}
+
+.notif-item.danger {
+    border-left: 3px solid rgba(255, 59, 48, 0.8);
+    background: rgba(255, 59, 48, 0.05);
+}
+
+.notif-item.info {
+    border-left: 3px solid rgba(0, 212, 255, 0.8);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.notif-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.notif-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    margin-bottom: 3px;
+}
+
+.notif-msg {
+    font-size: 0.78rem;
+    color: #a1a1aa;
+    line-height: 1.4;
+}
+
+.notif-time {
+    font-size: 0.65rem;
+    color: #71717a;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ══════════════════════════════════════════════════════
+   GLOBALE LIGHT MODE — Toutes les pages (sauf dashboard)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Body & fond général ── */
+html[data-theme="light"] body {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* ── Cartes génériques ── */
+html[data-theme="light"] .stat-card,
+html[data-theme="light"] .truck-card,
+html[data-theme="light"] .forklift-card,
+html[data-theme="light"] .maint-card,
+html[data-theme="light"] .card,
+html[data-theme="light"] .sys-card,
+html[data-theme="light"] .history-item {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #0f172a !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── Headers de page ── */
+html[data-theme="light"] .header {
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── Textes généraux ── */
+html[data-theme="light"] .stat-lbl,
+html[data-theme="light"] .stat-label,
+html[data-theme="light"] .truck-model,
+html[data-theme="light"] .truck-id,
+html[data-theme="light"] .sub,
+html[data-theme="light"] .h-msg,
+html[data-theme="light"] .notif-msg,
+html[data-theme="light"] .s-lbl,
+html[data-theme="light"] .s-mini-lbl,
+html[data-theme="light"] .ns-lbl {
+    color: #64748b !important;
+}
+
+html[data-theme="light"] .truck-name,
+html[data-theme="light"] .h-title,
+html[data-theme="light"] .maint-machine-name,
+html[data-theme="light"] .s-mini-val,
+html[data-theme="light"] .stat-value,
+html[data-theme="light"] .stat-value-small,
+html[data-theme="light"] .s-val {
+    color: #0f172a !important;
+}
+
+/* ── Tableaux ── */
+html[data-theme="light"] .admin-table th {
+    color: #64748b !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html[data-theme="light"] .admin-table td {
+    color: #0f172a !important;
+    border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+html[data-theme="light"] .admin-table tr:hover td {
+    background: rgba(0, 100, 160, 0.04) !important;
+}
+
+/* ── Onglets (tabs) ── */
+html[data-theme="light"] .tabs {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html[data-theme="light"] .tab-btn {
+    color: #64748b !important;
+}
+html[data-theme="light"] .tab-btn.active {
+    background: rgba(0, 100, 160, 0.08) !important;
+    color: #0066ff !important;
+    border-color: rgba(0, 100, 160, 0.2) !important;
+}
+
+/* ── Inputs & selects ── */
+html[data-theme="light"] .form-input,
+html[data-theme="light"] .form-select,
+html[data-theme="light"] .search-input,
+html[data-theme="light"] input[type="text"],
+html[data-theme="light"] input[type="email"],
+html[data-theme="light"] input[type="password"],
+html[data-theme="light"] input[type="number"],
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #0f172a !important;
+}
+html[data-theme="light"] .form-input:focus,
+html[data-theme="light"] .form-select:focus,
+html[data-theme="light"] input:focus,
+html[data-theme="light"] select:focus,
+html[data-theme="light"] textarea:focus {
+    border-color: #0066ff !important;
+    background: #f8faff !important;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1) !important;
+}
+html[data-theme="light"] .form-input::placeholder,
+html[data-theme="light"] input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* ── Labels de formulaires ── */
+html[data-theme="light"] .form-label {
+    color: #475569 !important;
+}
+
+/* ── Modals ── */
+html[data-theme="light"] .modal-content,
+html[data-theme="light"] .modal-box {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #0f172a !important;
+}
+html[data-theme="light"] .modal-title {
+    color: #0066ff !important;
+}
+html[data-theme="light"] .modal-close,
+html[data-theme="light"] .modal-close:hover {
+    color: #475569 !important;
+}
+
+/* ── Zone capteurs / stats mini ── */
+html[data-theme="light"] .forklift-stats,
+html[data-theme="light"] .sensors,
+html[data-theme="light"] .sensor-mini-grid,
+html[data-theme="light"] .stat-box {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ── Side panels ── */
+html[data-theme="light"] .side-panel,
+html[data-theme="light"] .notification-panel {
+    background: #f8fafc !important;
+    border-left-color: rgba(0, 0, 0, 0.08) !important;
+}
+html[data-theme="light"] .panel-header {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html[data-theme="light"] .close-btn {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #475569 !important;
+}
+
+/* ── Boutons génériques dans cards ── */
+html[data-theme="light"] .btn-secondary,
+html[data-theme="light"] .btn-outline {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #475569 !important;
+}
+html[data-theme="light"] .btn-secondary:hover,
+html[data-theme="light"] .btn-outline:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+    color: #0f172a !important;
+}
+
+/* ── Notice / alertes dans pages ── */
+html[data-theme="light"] .notice {
+    background: rgba(6, 182, 212, 0.07) !important;
+    border-color: rgba(6, 182, 212, 0.2) !important;
+}
+
+/* ── Headers de section ── */
+html[data-theme="light"] .sec-title {
+    color: #0066ff !important;
+}
+html[data-theme="light"] .divider {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ── Titres de sections ── */
+html[data-theme="light"] .grid-title,
+html[data-theme="light"] .title-group p {
+    color: #0f172a !important;
+}
+
+/* ── Barre de progression ── */
+html[data-theme="light"] .progress-bar-container {
+    background: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ── User chip dans header ── */
+html[data-theme="light"] .user-chip {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ── Toast / notifications ── */
+html[data-theme="light"] #toast {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #0066ff !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ── Profil page ── */
+html[data-theme="light"] .profile-info h1 {
+    color: #0f172a !important;
+}
+html[data-theme="light"] .google-notice {
+    background: rgba(255, 165, 0, 0.07) !important;
+}
+
+/* ── Grid header border ── */
+html[data-theme="light"] .grid-header {
+    border-bottom-color: rgba(0, 102, 255, 0.3) !important;
+}
+
+/* ── Alert badge (technicien) ── */
+html[data-theme="light"] .alert-badge.none {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #64748b !important;
+}
+
+/* ── History items ── */
+html[data-theme="light"] .history-item {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-left-color: #0066ff !important;
+}
+html[data-theme="light"] .history-item.danger {
+    background: rgba(255, 59, 48, 0.04) !important;
+}
+html[data-theme="light"] .h-date {
+    color: #94a3b8 !important;
+}
+
+/* ── Contenu intel layout ── */
+html[data-theme="light"] .intellimettry-content {
+    background: #f1f5f9 !important;
+}

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Technicien — IntelliMettry</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --tech: #00d4ff;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .notice {
+            background: rgba(6, 182, 212, .08);
+            border: 1px solid rgba(6, 182, 212, .25);
+            border-radius: 12px;
+            padding: .85rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+            font-size: .88rem;
+            color: #67e8f9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-c);
+            border-radius: 16px;
+            padding: 1.4rem;
+        }
+
+        .stat-val {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: .85rem;
+            margin-top: .4rem;
+        }
+
+        /* Notification Center Grid */
+        .grid-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 3rem 0 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .grid-title {
+            font-family: 'Orbitron';
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .truck-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-c);
+            border-radius: 20px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .truck-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .truck-card.has-danger {
+            border-color: rgba(255, 59, 48, 0.4);
+            animation: danger-pulse 2s infinite;
+        }
+
+        @keyframes danger-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.2);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+            }
+        }
+
+        .truck-name {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            font-family: 'Orbitron';
+        }
+
+        .truck-model {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .truck-id-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .alert-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--danger);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(255, 59, 48, 0.4);
+        }
+
+        .alert-badge.none {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            box-shadow: none;
+            font-weight: 400;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 500px;
+            height: 100vh;
+            background: var(--nav-bg);
+            border-left: 1px solid var(--border-c);
+            backdrop-filter: blur(30px);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-panel.open {
+            right: 0;
+        }
+
+        .panel-header {
+            padding: 2.5rem 2rem;
+            border-bottom: 1px solid var(--border-c);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 59, 48, 0.15);
+            border-color: rgba(255, 59, 48, 0.4);
+            color: var(--danger);
+            transform: scale(1.1);
+        }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .history-item.danger {
+            border-left-color: var(--danger);
+            background: rgba(255, 59, 48, 0.05);
+        }
+
+        .history-item.success {
+            border-left-color: var(--success);
+            opacity: 0.8;
+        }
+
+        .history-item.read {
+            opacity: 0.5;
+            filter: grayscale(0.5);
+        }
+
+        .h-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .h-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .h-msg {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .h-date {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        .badge-resolved {
+            font-size: 0.65rem;
+            background: var(--success);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            background: transparent;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-dim);
+            font-size: .8rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        @media(max-width:768px) {
+            .side-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+    <audio id="notifSound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
+    </audio>
+</head>
+
+<body>
+    <div class="container">
+        <div class="notice">
+            <span>🛡️ Accès <strong>lecture seule</strong> — Surveillance en temps réel active.</span>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" id="totalCount">0</div>
+                <div class="stat-lbl">Total Chariots</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="onlineCount" style="color:var(--success)">0</div>
+                <div class="stat-lbl">En Ligne</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="offlineCount" style="color:var(--danger)">0</div>
+                <div class="stat-lbl">Hors Ligne</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="alertCount" style="color:var(--warning)">0</div>
+                <div class="stat-lbl">⚠️ Pannes Actives</div>
+            </div>
+        </div>
+
+        <div class="grid-header">
+            <div class="grid-title">🚨 CENTRE DE NOTIFICATIONS TEMPS RÉEL</div>
+            <div id="ts" style="font-size: 0.75rem; color: var(--text-dim); margin-left: auto;">--:--:--</div>
+        </div>
+
+        <div id="truckGrid" class="grid">
+            <div style="padding: 2rem; color: var(--text-secondary)">Chargement de la flotte...</div>
+        </div>
+    </div>
+
+    <!-- Side Panel -->
+    <div id="sidePanel" class="side-panel">
+        <div class="panel-header">
+            <div class="close-btn" onclick="closePanel()" title="Fermer">✕</div>
+            <h2 id="panelTruckName" style="font-family: Orbitron; color: var(--primary); margin-bottom: 0.5rem;">TRUCK
+                NAME</h2>
+            <div id="panelTruckModel" style="color: var(--text-secondary); font-size: 0.9rem;">MODEL INFO</div>
+            <div style="margin-top: 1.5rem; display: flex; gap: 10px;">
+                <a id="dashboardLink" href="#" class="btn btn-primary">📊 Live Dashboard</a>
+                <button onclick="markTruckRead()" class="btn btn-outline" style="font-size: 0.75rem;">Marquer tout
+                    lu</button>
+            </div>
+        </div>
+        <div id="historyList" class="history-list"></div>
+    </div>
+
+    <footer>INOVARIA TECH &mdash; Espace Technicien v2.0 | Monitoring Unifié</footer>
+
+    <script src="nav.js"></script>
+    <script>
+        let allTrucks = [];
+        let allNotifications = [];
+        let activeTruckId = null;
+
+        function checkAuth() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) { window.location.href = 'login.html'; return false; }
+            const d = JSON.parse(s);
+            if (!d.loggedIn) { window.location.href = 'login.html'; return false; }
+
+            // Les administrateurs peuvent désormais consulter cette vue
+            return true;
+
+            return true;
+        }
+
+        function getCurrentOwnerId() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) return null;
+            const d = JSON.parse(s);
+            return (d.role === 'Admin') ? d.userId : (d.parentAdminId || d.userId);
+        }
+
+        async function fetchData() {
+            try {
+                const ownerId = getCurrentOwnerId();
+                const session = JSON.parse(localStorage.getItem('admin-session') || '{}');
+                let urlMachines = `/api/machines?ownerId=${ownerId}`;
+                let urlNotifs = `/api/notifications?limit=1000&ownerId=${ownerId}`;
+                if (session.role) {
+                    urlMachines += `&requesterRole=${session.role}&technicianId=${session.userId || session.id}`;
+                    urlNotifs += `&requesterRole=${session.role}&technicianId=${session.userId || session.id}`;
+                }
+
+                const [trRes, ntRes] = await Promise.all([
+                    fetch(urlMachines).then(r => r.json()),
+                    fetch(urlNotifs).then(r => r.json())
+                ]);
+                allTrucks = Array.isArray(trRes) ? trRes : [];
+                allNotifications = Array.isArray(ntRes) ? ntRes : [];
+
+                // Sound logic if new notification
+                const lastId = localStorage.getItem('lastNotifId');
+                if (allNotifications.length > 0 && allNotifications[0]._id !== lastId) {
+                    document.getElementById('notifSound').play().catch(e => { });
+                    localStorage.setItem('lastNotifId', allNotifications[0]._id);
+                }
+
+                renderDashboard();
+            } catch (e) {
+                console.error("Fetch Error:", e);
+            }
+        }
+
+        function getActivePannes(deviceId) {
+            const notifs = allNotifications.filter(n => n.deviceId === deviceId);
+            const active = [];
+            const sensorsResolved = new Set();
+
+            notifs.slice().reverse().forEach(n => {
+                const sn = extractSensor(n.title);
+                if (!sn) { if (n.type === 'danger' && !n.isRead) active.push(n); return; }
+                if (n.type === 'success') sensorsResolved.add(sn);
+                else if (n.type === 'danger' && !n.isRead && !sensorsResolved.has(sn)) active.push(n);
+            });
+            return active;
+        }
+
+        function extractSensor(title) {
+            const t = (title || "").toLowerCase();
+            if (t.includes('temp')) return 'temp';
+            if (t.includes('oil') || t.includes('huile')) return 'oil';
+            if (t.includes('fuel') || t.includes('carbu')) return 'fuel';
+            return null;
+        }
+
+        function renderDashboard() {
+            const tsEl = document.getElementById('ts');
+            if (tsEl) tsEl.textContent = '🕑 Mise à jour: ' + new Date().toLocaleTimeString('fr-FR');
+
+            // Stats
+            const totalEl = document.getElementById('totalCount');
+            const onlineEl = document.getElementById('onlineCount');
+            const offlineEl = document.getElementById('offlineCount');
+            const alertCountEl = document.getElementById('alertCount');
+
+            if (totalEl) totalEl.textContent = allTrucks.length;
+            if (onlineEl) onlineEl.textContent = allTrucks.filter(t => t && t.status === 'online').length;
+            if (offlineEl) offlineEl.textContent = allTrucks.filter(t => t && t.status === 'offline').length;
+
+            let totalActiveAlerts = 0;
+            const grid = document.getElementById('truckGrid');
+            if (grid) {
+                if (allTrucks.length === 0) {
+                    grid.innerHTML = '<div style="padding: 2rem; color: var(--text-dim); grid-column: 1/-1; text-align: center; font-size: 1.1rem;">Aucun chariot ne vous a été assigné par votre Administrateur.</div>';
+                } else {
+                    grid.innerHTML = allTrucks.map(t => {
+                        const active = getActivePannes(t.deviceId);
+                        totalActiveAlerts += active.length;
+                        const hasDanger = active.length > 0;
+
+                        return `
+                            <div class="truck-card ${hasDanger ? 'has-danger' : ''}" onclick="openPanel('${t.deviceId}')">
+                                ${hasDanger
+                                ? `<div class="alert-badge" style="background:var(--danger); box-shadow: 0 0 15px rgba(255, 59, 48, 0.4);">🚨 ALERTE (${active.length})</div>`
+                                : `<div class="alert-badge none">🆗 SANS PANNE</div>`}
+                                <div class="truck-name">${t.name}</div>
+                                <div class="truck-model">${t.model}</div>
+                                <div class="truck-id-tag">ID: ${t.deviceId}</div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+
+            if (alertCountEl) alertCountEl.textContent = totalActiveAlerts;
+
+            if (activeTruckId) updatePanel(activeTruckId);
+        }
+
+        function openPanel(deviceId) {
+            activeTruckId = deviceId;
+            const t = allTrucks.find(x => x.deviceId === deviceId);
+            if (!t) return;
+
+            document.getElementById('panelTruckName').textContent = t.name;
+            document.getElementById('panelTruckModel').textContent = t.model + ' — ' + (t.serial || 'DEVICE ID: ' + deviceId);
+            document.getElementById('dashboardLink').href = `dashboard.html?id=${deviceId}`;
+
+            updatePanel(deviceId);
+            document.getElementById('sidePanel').classList.add('open');
+        }
+
+        function updatePanel(deviceId) {
+            const myNotifs = allNotifications.filter(n => n.deviceId === deviceId);
+            const list = document.getElementById('historyList');
+
+            if (myNotifs.length === 0) {
+                list.innerHTML = '<p style="text-align:center; padding: 3rem; color: var(--text-dim);">Aucun historique.</p>';
+            } else {
+                const sensorsResolved = new Set();
+                const activeIds = new Set();
+                myNotifs.forEach(n => {
+                    const sn = extractSensor(n.title);
+                    if (!sn) { if (n.type === 'danger' && !n.isRead) activeIds.add(n._id); }
+                    else { if (n.type === 'success') sensorsResolved.add(sn); else if (n.type === 'danger' && !sensorsResolved.has(sn) && !n.isRead) activeIds.add(n._id); }
+                });
+
+                list.innerHTML = myNotifs.map(n => {
+                    const isActive = activeIds.has(n._id);
+                    const sensorName = extractSensor(n.title);
+                    const resolved = (n.type === 'danger' && sensorName && sensorsResolved.has(sensorName) && !isActive);
+
+                    return `
+                        <div class="history-item ${n.type} ${n.isRead ? 'read' : ''}">
+                            <div class="h-top">
+                                <div class="h-title">${n.title}</div>
+                                ${isActive ? '<span class="badge-resolved" style="background:var(--danger);color:white">IMP.</span>' : ''}
+                                ${resolved ? '<span class="badge-resolved">RÉSOLU</span>' : ''}
+                            </div>
+                            <div class="h-msg">${n.message}</div>
+                            <div class="h-date">${new Date(n.timestamp).toLocaleString('fr-FR')}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        async function markTruckRead() {
+            if (!activeTruckId) return;
+            try {
+                await fetch('/api/notifications/read', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deviceId: activeTruckId })
+                });
+                fetchData();
+            } catch (e) { }
+        }
+
+        function closePanel() {
+            document.getElementById('sidePanel').classList.remove('open');
+            activeTruckId = null;
+        }
+
+        window.onload = () => {
+            if (!checkAuth()) return;
+            fetchData();
+            setInterval(fetchData, 2000);
+        };
+    </script>
+</body>
+
+</html>

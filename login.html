@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliMettry - Connexion</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg-dark: #020508;
+            --bg-card: rgba(10, 15, 30, 0.85);
+            --accent-red: #ff0033;
+            --accent-blue: #00d4ff;
+            --accent-green: #34c759;
+            --text-primary: #f5f5f7;
+
+            --text-muted: #86868b;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --danger: #ff3b30;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(ellipse at 15% 30%, rgba(255, 0, 51, 0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 70%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 0%, rgba(175, 82, 222, 0.1) 0%, transparent 60%),
+                linear-gradient(160deg, #02040a 0%, #060d1f 50%, #02040a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated grid overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 12s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 0, 51, 0.12);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 212, 255, 0.10);
+            bottom: -80px;
+            right: -80px;
+            animation-delay: -4s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(175, 82, 222, 0.08);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -8s;
+        }
+
+        @keyframes orbFloat {
+
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(30px, 20px) scale(1.1);
+            }
+        }
+
+        /* ── Layout ── */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* ── Left panel (branding) ── */
+        .brand-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #ff0033, #ff6600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.4);
+        }
+
+        .brand-text h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+        }
+
+        .brand-text p {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .brand-headline {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+        }
+
+        .brand-headline span {
+            background: linear-gradient(135deg, var(--accent-red), #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 440px;
+        }
+
+        .brand-stats {
+            display: flex;
+            gap: 28px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── Login Card ── */
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 44px 40px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            box-shadow:
+
+                0 0 0 1px rgba(0, 212, 255, 0.06),
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-red), transparent);
+        }
+
+        .card-header {
+            margin-bottom: 36px;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .card-header p {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Form ── */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 14px 14px 46px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: rgba(134, 134, 139, 0.5);
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-blue);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1), 0 0 20px rgba(0, 212, 255, 0.05);
+        }
+
+        .form-input:focus+.input-icon {
+            color: var(--accent-blue);
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            border-radius: 10px;
+            color: var(--danger);
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Submit Button ── */
+        .btn-submit {
+            width: 100%;
+            margin-top: 8px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--accent-red) 0%, #cc0027 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 0, 51, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 0, 51, 0.5);
+        }
+
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ── Google Button ── */
+        .btn-google {
+            width: 100%;
+            margin-top: 16px;
+            padding: 13px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-google:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(66, 133, 244, 0.4);
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .btn-google:active {
+            transform: translateY(0);
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 0;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        /* ── Links row ── */
+        .links-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .links-row a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .links-row a:hover {
+            color: var(--accent-red);
+        }
+
+        /* ── Demo box ── */
+        .demo-box {
+            margin-top: 28px;
+            padding: 18px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.12);
+            border-radius: 14px;
+        }
+
+        .demo-title {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .demo-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.82rem;
+        }
+
+        .demo-row:last-child {
+            border-bottom: none;
+        }
+
+        .demo-label {
+            color: var(--text-muted);
+        }
+
+        .demo-value {
+            font-family: 'Courier New', monospace;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .page-wrapper {
+                grid-template-columns: 1fr;
+                padding: 24px;
+                gap: 32px;
+            }
+
+            .brand-panel {
+                display: none;
+            }
+
+            .login-card {
+                padding: 32px 24px;
+            }
+        }
+
+        .google-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.45);
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .google-disclaimer b {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+    </style>
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="page-wrapper">
+        <!-- LEFT — Branding -->
+        <div class="brand-panel">
+            <div class="brand-logo">
+                <div class="brand-icon">🚜</div>
+                <div class="brand-text">
+                    <h1>INTELLIMETTRY</h1>
+                    <p>Monitoring System v2.5</p>
+                </div>
+            </div>
+            <div class="brand-headline">
+                Contrôle Total.<br>
+                <span>Zéro Compromis.</span>
+            </div>
+            <p class="brand-desc">
+                Pilotez votre flotte de chariots élévateurs en temps réel. Télémétrie moteur, GPS, détection
+                d'obstacles, alertes intelligentes — tout sur un seul écran.
+            </p>
+            <div class="brand-stats">
+                <div class="stat-item">
+                    <div class="stat-value">500ms</div>
+                    <div class="stat-label">Refresh rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Capteurs actifs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">MQTT</div>
+                    <div class="stat-label">Protocole</div>
+                </div>
+            </div>
+        </div>
+        <!-- RIGHT — Login Card -->
+        <div class="login-card">
+            <div class="card-header">
+                <h2>— Accès Sécurisé —</h2>
+                <p>Identifiez-vous pour accéder à votre espace</p>
+            </div>
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label class="form-label" for="email">Adresse Email</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <input type="email" id="email" class="form-input" placeholder="admin@forklift.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Mot de Passe</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        <span id="errorText">Email ou mot de passe incorrect</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" id="loginButton">
+                    SE CONNECTER →
+                </button>
+                <div class="divider">ou</div>
+                <button type="button" class="btn-google" id="googleBtn" onclick="handleGoogleLogin()">
+                    <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            fill="#EA4335" />
+                    </svg>
+                    Continuer avec Google
+                </button>
+                <div class="links-row">
+                    <a href="forgot-password.html">🔑 Mot de passe oublié ?</a>
+                    <a href="register.html">✨ Créer un compte</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const loginButton = document.getElementById('loginButton');
+        const demoBox = document.getElementById('demoBox');
+        let isSetupMode = false;
+        async function checkSetup() {
+            try {
+                const res = await fetch('/api/auth/status');
+                const data = await res.json();
+                if (data.setupRequired) {
+                    isSetupMode = true;
+                    document.querySelector('.card-header h2').textContent = '— INITIALISATION —';
+                    document.querySelector('.card-header p').textContent = 'Créez votre premier compte Administrateur';
+                    loginButton.textContent = 'CRÉER LE COMPTE ADMIN →';
+                    if (demoBox) demoBox.style.display = 'none';
+                    emailInput.placeholder = 'votre@email.com';
+                }
+            } catch (err) { /* backend not ready yet */ }
+        }
+        checkSetup();
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+            loginButton.disabled = true;
+            loginButton.textContent = isSetupMode ? 'CRÉATION...' : 'CONNEXION...';
+            errorMessage.classList.remove('show');
+            try {
+                const endpoint = isSetupMode ? '/api/auth/setup' : '/api/auth/login';
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (res.ok && (data.success || isSetupMode)) {
+                    if (isSetupMode) {
+                        alert('Administrateur créé ! Vous pouvez maintenant vous connecter.');
+                        location.reload();
+                        return;
+                    }
+                    localStorage.removeItem('forklifts');
+                    localStorage.removeItem('notifications');
+                    // Store JWT tokens
+                    if (data.accessToken) localStorage.setItem('accessToken', data.accessToken);
+                    if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
+                    localStorage.setItem('admin-session', JSON.stringify({
+                        loggedIn: true,
+                        email: data.user.email,
+                        name: data.user.name,
+                        role: data.user.role,
+                        userId: data.user.id,
+                        parentAdminId: data.user.parentAdminId,
+                        avatar: data.user.avatar,
+                        loginTime: new Date().toISOString()
+                    }));
+                    redirectByRole(data.user.role);
+                } else {
+                    errorText.textContent = data.error || (isSetupMode ? 'Erreur lors de la création' : 'Email ou mot de passe incorrect');
+                    errorMessage.classList.add('show');
+                    loginButton.disabled = false;
+                    loginButton.textContent = isSetupMode ? 'CRÉER LE COMPTE ADMIN →' : 'SE CONNECTER →';
+                    emailInput.style.borderColor = 'var(--danger)';
+                    passwordInput.style.borderColor = 'var(--danger)';
+                    setTimeout(() => { emailInput.style.borderColor = ''; passwordInput.style.borderColor = ''; }, 2000);
+                }
+            } catch (err) {
+                errorText.textContent = 'Impossible de contacter le serveur. Vérifiez que le backend est lancé.';
+                errorMessage.classList.add('show');
+                loginButton.disabled = false;
+                loginButton.textContent = isSetupMode ? 'CRÉER LE COMPTE ADMIN →' : 'SE CONNECTER →';
+            }
+        });
+        [emailInput, passwordInput].forEach(el => el.addEventListener('input', () => errorMessage.classList.remove('show')));
+        // ── Role-based redirect ────────────────────────────────────────────
+        function redirectByRole(role) {
+            if (role === 'System Admin') window.location.href = 'fleet.html';
+            else if (role === 'Super Admin') window.location.href = 'superadmin.html';
+            else if (['Technicien', 'Lecture seule'].includes(role)) window.location.href = 'technicien.html';
+            else window.location.href = 'fleet.html';
+        }
+        // ── Google Login (Full Consent Screen) ──────────────────────────
+        const GOOGLE_CLIENT_ID = '505200443464-kuedj2fg2ieegi66998lqcpg9n8mphjc.apps.googleusercontent.com';
+        function handleGoogleLogin() {
+            if (typeof google === 'undefined') {
+                showGoogleError("Le service Google est en cours de chargement. Réessayez dans une seconde.");
+                return;
+            }
+            const googleBtn = document.getElementById('googleBtn');
+            googleBtn.disabled = true;
+            googleBtn.style.opacity = '0.6';
+            googleBtn.innerHTML = `<div style="width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.8s linear infinite"></div> Ouverture...`;
+            initGoogleSignIn();
+        }
+        function initGoogleSignIn() {
+            const client = google.accounts.oauth2.initTokenClient({
+                client_id: GOOGLE_CLIENT_ID,
+                scope: 'email profile', // On retire openid pour forcer l'affichage de la liste détaillée
+                prompt: 'select_account consent', // Force l'écran de consentement complet
+                callback: (tokenResponse) => {
+                    if (tokenResponse && tokenResponse.access_token) {
+                        fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                            headers: { 'Authorization': 'Bearer ' + tokenResponse.access_token }
+                        })
+                            .then(res => res.json())
+                            .then(userInfo => {
+                                performBackendGoogleLogin(userInfo);
+                            })
+                            .catch(() => {
+                                showGoogleError('Impossible de récupérer le profil Google.');
+                                resetGoogleBtn();
+                            });
+                    } else {
+                        showGoogleError('Connexion annulée ou erreur.');
+                        resetGoogleBtn();
+                    }
+                },
+                error_callback: () => {
+                    showGoogleError('Erreur lors de l\'ouverture du popup Google.');
+                    resetGoogleBtn();
+                }
+            });
+            client.requestAccessToken();
+        }
+        async function performBackendGoogleLogin(payload) {
+            try {
+                const res = await fetch('/api/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        googleId: payload.sub,
+                        email: payload.email,
+                        name: payload.name,
+                        avatar: payload.picture
+                    })
+                });
+                const data = await res.json();
+
+                // Compte créé ou non vérifié → redirection vers la page de vérification
+                if ((res.status === 201 || res.status === 200) && data.needsVerification) {
+                    sessionStorage.setItem('google-verify-email', data.email || payload.email);
+                    sessionStorage.setItem('google-verify-name', payload.name || '');
+                    sessionStorage.setItem('google-verify-avatar', payload.picture || '');
+                    window.location.href = 'verify-google.html';
+                    return;
+                }
+
+                if (res.ok && data.success) {
+                    localStorage.removeItem('forklifts');
+                    localStorage.removeItem('notifications');
+                    if (data.accessToken) localStorage.setItem('accessToken', data.accessToken);
+                    if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
+                    localStorage.setItem('admin-session', JSON.stringify({
+                        loggedIn: true,
+                        email: data.user.email,
+                        name: data.user.name,
+                        role: data.user.role,
+                        userId: data.user.id,
+                        parentAdminId: data.user.parentAdminId,
+                        avatar: data.user.avatar,
+                        loginTime: new Date().toISOString()
+                    }));
+                    redirectByRole(data.user.role);
+                } else {
+                    showGoogleError(data.error || 'Erreur lors de la connexion Google.');
+                    resetGoogleBtn();
+                }
+            } catch (err) {
+                showGoogleError('Erreur lors de la communication avec le serveur.');
+                resetGoogleBtn();
+            }
+        }
+        function showGoogleError(msg) {
+            errorText.textContent = msg;
+            errorMessage.classList.add('show');
+        }
+        function resetGoogleBtn() {
+            const googleBtn = document.getElementById('googleBtn');
+            googleBtn.disabled = false;
+            googleBtn.style.opacity = '';
+            googleBtn.innerHTML = `
+                <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Continuer avec Google`;
+        }
+        // ── Token refresh helper (utilitaire global) ───────────────────────
+        window.refreshAccessToken = async function () {
+            const rt = localStorage.getItem('refreshToken');
+            if (!rt) return null;
+            try {
+                const res = await fetch('/api/auth/refresh', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ refreshToken: rt })
+                });
+                const data = await res.json();
+                if (res.ok && data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    return data.accessToken;
+                }
+            } catch { }
+            return null;
+        };
+    </script>
+    <script src="nav.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliMettry Manager — Télémétrie Industrielle</title>
+    <meta name="description"
+        content="Pilotez votre flotte de chariots élévateurs en temps réel. Télémétrie moteur, GPS, détection d'obstacles et alertes intelligentes.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        :root {
+            --bg-dark: #020508;
+            --accent-red: #ff0033;
+            --accent-blue: #00d4ff;
+            --accent-green: #34c759;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --glass: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            background: rgba(2, 5, 8, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-red), #ff6600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.3);
+        }
+
+        .nav-logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-btn {
+            padding: 9px 24px !important;
+            background: linear-gradient(135deg, var(--accent-red), #cc0027) !important;
+            border-radius: 50px !important;
+            color: white !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px;
+            font-size: 0.8rem !important;
+            font-family: 'Orbitron', monospace !important;
+            transition: all 0.3s !important;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.3) !important;
+        }
+
+        .nav-btn:hover {
+            box-shadow: 0 0 35px rgba(255, 0, 51, 0.5) !important;
+            transform: translateY(-1px);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(255, 0, 51, 0.15) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 100%, rgba(175, 82, 222, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Grid lines */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 6px var(--accent-green);
+            }
+
+            50% {
+                opacity: 0.4;
+                box-shadow: 0 0 14px var(--accent-green);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 .hl-red {
+            background: linear-gradient(135deg, var(--accent-red), #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .hl-blue {
+            background: linear-gradient(135deg, var(--accent-blue), #7f5af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 70px;
+        }
+
+        .btn-hero-primary {
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--accent-red), #cc0027);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(255, 0, 51, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 51, 0.5);
+        }
+
+        .btn-hero-secondary {
+            padding: 14px 36px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ── Stats Bar ── */
+        .stats-bar {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 24px 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+        }
+
+        .stat-lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+        }
+
+        /* ── FEATURES ── */
+        .features {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.02) 50%, transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(255, 0, 51, 0.1);
+            border: 1px solid rgba(255, 0, 51, 0.2);
+            border-radius: 50px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: linear-gradient(135deg, transparent 60%, rgba(255, 255, 255, 0.02));
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.04);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.05);
+        }
+
+        .feature-icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.12);
+        }
+
+        .feature-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 3px 10px;
+            background: rgba(52, 199, 89, 0.1);
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            border-radius: 50px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── SHOWCASE ── */
+        .showcase {
+            padding: 100px 5%;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .showcase-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .showcase-text h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .showcase-text h2 span {
+            background: linear-gradient(135deg, var(--accent-blue), #7f5af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .showcase-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .check-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(52, 199, 89, 0.15);
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .showcase-image {
+            position: relative;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 255, 0.06);
+        }
+
+        .showcase-image::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), transparent, rgba(255, 0, 51, 0.1));
+            border-radius: 22px;
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 0, 51, 0.08) 0%, transparent 70%);
+        }
+
+        .cta-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-card h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cta-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 36px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 5%;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        .footer-right {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .showcase-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links a:not(.nav-btn) {
+                display: none;
+            }
+
+            .stats-bar {
+                gap: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="accueil.html" class="nav-logo">
+            <div class="nav-logo-icon">🚜</div>
+            <span class="nav-logo-text">INTELLIMETTRY</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Fonctionnalités</a>
+            <a href="#showcase">Interface</a>
+            <a href="login.html" class="nav-btn">SE CONNECTER →</a>
+        </div>
+    </nav>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            Système actif — Temps réel
+        </div>
+        <h1>
+            Télémétrie<br>
+            <span class="hl-red">Industrielle</span><br>
+            <span class="hl-blue">Intelligente</span>
+        </h1>
+        <p class="hero-sub">
+            Pilotez votre flotte de chariots élévateurs avec une précision totale. Moteur, GPS, obstacles, carburant —
+            tout en un seul écran.
+        </p>
+        <div class="hero-buttons">
+            <a href="login.html" class="btn-hero-primary">
+                ACCÉDER AU PORTAIL
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+            <a href="#features" class="btn-hero-secondary">Découvrir →</a>
+        </div>
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-num">500ms</div>
+                <div class="stat-lbl">Refresh Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">6+</div>
+                <div class="stat-lbl">Capteurs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">MQTT</div>
+                <div class="stat-lbl">Protocole IoT</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">24/7</div>
+                <div class="stat-lbl">Monitoring</div>
+            </div>
+        </div>
+    </section>
+    <!-- FEATURES -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <div class="section-tag">Fonctionnalités</div>
+            <h2 class="section-title">Contrôle Total.<br>Zéro Compromis.</h2>
+            <p class="section-desc">Une plateforme complète pensée pour les environnements industriels les plus
+                exigeants.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-box">⚡</div>
+                <h3>Données Temps Réel</h3>
+                <p>Température moteur, pression d'huile, niveau de carburant, régime RPM — affichés avec une réactivité
+                    sub-seconde.</p>
+                <span class="feature-tag">Live MQTT</span>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box">📡</div>
+                <h3>Détection d'Obstacles</h3>
+                <p>Capteur ultrasonique AJ-SR04M à l'arrière pour détecter palettes, murs et personnes. Alertes en zones
+                    CAUTION et DANGER.</p>
+                <span class="feature-tag">AJ-SR04M</span>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box">📍</div>
+                <h3>GPS & Géorepérage</h3>
+                <p>Suivi de position en temps réel sur carte Leaflet. Définissez des zones de travail et recevez des
+                    alertes si le chariot en sort.</p>
+                <span class="feature-tag">SIM808 GPS</span>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box">🛡️</div>
+                <h3>Gestion Multi-Rôles</h3>
+                <p>Patron, Administrateur, Technicien, Lecture seule. Chaque rôle accède aux informations qui lui sont
+                    destinées.</p>
+                <span class="feature-tag">Auth JWT</span>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box">🚨</div>
+                <h3>Alertes Intelligentes</h3>
+                <p>Anti-spam, par niveau de criticité. Obstcale détecté, huile faible, surchauffe — envoi MQTT vers
+                    broker cloud.</p>
+                <span class="feature-tag">Anti-spam</span>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box">☁️</div>
+                <h3>Infrastructure Cloud</h3>
+                <p>Backend Node.js + MongoDB + Docker. Broker MQTT public ou VPS privé. Déploiement Heroku ou serveur
+                    dédié.</p>
+                <span class="feature-tag">Docker Ready</span>
+            </div>
+        </div>
+    </section>
+    <!-- SHOWCASE -->
+    <section id="showcase" class="showcase">
+        <div class="showcase-inner">
+            <div class="showcase-image">
+                <img src="img_ui.png" alt="Interface Dashboard IntelliMettry Manager"
+                    onerror="this.style.display='none'">
+            </div>
+            <div class="showcase-text">
+                <div class="section-tag">Interface Premium</div>
+                <h2>Conçue pour la <span>performance</span></h2>
+                <p>Un dashboard industriel avec jauges animées, tachymètre SVG, carte interactive et sidebar de
+                    monitoring en temps réel. Dark theme, glassmorphisme, animations fluides.</p>
+                <ul class="checklist">
+                    <li><span class="check-dot">✓</span> Jauges circulaires dynamiques (Temp / Heures)</li>
+                    <li><span class="check-dot">✓</span> Carte Leaflet avec cercle de proximité couleur</li>
+                    <li><span class="check-dot">✓</span> Sidebar live : moteur, GPS, capteurs, session</li>
+                    <li><span class="check-dot">✓</span> Historique des alertes et export CSV</li>
+                </ul>
+                <a href="login.html" class="btn-hero-primary">ACCÉDER AU DASHBOARD →</a>
+            </div>
+        </div>
+    </section>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h2>Prêt à démarrer ?</h2>
+            <p>Connectez-vous à votre espace Fleet Manager et commencez à surveiller votre flotte dès maintenant.</p>
+            <a href="login.html" class="btn-hero-primary">
+                SE CONNECTER
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-logo">INTELLIMETTRY MANAGER</div>
+        <div class="footer-right">© 2026 Inovaria — Télémétrie Industrielle de Précision</div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = localStorage.getItem('admin-session');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.loggedIn) {
+                        const portalLink = (data.role === 'Technicien' || data.role === 'Lecture seule') ? 'technicien.html' : 'fleet.html';
+                        const userName = data.email ? data.email.split('@')[0] : data.role;
+
+                        // Update Top Nav button
+                        const navBtns = document.querySelectorAll('.nav-btn');
+                        if (navBtns.length > 0) {
+                            navBtns[0].href = portalLink;
+                            navBtns[0].innerHTML = `👤 ${userName} (${data.role}) →`;
+                            navBtns[0].style.background = 'linear-gradient(135deg, #00d4ff, #7f5af0)';
+                            navBtns[0].style.boxShadow = '0 0 20px rgba(0,212,255,0.3)';
+                        }
+                        // Update Hero button
+                        const heroBtn = document.querySelector('.btn-hero-primary');
+                        if (heroBtn) {
+                            heroBtn.href = portalLink;
+                            heroBtn.innerHTML = `MON TABLEAU DE BORD <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                        }
+                        // Update showcase CTA
+                        const ctaBtn = document.querySelector('.cta-card .btn-hero-primary');
+                        if (ctaBtn) {
+                            ctaBtn.href = portalLink;
+                            ctaBtn.innerHTML = `MON TABLEAU DE BORD <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                        }
+                    }
+                } catch (e) {
+                    // Invalid session, ignore
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer les Administrateurs — IntelliMettry</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --gold: #ffa500;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-c);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .super-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168, 85, 247, .12);
+            border: 1px solid rgba(168, 85, 247, .4);
+            border-radius: 20px;
+            padding: 5px 14px 5px 10px;
+        }
+
+        .super-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+            animation: glow 1.5s infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 6px var(--gold)
+            }
+
+            50% {
+                box-shadow: 0 0 16px var(--gold)
+            }
+        }
+
+        .super-text {
+            font-family: 'Orbitron', monospace;
+            font-size: .68rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.15rem;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(168, 85, 247, .5);
+        }
+
+        .sub {
+            font-size: .8rem;
+            color: var(--text-muted);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .user-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-c);
+            border-radius: 40px;
+            padding: 5px 14px 5px 5px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: .9rem;
+        }
+
+        .btn {
+            padding: .6rem 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .85rem;
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(124, 58, 237, .35);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(124, 58, 237, .55);
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #00d4ff, #0891b2);
+            color: #000;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(0, 212, 255, .25);
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 212, 255, .45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-c);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .07);
+            color: var(--text-primary);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, .12);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, .3);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #ffffff;
+        }
+
+        .btn-fleet {
+            background: rgba(0, 212, 255, .08);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, .25);
+        }
+
+        .btn-fleet:hover {
+            background: rgba(0, 212, 255, .18);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 4px;
+            margin-bottom: 2rem;
+            width: fit-content;
+        }
+
+        .tab-btn {
+            padding: .5rem 1.4rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: .85rem;
+            cursor: pointer;
+            transition: all .25s;
+            color: var(--text-secondary);
+            background: transparent;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(168, 85, 247, .2), rgba(124, 58, 237, .2));
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.4rem;
+            transition: all .3s;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(127, 90, 240, 0.35);
+            background: rgba(127, 90, 240, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-val {
+            font-size: 1.9rem;
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-lbl {
+            color: var(--text-secondary);
+            font-size: .82rem;
+            margin-top: .4rem;
+        }
+
+        /* SEC HEADER */
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sec-title {
+            font-family: 'Orbitron', monospace;
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border-c);
+        }
+
+        /* FLEET */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .truck-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.3rem;
+            transition: all .3s;
+        }
+
+        .truck-card:hover {
+            border-color: rgba(127, 90, 240, .4);
+            background: rgba(127, 90, 240, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(127, 90, 240, .15);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: .9rem;
+        }
+
+        .truck-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .truck-model {
+            font-size: .78rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .truck-id {
+            font-family: monospace;
+            font-size: .68rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: .7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .pill.online {
+            background: rgba(16, 185, 129, .15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, .3);
+        }
+
+        .pill.offline {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .pdot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: glow2 2s infinite;
+        }
+
+        @keyframes glow2 {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .sensors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .7rem;
+            margin: .9rem 0;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: .85rem;
+        }
+
+        .sensor {
+            text-align: center;
+        }
+
+        .s-icon {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+
+        .s-val {
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .s-lbl {
+            font-size: .65rem;
+            color: var(--text-dim);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: .5rem;
+            margin-top: .9rem;
+        }
+
+        /* ADMIN TABLE */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            text-align: left;
+            padding: .8rem 1rem;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-c);
+        }
+
+        .admin-table td {
+            padding: .9rem 1rem;
+            border-bottom: 1px solid rgba(168, 85, 247, .06);
+            font-size: .9rem;
+        }
+
+        .admin-table tr:hover td {
+            background: rgba(168, 85, 247, .04);
+        }
+
+        .role-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 700;
+        }
+
+        .role-tag.super {
+            background: rgba(245, 158, 11, .15);
+            color: var(--gold);
+            border: 1px solid rgba(245, 158, 11, .3);
+        }
+
+        .role-tag.admin {
+            background: rgba(168, 85, 247, .15);
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .role-tag.tech {
+            background: rgba(6, 182, 212, .15);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, .3);
+        }
+
+        .role-tag.readonly {
+            background: rgba(148, 163, 184, .1);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, .2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-dim);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: rgba(6, 10, 24, 0.98);
+            border: 1px solid rgba(127, 90, 240, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 480px;
+            width: 90%;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .modal-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: .45rem;
+            color: var(--text-secondary);
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: .75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: .95rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .form-select option {
+            background: #08101f;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: .8rem;
+            margin-top: 1.5rem;
+        }
+
+        .err-box {
+            background: rgba(239, 68, 68, .12);
+            border: 1px solid rgba(239, 68, 68, .3);
+            border-radius: 8px;
+            padding: .7rem 1rem;
+            margin-bottom: 1rem;
+            color: #ef4444;
+            font-size: .85rem;
+        }
+
+        /* MAP */
+        .map-section {
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 450px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .4);
+        }
+
+        #map-admin {
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .map-header {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(18, 10, 30, 0.85);
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .map-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .leaflet-container {
+            background: #0f0a19 !important;
+        }
+
+        .custom-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* SYSTEM INFO */
+        .sys-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .sys-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .sys-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: .85rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .sys-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem 0;
+            border-bottom: 1px solid rgba(168, 85, 247, .06);
+        }
+
+        .sys-row:last-child {
+            border-bottom: none;
+        }
+
+        .sys-key {
+            font-size: .82rem;
+            color: var(--text-secondary);
+        }
+
+        .sys-val {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sys-val.ok {
+            color: var(--success);
+        }
+
+        .sys-val.warn {
+            color: var(--warning);
+        }
+
+        @media(max-width:768px) {
+            .fleet-grid {
+                grid-template-columns: 1fr
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem
+            }
+
+            .sys-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- TABS DELETED -->
+
+        <!-- ===== ADMINS TAB ===== -->
+        <div class="active" id="tab-admins">
+            <div class="sec-header">
+                <span class="sec-title">ADMINISTRATEURS</span>
+                <div class="divider"></div>
+                <button class="btn btn-purple" onclick="openAdminModal()" style="padding:.5rem 1rem;font-size:.82rem;">
+                    Ajouter Admin</button>
+            </div>
+            <table class="admin-table" id="adminTable">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Suivi Connexion</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTbody"></tbody>
+            </table>
+        </div>
+
+        <!-- SYSTEM TAB DELETED -->
+    </div>
+
+    <!-- MODAL ADMIN -->
+    <div class="modal" id="adminModal">
+        <div class="modal-box">
+            <div class="modal-hdr">
+                <h2 class="modal-title"> Nouvel Administrateur</h2>
+                <span class="modal-close" onclick="closeAdminModal()"></span>
+            </div>
+            <form id="addAdminForm">
+                <div id="adminError" class="err-box" style="display:none"></div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="adminEmail" class="form-input" placeholder="admin@exemple.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mot de passe</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="Minimum 6 caractères"
+                        minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Rôle</label>
+                    <select id="adminRole" class="form-select">
+                        <option value="Admin">Admin</option>
+                        <option value="Super Admin">Super Admin</option>
+                        <option value="Technicien">Technicien</option>
+                        <option value="Lecture seule">Lecture seule</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeAdminModal()"
+                        style="flex:1">Annuler</button>
+                    <button type="submit" class="btn btn-purple" style="flex:1"> Créer Admin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // AUTH
+        function checkAuth() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) { window.location.href = 'login.html'; return false; }
+            const d = JSON.parse(s);
+            if (!d.loggedIn) { window.location.href = 'login.html'; return false; }
+
+            // FILTRE STRICT : Seuls Super Admin et System Admin
+            if (d.role === 'Admin') {
+                window.location.href = 'fleet.html';
+                return false;
+            } else if (d.role === 'Technicien' || d.role === 'Lecture seule') {
+                window.location.href = 'technicien.html';
+                return false;
+            }
+
+            const n = d.email.split('@')[0];
+            const nameEl = document.getElementById('adminName');
+            const initialEl = document.getElementById('userInitial');
+            if (nameEl) nameEl.textContent = n;
+            if (initialEl) initialEl.textContent = n[0].toUpperCase();
+            return true;
+        }
+        function logout() { if (confirm('Déconnecter?')) { localStorage.removeItem('admin-session'); window.location.href = 'login.html'; } }
+
+        // TABS
+        function showTab(name) {
+            document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', ['fleet', 'admins', 'system'][i] === name));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+            if (name === 'system') checkSystem();
+        }
+
+        // HELPERS ISOLATION
+        function getCurrentOwnerId() {
+            const s = localStorage.getItem('admin-session');
+            if (!s) return null;
+            const d = JSON.parse(s);
+            return (d.role === 'Admin') ? d.userId : (d.parentAdminId || d.userId);
+        }
+
+
+
+        // ADMINS CORE LOGIC
+        async function getAdmins() {
+            try {
+                const parentId = getCurrentOwnerId();
+                const url = parentId ? `/api/users?parentAdminId=${parentId}` : '/api/users';
+                const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
+                if (r.ok) return await r.json();
+            } catch (e) { } return [];
+        }
+
+        async function renderAdmins() {
+            const admins = await getAdmins(); const tbody = document.getElementById('adminTbody');
+            if (!admins.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Aucun admin</td></tr>'; return; }
+            const roleClass = { 'Super Admin': 'super', 'Admin': 'admin', 'Technicien': 'tech', 'Lecture seule': 'readonly' };
+            tbody.innerHTML = admins.map((a, i) => {
+                const ipText = a.lastIp ? a.lastIp : 'Jamais';
+                const dateText = a.lastLogin ? new Date(a.lastLogin).toLocaleString('fr-FR', { minute: '2-digit', hour: '2-digit', day: '2-digit', month: '2-digit' }) : '--';
+                const isLocked = a.locked ? true : false;
+                const isVerified = a.verified ? true : false;
+
+                return `<tr>
+        <td><strong>${a.email}</strong><br><span style="font-size:0.75rem;color:var(--text-dim)">Créé le: ${a.createdAt ? new Date(a.createdAt).toLocaleDateString('fr-FR') : '--'}</span></td>
+        <td><span class="role-tag ${roleClass[a.role] || 'admin'}">${a.role}</span></td>
+        <td>
+            <div style="font-size:0.8rem;color:var(--text-secondary)">
+                IP: <strong style="color:var(--text-primary)">${ipText}</strong><br>
+                Vu: ${dateText}
+            </div>
+        </td>
+        <td>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+                <button onclick="toggleStatus('${a._id}', 'verified', ${!isVerified})" style="font-size:0.75rem;padding:3px 6px;border-radius:4px;border:1px solid ${isVerified ? 'rgba(52,199,89,0.3)' : 'rgba(255,255,255,0.1)'};background:${isVerified ? 'rgba(52,199,89,0.1)' : 'transparent'};color:${isVerified ? 'var(--success)' : 'var(--text-secondary)'};cursor:pointer;">
+                    ${isVerified ? 'Vérifié' : '⏳ En attente'}
+                </button>
+                ${i !== 0 ? `<button onclick="toggleStatus('${a._id}', 'locked', ${!isLocked})" style="font-size:0.75rem;padding:3px 6px;border-radius:4px;border:1px solid ${isLocked ? 'rgba(255,59,48,0.3)' : 'rgba(255,255,255,0.1)'};background:${isLocked ? 'rgba(255,59,48,0.1)' : 'transparent'};color:${isLocked ? 'var(--danger)' : 'var(--text-secondary)'};cursor:pointer;">
+                    ${isLocked ? 'Bloqué' : 'Actif'}
+                </button>` : ''}
+            </div>
+        </td>
+        <td>
+            <div style="display:flex;gap:6px;">
+                <button class="btn btn-purple" onclick="impersonateAdmin('${a._id}','${a.email}','${a.role}')" style="padding:.35rem .75rem;font-size:.78rem"> Accéder</button>
+                <button class="btn btn-danger" onclick="deleteAdmin('${a._id}','${a.email}')" style="padding:.35rem .75rem;font-size:.78rem">${i === 0 ? '🔒' : '🗑️'}</button>
+            </div>
+        </td>
+    </tr>`}).join('');
+        }
+
+        async function toggleStatus(id, field, value) {
+            try {
+                const body = {};
+                body[field] = value;
+                const r = await fetch(`/api/users/${id}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                if (!r.ok) {
+                    const j = await r.json();
+                    alert('Erreur: ' + j.error);
+                } else {
+                    await renderAdmins();
+                }
+            } catch (e) {
+                alert('Erreur de connexion');
+            }
+        }
+
+        function impersonateAdmin(id, email, role) {
+            if (!confirm(`Ouvrir la session de ${email} ?\nLe système affichera uniquement la flotte de cet administrateur.`)) return;
+            const currentSession = localStorage.getItem('admin-session');
+            localStorage.setItem('superadmin-backup', currentSession);
+            const newSession = {
+                loggedIn: true,
+                email: email,
+                role: 'Admin', // Always treat them as admin context visually for the UI tree
+                userId: id,
+                loginTime: new Date().toISOString()
+            };
+            localStorage.setItem('admin-session', JSON.stringify(newSession));
+            window.location.href = 'fleet.html';
+        }
+
+        async function deleteAdmin(id, email) {
+            if (!id || id === 'undefined') { alert('Le premier admin ne peut pas être supprimé.'); return; }
+            if (!confirm(`Supprimer ${email} ?`)) return;
+            try {
+                const r = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+                if (!r.ok) { const j = await r.json(); alert('❌ ' + j.error); return; }
+                await renderAdmins();
+            } catch (e) { alert('❌ Erreur serveur'); }
+        }
+
+        // ADMIN MODAL
+        function openAdminModal() { document.getElementById('adminModal').classList.add('show'); }
+        function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); document.getElementById('addAdminForm').reset(); document.getElementById('adminError').style.display = 'none'; }
+
+        document.getElementById('addAdminForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value.trim().toLowerCase();
+            const password = document.getElementById('adminPassword').value;
+            const role = document.getElementById('adminRole').value;
+            const errEl = document.getElementById('adminError');
+            const btn = e.target.querySelector('[type=submit]');
+            btn.disabled = true; btn.textContent = '⏳ Création...';
+            try {
+                const parentAdminId = getCurrentOwnerId();
+                const res = await fetch('/api/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, role, parentAdminId })
+                });
+                const json = await res.json();
+                if (!res.ok) { errEl.textContent = json.error || 'Erreur'; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Créer Admin'; return; }
+                closeAdminModal(); await renderAdmins();
+                alert(`Admin "${email}" créé !`);
+            } catch (err) { errEl.textContent = 'Erreur de connexion au serveur'; errEl.style.display = 'block'; }
+            finally { btn.disabled = false; btn.textContent = 'Créer Admin'; }
+        });
+        document.getElementById('adminModal').addEventListener('click', e => { if (e.target.id === 'adminModal') closeAdminModal(); });
+
+        // INIT
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (!checkAuth()) return;
+            await renderAdmins();
+        });
+    </script>
+    <script src="nav.js"></script>
+</body>
+
+</html>

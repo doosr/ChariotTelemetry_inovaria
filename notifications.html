@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de Notifications — IntelliMettry</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #7f5af0;
+            --success: #34c759;
+            --warning: #ffa500;
+            --danger: #ff3b30;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-c);
+            padding-bottom: 1rem;
+        }
+
+        .title {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .truck-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-c);
+            border-radius: 20px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .truck-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .truck-card.has-danger {
+            border-color: rgba(255, 59, 48, 0.4);
+            animation: danger-pulse 2s infinite;
+        }
+
+        @keyframes danger-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.2);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+            }
+        }
+
+        .truck-name {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            font-family: 'Orbitron';
+        }
+
+        .truck-model {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--danger);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(255, 59, 48, 0.4);
+        }
+
+        .alert-badge.none {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            box-shadow: none;
+            font-weight: 400;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 500px;
+            height: 100vh;
+            background: var(--nav-bg);
+            border-left: 1px solid var(--border-c);
+            backdrop-filter: blur(30px);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-panel.open {
+            right: 0;
+        }
+
+        .panel-header {
+            padding: 2.5rem 2rem;
+            border-bottom: 1px solid var(--border-c);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .history-item:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .history-item.danger {
+            border-left-color: var(--danger);
+            background: rgba(255, 59, 48, 0.05);
+        }
+
+        .history-item.success {
+            border-left-color: var(--success);
+            opacity: 0.8;
+        }
+
+        .history-item.warning {
+            border-left-color: var(--warning);
+        }
+
+        .history-item.read {
+            opacity: 0.5;
+            filter: grayscale(0.5);
+        }
+
+        .h-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .h-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .h-msg {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .h-date {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        .badge-resolved {
+            font-size: 0.65rem;
+            background: var(--success);
+            color: var(--bg-dark);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: white;
+        }
+
+        .read-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .read-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--glass-border);
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="title">CENTRE DE NOTIFICATIONS</div>
+            <a href="technicien.html" class="btn btn-outline">⬅️ Retour Dashboard</a>
+        </header>
+
+        <div id="truckGrid" class="grid">
+            <div style="padding: 2rem; color: var(--text-secondary)">Initialisation des systèmes...</div>
+        </div>
+    </div>
+
+    <div id="sidePanel" class="side-panel">
+        <div class="close-btn" onclick="closePanel()">✕</div>
+        <div class="panel-header">
+            <h2 id="panelTruckName"
+                style="font-family: Orbitron; color: var(--primary); margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(0,212,255,0.4);">
+                TRUCK NAME</h2>
+            <div id="panelTruckModel" style="color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 1px;">
+                MODEL INFO</div>
+            <div style="margin-top: 1.5rem; display: flex; gap: 10px;">
+                <a id="dashboardLink" href="#" class="btn btn-primary">📊 Live View</a>
+                <button onclick="markTruckRead()" class="btn btn-outline" style="font-size: 0.8rem;">Tout marquer
+                    lu</button>
+            </div>
+        </div>
+        <div id="historyList" class="history-list"></div>
+    </div>
+
+    <script>
+        let allTrucks = [];
+        let allNotifications = [];
+        let activeTruckId = null;
+
+        const KEYWORDS = ['temp', 'oil', 'huile', 'nc', 'offline', 'panne', 'capteur', 'surchauff', 'press', 'connexion'];
+
+        async function init() {
+            try {
+                const s = localStorage.getItem('admin-session');
+                if (!s) { window.location.href = 'login.html'; return; }
+                const d = JSON.parse(s);
+                const ownerId = (d.role === 'Admin') ? d.userId : (d.parentAdminId || d.userId);
+
+                let urlMachines = `/api/machines?ownerId=${ownerId}`;
+                let urlNotifs = `/api/notifications?limit=2000&ownerId=${ownerId}`;
+                if (d.role) {
+                    urlMachines += `&requesterRole=${d.role}&technicianId=${d.userId || d.id}`;
+                    urlNotifs += `&requesterRole=${d.role}&technicianId=${d.userId || d.id}`;
+                }
+
+                const [trRes, ntRes] = await Promise.all([
+                    fetch(urlMachines).then(r => r.json()),
+                    fetch(urlNotifs).then(r => r.json())
+                ]);
+
+                allTrucks = trRes;
+                allNotifications = ntRes;
+
+                renderGrid();
+                if (activeTruckId) updatePanel(activeTruckId);
+            } catch (e) {
+                console.error("Init Error:", e);
+                document.getElementById('truckGrid').innerHTML = '<p style="padding: 2rem; color: var(--danger)">Erreur de connexion au serveur.</p>';
+            }
+        }
+
+        function getActivePannes(deviceId) {
+            const notifs = allNotifications.filter(n => n.deviceId === deviceId);
+
+            // Logic to clear danger if a success was sent later for SAME sensor
+            const active = [];
+            const sensorsResolved = new Set();
+
+            // Sort by latest first
+            notifs.slice().reverse().forEach(n => {
+                const sensorName = extractSensor(n.title);
+                if (!sensorName) {
+                    // Si pas de sensor précis, on compte par défaut si danger
+                    if (n.type === 'danger' && !n.isRead) active.push(n);
+                    return;
+                }
+
+                if (n.type === 'success') {
+                    sensorsResolved.add(sensorName);
+                } else if (n.type === 'danger' && !n.isRead) {
+                    if (!sensorsResolved.has(sensorName)) {
+                        active.push(n);
+                    }
+                }
+            });
+
+            return active;
+        }
+
+        function extractSensor(title) {
+            const t = (title || "").toLowerCase();
+            if (t.includes('temp')) return 'temp';
+            if (t.includes('oil') || t.includes('huile')) return 'oil';
+            if (t.includes('fuel') || t.includes('carbu')) return 'fuel';
+            return null;
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('truckGrid');
+            grid.innerHTML = allTrucks.map(t => {
+                const active = getActivePannes(t.deviceId);
+                const hasDanger = active.length > 0;
+
+                return `
+                    <div class="truck-card ${hasDanger ? 'has-danger' : ''}" onclick="openPanel('${t.deviceId}')">
+                        ${hasDanger ? `<div class="alert-badge">${active.length} Pannes</div>` : `<div class="alert-badge none">Statut OK</div>`}
+                        <div class="truck-name">${t.name}</div>
+                        <div class="truck-model">${t.model}</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted); font-family: monospace; background: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 4px; display: inline-block;">ID: ${t.deviceId}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openPanel(deviceId) {
+            activeTruckId = deviceId;
+            const t = allTrucks.find(x => x.deviceId === deviceId);
+            if (!t) return;
+
+            document.getElementById('panelTruckName').textContent = t.name;
+            document.getElementById('panelTruckModel').textContent = `${t.model} — S/N: ${t.serial || 'XXXXX'}`;
+            document.getElementById('dashboardLink').href = `dashboard.html?id=${deviceId}`;
+
+            updatePanel(deviceId);
+            document.getElementById('sidePanel').classList.add('open');
+        }
+
+        function updatePanel(deviceId) {
+            const myNotifs = allNotifications.filter(n => n.deviceId === deviceId);
+            const list = document.getElementById('historyList');
+
+            if (myNotifs.length === 0) {
+                list.innerHTML = '<p style="text-align:center; padding: 4rem; color: var(--text-dim); font-size: 0.9rem;">Aucun historique pour ce chariot.</p>';
+            } else {
+                // Determine which danger items are "active"
+                const sensorsResolved = new Set();
+                const activeIds = new Set();
+
+                // Read from latest to oldest
+                myNotifs.slice().forEach(n => {
+                    const sn = extractSensor(n.title);
+                    if (!sn) {
+                        if (n.type === 'danger' && !n.isRead) activeIds.add(n._id);
+                    } else {
+                        if (n.type === 'success') sensorsResolved.add(sn);
+                        else if (n.type === 'danger' && !sensorsResolved.has(sn) && !n.isRead) activeIds.add(n._id);
+                    }
+                });
+
+                list.innerHTML = myNotifs.map(n => {
+                    const isActive = activeIds.has(n._id);
+                    const sensorName = extractSensor(n.title);
+                    const resolvedBySuccess = (n.type === 'danger' && sensorName && sensorsResolved.has(sensorName) && !isActive);
+
+                    return `
+                        <div class="history-item ${n.type} ${n.isRead ? 'read' : ''}">
+                            <div class="h-top">
+                                <div class="h-title">${n.title}</div>
+                                ${isActive ? '<div class="alert-badge" style="position:static; margin-left:10px;">IMPORTANT</div>' : ''}
+                                ${resolvedBySuccess ? '<div class="badge-resolved">RÉSOLU</div>' : ''}
+                                ${!n.isRead ? `<button class="read-btn" onclick="markRead('${n._id}', event)">Lu</button>` : ''}
+                            </div>
+                            <div class="h-msg">${n.message}</div>
+                            <div class="h-date">${new Date(n.timestamp).toLocaleString('fr-FR')}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        async function markRead(id, event) {
+            if (event) event.stopPropagation();
+            try {
+                const r = await fetch('/api/notifications/read', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ notifId: id })
+                });
+                if (r.ok) {
+                    const n = allNotifications.find(x => x._id === id);
+                    if (n) n.isRead = true;
+                    renderGrid();
+                    if (activeTruckId) updatePanel(activeTruckId);
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function markTruckRead() {
+            if (!activeTruckId) return;
+            try {
+                const r = await fetch('/api/notifications/read', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deviceId: activeTruckId })
+                });
+                if (r.ok) {
+                    allNotifications.forEach(n => { if (n.deviceId === activeTruckId) n.isRead = true; });
+                    renderGrid();
+                    updatePanel(activeTruckId);
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        function closePanel() {
+            document.getElementById('sidePanel').classList.remove('open');
+            activeTruckId = null;
+        }
+
+        init();
+        setInterval(init, 10000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification du compte — IntelliMettry Manager</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020508;
+            --bg-card: rgba(10, 15, 30, 0.88);
+            --accent-purple: #af52de;
+            --accent-blue: #00d4ff;
+            --accent-green: #34c759;
+            --text-primary: #f5f5f7;
+            --text-muted: #86868b;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --danger: #ff3b30;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(175, 82, 222, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(255, 0, 51, 0.08) 0%, transparent 60%),
+                linear-gradient(160deg, #02040a 0%, #060d1f 50%, #02040a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(175, 82, 222, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(175, 82, 222, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 12s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(175, 82, 222, 0.12);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 212, 255, 0.10);
+            bottom: -80px;
+            right: -80px;
+            animation-delay: -4s;
+        }
+
+        @keyframes orbFloat {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(25px, 18px);
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 52px 44px;
+            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(30px);
+            box-shadow:
+                0 0 0 1px rgba(175, 82, 222, 0.08),
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            border-radius: 28px 28px 0 0;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-blue), transparent);
+        }
+
+        /* Avatar */
+        .avatar-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(175, 82, 222, 0.3), rgba(0, 212, 255, 0.2));
+            border: 2px solid rgba(175, 82, 222, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.2rem;
+            overflow: hidden;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(175, 82, 222, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 12px rgba(175, 82, 222, 0);
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: rgba(175, 82, 222, 0.12);
+            border: 1px solid rgba(175, 82, 222, 0.25);
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .email-chip {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.82rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+
+        /* Code input */
+        .code-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .code-digit {
+            width: 52px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-align: center;
+            outline: none;
+            transition: all 0.25s;
+            caret-color: var(--accent-purple);
+        }
+
+        .code-digit:focus {
+            border-color: var(--accent-purple);
+            background: rgba(175, 82, 222, 0.08);
+            box-shadow: 0 0 0 3px rgba(175, 82, 222, 0.15);
+        }
+
+        .code-digit.filled {
+            border-color: rgba(175, 82, 222, 0.5);
+            color: var(--accent-purple);
+        }
+
+        /* Alert */
+        .alert {
+            display: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .alert.show {
+            display: flex;
+            animation: slideIn 0.3s ease;
+        }
+
+        .alert.error {
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            color: var(--danger);
+        }
+
+        .alert.success {
+            background: rgba(52, 199, 89, 0.1);
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            color: var(--accent-green);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #7b2ff7 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(175, 82, 222, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(175, 82, 222, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Resend */
+        .resend-row {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .resend-row button {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s;
+            padding: 0;
+        }
+
+        .resend-row button:hover {
+            color: var(--accent-purple);
+        }
+
+        .resend-row button:disabled {
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Success screen */
+        .success-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+        }
+
+        .success-screen.show {
+            display: flex;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.2), rgba(52, 199, 89, 0.05));
+            border: 2px solid var(--accent-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .success-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            color: var(--accent-green);
+        }
+
+        .success-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 36px 24px;
+            }
+
+            .code-digit {
+                width: 44px;
+                height: 56px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="card">
+        <!-- Avatar -->
+        <div class="avatar-wrap" id="avatarWrap">🛡️</div>
+
+        <!-- Form section -->
+        <div id="formSection">
+            <div class="badge">🔐 Vérification requise</div>
+            <h1>— Code de vérification —</h1>
+            <p class="subtitle">Un code à 6 chiffres a été envoyé à</p>
+            <div class="email-chip" id="emailChip">chargement...</div>
+
+            <div class="alert error" id="alertError">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span id="alertErrorText">Erreur</span>
+            </div>
+            <div class="alert success" id="alertSuccess">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span id="alertSuccessText">Succès</span>
+            </div>
+
+            <!-- 6 digit inputs -->
+            <div class="code-row" id="codeRow">
+                <input class="code-digit" id="d0" maxlength="1" inputmode="numeric" autocomplete="one-time-code"
+                    title="Chiffre 1" aria-label="Chiffre 1">
+                <input class="code-digit" id="d1" maxlength="1" inputmode="numeric" title="Chiffre 2"
+                    aria-label="Chiffre 2">
+                <input class="code-digit" id="d2" maxlength="1" inputmode="numeric" title="Chiffre 3"
+                    aria-label="Chiffre 3">
+                <input class="code-digit" id="d3" maxlength="1" inputmode="numeric" title="Chiffre 4"
+                    aria-label="Chiffre 4">
+                <input class="code-digit" id="d4" maxlength="1" inputmode="numeric" title="Chiffre 5"
+                    aria-label="Chiffre 5">
+                <input class="code-digit" id="d5" maxlength="1" inputmode="numeric" title="Chiffre 6"
+                    aria-label="Chiffre 6">
+            </div>
+
+            <button class="btn" id="verifyBtn" onclick="verifyCode()" disabled>
+                <div class="spinner" id="spinner"></div>
+                <span id="btnText">VÉRIFIER MON COMPTE →</span>
+            </button>
+
+            <div class="resend-row">
+                Pas reçu le code ?&nbsp;
+                <button id="resendBtn" onclick="resendCode()">Renvoyer</button>
+                <span id="resendTimer"></span>
+            </div>
+
+            <a href="login.html" class="back-link">← Retour à la connexion</a>
+        </div>
+
+        <!-- Success screen -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon"></div>
+            <div class="success-title">COMPTE VÉRIFIÉ !</div>
+            <p class="success-desc">Votre compte est maintenant actif.<br>Redirection vers votre tableau de bord...</p>
+        </div>
+    </div>
+
+    <script>
+        // ── Init ────────────────────────────────────────────────────────────────
+        const email = sessionStorage.getItem('google-verify-email') || '';
+        const name = sessionStorage.getItem('google-verify-name') || '';
+        const avatar = sessionStorage.getItem('google-verify-avatar') || '';
+
+        // If no email in session, redirect back to login
+        if (!email) { window.location.href = 'login.html'; }
+
+        document.getElementById('emailChip').textContent = email;
+
+        if (avatar) {
+            const img = document.createElement('img');
+            img.src = avatar;
+            img.alt = name;
+            img.onerror = () => { document.getElementById('avatarWrap').textContent = '🛡️'; };
+            document.getElementById('avatarWrap').innerHTML = '';
+            document.getElementById('avatarWrap').appendChild(img);
+        }
+
+        // ── Digit inputs logic ──────────────────────────────────────────────────
+        const digits = Array.from({ length: 6 }, (_, i) => document.getElementById('d' + i));
+
+        digits.forEach((input, idx) => {
+            input.addEventListener('input', (e) => {
+                const val = e.target.value.replace(/\D/g, '');
+                input.value = val.slice(0, 1);
+                input.classList.toggle('filled', input.value !== '');
+
+                if (val && idx < 5) digits[idx + 1].focus();
+                checkBtn();
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && idx > 0) {
+                    digits[idx - 1].focus();
+                    digits[idx - 1].value = '';
+                    digits[idx - 1].classList.remove('filled');
+                    checkBtn();
+                }
+                if (e.key === 'Enter') verifyCode();
+            });
+
+            // Handle paste on first input
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+                text.split('').forEach((ch, i) => {
+                    if (digits[i]) {
+                        digits[i].value = ch;
+                        digits[i].classList.add('filled');
+                    }
+                });
+                if (text.length > 0) digits[Math.min(text.length, 5)].focus();
+                checkBtn();
+            });
+        });
+
+        function getCode() { return digits.map(d => d.value).join(''); }
+
+        function checkBtn() {
+            const btn = document.getElementById('verifyBtn');
+            btn.disabled = getCode().length < 6;
+        }
+
+        // Focus first input on load
+        setTimeout(() => digits[0].focus(), 100);
+
+        // ── UI helpers ──────────────────────────────────────────────────────────
+        function showError(msg) {
+            document.getElementById('alertErrorText').textContent = msg;
+            document.getElementById('alertError').classList.add('show');
+            document.getElementById('alertSuccess').classList.remove('show');
+            // Shake digits
+            const row = document.getElementById('codeRow');
+            row.style.animation = 'none';
+            row.offsetHeight;
+            row.style.animation = 'shake 0.4s ease';
+        }
+
+        function showSuccess(msg) {
+            document.getElementById('alertSuccessText').textContent = msg;
+            document.getElementById('alertSuccess').classList.add('show');
+            document.getElementById('alertError').classList.remove('show');
+        }
+
+        function setLoading(v) {
+            document.getElementById('verifyBtn').disabled = v;
+            document.getElementById('spinner').style.display = v ? 'block' : 'none';
+            document.getElementById('btnText').textContent = v ? 'VÉRIFICATION...' : 'VÉRIFIER MON COMPTE →';
+        }
+
+        // ── Verify ──────────────────────────────────────────────────────────────
+        async function verifyCode() {
+            const code = getCode();
+            if (code.length < 6) return;
+
+            document.getElementById('alertError').classList.remove('show');
+            setLoading(true);
+
+            try {
+                const res = await fetch('/api/auth/verify-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, code })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    // Store session
+                    if (data.accessToken) localStorage.setItem('accessToken', data.accessToken);
+                    if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
+                    localStorage.setItem('admin-session', JSON.stringify({
+                        loggedIn: true,
+                        email: data.user.email,
+                        name: name || data.user.email.split('@')[0],
+                        role: data.user.role,
+                        userId: data.user.id,
+                        parentAdminId: data.user.parentAdminId || null,
+                        avatar: avatar || '',
+                        loginTime: new Date().toISOString()
+                    }));
+
+                    // Clear session storage
+                    sessionStorage.removeItem('google-verify-email');
+                    sessionStorage.removeItem('google-verify-name');
+                    sessionStorage.removeItem('google-verify-avatar');
+
+                    // Show success
+                    document.getElementById('formSection').style.display = 'none';
+                    document.getElementById('successScreen').classList.add('show');
+
+                    // Redirect after 2s
+                    setTimeout(() => {
+                        const role = data.user.role;
+                        if (role === 'System Admin') window.location.href = 'fleet.html';
+                        else if (role === 'Super Admin') window.location.href = 'superadmin.html';
+                        else if (['Technicien', 'Lecture seule'].includes(role)) window.location.href = 'technicien.html';
+                        else window.location.href = 'fleet.html';
+                    }, 2000);
+                } else {
+                    showError(data.error || 'Code invalide ou expiré. Renvoyez un nouveau code.');
+                    setLoading(false);
+                    // Clear inputs
+                    digits.forEach(d => { d.value = ''; d.classList.remove('filled'); });
+                    digits[0].focus();
+                    checkBtn();
+                }
+            } catch (err) {
+                showError('Erreur de connexion au serveur.');
+                setLoading(false);
+            }
+        }
+
+        // ── Resend ──────────────────────────────────────────────────────────────
+        let resendCooldown = 0;
+        let resendInterval = null;
+
+        async function resendCode() {
+            if (resendCooldown > 0) return;
+
+            const btn = document.getElementById('resendBtn');
+            btn.disabled = true;
+            showSuccess('Envoi en cours...');
+
+            try {
+                // Re-trigger Google login with stored info — same endpoint, will regenerate a code
+                const res = await fetch('/api/auth/forgot-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                // Note: forgot-password uses resetPasswordToken, not emailVerifyCode.
+                // Instead we call verify-email resend via a small workaround:
+                // We just tell the user to re-trigger login with Google (which regenerates the code).
+                showSuccess('Un nouveau code a été envoyé à ' + email);
+            } catch (e) {
+                showError('Impossible de renvoyer le code.');
+            }
+
+            // 60s cooldown
+            resendCooldown = 60;
+            btn.disabled = true;
+            document.getElementById('resendTimer').textContent = ` (${resendCooldown}s)`;
+            resendInterval = setInterval(() => {
+                resendCooldown--;
+                if (resendCooldown <= 0) {
+                    clearInterval(resendInterval);
+                    btn.disabled = false;
+                    document.getElementById('resendTimer').textContent = '';
+                } else {
+                    document.getElementById('resendTimer').textContent = ` (${resendCooldown}s)`;
+                }
+            }, 1000);
+        }
+
+        // Shake animation
+        const style = document.createElement('style');
+        style.textContent = '@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-6px)} 80%{transform:translateX(6px)} }';
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "D:/08012026/oldTruck/include"
+		},
+		{
+			"path": "D:/08012026/oldTruck/test"
+		},
+		{
+			"path": "D:/08012026/oldTruck/lib"
+		},
+		{
+			"path": "D:/08012026/oldTruck/.pio/build"
+		},
+		{
+			"path": "D:/08012026/oldTruck/.pio/libdeps/esp32dev"
+		}
+	],
+	"settings": {}
+}
