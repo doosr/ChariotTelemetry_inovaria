@@ -13,5 +13,7 @@ router.post('/bracelets', personnelController.createBracelet);
 router.delete('/bracelets/:id', personnelController.deleteBracelet);
 router.post('/bracelets/assign', personnelController.assignBracelet);
 router.post('/bracelets/:deviceId/telemetry', personnelController.updateBraceletTelemetry);
+router.get('/bracelets/:deviceId/history', personnelController.getBraceletHistory);
 
 module.exports = router;
+

@@ -1,0 +1,1092 @@
+
+
+    <!-- ===================================================
+         SIDEBAR — GTI MONITORING PANEL
+    =================================================== -->
+    <aside className="sidebar" id="mainSidebar">
+
+        <!-- Toggle button -->
+        <button className="sb-toggle" id="sbToggle" onClick="toggleSidebar()" title="Réduire/Agrandir">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="15 18 9 12 15 6" id="sbToggleIcon" />
+            </svg>
+        </button>
+
+        <!-- Header -->
+        <div className="sb-header">
+            <div className="sb-logo">🚜</div>
+            <div>
+                <div className="sb-title">INTELLIMETTRY</div>
+                <div className="sb-subtitle">MONITORING SYSTEM</div>
+            </div>
+        </div>
+
+        <!-- Scrollable body -->
+        <div className="sb-body">
+
+            <!-- DEVICE -->
+            <div className="sb-section-label">Appareil</div>
+            <div className="sb-status-row">
+                <div className="sb-status-left">
+                    <div className="sb-dot" id="sbStatusDot"></div>
+                    <span id="sbDeviceLabel">HORS LIGNE</span>
+                </div>
+                <div className="sb-device-id" id="sbDeviceId">--</div>
+            </div>
+
+            <!-- MOTEUR -->
+            <div className="sb-section-label">Moteur</div>
+
+            <div className="sb-metric" id="sbEngineCard">
+                <div className="sb-icon white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5f5f7" strokeWidth="2">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">État Moteur</div>
+                    <div className="sb-metric-value" id="sbEngineState">ARRÊT</div>
+                </div>
+                <div className="sb-gear-badge" id="sbGearBadge">N</div>
+            </div>
+
+            <div className="sb-metric" id="sbTempCard">
+                <div className="sb-icon red">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Température</div>
+                    <div className="sb-metric-value" id="sbTemp">-- °C</div>
+                    <div className="sb-metric-sub" id="sbTempSub">Normal</div>
+                </div>
+            </div>
+
+            <div className="sb-metric" id="sbOilCard">
+                <div className="sb-icon orange">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Pression Huile</div>
+                    <div className="sb-metric-value" id="sbOil">-- Bar</div>
+                    <div className="sb-metric-sub" id="sbOilSub">Normal</div>
+                </div>
+            </div>
+
+            <div className="sb-metric" id="sbHoursCard">
+                <div className="sb-icon purple">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Heures Moteur</div>
+                    <div className="sb-metric-value" id="sbHours">0,00 h</div>
+                </div>
+            </div>
+
+            <!-- CARBURANT -->
+            <div className="sb-section-label">Carburant</div>
+
+            <div className="sb-metric" id="sbFuelCard">
+                <div className="sb-icon orange">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                        <line x1="3" y1="22" x2="3" y2="10" />
+                        <line x1="21" y1="22" x2="21" y2="10" />
+                        <path d="M3 10C3 7.8 4.8 6 7 6h10c2.2 0 4 1.8 4 4" />
+                        <line x1="12" y1="6" x2="12" y2="2" />
+                        <line x1="8" y1="22" x2="8" y2="14" />
+                        <line x1="16" y1="22" x2="16" y2="14" />
+                        <line x1="8" y1="14" x2="16" y2="14" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Niveau Carburant</div>
+                    <div className="sb-metric-value" id="sbFuel">-- %</div>
+                    <div className="sb-fuel-bar-track">
+                        <div className="sb-fuel-bar-fill" id="sbFuelBar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPS -->
+            <div className="sb-section-label">GPS &amp; Vitesse</div>
+
+            <div className="sb-metric">
+                <div className="sb-icon blue">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2">
+                        <circle cx="12" cy="10" r="3" />
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Position GPS</div>
+                    <div className="sb-metric-value" id="sbGpsVal" style={{fontSize: '0.75rem', letterSpacing: '0'}}>--</div>
+                    <div className="sb-metric-sub" id="sbSats">0 satellites</div>
+                </div>
+            </div>
+
+            <div className="sb-metric">
+                <div className="sb-icon blue">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2">
+                        <polyline points="13 17 18 12 13 7" />
+                        <polyline points="6 17 11 12 6 7" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Vitesse</div>
+                    <div className="sb-metric-value" id="sbSpeed">0 km/h</div>
+                </div>
+            </div>
+
+            <!-- PROXIMITE -->
+            <div className="sb-section-label">Détection Arrière</div>
+
+            <div className="sb-metric" id="sbProxCard">
+                <div className="sb-icon green">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" strokeWidth="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19 5a10 10 0 0 1 0 14M5 19a10 10 0 0 1 0-14" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">AJ-SR04M Arrière</div>
+                    <div className="sb-metric-value" id="sbProxVal">Dégagé</div>
+                    <div className="sb-prox-bar-track">
+                        <div className="sb-prox-bar-fill" id="sbProxBar" style={{width: '100%'}}></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DÉMARRAGE -->
+            <div className="sb-section-label">Session</div>
+
+            <div className="sb-metric">
+                <div className="sb-icon white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5f5f7" strokeWidth="2">
+                        <polyline points="23 4 23 10 17 10" />
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Démarrage</div>
+                    <div className="sb-metric-value" id="sbStartTime" style={{fontSize: '0.9rem'}}>--:--</div>
+                </div>
+            </div>
+
+            <div className="sb-metric">
+                <div className="sb-icon orange">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                        <line x1="12" y1="1" x2="12" y2="23" />
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Consommation</div>
+                    <div className="sb-metric-value" id="sbConsumption">0,0 L</div>
+                </div>
+            </div>
+
+            <div className="sb-metric">
+                <div className="sb-icon blue">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </div>
+                <div className="sb-metric-info">
+                    <div className="sb-metric-label">Kilométrage</div>
+                    <div className="sb-metric-value" id="sbOdometer">0,0 km</div>
+                </div>
+            </div>
+
+        </div><!-- /.sb-body -->
+
+        <!-- Footer clock -->
+        <div className="sb-footer">
+            <div className="sb-time" id="sbClock">--:--:--</div>
+            <div className="sb-date" id="sbDate">--- --- ----</div>
+        </div>
+
+    </aside><!-- /.sidebar -->
+
+    <!-- ===================================================
+         PAGE CONTENT WRAPPER
+    =================================================== -->
+    <div className="page-content" id="pageContent">
+
+        <!-- ===== LOGO ARRIERE-PLAN ===== -->
+        <div className="logo-background">
+            <img src="logo-removebg-preview.png" alt="IntelliMettry Logo Background" />
+        </div>
+
+        <!-- Top Info Panel -->
+        <div className="top-info-panel">
+            <div className="info-row">
+                <svg className="info-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span className="info-text">Démarrage:</span>
+                <span className="info-value-highlight" id="startTimeDisplay">--:--</span>
+            </div>
+            <div className="info-row">
+                <svg className="info-icon-small" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+                <span className="info-text">Consommation:</span>
+                <span className="info-value-highlight" id="fuelConsumptionDisplay" style={{color: '#ffa500'}}>0 L</span>
+            </div>
+            <div className="info-row">
+                <svg className="info-icon-small" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+                </svg>
+                <span className="info-text">Pression Huile:</span>
+                <span className="info-value-highlight" id="oilPressureDisplay" style={{color: '#ff3b30'}}>0.0 Bar</span>
+            </div>
+            <div className="info-row">
+                <svg className="info-icon-small" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span className="info-text">Kilométrage:</span>
+                <span className="info-value-highlight" id="odometerDisplay" style={{color: '#00d4ff'}}>0,0 km</span>
+            </div>
+            <!-- Export Button -->
+            <div className="info-row" style={{marginTop: '10px', cursor: 'pointer'}} onClick="exportHistory()">
+                <svg className="info-icon-small" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                <span className="info-text" style={{color: '#00d4ff', fontWeight: 'bold'}}>EXP. HISTORIQUE</span>
+            </div>
+        </div>
+
+
+        <!-- Warning Strip -->
+        <div className="warning-strip">
+            <svg className="warning-icon" id="engineIcon" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            <svg className="warning-icon" id="oilIcon" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+            </svg>
+            <svg className="warning-icon" id="tempIcon" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+            </svg>
+            <svg className="warning-icon" id="fuelIcon" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                <path d="M3 22v-5h3v5h12v-5h3v5M3 12h18M12 2v20" />
+            </svg>
+            <!-- JSN-SR04T Proximity Warning Icon -->
+            <svg className="warning-icon" id="proximityIcon" viewBox="0 0 24 24" fill="none" stroke="#ff3b30"
+                strokeWidth="2" title="Obstacle arrière détecté">
+                <path d="M22 12h-4M6 12H2M15 5l-3 7-3-7" />
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19 5a10 10 0 0 1 0 14M5 19a10 10 0 0 1 0-14" opacity="0.5" />
+            </svg>
+        </div>
+
+        <!-- Device ID Badge -->
+        <div className="device-badge" title="Identifiant du dispositif connecté">
+            <!-- Chip Icon -->
+            <svg className="device-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
+                strokeLinecap="round" strokeLinejoin="round">
+                <rect x="7" y="7" width="10" height="10" rx="1" />
+                <path d="M9 3v2M12 3v2M15 3v2M9 19v2M12 19v2M15 19v2M3 9h2M3 12h2M3 15h2M19 9h2M19 12h2M19 15h2" />
+                <rect x="9" y="9" width="6" height="6" rx="0.5" fill="currentColor" opacity="0.3" />
+            </svg>
+            <div className="device-badge-info">
+                <span className="device-badge-label">Device ID</span>
+                <span className="device-badge-name" id="deviceNameDisplay">TRUCK_01</span>
+            </div>
+            <div className="device-status-dot offline" id="deviceStatusDot"></div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div className="dashboard-container">
+            <!-- Left Gauge: Temperature -->
+            <div className="gauge-container">
+                <div className="gauge-circle">
+                    <div className="gauge-bg"></div>
+                    <svg className="gauge-svg" viewBox="0 0 250 250">
+                        <circle className="gauge-arc-bg" cx="125" cy="125" r="110" strokeDasharray="471"
+                            strokeDashoffset="117.75" />
+                        <circle id="tempArc" className="gauge-arc" cx="125" cy="125" r="110" strokeDasharray="471"
+                            strokeDashoffset="471" />
+                    </svg>
+                    <div className="gauge-content">
+                        <div className="gauge-value" id="tempValue">0</div>
+                        <div className="gauge-unit">°C</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Center Tachometer -->
+            <div className="tachometer-container">
+                <div className="tacho-bg"></div>
+                <div className="tacho-glow"></div>
+                <svg className="tacho-svg" viewBox="0 0 450 450">
+                    <!-- Tick Marks -->
+                    <g id="tachoMarks"></g>
+                    <!-- Needle -->
+                    <polygon id="tachoNeedle" className="tacho-needle" points="225,225 220,80 225,70 230,80"
+                        transform="rotate(0 225 225)" />
+                    <circle cx="225" cy="225" r="15" fill="var(--accent-gti)" />
+                </svg>
+
+
+                <div className="tacho-content">
+                    <div className="tacho-brand" id="tachoTractor">🚜</div>
+                    <div className="tacho-rpm-value" id="rpmDisplay">0</div>
+                    <div className="tacho-rpm">
+                        <span>Tours</span> x1000
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Gauge: Engine Hours -->
+            <div className="gauge-container">
+                <div className="gauge-circle">
+                    <div className="gauge-bg"></div>
+                    <svg className="gauge-svg" viewBox="0 0 250 250">
+                        <circle className="gauge-arc-bg" cx="125" cy="125" r="110" strokeDasharray="471"
+                            strokeDashoffset="117.75" />
+                        <circle id="hoursArc" className="gauge-arc" cx="125" cy="125" r="110" strokeDasharray="471"
+                            strokeDashoffset="471" />
+                    </svg>
+                    <div className="gauge-content">
+                        <div className="gauge-value" id="hoursValue">0,00</div>
+                        <div className="gauge-unit">h</div>
+                        <button className="reset-hours-btn" onClick="resetEngineHours()">RESET</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Info Bar -->
+        <div className="info-bar">
+            <!-- Fuel -->
+            <div className="info-item">
+                <svg className="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <div className="info-data">
+                    <div className="info-value" id="fuelDisplay" style={{color: 'rgb(255, 59, 48)'}}>
+                        <span id="fuelDisplayPerc">VIDE</span>
+                        <span id="fuelDisplayLiters" style={{fontSize: '0.8rem', opacity: '0.8', marginLeft: '5px'}}></span>
+                    </div>
+                    <div className="info-label">Carburant</div>
+                </div>
+            </div>
+
+            <!-- Engine Status -->
+            <div className="info-item">
+                <svg className="info-icon" id="engineStatusIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="2" style={{stroke: 'var(--text-secondary)'}}>
+                    <path
+                        d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                    </path>
+                </svg>
+                <div className="info-data">
+                    <div className="info-value" id="engineStatusText"
+                        style={{fontSize: '1rem', color: 'var(--text-secondary)'}}>
+                        ARRÊT</div>
+                    <div className="info-label">Moteur</div>
+                </div>
+            </div>
+
+            <!-- Gear -->
+            <div className="info-item">
+                <div className="info-data">
+                    <div className="info-value" id="gearDisplay" style={{color: 'var(--text-secondary)'}}>N <span
+                            id="debugGear" style={{fontSize: '0.6rem', opacity: '0.5', marginLeft: '5px'}}>(?)</span></div>
+                    <div className="info-label">Rapport</div>
+                </div>
+            </div>
+
+            <!-- Separateur -->
+            <div style={{width: '1px', height: '40px', background: 'var(--glass-border)'}}></div>
+
+            <!-- PROXIMITE ARRIERE (JSN-SR04T) -->
+            <div className="proximity-widget" id="proximityWidget">
+                <div className="prox-header">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19 5a10 10 0 0 1 0 14M5 19a10 10 0 0 1 0-14" />
+                    </svg>
+                    Détection Arrière
+                </div>
+                <div className="prox-arc-container">
+                    <svg width="90" height="55" viewBox="0 0 90 55">
+                        <!-- Background arc -->
+                        <path d="M 8 50 A 37 37 0 0 1 82 50" fill="none" stroke="rgba(255,255,255,0.06)"
+                            strokeWidth="6" strokeLinecap="round" />
+                        <!-- Active arc -->
+                        <path id="proxArc" d="M 8 50 A 37 37 0 0 1 82 50" fill="none" stroke="#34c759" strokeWidth="6"
+                            strokeLinecap="round" strokeDasharray="117" strokeDashoffset="0"
+                            style={{transition: 'all 0.4s ease'}} />
+                    </svg>
+                    <div className="prox-value-overlay">
+                        <div className="prox-distance" id="proxDistanceDisplay">--</div>
+                        <div className="prox-unit" id="proxUnit">cm</div>
+                    </div>
+                </div>
+                <div className="prox-zone-label clear" id="proxZoneLabel">DÉGAGÉ</div>
+            </div>
+        </div>
+
+
+        <!-- NEW: Map Section at bottom -->
+        <div className="map-section">
+            <div id="map"></div>
+            <div className="geofence-controls">
+                <button className="geofence-btn" id="btnGeofence" onClick="toggleGeofenceMode()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    Définir Zone
+                </button>
+                <div id="geofenceStatus" className="geofence-status">Cliquer sur la carte...</div>
+                <div className="geofence-mode-selector">
+                    <button className="mode-btn active" id="btnModeCircle" onClick="setGeofenceMode('circle')">
+                        ⭕ Cercle
+                    </button>
+                    <button className="mode-btn" id="btnModePolygon" onClick="setGeofenceMode('polygon')">
+                        ⬢ Zone Libre
+                    </button>
+                </div>
+                <button className="geofence-btn" id="btnGeofence" onClick="toggleGeofenceMode()">
+                    📍 Définir Point/Zone
+                </button>
+                <div className="radius-controls" id="circleControls">
+                    <button className="radius-btn" onClick="updateGeofenceRadius(-10)">-</button>
+                    <div className="radius-value" id="radiusValue">100m</div>
+                    <button className="radius-btn" onClick="updateGeofenceRadius(10)">+</button>
+                </div>
+                <button className="geofence-btn" id="btnSaveZone" onClick="saveGeofenceToBackend()"
+                    style={{background: 'var(--success)', borderColor: 'var(--success)', color: 'white'}}>
+                    💾 Sauvegarder
+                </button>
+                <button className="geofence-btn" id="btnClearZone" onClick="clearGeofence()"
+                    style={{background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)'}}>
+                    🗑️ Effacer
+                </button>
+                <button className="geofence-btn" id="btnStopAlarm" onClick="triggerTruckAlarm('off')"
+                    style={{display: 'none', background: '#ff3b30', color: 'white'}}>
+                    🛑 Arrêter Alarme
+                </button>
+            </div>
+            <div className="map-overlay">
+                <div style={{marginBottom: '8px', borderBottom: '1px solid var(--glass-border)', paddingBottom: '5px'}}>
+                    📡 GPS: <span id="gpsStatus">RECHERCHE...</span> | 🛰️ <span id="gpsSats">0</span>
+                </div>
+                <div
+                    style={{fontFamily: '\'Orbitron\', monospace', fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '4px'}}>
+                    <div>LAT: <span id="latDisplay" style={{color: 'var(--accent-blue)'}}>--.------</span></div>
+                    <div>LON: <span id="lonDisplay" style={{color: 'var(--accent-blue)'}}>--.------</span></div>
+                </div>
+                <a id="gmapsLink" href="#" target="_blank"
+                    style={{display: 'none', marginTop: '8px', color: 'var(--accent-success)', textDecoration: 'none', fontSize: '0.75rem', fontWeight: 'bold', alignItems: 'center', gap: '5px'}}>
+                    📍 VOIR SUR GOOGLE MAPS →
+                </a>
+            </div>
+        </div>
+
+        <!-- Speed Display -->
+        <div className="speed-display">
+            <div className="speed-box">
+                <span className="speed-value" id="speedValue">0</span>
+            </div>
+            <span className="speed-unit">km/h</span>
+        </div>
+
+        <!-- Fuel Reserve Indicator (Bottom Gap) -->
+        <div className="fuel-reserve-indicator" id="fuelReserveIndicator" style={{display: 'none'}}>
+            <svg className="reserve-icon" viewBox="0 0 24 24" fill="none" stroke="#ffa500" strokeWidth="2">
+                <path d="M3 8h16v13H3z" />
+                <path d="M19 11h3v7h-3" />
+                <path d="M7 11v9M12 11v9" />
+            </svg>
+            <span className="reserve-text">RÉSERVE</span>
+        </div>
+
+        <!-- Oil Pressure Warning (Critical) -->
+        <div className="oil-warning-indicator" id="oilWarningIndicator" style={{display: 'none'}}>
+            <svg className="reserve-icon" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                <path d="M18 12c.5 1 1 2.5 1 3.5 0 2-1.5 3.5-3.5 3.5H9c-2 0-3.5-1.5-3.5-3.5 0-1 .5-2.5 1-3.5" />
+                <path d="M8 12l2.5-3.5L12 10l1.5-3.5L16 12" />
+                <path d="M14 6h2a2 2 0 0 1 2 2v2" />
+                <path d="M4 14h2" />
+            </svg>
+            <span className="reserve-text" style={{color: '#ff3b30'}}>HUILE BASSE</span>
+        </div>
+
+
+
+        <!-- Alerts Container -->
+        <div id="notificationContainer" className="notification-container"></div>
+
+        <!-- Technician Debug Section (Visible for Calibration) -->
+        <div className="glass-panel"
+            style={{margin: '20px auto', border: '1px solid var(--accent-blue)', width: '90%', maxWidth: '1200px'}}>
+            <div className="panel-header"
+                style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', background: 'rgba(0, 212, 255, 0.1)'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <span style={{fontFamily: '\'Orbitron\', sans-serif', color: 'var(--accent-blue)'}}>🔧 CALIBRATION
+                    </span>
+                </div>
+            </div>
+            <div id="techDebugPanel" style={{padding: '20px'}}>
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
+                    <!-- FUEL CALIBRATION -->
+                    <div
+                        style={{background: 'rgba(0,0,0,0.4)', padding: '15px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)'}}>
+                        <div
+                            style={{color: 'var(--accent-blue)', fontWeight: 'bold', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '5px'}}>
+                            ⛽ Jauge Carburant (Résistive)
+                        </div>
+
+                        <div
+                            style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
+                            <span style={{color: '#86868b', fontSize: '0.9rem'}}>Résistance Actuelle:</span>
+                            <span id="currentFuelRes"
+                                style={{fontFamily: '\'Orbitron\'', fontSize: '1.2rem', color: '#fff'}}>-- Ω</span>
+                        </div>
+
+                        <div style={{marginBottom: '15px'}}>
+                            <label style={{fontSize: '0.8rem', color: '#86868b', display: 'block', marginBottom: '5px'}}>Type de
+                                Jauge (Presets)</label>
+                            <select id="calibFuelPreset" aria-label="Type de jauge carburant"
+                                onchange="applyFuelPreset(this.value)"
+                                style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #555', color: 'white', padding: '8px', borderRadius: '6px', fontFamily: '\'Orbitron\'', fontSize: '0.8rem'}}>
+                                <option value="gti_orig">Jauge GTI d'origine (12-166Ω)</option>
+                                <option value="isuzu_240_33">Isuzu Standard (240-33Ω)</option>
+                                <option value="vdo_10_180">VDO Standard (10-180Ω)</option>
+                                <option value="custom">-- Manuel / Personnalisé --</option>
+                            </select>
+                        </div>
+
+                        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px'}}>
+                            <div
+                                style={{padding: '10px', background: 'rgba(255,59,48,0.05)', borderRadius: '8px', border: '1px solid rgba(255,59,48,0.1)'}}>
+                                <label
+                                    style={{fontSize: '0.8rem', color: '#ff3b30', display: 'block', marginBottom: '5px'}}>Vide
+                                    (0%)</label>
+                                <div style={{display: 'flex', gap: '5px'}}>
+                                    <input type="number" id="calibFuelEmpty" title="Résistance réservoir vide"
+                                        value="12"
+                                        style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                                    <button onClick="captureFuelEmpty()" title="Capter résistance actuelle"
+                                        style={{background: '#333', border: '1px solid #555', color: 'white', cursor: 'pointer', borderRadius: '4px', padding: '0 8px'}}>⬇️</button>
+                                </div>
+                            </div>
+                            <div
+                                style={{padding: '10px', background: 'rgba(52,199,89,0.05)', borderRadius: '8px', border: '1px solid rgba(52,199,89,0.1)'}}>
+                                <label
+                                    style={{fontSize: '0.8rem', color: '#34c759', display: 'block', marginBottom: '5px'}}>Plein
+                                    (100%)</label>
+                                <div style={{display: 'flex', gap: '5px'}}>
+                                    <input type="number" id="calibFuelFull" title="Résistance réservoir plein"
+                                        value="166"
+                                        style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                                    <button onClick="captureFuelFull()" title="Capter résistance actuelle"
+                                        style={{background: '#333', border: '1px solid #555', color: 'white', cursor: 'pointer', borderRadius: '4px', padding: '0 8px'}}>⬇️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="calibFuelTank" style={{fontSize: '0.8rem', color: '#86868b'}}>Capacité Réservoir
+                                (L)</label>
+                            <input type="number" id="calibFuelTank" title="Capacité totale du réservoir en litres"
+                                value="60"
+                                style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                        </div>
+                    </div>
+
+                    <!-- TEMP CALIBRATION -->
+                    <div
+                        style={{background: 'rgba(0,0,0,0.4)', padding: '15px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)'}}>
+                        <div
+                            style={{color: '#ff3b30', fontWeight: 'bold', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <span>🌡️ Sonde Température (NTC)</span>
+                        </div>
+
+                        <div
+                            style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
+                            <span style={{color: '#86868b', fontSize: '0.9rem'}}>Résistance Actuelle:</span>
+                            <span id="currentTempRes"
+                                style={{fontFamily: '\'Orbitron\'', fontSize: '1.2rem', color: '#fff'}}>-- Ω</span>
+                        </div>
+
+                        <!-- Simplified Mode (Default) -->
+                        <div id="tempCalibSimple">
+                            <label style={{fontSize: '0.8rem', color: '#86868b', display: 'block', marginBottom: '5px'}}>Type de
+                                Sonde (Presets)</label>
+                            <select id="calibTempPreset" aria-label="Type de sonde température"
+                                onchange="applyTempPreset(this.value)"
+                                style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #555', color: 'white', padding: '8px', borderRadius: '6px', marginBottom: '15px', fontFamily: '\'Orbitron\'', fontSize: '0.8rem'}}>
+                                <option value="gti_orig">Sonde Originale GTI (3.0k)</option>
+                                <option value="isuzu_c240">Sonde Isuzu C240</option>
+                                <option value="ntc_10k">Capteur Standard 10K</option>
+                                <option value="custom">-- Manuel / Personnalisé --</option>
+                            </select>
+
+                            <div
+                                style={{padding: '10px', background: 'rgba(0,212,255,0.05)', borderRadius: '8px', border: '1px solid rgba(0,212,255,0.1)'}}>
+                                <label
+                                    style={{fontSize: '0.8rem', color: 'var(--accent-blue)', display: 'block', marginBottom: '5px'}}>📍
+                                    Calibration Facile</label>
+                                <div style={{display: 'flex', gap: '10px', alignItems: 'flex-end'}}>
+                                    <div style={{flex: '1'}}>
+                                        <span style={{fontSize: '0.7rem', color: '#86868b'}}>Temp. Réelle (°C)</span>
+                                        <input type="number" id="calibRealTemp" placeholder="Ex: 85"
+                                            style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '8px', borderRadius: '4px'}} />
+                                    </div>
+                                    <button onClick="calculateAutoOffset()"
+                                        style={{background: '#333', color: 'white', border: '1px solid #666', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem'}}>
+                                        Calculer Offset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Toggle -->
+                        <div style={{marginTop: '15px', textAlign: 'right'}}>
+                            <button onClick="toggleAdvancedTempCalib()"
+                                style={{background: 'none', border: 'none', color: '#86868b', fontSize: '0.7rem', textDecoration: 'underline', cursor: 'pointer'}}>
+                                ⚙️ Paramètres Avancés (Beta/R0)
+                            </button>
+                        </div>
+
+                        <!-- Advanced Mode (Hidden by Default) -->
+                        <div id="tempCalibAdvanced"
+                            style={{display: 'none', marginTop: '10px', paddingTop: '10px', borderTop: '1px dashed rgba(255,255,255,0.1)'}}>
+                            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px'}}>
+                                <div>
+                                    <label htmlFor="calibTempBeta" style={{fontSize: '0.8rem', color: '#86868b'}}>Beta
+                                        (β)</label>
+                                    <input type="number" id="calibTempBeta" value="3950"
+                                        style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                                </div>
+                                <div>
+                                    <label htmlFor="calibTempR0" style={{fontSize: '0.8rem', color: '#86868b'}}>R0 (25°C)
+                                        Ω</label>
+                                    <input type="number" id="calibTempR0" value="3025"
+                                        style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{marginTop: '10px'}}>
+                            <label htmlFor="calibTempOffset" style={{fontSize: '0.8rem', color: '#86868b'}}>Offset Stocké
+                                (°C)</label>
+                            <input type="number" step="0.1" id="calibTempOffset" value="0.0"
+                                style={{width: '100%', background: 'rgba(255,255,255,0.1)', border: '1px solid #444', color: 'white', padding: '5px', borderRadius: '4px'}} />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSTRUCTION GUIDE -->
+                <div
+                    style={{marginTop: '25px', background: 'rgba(0,212,255,0.03)', borderRadius: '12px', border: '1px solid rgba(0,212,255,0.1)', padding: '20px'}}>
+                    <h3
+                        style={{fontFamily: '\'Orbitron\'', fontSize: '0.9rem', color: 'var(--accent-blue)', marginTop: '0', display: 'flex', alignItems: 'center', gap: '8px'}}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            strokeWidth="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        GUIDE DE MAINTENANCE & SENSEURS
+                    </h3>
+                    <div
+                        style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', fontSize: '0.85rem', color: '#ccc', lineHeight: '1.5'}}>
+                        <div>
+                            <strong style={{color: '#fff', display: 'block', marginBottom: '5px'}}>🛠️ Comment changer un
+                                capteur ?</strong>
+                            1. Éteindre le moteur et attendre son refroidissement.<br />
+                            2. Débrancher le connecteur électrique du capteur.<br />
+                            3. Utiliser une clé plate (19 ou 22mm) pour dévisser la sonde.<br />
+                            4. Visser la nouvelle sonde et rebrancher le connecteur.<br />
+                            5. Sélectionner le type dans le menu "Presets" ci-dessus.
+                        </div>
+                        <div>
+                            <strong style={{color: '#fff', display: 'block', marginBottom: '5px'}}>🌡️ Comment bien calibrer
+                                ?</strong>
+                            1. Utilisez un **thermomètre laser haute précision**.<br />
+                            2. Visez le métal du bloc moteur juste à côté de la sonde.<br />
+                            3. Notez la valeur du laser et entrez-la dans "Temp. Réelle".<br />
+                            4. Cliquez sur "Calculer Offset" puis sur "Sauvegarder".
+                        </div>
+                    </div>
+                </div>
+
+                <button onClick="saveCalibration()"
+                    style={{width: '100%', marginTop: '20px', padding: '15px', background: 'var(--accent-blue)', color: '#000', fontWeight: 'bold', border: 'none', borderRadius: '8px', cursor: 'pointer', fontFamily: '\'Orbitron\'', fontSize: '1.1rem', transition: 'all 0.3s', boxShadow: '0 4px 15px rgba(0,212,255,0.3)'}}>
+                    💾 APPLIQUER LA CONFIGURATION
+                </button>
+            </div>
+        </div>
+        <div id="notificationContainer" className="notification-container"></div>
+
+        <!-- Notification History -->
+        <button className="history-btn" onClick="toggleHistory()">
+            <span>📜 Historique</span>
+        </button>
+
+        <div id="historyModal" className="history-modal">
+            <div className="history-header">
+                <h2 style={{fontFamily: '\'Orbitron\', sans-serif', fontSize: '1.2rem'}}>HISTORIQUE</h2>
+                <button className="close-history" onClick="toggleHistory()">&times;</button>
+            </div>
+            <div id="historyList" className="history-list">
+                <!-- Stored notifications will appear here -->
+            </div>
+        </div>
+
+        <!-- ===== 🤖 GEMINI AI ASSISTANT WIDGET ===== -->
+        <div id="aiAssistantBtn" title="Assistant IA Gemini" onClick="toggleAIPanel()" style={{position: 'fixed', bottom: '100px', right: '30px', width: '54px', height: '54px', borderRadius: '50%', background: 'linear-gradient(135deg,#00d4ff,#0055ff)', boxShadow: '0 0 20px rgba(0,212,255,0.5)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', zIndex: '9999', transition: 'transform 0.2s,box-shadow 0.2s', animation: 'aiPulse 3s infinite'}}>
+            🤖
+        </div>
+        <style>
+            @keyframes aiPulse {
+
+                0%,
+                100% {
+                    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+                }
+
+                50% {
+                    box-shadow: 0 0 35px rgba(0, 212, 255, 0.8);
+                }
+            }
+
+            #aiAssistantBtn:hover {
+                transform: scale(1.1);
+            }
+
+            #aiPanel {
+                position: fixed;
+                bottom: 90px;
+                right: 30px;
+                width: 360px;
+                height: 500px;
+                background: rgba(4, 10, 24, 0.97);
+                border: 1px solid rgba(0, 212, 255, 0.4);
+                border-radius: 20px;
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.25);
+                display: none;
+                flex-direction: column;
+                z-index: 9998;
+                overflow: hidden;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+
+            #aiPanel.open {
+                display: flex;
+            }
+
+            .ai-header {
+                padding: 14px 18px;
+                background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 85, 255, 0.15));
+                border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .ai-header-title {
+                font-family: 'Orbitron', sans-serif;
+                font-size: 0.8rem;
+                color: #80e5ff;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+            .ai-header-sub {
+                font-size: 0.62rem;
+                color: rgba(0, 212, 255, 0.7);
+            }
+
+            .ai-close {
+                margin-left: auto;
+                background: none;
+                border: none;
+                color: #00d4ff;
+                font-size: 1.3rem;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            .ai-messages {
+                flex: 1;
+                overflow-y: auto;
+                padding: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .ai-messages::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .ai-messages::-webkit-scrollbar-thumb {
+                background: rgba(0, 212, 255, 0.3);
+                border-radius: 2px;
+            }
+
+            .ai-msg {
+                padding: 10px 13px;
+                border-radius: 12px;
+                font-size: 0.82rem;
+                line-height: 1.5;
+                max-width: 88%;
+            }
+
+            .ai-msg.user {
+                background: rgba(0, 212, 255, 0.12);
+                border: 1px solid rgba(0, 212, 255, 0.2);
+                color: #e0f7ff;
+                align-self: flex-end;
+                border-radius: 12px 12px 4px 12px;
+            }
+
+            .ai-msg.bot {
+                background: rgba(0, 120, 255, 0.15);
+                border: 1px solid rgba(0, 150, 255, 0.25);
+                color: #bbf7d0;
+                align-self: flex-start;
+                border-radius: 12px 12px 12px 4px;
+            }
+
+            .ai-msg.loading {
+                color: rgba(0, 212, 255, 0.5);
+                font-style: italic;
+                background: none;
+                border: none;
+                padding: 2px 0;
+            }
+
+            .ai-input-row {
+                padding: 12px 14px;
+                border-top: 1px solid rgba(0, 212, 255, 0.2);
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+
+            #aiInput {
+                flex: 1;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(0, 212, 255, 0.3);
+                border-radius: 10px;
+                color: #f5f5f7;
+                padding: 8px 12px;
+                font-size: 0.82rem;
+                font-family: 'Inter', sans-serif;
+                outline: none;
+            }
+
+            #aiInput:focus {
+                border-color: rgba(0, 212, 255, 0.7);
+            }
+
+            #aiInput::placeholder {
+                color: rgba(255, 255, 255, 0.25);
+            }
+
+            #aiSendBtn {
+                background: linear-gradient(135deg, #00d4ff, #0055ff);
+                border: none;
+                border-radius: 10px;
+                padding: 8px 14px;
+                color: white;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: opacity 0.2s;
+            }
+
+            #aiSendBtn:hover {
+                opacity: 0.8;
+            }
+
+            #aiSendBtn:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            .ai-suggestion-chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                padding: 0 14px 10px;
+            }
+
+            .ai-chip {
+                background: rgba(0, 212, 255, 0.1);
+                border: 1px solid rgba(0, 212, 255, 0.25);
+                color: #93c5fd;
+                border-radius: 20px;
+                padding: 4px 10px;
+                font-size: 0.7rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                white-space: nowrap;
+            }
+
+            .ai-chip:hover {
+                background: rgba(0, 212, 255, 0.25);
+                border-color: #00d4ff;
+            }
+        </style>
+
+        <div id="aiPanel">
+            <div className="ai-header">
+                <span style={{fontSize: '1.4rem'}}>🤖</span>
+                <div>
+                    <div className="ai-header-title">ASSISTANT IA — GEMINI</div>
+                    <div className="ai-header-sub">Diagnostic chariot en temps réel</div>
+                </div>
+                <button className="ai-close" onClick="toggleAIPanel()">✕</button>
+            </div>
+            <div className="ai-messages" id="aiMessages">
+                <div className="ai-msg bot">
+                    👋 Bonjour ! Je suis votre assistant IA Gemini. Je peux analyser les données de votre chariot en
+                    temps réel. Que souhaitez-vous savoir ?
+                </div>
+            </div>
+            <div className="ai-suggestion-chips" id="aiChips">
+                <span className="ai-chip" onClick="askAI('Quel est l\'état général du chariot ?')">🔍 État général</span>
+                <span className="ai-chip" onClick="askAI('Y a-t-il des risques de panne ?')">⚠️ Risques</span>
+                <span className="ai-chip" onClick="askAI('Quand faire la prochaine maintenance ?')">🔧 Maintenance</span>
+                <span className="ai-chip" onClick="askAI('Analyse la température moteur')">🌡️ Température</span>
+                <span className="ai-chip" onClick="askAI('Analyse la pression d\'huile')">🛢️ Huile</span>
+            </div>
+            <div className="ai-input-row">
+                <input id="aiInput" placeholder="Posez une question sur le chariot..."
+                    onKeyDown="if(event.key==='Enter') sendAIMessage()" />
+                <button id="aiSendBtn" onClick="sendAIMessage()">➤</button>
+            </div>
+        </div>
+        
+
+        <!-- Oil Warning Indicator -->
+        <div className="oil-warning-indicator" id="oilWarningIndicator" style={{display: 'none'}}>
+            <svg className="reserve-icon" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" strokeWidth="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <path d="M6 1h12l-1 5h-10l-1-5z" />
+            </svg>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <span className="reserve-text" style={{color: '#ff3b30', fontSize: '1rem'}}>PRESSION HUILE</span>
+                <span className="reserve-text" style={{color: '#ff3b30', fontSize: '1.4rem'}}>BASSE</span>
+            </div>
+        </div>
+
+        <!-- Radar Warning Indicator -->
+        <div className="radar-warning-indicator" id="radarWarningIndicator"
+            style={{display: 'none', position: 'absolute', bottom: '280px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(52, 199, 89, 0.15)', padding: '15px 30px', borderRadius: '20px', border: '2px solid #34c759', WebkitBackdropFilter: 'blur(10px)', backdropFilter: 'blur(10px)', alignItems: 'center', gap: '15px', animation: 'reservePulse 1.5s ease-in-out infinite', zIndex: '100'}}>
+            <svg className="reserve-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                id="radarIconColor" style={{color: '#34c759'}}>
+                <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                <circle cx="12" cy="20" r="1" />
+            </svg>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <span className="reserve-text" id="radarTextColor" style={{color: '#34c759', fontSize: '1rem'}}>RADAR DE
+                    RECUL</span>
+                <span className="reserve-text" id="radarDistanceValue" style={{color: '#34c759', fontSize: '1.4rem'}}>--
+                    cm</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Toggles -->
+
+
+        <div className="panel-toggle" id="colorPanelToggle" onClick="toggleSettingsPanel('theme')">
+            <span className="toggle-label">Thème</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            </svg>
+        </div>
+
+        <!-- Settings Customization Panel -->
+        <div className="color-panel" id="colorPanel" style={{display: 'none'}}>
+            <div className="color-panel-header" style={{marginBottom: '20px'}}>
+                <span>⚙️ Paramètres</span>
+                <span style={{cursor: 'pointer', marginLeft: 'auto', padding: '5px'}}
+                    onClick="toggleSettingsPanel(null)">✕</span>
+            </div>
+
+            <!-- Theme Section -->
+            <div id="sectionTheme" style={{display: 'block'}}>
+                <div className="color-label" style={{marginBottom: '8px'}}>Ambiance (Golf 8 Style)</div>
+                <div className="theme-presets">
+                    <div className="theme-btn" onClick="setTheme('intellimettry')">IntelliMettry Rouge</div>
+                    <div className="theme-btn active" onClick="setTheme('blue')">R-Line Bleu</div>
+                    <div className="theme-btn" onClick="setTheme('green')">Eco Vert</div>
+                    <div className="theme-btn" onClick="setTheme('orange')">Lounge Orange</div>
+                </div>
+
+                <div className="color-picker-group">
+                    <div className="color-picker-row">
+                        <span className="color-label">Accent</span>
+                        <input type="color" className="color-input" id="accentColorPicker" value="#ff3b30"
+                            onchange="updateCustomColor('accent', this.value)" />
+                    </div>
+                    <div className="color-picker-row">
+                        <span className="color-label">Fond</span>
+                        <input type="color" className="color-input" id="bgColorPicker" value="#000000"
+                            onchange="updateCustomColor('bg', this.value)" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div className="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+        </div>
+
+        <!-- Charts Section -->
+        <div className="charts-section"
+            style={{marginTop: '100px', borderTop: '2px solid var(--glass-border)', paddingTop: '60px', marginBottom: '100px'}}>
+            <h2 style={{fontSize: '2rem', color: 'var(--accent-intellimettry)', marginBottom: '40px'}}>📊 Historique des
+                Données</h2>
+            <div className="charts-grid">
+                <div className="chart-card">
+                    <h3>🌡️ Température Moteur</h3>
+                    <canvas id="tempChart"></canvas>
+                </div>
+                <div className="chart-card">
+                    <h3>🛢️ Pression d'Huile</h3>
+                    <canvas id="oilChart"></canvas>
+                </div>
+                <div className="chart-card">
+                    <h3>⛽ Niveau Carburant</h3>
+                    <canvas id="fuelChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+
+    <!-- ===== SIDEBAR JAVASCRIPT ===== -->
+    
+    

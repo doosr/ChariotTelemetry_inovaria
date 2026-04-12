@@ -1,0 +1,384 @@
+{
+  "head": {
+    "editorVersion": "6.5.47",
+    "docType": "1",
+    "title": "Bracelet Securite - Inovaria",
+    "description": "Schema bracelet ESP32-S3-WROOM-1 + MAX30102 + MLX90614 + SH1106 OLED",
+    "schematicVersion": "1.0"
+  },
+  "project": {
+    "name": "Inovaria Safety Bracelet",
+    "version": "1.0",
+    "author": "Inovaria Tech",
+    "date": "2026-04-11"
+  },
+  "components": [
+    {
+      "ref": "U1",
+      "value": "ESP32-S3-WROOM-1",
+      "manufacturer": "Espressif Systems",
+      "mpn": "ESP32-S3-WROOM-1-N16R8",
+      "description": "ESP32-S3 WiFi+BLE 5.0 MCU Module, 16MB Flash, 8MB PSRAM, USB OTG intégré, 56 pins LCC",
+      "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "footprint": "ESP32-S3-WROOM-1:ESP32-S3-WROOM-1",
+      "lcsc": "C2913202",
+      "note_usb": "GPIO19=USB_D- / GPIO20=USB_D+ : programmation USB native SANS CP2102/CH340 !",
+      "note_espnow": "ESP-NOW compatible, WiFi 802.11 b/g/n 2.4GHz",
+      "pins": [
+        {"number": "1",  "name": "GND",    "type": "power_in"},
+        {"number": "2",  "name": "3V3",    "type": "power_in"},
+        {"number": "3",  "name": "EN",     "type": "input",        "function": "RESET actif bas"},
+        {"number": "4",  "name": "IO4",    "type": "bidirectional"},
+        {"number": "5",  "name": "IO5",    "type": "bidirectional"},
+        {"number": "6",  "name": "IO6",    "type": "bidirectional"},
+        {"number": "7",  "name": "IO7",    "type": "bidirectional"},
+        {"number": "8",  "name": "IO15",   "type": "bidirectional"},
+        {"number": "9",  "name": "IO16",   "type": "bidirectional"},
+        {"number": "10", "name": "IO17",   "type": "bidirectional"},
+        {"number": "11", "name": "IO18",   "type": "bidirectional"},
+        {"number": "12", "name": "IO8",    "type": "bidirectional"},
+        {"number": "13", "name": "IO19",   "type": "bidirectional", "function": "USB_D- (programmation native)"},
+        {"number": "14", "name": "IO20",   "type": "bidirectional", "function": "USB_D+ (programmation native)"},
+        {"number": "15", "name": "IO3",    "type": "bidirectional"},
+        {"number": "16", "name": "IO46",   "type": "input",        "function": "BOOT strap (LOW=download)"},
+        {"number": "17", "name": "IO9",    "type": "bidirectional"},
+        {"number": "18", "name": "IO10",   "type": "bidirectional"},
+        {"number": "19", "name": "IO11",   "type": "bidirectional"},
+        {"number": "20", "name": "IO12",   "type": "output",       "function": "VIBRATOR (via transistor NPN)"},
+        {"number": "21", "name": "IO13",   "type": "output",       "function": "BUZZER PWM"},
+        {"number": "22", "name": "IO14",   "type": "bidirectional"},
+        {"number": "23", "name": "IO2",    "type": "output",       "function": "LED indicateur (220Ω série)"},
+        {"number": "24", "name": "IO1",    "type": "bidirectional"},
+        {"number": "25", "name": "GND",    "type": "power_in"},
+        {"number": "26", "name": "IO0",    "type": "input",        "function": "BOOT (LOW=flash mode)"},
+        {"number": "27", "name": "IO45",   "type": "bidirectional"},
+        {"number": "28", "name": "IO48",   "type": "bidirectional"},
+        {"number": "29", "name": "IO47",   "type": "bidirectional"},
+        {"number": "30", "name": "IO21",   "type": "bidirectional", "function": "I2C_SDA (MAX30102 + MLX90614 + OLED)"},
+        {"number": "31", "name": "IO38",   "type": "bidirectional"},
+        {"number": "32", "name": "IO37",   "type": "bidirectional"},
+        {"number": "33", "name": "IO36",   "type": "bidirectional"},
+        {"number": "34", "name": "IO35",   "type": "bidirectional"},
+        {"number": "35", "name": "IO0",    "type": "input"},
+        {"number": "36", "name": "IO34",   "type": "bidirectional"},
+        {"number": "37", "name": "IO33",   "type": "bidirectional"},
+        {"number": "38", "name": "IO26",   "type": "bidirectional"},
+        {"number": "39", "name": "IO22",   "type": "bidirectional", "function": "I2C_SCL (MAX30102 + MLX90614 + OLED)"},
+        {"number": "40", "name": "TXD0",   "type": "output",       "function": "UART0 TX Debug"},
+        {"number": "41", "name": "RXD0",   "type": "input",        "function": "UART0 RX Debug"},
+        {"number": "42", "name": "GND",    "type": "power_in"},
+        {"number": "43", "name": "GND",    "type": "power_in"},
+        {"number": "44", "name": "GND",    "type": "power_in"}
+      ]
+    },
+    {
+      "ref": "U2",
+      "value": "MAX30102",
+      "manufacturer": "Analog Devices / Maxim",
+      "mpn": "MAX30102EFD+",
+      "description": "Heart-Rate and Pulse Oximeter Sensor, I2C, 0x57",
+      "datasheet": "https://datasheets.maximintegrated.com/en/ds/MAX30102.pdf",
+      "footprint": "OLGA-14",
+      "lcsc": "C82841",
+      "i2c_address": "0x57",
+      "pins": [
+        {"number": "1",  "name": "VDD",    "type": "power_in"},
+        {"number": "2",  "name": "GND",    "type": "power_in"},
+        {"number": "3",  "name": "SCL",    "type": "input"},
+        {"number": "4",  "name": "SDA",    "type": "bidirectional"},
+        {"number": "5",  "name": "INT",    "type": "output_od"},
+        {"number": "6",  "name": "VDD_LED","type": "power_in"},
+        {"number": "7",  "name": "GND",    "type": "power_in"}
+      ]
+    },
+    {
+      "ref": "U3",
+      "value": "MLX90614ESF-BAA",
+      "manufacturer": "Melexis",
+      "mpn": "MLX90614ESF-BAA-000-TU",
+      "description": "Infrared Thermometer Sensor, I2C, 0x5A, TO-39",
+      "datasheet": "https://www.melexis.com/en/documents/documentation/datasheets/datasheet-mlx90614",
+      "footprint": "TO-39-4",
+      "lcsc": "C115492",
+      "i2c_address": "0x5A",
+      "pins": [
+        {"number": "1", "name": "SCL",  "type": "input"},
+        {"number": "2", "name": "SDA",  "type": "bidirectional"},
+        {"number": "3", "name": "VDD",  "type": "power_in"},
+        {"number": "4", "name": "GND",  "type": "power_in"}
+      ]
+    },
+    {
+      "ref": "U4",
+      "value": "SH1106 OLED 1.3in",
+      "manufacturer": "Generic",
+      "mpn": "SH1106-128x64-I2C",
+      "description": "1.3 inch 128x64 OLED display, I2C, SH1106 driver, 0x3C",
+      "datasheet": "https://www.displayfuture.com/Display/datasheet/controller/SH1106.pdf",
+      "footprint": "OLED-4PIN-I2C",
+      "i2c_address": "0x3C",
+      "pins": [
+        {"number": "1", "name": "GND", "type": "power_in"},
+        {"number": "2", "name": "VCC", "type": "power_in"},
+        {"number": "3", "name": "SCL", "type": "input"},
+        {"number": "4", "name": "SDA", "type": "bidirectional"}
+      ]
+    },
+    {
+      "ref": "Q1",
+      "value": "2N2222A",
+      "manufacturer": "ON Semiconductor",
+      "mpn": "2N2222A",
+      "description": "NPN BJT Transistor, 600mA, 40V, TO-92",
+      "footprint": "TO-92",
+      "lcsc": "C5330",
+      "pins": [
+        {"number": "1", "name": "EMITTER",   "type": "passive"},
+        {"number": "2", "name": "BASE",      "type": "input"},
+        {"number": "3", "name": "COLLECTOR", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "D1",
+      "value": "1N4007",
+      "manufacturer": "ON Semiconductor",
+      "mpn": "1N4007",
+      "description": "Rectifier Diode, 1A, 1000V, DO-41 — Protection moteur vibrant",
+      "footprint": "DO-41",
+      "lcsc": "C727110",
+      "pins": [
+        {"number": "A", "name": "ANODE",   "type": "passive"},
+        {"number": "K", "name": "CATHODE", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "BZ1",
+      "value": "Buzzer Passif 5V",
+      "manufacturer": "Generic",
+      "mpn": "MLT-8530",
+      "description": "Passive Piezo Buzzer, 3-5V, 85dB",
+      "footprint": "Buzzer_TH",
+      "lcsc": "C96093",
+      "pins": [
+        {"number": "+", "name": "VCC", "type": "passive"},
+        {"number": "-", "name": "GND", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "M1",
+      "value": "Vibration Motor",
+      "manufacturer": "Generic",
+      "mpn": "720-VIBRATION-MOTOR",
+      "description": "Coin Vibration Motor, 3V, 85mA max",
+      "footprint": "VibrationMotor_2pin",
+      "pins": [
+        {"number": "+", "name": "VCC", "type": "passive"},
+        {"number": "-", "name": "GND", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "LED1",
+      "value": "LED Rouge 3mm",
+      "manufacturer": "Generic",
+      "mpn": "LED-3MM-RED",
+      "description": "LED Rouge 3mm, 2V, 20mA",
+      "footprint": "LED_D3.0mm",
+      "lcsc": "C84256",
+      "pins": [
+        {"number": "A", "name": "ANODE",   "type": "passive"},
+        {"number": "K", "name": "CATHODE", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "U5",
+      "value": "AMS1117-3.3",
+      "manufacturer": "AMS",
+      "mpn": "AMS1117-3.3",
+      "description": "LDO Voltage Regulator, 3.3V, 1A, SOT-223",
+      "footprint": "SOT-223",
+      "lcsc": "C6186",
+      "pins": [
+        {"number": "1", "name": "GND",    "type": "power_in"},
+        {"number": "2", "name": "OUTPUT", "type": "power_out"},
+        {"number": "3", "name": "INPUT",  "type": "power_in"}
+      ]
+    },
+    {
+      "ref": "R1",  "value": "220",   "type": "resistor", "description": "LED Series Resistor 220 Ohm 1/4W", "footprint": "R_0805", "lcsc": "C17557",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R2",  "value": "1k",    "type": "resistor", "description": "Transistor Base Resistor 1k Ohm 1/4W", "footprint": "R_0805", "lcsc": "C17513",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R3",  "value": "4.7k",  "type": "resistor", "description": "I2C Pull-up SDA 4.7k Ohm", "footprint": "R_0805", "lcsc": "C23162",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R4",  "value": "4.7k",  "type": "resistor", "description": "I2C Pull-up SCL 4.7k Ohm", "footprint": "R_0805", "lcsc": "C23162",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R5",  "value": "10k",   "type": "resistor", "description": "Pull-up EN (RST) 10k", "footprint": "R_0805", "lcsc": "C17414",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R6",  "value": "10k",   "type": "resistor", "description": "Pull-up IO0 (BOOT) 10k", "footprint": "R_0805", "lcsc": "C17414",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "C1", "value": "10u",  "type": "capacitor", "description": "Decoupling Cap ESP32 10uF 6.3V", "footprint": "C_0805", "lcsc": "C19702",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C2", "value": "100n", "type": "capacitor", "description": "Decoupling Cap ESP32 100nF", "footprint": "C_0805", "lcsc": "C49678",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "SW1", "value": "BOOT", "type": "switch", "description": "Tactile Switch BOOT IO0", "footprint": "SW_Push_6x6",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "SW2", "value": "RESET", "type": "switch", "description": "Tactile Switch RESET EN", "footprint": "SW_Push_6x6",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    }
+  ],
+  "nets": [
+    {
+      "name": "+3V3",
+      "nodes": [
+        {"ref": "U5",   "pin": "2",   "comment": "AMS1117 Output"},
+        {"ref": "U1",   "pin": "2",   "comment": "ESP32 3V3"},
+        {"ref": "U2",   "pin": "1",   "comment": "MAX30102 VDD"},
+        {"ref": "U2",   "pin": "6",   "comment": "MAX30102 VDD_LED"},
+        {"ref": "U3",   "pin": "3",   "comment": "MLX90614 VDD"},
+        {"ref": "U4",   "pin": "2",   "comment": "OLED VCC"},
+        {"ref": "R3",   "pin": "1",   "comment": "I2C SDA pull-up"},
+        {"ref": "R4",   "pin": "1",   "comment": "I2C SCL pull-up"},
+        {"ref": "R5",   "pin": "1",   "comment": "EN pull-up"},
+        {"ref": "R6",   "pin": "1",   "comment": "IO0 pull-up"},
+        {"ref": "C1",   "pin": "+",   "comment": "Decoupling"},
+        {"ref": "C2",   "pin": "+",   "comment": "Decoupling"}
+      ]
+    },
+    {
+      "name": "GND",
+      "nodes": [
+        {"ref": "U1",   "pin": "1"},
+        {"ref": "U1",   "pin": "15"},
+        {"ref": "U1",   "pin": "38"},
+        {"ref": "U2",   "pin": "2"},
+        {"ref": "U2",   "pin": "7"},
+        {"ref": "U3",   "pin": "4"},
+        {"ref": "U4",   "pin": "1"},
+        {"ref": "U5",   "pin": "1"},
+        {"ref": "Q1",   "pin": "1"},
+        {"ref": "LED1", "pin": "K"},
+        {"ref": "BZ1",  "pin": "-"},
+        {"ref": "SW1",  "pin": "2"},
+        {"ref": "SW2",  "pin": "2"},
+        {"ref": "C1",   "pin": "-"},
+        {"ref": "C2",   "pin": "-"}
+      ]
+    },
+    {
+      "name": "I2C_SDA",
+      "nodes": [
+        {"ref": "U1",  "pin": "11",  "comment": "ESP32 IO21"},
+        {"ref": "U2",  "pin": "4",   "comment": "MAX30102 SDA"},
+        {"ref": "U3",  "pin": "2",   "comment": "MLX90614 SDA"},
+        {"ref": "U4",  "pin": "4",   "comment": "OLED SDA"},
+        {"ref": "R3",  "pin": "2",   "comment": "Pull-up 4.7k → 3V3"}
+      ]
+    },
+    {
+      "name": "I2C_SCL",
+      "nodes": [
+        {"ref": "U1",  "pin": "36",  "comment": "ESP32 IO22"},
+        {"ref": "U2",  "pin": "3",   "comment": "MAX30102 SCL"},
+        {"ref": "U3",  "pin": "1",   "comment": "MLX90614 SCL"},
+        {"ref": "U4",  "pin": "3",   "comment": "OLED SCL"},
+        {"ref": "R4",  "pin": "2",   "comment": "Pull-up 4.7k → 3V3"}
+      ]
+    },
+    {
+      "name": "GPIO_BUZZER",
+      "nodes": [
+        {"ref": "U1",  "pin": "16",  "comment": "ESP32 IO13"},
+        {"ref": "BZ1", "pin": "+",   "comment": "Buzzer positive"}
+      ]
+    },
+    {
+      "name": "GPIO_VIB_CTRL",
+      "nodes": [
+        {"ref": "U1",  "pin": "14",  "comment": "ESP32 IO12"},
+        {"ref": "R2",  "pin": "1",   "comment": "Series resistor to Base"}
+      ]
+    },
+    {
+      "name": "Q1_BASE_NODE",
+      "nodes": [
+        {"ref": "R2",  "pin": "2",   "comment": "To Q1 Base"},
+        {"ref": "Q1",  "pin": "2",   "comment": "2N2222 Base"}
+      ]
+    },
+    {
+      "name": "VIB_MOTOR_NET",
+      "nodes": [
+        {"ref": "Q1",  "pin": "3",   "comment": "Collector → Motor"},
+        {"ref": "M1",  "pin": "-",   "comment": "Motor negative"},
+        {"ref": "D1",  "pin": "A",   "comment": "Flyback diode Anode"}
+      ]
+    },
+    {
+      "name": "VIB_MOTOR_VCC",
+      "nodes": [
+        {"ref": "M1",  "pin": "+",   "comment": "Motor VCC (+3.3V ou +5V)"},
+        {"ref": "D1",  "pin": "K",   "comment": "Flyback diode Cathode (vers alim)"}
+      ]
+    },
+    {
+      "name": "LED_ANODE_NET",
+      "nodes": [
+        {"ref": "U1",   "pin": "24", "comment": "ESP32 IO2"},
+        {"ref": "R1",   "pin": "1",  "comment": "Series resistor"}
+      ]
+    },
+    {
+      "name": "LED_KATHODE_NET",
+      "nodes": [
+        {"ref": "R1",   "pin": "2",  "comment": "To LED Anode"},
+        {"ref": "LED1", "pin": "A",  "comment": "LED Anode"}
+      ]
+    },
+    {
+      "name": "EN_NET",
+      "nodes": [
+        {"ref": "U1",  "pin": "3",   "comment": "ESP32 EN"},
+        {"ref": "R5",  "pin": "2",   "comment": "Pull-up 10k"},
+        {"ref": "SW2", "pin": "1",   "comment": "RESET switch"}
+      ]
+    },
+    {
+      "name": "BOOT_NET",
+      "nodes": [
+        {"ref": "U1",  "pin": "25",  "comment": "ESP32 IO0"},
+        {"ref": "R6",  "pin": "2",   "comment": "Pull-up 10k"},
+        {"ref": "SW1", "pin": "1",   "comment": "BOOT switch"}
+      ]
+    }
+  ],
+  "power_notes": {
+    "VCC_IN": "5V via USB ou LiPo + booster",
+    "VCC_3V3": "AMS1117-3.3 (output: 3.3V / 1A max)",
+    "i2c_pullup_voltage": "3.3V",
+    "vibration_motor_voltage": "3.3V–5V (utiliser 3.3V directement)",
+    "warning": "Ne pas dépasser 12mA par GPIO ESP32"
+  },
+  "import_instructions": {
+    "flux_ai": "Ouvre Flux.ai > New Project > Import > choisir EasyEDA JSON. Si non supporté, importe via EasyEDA (oshwlab.com) puis exporte en KiCad, puis importe dans Flux.ai.",
+    "easyeda": "Va sur oshwlab.com/editor > File > Import > EasyEDA > colle ce fichier",
+    "lcsc_parts": "Les champs 'lcsc' contiennent les numéros de pièces LCSC/EasyEDA pour auto-résolution des composants"
+  }
+}

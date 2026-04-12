@@ -315,7 +315,9 @@ async function deleteForklift(deviceId, event) {
         alert(' ' + err.message);
     }
 }
-function viewDashboard(id) { window.location.href = `dashboard.html?id=${id}`; }
+// viewDashboard() est défini dans fleet.html (modal inline)
+// function viewDashboard(id) { window.location.href = `dashboard.html?id=${id}`; }
+
 // =============================================
 // === ADMINS (API Backend) ===
 // =============================================
@@ -424,101 +426,174 @@ async function displayPersonnel() {
     const wGrid = document.getElementById('workerGrid');
     const bGrid = document.getElementById('braceletGrid');
     wGrid.innerHTML = workers.map(w => {
-        const b = w.braceletId;
-        const hr = b ? (b.heartRate || '--') : '--';
-        const spo2 = b ? (b.spo2 || '--') : '--';
-        const temp = b ? (b.temperature || '--') : '--';
-        const batt = b ? (b.battery || '--') : '--';
-        const hrColor = (hr > 100 || hr < 50) ? 'var(--danger)' : 'var(--success)';
-        const tempColor = (temp > 37.5) ? 'var(--danger)' : (temp > 37.0) ? 'var(--warning)' : 'var(--success)';
-        const isOnline = b && (Date.now() - new Date(b.lastSeen).getTime() < 60000); // Robust online check
+        const b    = w.braceletId;
+        const hr   = b ? (b.heartRate   > 0 ? b.heartRate   : '--') : '--';
+        const spo2 = b ? (b.spo2        > 0 ? b.spo2        : '--') : '--';
+        const temp = b ? (b.temperature > 0 ? b.temperature : '--') : '--';
+        const batt = b ? (b.battery || 0)                           : null;
+
+        const hrColor   = (typeof hr   === 'number' && (hr > 100 || hr < 50))  ? 'var(--danger)'  : '#10b981';
+        const spo2Color = (typeof spo2 === 'number' && spo2 < 94)              ? 'var(--danger)'  : '#8b5cf6';
+        const tempColor = (typeof temp === 'number' && temp > 38.0)            ? 'var(--danger)'  : '#f97316';
+        const isOnline  = b && (Date.now() - new Date(b.lastSeen).getTime() < 60000);
+
+        // Initiale du nom
+        const initiale = (w.name || '?').charAt(0).toUpperCase();
+
+        // Barre batterie colorée
+        const battColor = batt < 20 ? 'var(--danger)' : batt < 50 ? 'var(--warning)' : '#10b981';
+        const battBar   = batt !== null ? `
+            <div style="background:rgba(255,255,255,0.08); border-radius:999px; height:5px; margin-top:4px; overflow:hidden; width:70px; display:inline-block;">
+                <div style="width:${batt}%; height:100%; background:${battColor}; border-radius:999px; transition:width 0.5s;"></div>
+            </div>` : '';
 
         return `
-            <div class="forklift-card" style="cursor:default">
-                <div style="display:flex; justify-content:space-between">
-                    <div>
-                        <div class="forklift-name">${w.name}</div>
-                        <div class="forklift-model">${w.role} ${b ? `<span style="font-size:0.7rem; color:var(--text-dim); margin-left:10px">🔋${batt}%</span>` : ''}</div>
+            <div class="forklift-card" style="cursor:default; position:relative; overflow:hidden;">
+                <!-- Top glow line based on status -->
+                <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:${isOnline ? 'linear-gradient(90deg,#10b981,#34d399)' : 'linear-gradient(90deg,#ef4444,#f87171)'}; opacity:0.8;"></div>
+
+                <!-- Header -->
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; padding-top:4px;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <!-- Avatar -->
+                        <div style="width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#0066ff,#7f5af0); display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:800; color:white; flex-shrink:0;">
+                            ${initiale}
+                        </div>
+                        <div>
+                            <div class="forklift-name" style="font-size:1rem;">${w.name}</div>
+                            <div class="forklift-model" style="font-size:0.78rem; margin-top:1px;">${w.role}</div>
+                        </div>
                     </div>
-                    <button class="btn-delete" onclick="deleteWorker('${w._id}')">🗑️</button>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span class="brac-card-conn ${isOnline ? 'online' : 'offline'}">
+                            <span class="brac-card-conn-dot"></span>
+                            ${isOnline ? 'EN LIGNE' : 'HORS LIGNE'}
+                        </span>
+                        <button class="btn-delete" onclick="deleteWorker('${w._id}')" style="padding:4px 8px; font-size:0.85rem;">🗑️</button>
+                    </div>
                 </div>
-                
-                <div style="margin-top:1rem; padding:0.75rem; background:rgba(255,255,255,0.05); border-radius:12px; border:1px solid rgba(255,255,255,0.1); position:relative; overflow:hidden">
-                    <!-- Heartbeat Curve Simulation -->
-                    ${isOnline && hr > 40 ? `
-                        <div style="position:absolute; bottom:0; left:0; width:100%; height:30px; opacity:0.2; pointer-events:none">
-                            <svg viewBox="0 0 100 30" preserveAspectRatio="none" style="width:100%; height:100%">
-                                <path d="M0 15 L20 15 L25 5 L30 25 L35 15 L50 15 L55 5 L60 25 L65 15 L80 15 L85 5 L90 25 L95 15 L100 15" 
-                                      fill="none" stroke="var(--success)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" from="0,100" to="100,0" dur="${60/hr}s" repeatCount="indefinite" />
+
+                <!-- Batterie -->
+                ${b ? `
+                <div style="margin-top:10px; display:flex; align-items:center; gap:8px; font-size:0.72rem; color:rgba(255,255,255,0.45);">
+                    <span>🔋 ${batt}%</span>
+                    ${battBar}
+                    <span style="margin-left:auto; font-size:0.68rem; font-family:monospace; color:rgba(255,255,255,0.3);">${b.deviceId}</span>
+                </div>` : ''}
+
+                <!-- Vitaux -->
+                <div style="margin-top:10px; padding:12px; background:rgba(255,255,255,0.04); border-radius:12px; border:1px solid rgba(255,255,255,0.07); position:relative; overflow:hidden;">
+                    <!-- Heartbeat animation (only when online & has HR) -->
+                    ${isOnline && typeof hr === 'number' && hr > 40 ? `
+                        <div style="position:absolute; bottom:0; left:0; width:100%; height:28px; opacity:0.12; pointer-events:none;">
+                            <svg viewBox="0 0 100 28" preserveAspectRatio="none" style="width:100%; height:100%">
+                                <path d="M0 14 L18 14 L23 4 L28 24 L33 14 L50 14 L55 4 L60 24 L65 14 L82 14 L87 4 L92 24 L97 14 L100 14"
+                                      fill="none" stroke="#10b981" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" from="0,200" to="200,0" dur="${Math.max(0.4, 60/hr)}s" repeatCount="indefinite"/>
                                 </path>
                             </svg>
-                        </div>
-                    ` : ''}
+                        </div>` : ''}
 
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem">
-                        <span style="font-size:0.75rem; color:var(--text-dim)">SANTE LIVE</span>
-                        <span class="status-badge ${isOnline ? 'online' : 'offline'}" style="padding:2px 8px; font-size:0.6rem">
-                            <span class="status-dot"></span> ${isOnline ? 'LIVE' : 'HORS LIGNE'}
-                        </span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.35); letter-spacing:1px; text-transform:uppercase;">Santé Live</span>
+                        ${!b ? '<span style="font-size:0.72rem; color:var(--warning);">⚠ Aucun bracelet</span>' : ''}
                     </div>
-                    
+
                     ${b ? `
-                        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center">
-                            <div style="flex:1; min-width:80px">
-                                <div style="font-size:1.2rem; font-weight:700; color:${hrColor}">${hr} <span style="font-size:0.65rem">BPM</span></div>
-                                <div style="font-size:0.6rem; opacity:0.6">${b.deviceId}</div>
-                            </div>
-                            <div style="flex:1; min-width:60px; text-align:center">
-                                <div style="font-size:1.2rem; font-weight:700; color:var(--primary)">${spo2}%</div>
-                                <div style="font-size:0.6rem; opacity:0.6">SpO2</div>
-                            </div>
-                            <div style="flex:1; min-width:60px; text-align:right">
-                                <div style="font-size:1.2rem; font-weight:700; color:${tempColor}">${temp}°C</div>
-                                <div style="font-size:0.6rem; opacity:0.6">Temp</div>
-                            </div>
+                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; text-align:center;">
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:${hrColor}; line-height:1.1;">${hr}</div>
+                            <div style="font-size:0.6rem; opacity:0.5; margin-top:2px;">❤️ BPM</div>
                         </div>
-                    ` : `
-                        <div style="color:var(--warning); font-size:0.8rem; text-align:center; padding:5px">Aucun bracelet assigné</div>
-                    `}
+                        <div style="border-left:1px solid rgba(255,255,255,0.07); border-right:1px solid rgba(255,255,255,0.07);">
+                            <div style="font-size:1.4rem; font-weight:800; color:${spo2Color}; line-height:1.1;">${typeof spo2 === 'number' ? spo2 + '%' : spo2}</div>
+                            <div style="font-size:0.6rem; opacity:0.5; margin-top:2px;">🩸 SpO₂</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:${tempColor}; line-height:1.1;">${typeof temp === 'number' ? temp + '°C' : temp}</div>
+                            <div style="font-size:0.6rem; opacity:0.5; margin-top:2px;">🌡️ Temp</div>
+                        </div>
+                    </div>` : `
+                    <div style="text-align:center; padding:8px; color:rgba(255,255,255,0.25); font-size:0.82rem;">-- -- --</div>`}
                 </div>
 
-                <button class="btn-view" style="margin-top:1rem; font-size:0.8rem; padding:0.5rem; width:100%" onclick="openAssignModal('${w._id}')">
-                    ${b ? 'Changer Bracelet' : 'Attribuer Bracelet'}
-                </button>
+                <!-- Action Buttons -->
+                <div style="display:flex; gap:8px; margin-top:10px;">
+                    ${b ? `
+                    <button onclick="openWorkerDetail('${w.name.replace(/'/g,"\\'")}', '${w.role}', '${b.deviceId}')"
+                        style="flex:2; padding:0.55rem; border:none; border-radius:10px;
+                               background:linear-gradient(135deg,rgba(0,102,255,0.18),rgba(127,90,240,0.18));
+                               border:1px solid rgba(0,212,255,0.2); color:#00d4ff;
+                               font-weight:700; cursor:pointer; font-size:0.82rem; transition:all 0.2s;"
+                        onmouseover="this.style.background='linear-gradient(135deg,#0066ff,#7f5af0)'; this.style.color='white'; this.style.borderColor='transparent';"
+                        onmouseout="this.style.background='linear-gradient(135deg,rgba(0,102,255,0.18),rgba(127,90,240,0.18))'; this.style.color='#00d4ff'; this.style.borderColor='rgba(0,212,255,0.2)';">
+                        📊 Historique & Détails
+                    </button>` : ''}
+                    <button onclick="openAssignModal('${w._id}')"
+                        style="flex:1; padding:0.55rem; border:1px solid rgba(255,255,255,0.12); border-radius:10px;
+                               background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.6);
+                               font-weight:600; cursor:pointer; font-size:0.8rem; transition:all 0.2s;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='white';"
+                        onmouseout="this.style.background='rgba(255,255,255,0.04)'; this.style.color='rgba(255,255,255,0.6)';">
+                        ${b ? '🔄 Bracelet' : '⌚ Attribuer'}
+                    </button>
+                </div>
             </div>
         `;
-    }).join('') || '<p style="text-align:center; color:var(--text-dim)">Aucun travailleur</p>';
+    }).join('') || '<p style="text-align:center; color:var(--text-dim); padding:2rem;">Aucun travailleur</p>';
+
     bGrid.innerHTML = bracelets.map(b => {
-        const hr = b.heartRate || '--';
-        const spo2 = b.spo2 || '--';
-        const hrColor = (hr > 100 || hr < 50) ? 'var(--danger)' : 'var(--primary)';
-        
+        const hr   = b.heartRate   > 0 ? b.heartRate   : '--';
+        const spo2 = b.spo2        > 0 ? b.spo2        : '--';
+        const temp = b.temperature > 0 ? b.temperature : '--';
+        const hrColor   = (typeof hr   === 'number' && (hr > 100 || hr < 50))  ? 'var(--danger)' : 'var(--primary)';
+        const spo2Color = (typeof spo2 === 'number' && spo2 < 94)              ? 'var(--danger)' : '#8b5cf6';
+        const tempColor = (typeof temp === 'number' && temp > 38.0)            ? 'var(--danger)' : '#f97316';
+
+        // Statut connexion : online ET actif dans la dernière minute
+        const isOnline = b.status === 'online' && (Date.now() - new Date(b.lastSeen).getTime() < 60000);
+        const connClass = isOnline ? 'online' : 'offline';
+        const connLabel = isOnline ? '● EN LIGNE' : '● HORS LIGNE';
+
         return `
             <div class="forklift-card" style="cursor:default">
-                <div style="display:flex; justify-content:space-between">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start">
                     <div>
                         <div class="forklift-name">${b.deviceId}</div>
-                        <div class="forklift-model">Statut: ${b.status} | Batterie: ${b.battery}%</div>
+                        <div class="brac-card-conn ${connClass}">
+                            <span class="brac-card-conn-dot"></span>
+                            ${connLabel}
+                        </div>
+                        <div class="forklift-model" style="margin-top:4px">🔋 ${b.battery}% &nbsp;·&nbsp; Màj: ${getTimeAgo(b.lastSeen)}</div>
                     </div>
                     <button class="btn-delete" onclick="deleteBracelet('${b.deviceId}')">🗑️</button>
                 </div>
-                <div style="display:flex; gap:10px; margin-top:1rem; padding:0.5rem; background:rgba(255,255,255,0.05); border-radius:8px;">
-                    <div style="flex:1; text-align:center;">
-                        <div style="font-size:1.2rem; font-weight:700; color:${hrColor}">${hr} <span style="font-size:0.7rem">BPM</span></div>
-                        <div style="font-size:0.6rem; text-transform:uppercase; opacity:0.6">Fréquence</div>
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:1rem; padding:0.75rem; background:rgba(255,255,255,0.04); border-radius:12px; border:1px solid rgba(255,255,255,0.07)">
+                    <div style="text-align:center">
+                        <div style="font-size:1.3rem; font-weight:800; color:${hrColor}">${hr}${typeof hr === 'number' ? '' : ''}</div>
+                        <div style="font-size:0.62rem; opacity:0.55; margin-top:2px">❤️ BPM</div>
                     </div>
-                    <div style="flex:1; text-align:center; border-left:1px solid rgba(255,255,255,0.1)">
-                        <div style="font-size:1.2rem; font-weight:700; color:var(--primary)">${spo2}%</div>
-                        <div style="font-size:0.6rem; text-transform:uppercase; opacity:0.6">SpO2</div>
+                    <div style="text-align:center; border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08)">
+                        <div style="font-size:1.3rem; font-weight:800; color:${spo2Color}">${spo2}${typeof spo2 === 'number' ? '%' : ''}</div>
+                        <div style="font-size:0.62rem; opacity:0.55; margin-top:2px">🩸 SpO₂</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div style="font-size:1.3rem; font-weight:800; color:${tempColor}">${temp}${typeof temp === 'number' ? '°C' : ''}</div>
+                        <div style="font-size:0.62rem; opacity:0.55; margin-top:2px">🌡️ Temp</div>
                     </div>
                 </div>
-                <div style="font-size:0.65rem; color:var(--text-dim); margin-top:0.5rem; text-align:right">
-                    Maj: ${getTimeAgo(b.lastSeen)}
-                </div>
+                <button onclick="openBraceletDetail('${b.deviceId}')"
+                    style="width:100%; margin-top:0.75rem; padding:0.6rem; border:none; border-radius:10px;
+                           background:linear-gradient(135deg,#0066ff22,#7f5af022); border:1px solid rgba(0,212,255,0.2);
+                           color:#00d4ff; font-weight:700; cursor:pointer; font-size:0.88rem; transition:all 0.2s;"
+                    onmouseover="this.style.background='linear-gradient(135deg,#0066ff,#7f5af0)'; this.style.color='white';"
+                    onmouseout="this.style.background='linear-gradient(135deg,#0066ff22,#7f5af022)'; this.style.color='#00d4ff';">
+                    📊 Voir Historique & Détails
+                </button>
             </div>
         `;
     }).join('') || '<p style="text-align:center; color:var(--text-dim)">Aucun bracelet</p>';
+
 }
 function openAddWorkerModal() { document.getElementById('workerModal').classList.add('show'); }
 function closeWorkerModal() { document.getElementById('workerModal').classList.remove('show'); }

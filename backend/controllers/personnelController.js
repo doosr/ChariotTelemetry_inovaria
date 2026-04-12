@@ -1,5 +1,6 @@
 const Worker = require('../models/Worker');
 const Bracelet = require('../models/Bracelet');
+const BraceletHistory = require('../models/BraceletHistory');
 
 // --- WORKERS ---
 
@@ -39,8 +40,9 @@ exports.deleteWorker = async (req, res) => {
 exports.getBracelets = async (req, res) => {
     try {
         const { ownerId } = req.query;
-        if (!ownerId) return res.json([]);
-        const bracelets = await Bracelet.find({ ownerId }).sort({ addedDate: -1 });
+        // '__all__' permet au modal de détail de chercher n'importe quel bracelet
+        const filter = (!ownerId || ownerId === '__all__') ? {} : { ownerId };
+        const bracelets = await Bracelet.find(filter).sort({ addedDate: -1 });
         res.json(bracelets);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -112,8 +114,36 @@ exports.updateBraceletTelemetry = async (req, res) => {
 
         if (!bracelet) return res.status(404).json({ error: 'Bracelet not registered' });
 
+        // --- Sauvegarder dans l'historique pour les graphiques ---
+        const hasData = heartRate !== undefined || spo2 !== undefined || temperature !== undefined;
+        if (hasData) {
+            await BraceletHistory.create({
+                deviceId,
+                heartRate:   heartRate   !== undefined ? heartRate   : null,
+                spo2:        spo2        !== undefined ? spo2        : null,
+                temperature: temperature !== undefined ? temperature : null,
+            });
+        }
+
         res.json({ success: true, bracelet });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
+
+// Historique d'un bracelet (dernières N entrées) pour les graphiques
+exports.getBraceletHistory = async (req, res) => {
+    try {
+        const { deviceId } = req.params;
+        const limit = Math.min(parseInt(req.query.limit) || 50, 200);
+        const history = await BraceletHistory.find({ deviceId })
+            .sort({ timestamp: -1 })
+            .limit(limit)
+            .lean();
+        // Retourner dans l'ordre chronologique pour Chart.js
+        res.json(history.reverse());
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+

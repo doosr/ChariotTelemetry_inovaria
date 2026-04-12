@@ -327,15 +327,14 @@ void drawHeartRateScreen() {
     display.setTextSize(3);
     display.setCursor(5, 25);
     if (beatAvg < 30) {
-        display.setTextSize(2);
-        display.print("ANALYSE...");
+        display.print("--");
     } else {
         display.print(beatAvg);
     }
     
     display.setTextSize(1);
     display.setCursor(75, 40);
-    if (beatAvg >= 30) display.print("BPM");
+    display.print("BPM");
 
     // SpO2
     display.setCursor(100, 25);
@@ -493,24 +492,24 @@ void setup() {
     if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) {
         Serial.println("MAX30102 Fail");
     } else {
-        // NOISE REDUCTION : 100Hz / 411us / AVG 4
-        byte ledBrightness = 0xFF; // Power Max
-        byte sampleAverage = 4;    // Averaging 4 samples to reduce noise
+        // ULTRA SENSITIVITY FIX : 100Hz / 411us (Correct pair)
+        byte ledBrightness = 0xFF; // Full Power
+        byte sampleAverage = 1;    // No averaging
         byte ledMode = 2;          // Red + IR
-        int sampleRate = 100;      // 100Hz is the target for SparkFun library
-        int pulseWidth = 411; 
-        int adcRange = 16384; 
+        int sampleRate = 100;      // 100Hz is reliable
+        int pulseWidth = 411;      // 411us
+        int adcRange = 16384;      // Max range
         
         particleSensor.setup(ledBrightness, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
     }
 
-    // 1. Logo (128x64)
+    // 1. Logo (128x64) - Réduit à 1.5s
     display.clearDisplay();
     display.drawBitmap(0, 0, logo_bmp, 128, 64, SH110X_WHITE);
     display.display();
-    delay(3000);
+    delay(1500);
 
-    // 2. Brand Name
+    // 2. Brand Name - Réduit à 1s
     display.clearDisplay();
     display.setTextSize(2);
     display.setTextColor(SH110X_WHITE);
@@ -519,7 +518,7 @@ void setup() {
     display.setCursor(45, 40);
     display.print("TECH");
     display.display();
-    delay(2000);
+    delay(1000);
 
     pinMode(ALARM_VIBRATOR_PIN, OUTPUT);
     pinMode(ALARM_BUZZER_PIN, OUTPUT);
@@ -534,29 +533,50 @@ void setup() {
     WiFi.macAddress(macAddress);
     snprintf(braceletID, sizeof(braceletID), "BRAC_%02x%02x", macAddress[4], macAddress[5]);
 
+    // Connect to WiFi (lancement avant l'affichage)
+    WiFi.begin(ssid, password);
+
     // 3. WiFi Status (Displaying actual ID)
     display.clearDisplay();
     display.setTextSize(1);
     display.setTextColor(SH110X_WHITE);
-    display.setCursor(10, 15);
-    display.print("Initialisation...");
-    display.setCursor(10, 35);
+    display.setCursor(10, 10);
+    display.print("Connexion WiFi...");
+    display.setCursor(10, 28);
     display.print("ID: ");
-    display.print(braceletID); // Shows BRAC_455c format
-    display.setCursor(10, 50);
-    display.print("ETAT: CONNECTE");
+    display.print(braceletID);
     display.display();
 
     Serial.println("================================");
     Serial.print("BRACELET ID: ");
     Serial.println(braceletID);
     Serial.println("================================");
-    
-    // Connect to WiFi
-    WiFi.begin(ssid, password);
-    // Non-blocking wait (optional, here we proceed anyway)
-    
-    delay(2500);
+
+    // Attendre la connexion WiFi (max 5s)
+    unsigned long wifiStart = millis();
+    while (WiFi.status() != WL_CONNECTED && millis() - wifiStart < 5000) {
+        delay(250);
+        Serial.print(".");
+    }
+
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SH110X_WHITE);
+    display.setCursor(10, 10);
+    if (WiFi.status() == WL_CONNECTED) {
+        display.print("WiFi: OK");
+        Serial.println("\nWiFi connecte!");
+    } else {
+        display.print("WiFi: HORS LIGNE");
+        Serial.println("\nWiFi non connecte - mode offline");
+    }
+    display.setCursor(10, 28);
+    display.print("ID: ");
+    display.print(braceletID);
+    display.setCursor(10, 45);
+    display.print("Pret!");
+    display.display();
+    delay(1000);
 
     if (esp_now_init() == ESP_OK) {
         esp_now_register_recv_cb(OnDataRecv);
@@ -625,7 +645,8 @@ void loop() {
 
             int rotation = (millis() / 5000) % 3;
             long irValue = particleSensor.getIR();
-            bool fingerDetected = (irValue > 1000); // Super low threshold (1k)
+            // SEUIL CORRECT : sans doigt < 5000, avec doigt > 50000
+            bool fingerDetected = (irValue > 50000);
 
             if (fingerDetected) {
                 drawHeartRateScreen();
@@ -640,58 +661,83 @@ void loop() {
         // --- HEART RATE & SpO2 SENSING ---
         long irValue = particleSensor.getIR();
         long redValue = particleSensor.getRed();
-        bool fingerDetected = (irValue > 1000); // Super low threshold (1k)
+        // SEUIL CORRECT : sans doigt < 5000, avec doigt > 50000
+        bool fingerDetected = (irValue > 50000);
         
         yield(); // Let WiFi stack breathe
 
         if (!fingerDetected) {
+            // Reset quand le doigt est retiré
             beatAvg = 0;
             spo2Avg = 0;
-            if (millis() % 5000 < 50) { // Log less frequently
-                Serial.print("En attente... IR: ");
+            bpm = 0;
+            rateSpot = 0;
+            spo2Spot = 0;
+            memset(rates, 0, sizeof(rates));
+            memset(spo2Values, 0, sizeof(spo2Values));
+            if (millis() % 3000 < 50) { // Log toutes les 3s
+                Serial.print("En attente doigt... IR: ");
                 Serial.println(irValue);
             }
         } else {
+            // Doigt detecte - lecture battement
             if (checkForBeat(irValue) == true) {
                 long delta = millis() - lastBeat;
                 lastBeat = millis();
-                bpm = 60 / (delta / 1000.0);
                 
-                if (bpm < 255 && bpm > 40) {
-                    rates[rateSpot++] = (byte)bpm;
-                    rateSpot %= RATE_SIZE;
+                // Ignorer le premier battement (delta peut être incorrect)
+                if (delta > 0 && lastBeat != 0) {
+                    bpm = 60000.0 / (float)delta; // delta en ms
                     
-                    beatAvg = 0;
-                    for (byte x = 0 ; x < RATE_SIZE ; x++) beatAvg += rates[x];
-                    beatAvg /= RATE_SIZE;
+                    if (bpm < 220 && bpm > 30) { // Plage physiologique valide
+                        rates[rateSpot++] = (byte)bpm;
+                        rateSpot %= RATE_SIZE;
+                        
+                        // Moyenne uniquement des valeurs non-nulles
+                        int validCount = 0;
+                        long beatSum = 0;
+                        for (byte x = 0; x < RATE_SIZE; x++) {
+                            if (rates[x] > 0) { beatSum += rates[x]; validCount++; }
+                        }
+                        if (validCount > 0) beatAvg = beatSum / validCount;
 
-                    // Simple SpO2 Approximation
-                    float ratio = (float)redValue / (float)irValue;
-                    int currentSpo2 = 110 - 25 * ratio; 
-                    if (currentSpo2 > 100) currentSpo2 = 100;
-                    if (currentSpo2 < 50) currentSpo2 = 50;
+                        // SpO2 : ratio R = (AC_red/DC_red) / (AC_ir/DC_ir)
+                        // Approximation simple avec ratio red/IR
+                        if (irValue > 0) {
+                            float ratio = (float)redValue / (float)irValue;
+                            int currentSpo2 = (int)(110.0 - 25.0 * ratio);
+                            if (currentSpo2 > 100) currentSpo2 = 100;
+                            if (currentSpo2 < 85) currentSpo2 = 85; // Min physiologique
 
-                    spo2Values[spo2Spot++] = currentSpo2;
-                    spo2Spot %= SPO2_SIZE;
+                            spo2Values[spo2Spot++] = currentSpo2;
+                            spo2Spot %= SPO2_SIZE;
 
-                    spo2Avg = 0;
-                    for (byte x = 0 ; x < SPO2_SIZE ; x++) spo2Avg += spo2Values[x];
-                    spo2Avg /= SPO2_SIZE;
-                    
-                    Serial.print("BPM: "); Serial.print(beatAvg);
-                    Serial.print(" | SpO2: "); Serial.println(spo2Avg);
+                            int spo2ValidCount = 0;
+                            long spo2Sum = 0;
+                            for (byte x = 0; x < SPO2_SIZE; x++) {
+                                if (spo2Values[x] > 0) { spo2Sum += spo2Values[x]; spo2ValidCount++; }
+                            }
+                            if (spo2ValidCount > 0) spo2Avg = spo2Sum / spo2ValidCount;
+                        }
+                        
+                        Serial.print("BPM: "); Serial.print(beatAvg);
+                        Serial.print(" | SpO2: "); Serial.print(spo2Avg);
+                        Serial.print("% | IR: "); Serial.println(irValue);
+                    }
                 }
             }
         }
 
         // --- TELEMETRY ---
         if (millis() - lastTelemetryTime > TELEMETRY_INTERVAL) {
+            lastTelemetryTime = millis(); // Mettre à jour en premier pour éviter re-entrée
             float bodyTemp = mlx.readObjectTempC();
             if (WiFi.status() == WL_CONNECTED) {
                 HTTPClient http;
                 char fullUrl[128];
                 snprintf(fullUrl, sizeof(fullUrl), "%s/%s/telemetry", serverUrl, braceletID);
                 http.begin(fullUrl);
+                http.setTimeout(4000); // FIX: Timeout 4s pour éviter de bloquer le loop
                 http.addHeader("Content-Type", "application/json");
 
                 String json = "{";
@@ -703,11 +749,14 @@ void loop() {
                 json += "}";
 
                 int httpResponseCode = http.POST(json);
-                Serial.print("Telemetry Sent. Temp: "); Serial.print(bodyTemp);
-                Serial.print(" Result: "); Serial.println(httpResponseCode);
+                Serial.print("[TELEMETRY] BPM:"); Serial.print(beatAvg);
+                Serial.print(" SpO2:"); Serial.print(spo2Avg);
+                Serial.print("% Temp:"); Serial.print(bodyTemp, 1);
+                Serial.print("C Code:"); Serial.println(httpResponseCode);
                 http.end();
+            } else {
+                Serial.println("[TELEMETRY] WiFi non connecte - skip");
             }
-            lastTelemetryTime = millis();
         }
 
         // Ensure indicators are off if no alarm

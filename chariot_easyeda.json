@@ -1,0 +1,382 @@
+{
+  "head": {
+    "editorVersion": "6.5.47",
+    "docType": "1",
+    "title": "Chariot Camion - Inovaria",
+    "description": "Schema module chariot ESP32-S3-WROOM-1 + SIM808 (GSM/GPRS+GPS)",
+    "schematicVersion": "1.0"
+  },
+  "project": {
+    "name": "Inovaria - Module Chariot",
+    "version": "1.0",
+    "author": "Inovaria Tech",
+    "date": "2026-04-11"
+  },
+  "components": [
+    {
+      "ref": "U1",
+      "value": "ESP32-S3-WROOM-1",
+      "manufacturer": "Espressif Systems",
+      "mpn": "ESP32-S3-WROOM-1-N16R8",
+      "description": "ESP32-S3 WiFi+BLE 5.0, 16MB Flash, USB OTG natif GPIO19/20, ESP-NOW, 56 pins LCC",
+      "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "footprint": "ESP32-S3-WROOM-1:ESP32-S3-WROOM-1",
+      "lcsc": "C2913202",
+      "note_usb": "GPIO19=USB_D- / GPIO20=USB_D+ : programmation USB native — PAS besoin de CP2102 !",
+      "pins": [
+        {"number": "1",  "name": "GND",   "type": "power_in"},
+        {"number": "2",  "name": "3V3",   "type": "power_in"},
+        {"number": "3",  "name": "EN",    "type": "input",         "function": "RESET"},
+        {"number": "9",  "name": "IO16",  "type": "input",         "function": "UART2_RX — DEPUIS SIM808 GSM TXD"},
+        {"number": "10", "name": "IO17",  "type": "output",        "function": "UART2_TX — VERS SIM808 GSM RXD"},
+        {"number": "11", "name": "IO18",  "type": "input",         "function": "SIM808 STATUS"},
+        {"number": "13", "name": "IO19",  "type": "bidirectional", "function": "USB_D- programmation native"},
+        {"number": "14", "name": "IO20",  "type": "bidirectional", "function": "USB_D+ programmation native"},
+        {"number": "23", "name": "IO2",   "type": "output",        "function": "LED etat"},
+        {"number": "24", "name": "IO1",   "type": "output",        "function": "SIM808 RST"},
+        {"number": "25", "name": "GND",   "type": "power_in"},
+        {"number": "26", "name": "IO0",   "type": "input",         "function": "BOOT"},
+        {"number": "27", "name": "IO45",  "type": "output",        "function": "SIM808 PWR_KEY (via Q1 NPN)"},
+        {"number": "33", "name": "IO36",  "type": "input",         "function": "UART1_RX GPS — DEPUIS SIM808 GPS_TXD"},
+        {"number": "34", "name": "IO35",  "type": "output",        "function": "UART1_TX GPS — VERS SIM808 GPS_RXD"},
+        {"number": "40", "name": "TXD0",  "type": "output",        "function": "UART0 TX Debug"},
+        {"number": "41", "name": "RXD0",  "type": "input",         "function": "UART0 RX Debug"},
+        {"number": "42", "name": "GND",   "type": "power_in"},
+        {"number": "43", "name": "GND",   "type": "power_in"},
+        {"number": "44", "name": "GND",   "type": "power_in"}
+      ]
+    },
+    {
+      "ref": "U2",
+      "value": "SIM808",
+      "manufacturer": "SIMCom Wireless Solutions",
+      "mpn": "SIM808",
+      "description": "GSM/GPRS + GPS Module, Quad-Band, LCC package, UART interface",
+      "datasheet": "https://simcom.ee/documents/SIM808/SIM808_Hardware%20Design_V1.06.pdf",
+      "footprint": "SIM808:SIM808_LCC",
+      "lcsc": "C88402",
+      "power_voltage": "3.4V - 4.4V (Li-Ion direct, NOT 3.3V regulator)",
+      "peak_current": "2A during GPRS TX",
+      "pins": [
+        {"number": "1",  "name": "GND",      "type": "power_in"},
+        {"number": "2",  "name": "GND",      "type": "power_in"},
+        {"number": "3",  "name": "VCC",      "type": "power_in",  "note": "3.4V-4.4V Li-Ion direct"},
+        {"number": "4",  "name": "VCC",      "type": "power_in"},
+        {"number": "5",  "name": "VCC",      "type": "power_in"},
+        {"number": "6",  "name": "VCC",      "type": "power_in"},
+        {"number": "7",  "name": "GND",      "type": "power_in"},
+        {"number": "8",  "name": "GND",      "type": "power_in"},
+        {"number": "9",  "name": "PWR_KEY",  "type": "input",     "note": "Active LOW >1s to power ON"},
+        {"number": "10", "name": "RST",      "type": "input",     "note": "Active LOW reset"},
+        {"number": "11", "name": "STATUS",   "type": "output",    "note": "HIGH = powered on"},
+        {"number": "12", "name": "TXD",      "type": "output",    "function": "GSM UART TX → ESP32 RX2 (IO16)"},
+        {"number": "13", "name": "RXD",      "type": "input",     "function": "GSM UART RX ← ESP32 TX2 (IO17)"},
+        {"number": "14", "name": "GPS_TXD",  "type": "output",    "function": "GPS NMEA TX → ESP32 IO34"},
+        {"number": "15", "name": "GPS_RXD",  "type": "input",     "function": "GPS CMD RX ← ESP32 IO32"},
+        {"number": "16", "name": "ANT_GSM",  "type": "passive",   "note": "Connecteur IPEX antenne GSM"},
+        {"number": "17", "name": "ANT_GPS",  "type": "passive",   "note": "Connecteur IPEX antenne GPS active"},
+        {"number": "18", "name": "VRTC",     "type": "power_in",  "note": "3.3V via 100Ω optionnel"},
+        {"number": "19", "name": "RI",       "type": "output",    "note": "Ring Indicator (optionnel)"},
+        {"number": "20", "name": "DTR",      "type": "input",     "note": "Data Terminal Ready (optionnel)"}
+      ]
+    },
+    {
+      "ref": "U3",
+      "value": "AMS1117-3.3",
+      "manufacturer": "AMS",
+      "mpn": "AMS1117-3.3",
+      "description": "LDO 3.3V 1A SOT-223 — Pour alimenter ESP32 UNIQUEMENT",
+      "footprint": "SOT-223",
+      "lcsc": "C6186",
+      "warning": "Ne pas utiliser pour alimenter le SIM808",
+      "pins": [
+        {"number": "1", "name": "GND",    "type": "power_in"},
+        {"number": "2", "name": "OUTPUT", "type": "power_out", "voltage": "3.3V"},
+        {"number": "3", "name": "INPUT",  "type": "power_in",  "voltage": "5V"}
+      ]
+    },
+    {
+      "ref": "Q1",
+      "value": "2N2222A",
+      "manufacturer": "ON Semiconductor",
+      "mpn": "2N2222A",
+      "description": "NPN BJT TO-92 — Circuit PWR_KEY SIM808",
+      "footprint": "TO-92",
+      "lcsc": "C5330",
+      "pins": [
+        {"number": "1", "name": "EMITTER",   "type": "passive"},
+        {"number": "2", "name": "BASE",      "type": "input"},
+        {"number": "3", "name": "COLLECTOR", "type": "passive"}
+      ]
+    },
+    {
+      "ref": "TP1",
+      "value": "TP4056",
+      "manufacturer": "TOPCHIP",
+      "mpn": "TP4056",
+      "description": "Li-Ion Battery Charger Module, 1A, USB-C input, avec protection",
+      "footprint": "SOP-8",
+      "lcsc": "C16581",
+      "note": "Recharge batterie Li-Ion via USB. Connecter VBAT → SIM808 VCC direct",
+      "pins": [
+        {"number": "1", "name": "PROG",   "type": "passive",   "note": "RCC 1.2kΩ → 1A charge"},
+        {"number": "2", "name": "GND",    "type": "power_in"},
+        {"number": "3", "name": "VCC",    "type": "power_in",  "note": "5V USB"},
+        {"number": "4", "name": "BAT",    "type": "power_out", "note": "Vers batterie + SIM808"},
+        {"number": "5", "name": "CHRG",   "type": "output",    "note": "LED charge (LOW=charging)"},
+        {"number": "6", "name": "STDBY",  "type": "output",    "note": "LED standby (LOW=full)"}
+      ]
+    },
+    {
+      "ref": "R1",  "value": "1k",    "type": "resistor", "description": "Base Q1 (PWR_KEY circuit) 1k Ohm", "footprint": "R_0805", "lcsc": "C17513",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R2",  "value": "10k",   "type": "resistor", "description": "Pull-up PWR_KEY SIM808 10k", "footprint": "R_0805", "lcsc": "C17414",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R3",  "value": "10k",   "type": "resistor", "description": "Pull-up EN ESP32 10k", "footprint": "R_0805", "lcsc": "C17414",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R4",  "value": "10k",   "type": "resistor", "description": "Pull-up IO0 ESP32 10k", "footprint": "R_0805", "lcsc": "C17414",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "R5",  "value": "1.2k",  "type": "resistor", "description": "TP4056 PROG pin — règle courant charge = 1A", "footprint": "R_0805", "lcsc": "C17520",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "C1",  "value": "1000u/6.3V", "type": "capacitor", "description": "BULK cap SIM808 — OBLIGATOIRE pic 2A GPRS", "footprint": "CP_Radial_D8", "lcsc": "C16780",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C2",  "value": "100u/6.3V",  "type": "capacitor", "description": "Decoupling SIM808 100uF", "footprint": "CP_Radial_D6.3", "lcsc": "C45126",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C3",  "value": "100n", "type": "capacitor", "description": "Decoupling HF SIM808", "footprint": "C_0805", "lcsc": "C49678",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C4",  "value": "100n", "type": "capacitor", "description": "Decoupling HF SIM808 #2", "footprint": "C_0805", "lcsc": "C49678",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C5",  "value": "100n", "type": "capacitor", "description": "Decoupling HF SIM808 #3", "footprint": "C_0805", "lcsc": "C49678",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C6",  "value": "10u",  "type": "capacitor", "description": "Decoupling ESP32", "footprint": "C_0805", "lcsc": "C19702",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "C7",  "value": "100n", "type": "capacitor", "description": "Decoupling HF ESP32", "footprint": "C_0805", "lcsc": "C49678",
+      "pins": [{"number":"+","name":"P","type":"passive"},{"number":"-","name":"N","type":"passive"}]
+    },
+    {
+      "ref": "SW1", "value": "BOOT",  "type": "switch", "description": "Tactile Push BOOT IO0", "footprint": "SW_Push_6x6",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "SW2", "value": "RESET", "type": "switch", "description": "Tactile Push RESET EN", "footprint": "SW_Push_6x6",
+      "pins": [{"number":"1","name":"P1","type":"passive"},{"number":"2","name":"P2","type":"passive"}]
+    },
+    {
+      "ref": "J1",  "value": "IPEX-GSM",  "type": "connector", "description": "IPEX U.FL Connecteur Antenne GSM", "footprint": "IPEX_SMD",
+      "pins": [{"number":"1","name":"RF","type":"passive"},{"number":"2","name":"GND","type":"passive"}]
+    },
+    {
+      "ref": "J2",  "value": "IPEX-GPS",  "type": "connector", "description": "IPEX U.FL Connecteur Antenne GPS Active", "footprint": "IPEX_SMD",
+      "pins": [{"number":"1","name":"RF","type":"passive"},{"number":"2","name":"GND","type":"passive"}]
+    },
+    {
+      "ref": "BAT1", "value": "Li-Ion 3.7V", "type": "battery", "description": "Connecteur Batterie Li-Ion 3.7V JST-PH 2pin",
+      "footprint": "JST_PH_2pin",
+      "pins": [{"number":"+","name":"VBAT","type":"power_out"},{"number":"-","name":"GND","type":"power_in"}]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VBAT_LIPO",
+      "voltage": "3.7V (Li-Ion)",
+      "note": "Directement sur SIM808 VCC (3.4-4.4V range) + entrée AMS1117",
+      "nodes": [
+        {"ref": "BAT1", "pin": "+",  "comment": "Batterie positive"},
+        {"ref": "TP1",  "pin": "4",  "comment": "TP4056 BAT output"},
+        {"ref": "U2",   "pin": "3",  "comment": "SIM808 VCC"},
+        {"ref": "U2",   "pin": "4",  "comment": "SIM808 VCC"},
+        {"ref": "U2",   "pin": "5",  "comment": "SIM808 VCC"},
+        {"ref": "U2",   "pin": "6",  "comment": "SIM808 VCC"},
+        {"ref": "R2",   "pin": "1",  "comment": "Pull-up PWR_KEY"},
+        {"ref": "U3",   "pin": "3",  "comment": "AMS1117 Input"},
+        {"ref": "C1",   "pin": "+",  "comment": "Bulk cap 1000uF"},
+        {"ref": "C2",   "pin": "+",  "comment": "Decoupling 100uF"},
+        {"ref": "C3",   "pin": "+",  "comment": "Decoupling 100nF"},
+        {"ref": "C4",   "pin": "+",  "comment": "Decoupling 100nF"},
+        {"ref": "C5",   "pin": "+",  "comment": "Decoupling 100nF"}
+      ]
+    },
+    {
+      "name": "+3V3_ESP32",
+      "voltage": "3.3V",
+      "note": "AMS1117 output → ESP32 only",
+      "nodes": [
+        {"ref": "U3",  "pin": "2",  "comment": "AMS1117 3.3V output"},
+        {"ref": "U1",  "pin": "2",  "comment": "ESP32 3V3"},
+        {"ref": "R3",  "pin": "1",  "comment": "Pull-up EN"},
+        {"ref": "R4",  "pin": "1",  "comment": "Pull-up IO0"},
+        {"ref": "C6",  "pin": "+",  "comment": "Decoupling ESP32"},
+        {"ref": "C7",  "pin": "+",  "comment": "Decoupling HF ESP32"}
+      ]
+    },
+    {
+      "name": "GND",
+      "nodes": [
+        {"ref": "U1",   "pin": "1"},
+        {"ref": "U1",   "pin": "15"},
+        {"ref": "U1",   "pin": "38"},
+        {"ref": "U2",   "pin": "1"},
+        {"ref": "U2",   "pin": "2"},
+        {"ref": "U2",   "pin": "7"},
+        {"ref": "U2",   "pin": "8"},
+        {"ref": "U3",   "pin": "1"},
+        {"ref": "TP1",  "pin": "2"},
+        {"ref": "BAT1", "pin": "-"},
+        {"ref": "Q1",   "pin": "1"},
+        {"ref": "SW1",  "pin": "2"},
+        {"ref": "SW2",  "pin": "2"},
+        {"ref": "J1",   "pin": "2"},
+        {"ref": "J2",   "pin": "2"},
+        {"ref": "C1",   "pin": "-"},
+        {"ref": "C2",   "pin": "-"},
+        {"ref": "C3",   "pin": "-"},
+        {"ref": "C4",   "pin": "-"},
+        {"ref": "C5",   "pin": "-"},
+        {"ref": "C6",   "pin": "-"},
+        {"ref": "C7",   "pin": "-"}
+      ]
+    },
+    {
+      "name": "UART2_RX_GSM",
+      "nodes": [
+        {"ref": "U1", "pin": "27",  "comment": "ESP32 IO16 = UART2 RX"},
+        {"ref": "U2", "pin": "12",  "comment": "SIM808 TXD (GSM)"}
+      ]
+    },
+    {
+      "name": "UART2_TX_GSM",
+      "nodes": [
+        {"ref": "U1", "pin": "28",  "comment": "ESP32 IO17 = UART2 TX"},
+        {"ref": "U2", "pin": "13",  "comment": "SIM808 RXD (GSM)"}
+      ]
+    },
+    {
+      "name": "UART1_RX_GPS",
+      "nodes": [
+        {"ref": "U1", "pin": "5",   "comment": "ESP32 IO34 = UART1 RX (remapped)"},
+        {"ref": "U2", "pin": "14",  "comment": "SIM808 GPS_TXD"}
+      ]
+    },
+    {
+      "name": "UART1_TX_GPS",
+      "nodes": [
+        {"ref": "U1", "pin": "8",   "comment": "ESP32 IO32 = UART1 TX (remapped)"},
+        {"ref": "U2", "pin": "15",  "comment": "SIM808 GPS_RXD"}
+      ]
+    },
+    {
+      "name": "PWR_KEY_CTRL",
+      "nodes": [
+        {"ref": "U1", "pin": "26",  "comment": "ESP32 IO4 → transistor base"},
+        {"ref": "R1", "pin": "1",   "comment": "Series 1k resistor"}
+      ]
+    },
+    {
+      "name": "PWR_KEY_BASE",
+      "nodes": [
+        {"ref": "R1", "pin": "2",   "comment": "To Q1 Base"},
+        {"ref": "Q1", "pin": "2",   "comment": "2N2222 Base"}
+      ]
+    },
+    {
+      "name": "PWR_KEY_COLLECTOR",
+      "nodes": [
+        {"ref": "Q1", "pin": "3",   "comment": "2N2222 Collector"},
+        {"ref": "U2", "pin": "9",   "comment": "SIM808 PWR_KEY"},
+        {"ref": "R2", "pin": "2",   "comment": "Pull-up 10k ← VBAT"}
+      ]
+    },
+    {
+      "name": "SIM808_RST",
+      "nodes": [
+        {"ref": "U1", "pin": "29",  "comment": "ESP32 IO5"},
+        {"ref": "U2", "pin": "10",  "comment": "SIM808 RST"}
+      ]
+    },
+    {
+      "name": "SIM808_STATUS",
+      "nodes": [
+        {"ref": "U2", "pin": "11",  "comment": "SIM808 STATUS"},
+        {"ref": "U1", "pin": "30",  "comment": "ESP32 IO18"}
+      ]
+    },
+    {
+      "name": "ANT_GSM_RF",
+      "nodes": [
+        {"ref": "U2", "pin": "16",  "comment": "SIM808 GSM Antenna"},
+        {"ref": "J1", "pin": "1",   "comment": "IPEX GSM connector"}
+      ]
+    },
+    {
+      "name": "ANT_GPS_RF",
+      "nodes": [
+        {"ref": "U2", "pin": "17",  "comment": "SIM808 GPS Antenna"},
+        {"ref": "J2", "pin": "1",   "comment": "IPEX GPS connector"}
+      ]
+    },
+    {
+      "name": "EN_NET",
+      "nodes": [
+        {"ref": "U1", "pin": "3",   "comment": "ESP32 EN"},
+        {"ref": "R3", "pin": "2",   "comment": "Pull-up 10k → 3V3"},
+        {"ref": "SW2","pin": "1",   "comment": "RESET button"}
+      ]
+    },
+    {
+      "name": "BOOT_NET",
+      "nodes": [
+        {"ref": "U1", "pin": "25",  "comment": "ESP32 IO0"},
+        {"ref": "R4", "pin": "2",   "comment": "Pull-up 10k → 3V3"},
+        {"ref": "SW1","pin": "1",   "comment": "BOOT button"}
+      ]
+    },
+    {
+      "name": "USB_5V_CHARGE",
+      "nodes": [
+        {"ref": "TP1", "pin": "3",  "comment": "TP4056 VCC = 5V USB"},
+        {"ref": "U3",  "pin": "3",  "comment": "AMS1117 Input (si 5V disponible)"}
+      ]
+    }
+  ],
+  "arduino_code_notes": {
+    "uart2_gsm": "Serial2.begin(9600, SERIAL_8N1, 16, 17); // GSM AT commands",
+    "uart1_gps": "Serial1.begin(9600, SERIAL_8N1, 34, 32); // GPS NMEA data",
+    "pwr_key":   "digitalWrite(4, LOW); delay(1200); digitalWrite(4, HIGH); // Power ON",
+    "esp_now":   "esp_now_init() + esp_now_register_send_cb() → broadcast truckID+speed"
+  },
+  "power_notes": {
+    "SIM808_VCC": "3.4V - 4.4V — Connecter directement sur Li-Ion/TP4056 BAT pin",
+    "ESP32_VCC":  "3.3V — Via AMS1117-3.3 depuis VBAT ou USB 5V",
+    "peak_current": "SIM808 peut tirer 2A en pointe GPRS → C1=1000uF OBLIGATOIRE",
+    "battery":    "Li-Ion 18650 3.7V min 2000mAh recommandée (3400mAh = 12h+ autonomie)",
+    "charger":    "TP4056 Module: charge via USB-C, protection surcharge intégrée"
+  },
+  "import_instructions": {
+    "flux_ai_method1": "Flux.ai > New Project > Import > EasyEDA JSON — coller ce fichier",
+    "flux_ai_method2": "Si erreur: importer d'abord dans EasyEDA (oshwlab.com) → exporter KiCad → importer KiCad dans Flux.ai",
+    "lcsc_parts": "Codes LCSC fournis pour chaque composant → détection automatique dans EasyEDA/JLCPCB",
+    "note": "Les codes LCSC permettent commande directe sur JLCPCB avec assembly service"
+  }
+}
