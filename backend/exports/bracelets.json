@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "69d080afaff8fb0d250fbfa7",
+    "ownerId": "69d07ca6aff8fb0d250fbb88",
+    "deviceId": "bg",
+    "status": "offline",
+    "battery": 0,
+    "lastSeen": "2026-04-04T03:08:31.665Z",
+    "addedDate": "2026-04-04T03:08:31.666Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0b2faa78f73e1ae7d7ea",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "BRAC_163c",
+    "status": "online",
+    "battery": 85,
+    "heartRate": 43,
+    "spo2": 100,
+    "temperature": 24.6,
+    "lastSeen": "2026-04-13T00:37:05.979Z",
+    "addedDate": "2026-04-12T21:14:23.080Z",
+    "__v": 0
+  }
+]

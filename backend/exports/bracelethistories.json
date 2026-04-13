@@ -1,0 +1,6464 @@
+[
+  {
+    "_id": "69dc0cd2aa78f73e1ae7ddc9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T21:21:22.988Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0cdcaa78f73e1ae7ddcc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:21:32.877Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ce6aa78f73e1ae7ddcf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:21:42.783Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0cf0aa78f73e1ae7ddd2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:21:52.949Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0cffaa78f73e1ae7ddd5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 38.2,
+    "timestamp": "2026-04-12T21:22:07.120Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d09aa78f73e1ae7ddf3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.5,
+    "timestamp": "2026-04-12T21:22:17.325Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d13aa78f73e1ae7ddf7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:22:27.143Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d1daa78f73e1ae7ddfa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.4,
+    "timestamp": "2026-04-12T21:22:37.384Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d27aa78f73e1ae7ddfd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:22:47.186Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d31aa78f73e1ae7de00",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T21:22:57.178Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d3baa78f73e1ae7de1e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 82,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:23:07.233Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d45aa78f73e1ae7de52",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:23:17.350Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d4faa78f73e1ae7de81",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 95,
+    "temperature": 25.3,
+    "timestamp": "2026-04-12T21:23:27.374Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d59aa78f73e1ae7deab",
+    "deviceId": "BRAC_163c",
+    "heartRate": 78,
+    "spo2": 95,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T21:23:37.302Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d63aa78f73e1ae7dedd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 95,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T21:23:47.433Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d6daa78f73e1ae7df07",
+    "deviceId": "BRAC_163c",
+    "heartRate": 73,
+    "spo2": 95,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T21:23:57.313Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d77aa78f73e1ae7df36",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 95,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T21:24:07.322Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d81aa78f73e1ae7df69",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:24:17.387Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d8baa78f73e1ae7df98",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:24:27.572Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d95aa78f73e1ae7dfc6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:24:37.465Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0d9faa78f73e1ae7dff8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:24:47.482Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0da9aa78f73e1ae7e026",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:24:57.683Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0db3aa78f73e1ae7e054",
+    "deviceId": "BRAC_163c",
+    "heartRate": 86,
+    "spo2": 95,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T21:25:07.535Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0dbdaa78f73e1ae7e084",
+    "deviceId": "BRAC_163c",
+    "heartRate": 84,
+    "spo2": 95,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T21:25:17.742Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0dc7aa78f73e1ae7e0af",
+    "deviceId": "BRAC_163c",
+    "heartRate": 54,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:25:27.567Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0dd1aa78f73e1ae7e0db",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:25:37.610Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ddbaa78f73e1ae7e10b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 83,
+    "spo2": 95,
+    "temperature": 25,
+    "timestamp": "2026-04-12T21:25:47.994Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0de5aa78f73e1ae7e139",
+    "deviceId": "BRAC_163c",
+    "heartRate": 70,
+    "spo2": 95,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T21:25:57.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0defaa78f73e1ae7e165",
+    "deviceId": "BRAC_163c",
+    "heartRate": 84,
+    "spo2": 95,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T21:26:07.928Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0df9aa78f73e1ae7e193",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 95,
+    "temperature": 25,
+    "timestamp": "2026-04-12T21:26:17.756Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e03aa78f73e1ae7e1c0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:26:27.787Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e0eaa78f73e1ae7e1ec",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:26:38.028Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e17aa78f73e1ae7e21c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 89,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:26:47.859Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e21aa78f73e1ae7e248",
+    "deviceId": "BRAC_163c",
+    "heartRate": 68,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:26:57.927Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e2baa78f73e1ae7e274",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 95,
+    "temperature": 25.3,
+    "timestamp": "2026-04-12T21:27:07.870Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e35aa78f73e1ae7e2a6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 95,
+    "temperature": 25,
+    "timestamp": "2026-04-12T21:27:17.882Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e40aa78f73e1ae7e2d5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 70,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:27:28.006Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e49aa78f73e1ae7e303",
+    "deviceId": "BRAC_163c",
+    "heartRate": 68,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:27:37.942Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e53aa78f73e1ae7e335",
+    "deviceId": "BRAC_163c",
+    "heartRate": 70,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:27:47.962Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e5daa78f73e1ae7e363",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:27:57.954Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e68aa78f73e1ae7e391",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:28:08.140Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e71aa78f73e1ae7e3c3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 66,
+    "spo2": 95,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T21:28:17.988Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e7caa78f73e1ae7e3f2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 95,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T21:28:28.004Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e86aa78f73e1ae7e420",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:28:38.238Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e90aa78f73e1ae7e452",
+    "deviceId": "BRAC_163c",
+    "heartRate": 45,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:28:48.056Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0e9aaa78f73e1ae7e47e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 60,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:28:58.104Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ea4aa78f73e1ae7e4ac",
+    "deviceId": "BRAC_163c",
+    "heartRate": 82,
+    "spo2": 95,
+    "temperature": 25,
+    "timestamp": "2026-04-12T21:29:08.362Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0eaeaa78f73e1ae7e4dc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 95,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T21:29:18.162Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0eb8aa78f73e1ae7e509",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:29:28.214Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ec2aa78f73e1ae7e537",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 95,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T21:29:38.435Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0eccaa78f73e1ae7e569",
+    "deviceId": "BRAC_163c",
+    "heartRate": 88,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:29:48.315Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ed6aa78f73e1ae7e599",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:29:58.535Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ee0aa78f73e1ae7e5c5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:30:08.333Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0eeaaa78f73e1ae7e5cc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:30:18.376Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ef4aa78f73e1ae7e5d0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:30:28.449Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0efeaa78f73e1ae7e5d3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:30:38.664Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f08aa78f73e1ae7e5d6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:30:48.496Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f12aa78f73e1ae7e5d9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:30:58.529Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f1caa78f73e1ae7e5f2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 83,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:31:08.575Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f26aa78f73e1ae7e623",
+    "deviceId": "BRAC_163c",
+    "heartRate": 65,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:31:18.815Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f30aa78f73e1ae7e652",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:31:28.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f3aaa78f73e1ae7e684",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:31:38.677Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f44aa78f73e1ae7e6b0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 64,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:31:48.602Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f4eaa78f73e1ae7e6df",
+    "deviceId": "BRAC_163c",
+    "heartRate": 47,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:31:58.629Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f58aa78f73e1ae7e712",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:32:08.627Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f62aa78f73e1ae7e740",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 95,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T21:32:18.648Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f6caa78f73e1ae7e77d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:32:28.847Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f76aa78f73e1ae7e7bb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 84,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:32:38.732Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f80aa78f73e1ae7e7e9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 84,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:32:48.919Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f8aaa78f73e1ae7e820",
+    "deviceId": "BRAC_163c",
+    "heartRate": 72,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:32:58.745Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0f94aa78f73e1ae7e843",
+    "deviceId": "BRAC_163c",
+    "heartRate": 63,
+    "spo2": 95,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T21:33:08.785Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fb3f3e9836f10164664",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:33:39.236Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fbcf3e9836f10164668",
+    "deviceId": "BRAC_163c",
+    "heartRate": 60,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:33:48.932Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fc6f3e9836f1016466b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:33:58.872Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fd0f3e9836f1016466e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 73,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:34:08.872Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fdaf3e9836f10164672",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:34:18.917Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fe5f3e9836f10164689",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:34:29.082Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0feef3e9836f101646cc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 72,
+    "spo2": 95,
+    "temperature": 25,
+    "timestamp": "2026-04-12T21:34:38.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0ff9f3e9836f101646fa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 101,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:34:49.151Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1003f3e9836f10164728",
+    "deviceId": "BRAC_163c",
+    "heartRate": 94,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:34:59.181Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc100cf3e9836f1016475a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 95,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:35:08.972Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1017f3e9836f10164788",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:35:19.002Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1021f3e9836f101647b6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 56,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:35:29.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc102bf3e9836f1016480e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 79,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:35:39.313Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1035f3e9836f1016483c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 92,
+    "spo2": 95,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T21:35:49.143Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc103ff3e9836f10164868",
+    "deviceId": "BRAC_163c",
+    "heartRate": 84,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:35:59.157Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1049f3e9836f10164898",
+    "deviceId": "BRAC_163c",
+    "heartRate": 101,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:36:09.179Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1053f3e9836f101648c6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 58,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:36:19.262Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc105df3e9836f101648f6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 62,
+    "spo2": 95,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T21:36:29.485Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1067f3e9836f10164929",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 95,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T21:36:39.313Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1071f3e9836f10164957",
+    "deviceId": "BRAC_163c",
+    "heartRate": 58,
+    "spo2": 95,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T21:36:49.303Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc107bf3e9836f10164985",
+    "deviceId": "BRAC_163c",
+    "heartRate": 72,
+    "spo2": 95,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:36:59.386Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1085f3e9836f101649b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 95,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T21:37:09.324Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc108ff3e9836f101649e5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:37:19.453Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1099f3e9836f10164a13",
+    "deviceId": "BRAC_163c",
+    "heartRate": 70,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:37:29.371Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10a3f3e9836f10164a46",
+    "deviceId": "BRAC_163c",
+    "heartRate": 94,
+    "spo2": 95,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T21:37:39.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10adf3e9836f10164a72",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T21:37:49.417Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10b7f3e9836f10164aa0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.2,
+    "timestamp": "2026-04-12T21:37:59.595Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10c1f3e9836f10164ad4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.8,
+    "timestamp": "2026-04-12T21:38:09.667Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10cbf3e9836f10164b02",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.4,
+    "timestamp": "2026-04-12T21:38:19.452Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10d5f3e9836f10164b30",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.8,
+    "timestamp": "2026-04-12T21:38:29.494Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10dff3e9836f10164b63",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.5,
+    "timestamp": "2026-04-12T21:38:39.541Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10e9f3e9836f10164b91",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.4,
+    "timestamp": "2026-04-12T21:38:49.487Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10f3f3e9836f10164bbf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:38:59.510Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc10fdf3e9836f10164bf1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T21:39:09.638Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1107f3e9836f10164c1f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.4,
+    "timestamp": "2026-04-12T21:39:19.522Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1111f3e9836f10164c4d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:39:29.709Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc111bf3e9836f10164c80",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:39:39.615Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1125f3e9836f10164cae",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:39:49.779Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc112ff3e9836f10164cdc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T21:39:59.616Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1139f3e9836f10164d0e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:40:09.624Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1143f3e9836f10164d3c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:40:19.648Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc114df3e9836f10164d6a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.1,
+    "timestamp": "2026-04-12T21:40:29.638Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1157f3e9836f10164d9d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T21:40:39.748Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1161f3e9836f10164dcb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 94,
+    "temperature": 27,
+    "timestamp": "2026-04-12T21:40:49.782Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc116bf3e9836f10164df9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 60,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:40:59.824Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1175f3e9836f10164e2b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 59,
+    "spo2": 94,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T21:41:09.783Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc117ff3e9836f10164e5b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 94,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T21:41:19.892Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1189f3e9836f10164e89",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 94,
+    "temperature": 26.5,
+    "timestamp": "2026-04-12T21:41:29.924Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1193f3e9836f10164eba",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 94,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T21:41:39.834Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc119df3e9836f10164ee9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 83,
+    "spo2": 94,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T21:41:49.840Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11a8f3e9836f10164f18",
+    "deviceId": "BRAC_163c",
+    "heartRate": 72,
+    "spo2": 94,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:42:00.033Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11b2f3e9836f10164f46",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 94,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:42:10.063Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11bbf3e9836f10164f74",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:42:19.851Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11c5f3e9836f10164fa2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 77,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:42:29.880Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11cff3e9836f10164fd5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 83,
+    "spo2": 94,
+    "temperature": 27.1,
+    "timestamp": "2026-04-12T21:42:39.966Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11d9f3e9836f10165001",
+    "deviceId": "BRAC_163c",
+    "heartRate": 86,
+    "spo2": 94,
+    "temperature": 27,
+    "timestamp": "2026-04-12T21:42:49.976Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11e4f3e9836f1016502d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 94,
+    "temperature": 27.2,
+    "timestamp": "2026-04-12T21:43:00.244Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11eef3e9836f1016505d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 87,
+    "spo2": 94,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T21:43:10.023Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc11f8f3e9836f1016508b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 94,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T21:43:20.109Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1202f3e9836f101650b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 94,
+    "temperature": 27.5,
+    "timestamp": "2026-04-12T21:43:30.071Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc120cf3e9836f101650e8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 97,
+    "spo2": 94,
+    "temperature": 27.4,
+    "timestamp": "2026-04-12T21:43:40.084Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1216f3e9836f10165112",
+    "deviceId": "BRAC_163c",
+    "heartRate": 97,
+    "spo2": 94,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:43:50.211Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1220f3e9836f1016513e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 111,
+    "spo2": 94,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:44:00.246Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc122af3e9836f1016516e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 94,
+    "temperature": 27.8,
+    "timestamp": "2026-04-12T21:44:10.124Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1234f3e9836f1016519a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:44:20.316Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc123ef3e9836f101651c6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 86,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:44:30.150Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1248f3e9836f101651f7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 52,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:44:40.211Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1252f3e9836f10165208",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:44:50.222Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc125cf3e9836f1016520b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 94,
+    "temperature": 27.8,
+    "timestamp": "2026-04-12T21:45:00.216Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1266f3e9836f1016520e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 87,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:45:10.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1270f3e9836f1016522c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 78,
+    "spo2": 94,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T21:45:20.279Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc127af3e9836f1016522f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 63,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:45:30.564Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1284f3e9836f10165233",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 94,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:45:40.395Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc128ef3e9836f10165236",
+    "deviceId": "BRAC_163c",
+    "heartRate": 78,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:45:50.379Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1298f3e9836f10165239",
+    "deviceId": "BRAC_163c",
+    "heartRate": 52,
+    "spo2": 94,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:46:00.466Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12a2f3e9836f1016523c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 94,
+    "temperature": 28.3,
+    "timestamp": "2026-04-12T21:46:10.400Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12acf3e9836f10165281",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 94,
+    "temperature": 27,
+    "timestamp": "2026-04-12T21:46:20.466Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12b6f3e9836f101652ad",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 94,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T21:46:30.567Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12c0f3e9836f101652de",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 94,
+    "temperature": 30.5,
+    "timestamp": "2026-04-12T21:46:40.476Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12caf3e9836f1016530a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 94,
+    "temperature": 31.5,
+    "timestamp": "2026-04-12T21:46:50.641Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12d4f3e9836f10165336",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 94,
+    "temperature": 29.9,
+    "timestamp": "2026-04-12T21:47:00.678Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12def3e9836f10165366",
+    "deviceId": "BRAC_163c",
+    "heartRate": 39,
+    "spo2": 94,
+    "temperature": 30.3,
+    "timestamp": "2026-04-12T21:47:10.707Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12e8f3e9836f10165394",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 94,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T21:47:20.527Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12f2f3e9836f101653e4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 82,
+    "spo2": 94,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T21:47:30.578Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc12fcf3e9836f10165416",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 94,
+    "temperature": 30,
+    "timestamp": "2026-04-12T21:47:40.815Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1306f3e9836f10165442",
+    "deviceId": "BRAC_163c",
+    "heartRate": 96,
+    "spo2": 94,
+    "temperature": 30.3,
+    "timestamp": "2026-04-12T21:47:50.610Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1310f3e9836f1016546e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 87,
+    "spo2": 94,
+    "temperature": 30.3,
+    "timestamp": "2026-04-12T21:48:00.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc131af3e9836f1016549e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 85,
+    "spo2": 94,
+    "temperature": 30.2,
+    "timestamp": "2026-04-12T21:48:10.716Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1324f3e9836f101654cc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 83,
+    "spo2": 94,
+    "temperature": 29.9,
+    "timestamp": "2026-04-12T21:48:20.700Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc132ef3e9836f101654fe",
+    "deviceId": "BRAC_163c",
+    "heartRate": 73,
+    "spo2": 94,
+    "temperature": 30,
+    "timestamp": "2026-04-12T21:48:30.793Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1338f3e9836f1016553a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 69,
+    "spo2": 94,
+    "temperature": 29.8,
+    "timestamp": "2026-04-12T21:48:40.734Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1342f3e9836f1016556b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 40,
+    "spo2": 94,
+    "temperature": 28.7,
+    "timestamp": "2026-04-12T21:48:50.867Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc134cf3e9836f10165599",
+    "deviceId": "BRAC_163c",
+    "heartRate": 97,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:49:00.753Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1356f3e9836f101655cb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 91,
+    "spo2": 94,
+    "temperature": 29.2,
+    "timestamp": "2026-04-12T21:49:10.926Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1360f3e9836f101655f9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 94,
+    "temperature": 29,
+    "timestamp": "2026-04-12T21:49:20.962Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc136af3e9836f10165627",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:49:30.787Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1375f3e9836f1016565a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 94,
+    "temperature": 29.2,
+    "timestamp": "2026-04-12T21:49:41.030Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc137ef3e9836f10165688",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 94,
+    "temperature": 29.2,
+    "timestamp": "2026-04-12T21:49:50.860Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1388f3e9836f101656b6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 92,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:50:00.845Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1392f3e9836f101656dc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 65,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:50:10.895Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc139cf3e9836f101656df",
+    "deviceId": "BRAC_163c",
+    "heartRate": 65,
+    "spo2": 94,
+    "temperature": 28.7,
+    "timestamp": "2026-04-12T21:50:20.973Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc13a7f3e9836f101656e2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 78,
+    "spo2": 94,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T21:50:31.031Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc13b0f3e9836f101656ea",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:50:40.920Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc13bbf3e9836f101656ed",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 94,
+    "temperature": 28.5,
+    "timestamp": "2026-04-12T21:50:51.088Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc13c565fbb4ec061b6e0c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 94,
+    "temperature": 28.3,
+    "timestamp": "2026-04-12T21:51:01.065Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc142065fbb4ec061b6f5a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 29.6,
+    "timestamp": "2026-04-12T21:52:32.420Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc142a65fbb4ec061b6f5d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 28.9,
+    "timestamp": "2026-04-12T21:52:42.222Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc143465fbb4ec061b6f60",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 94,
+    "temperature": 28.3,
+    "timestamp": "2026-04-12T21:52:52.241Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc143e65fbb4ec061b6f64",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:53:02.347Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc144865fbb4ec061b6f82",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 94,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T21:53:12.385Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc145265fbb4ec061b6f85",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 94,
+    "temperature": 29.4,
+    "timestamp": "2026-04-12T21:53:22.418Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc145c65fbb4ec061b6f88",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 94,
+    "temperature": 29.8,
+    "timestamp": "2026-04-12T21:53:32.314Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc146665fbb4ec061b6f8b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 76,
+    "spo2": 94,
+    "temperature": 28.3,
+    "timestamp": "2026-04-12T21:53:42.346Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc147065fbb4ec061b6fce",
+    "deviceId": "BRAC_163c",
+    "heartRate": 81,
+    "spo2": 94,
+    "temperature": 28.4,
+    "timestamp": "2026-04-12T21:53:52.356Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc147a65fbb4ec061b6ffd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 80,
+    "spo2": 94,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:54:02.563Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc148465fbb4ec061b702f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 59,
+    "spo2": 94,
+    "temperature": 28,
+    "timestamp": "2026-04-12T21:54:12.610Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc148e65fbb4ec061b705d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 59,
+    "spo2": 94,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T21:54:22.429Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc149865fbb4ec061b708f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 89,
+    "spo2": 94,
+    "temperature": 28.5,
+    "timestamp": "2026-04-12T21:54:32.450Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14a265fbb4ec061b70bf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 87,
+    "spo2": 94,
+    "temperature": 28.5,
+    "timestamp": "2026-04-12T21:54:42.562Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14ac65fbb4ec061b70d5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 87,
+    "spo2": 94,
+    "temperature": 29,
+    "timestamp": "2026-04-12T21:54:52.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14b665fbb4ec061b70eb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 71,
+    "spo2": 94,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T21:55:02.484Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14c065fbb4ec061b7102",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 94,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T21:55:12.522Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14ca65fbb4ec061b711b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:55:22.530Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14d465fbb4ec061b7134",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 94,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T21:55:32.669Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14de65fbb4ec061b7149",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 94,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T21:55:42.602Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc14e865fbb4ec061b7164",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.2,
+    "timestamp": "2026-04-12T21:55:52.765Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc151165fbb4ec061b7179",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T21:56:33.089Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc151b65fbb4ec061b717c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T21:56:43.324Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc152665fbb4ec061b7180",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T21:56:54.943Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc171165fbb4ec061b71a4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:05:05.510Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc175e65fbb4ec061b71ae",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T22:06:22.106Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc176865fbb4ec061b71b1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:06:32.077Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc177265fbb4ec061b71b4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 94,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:06:42.114Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc177c65fbb4ec061b71b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 94,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:06:52.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc178665fbb4ec061b71bb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 94,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:07:02.123Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc179065fbb4ec061b71c1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T22:07:12.154Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc179a65fbb4ec061b71c4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:07:22.298Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17a465fbb4ec061b71c7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.3,
+    "timestamp": "2026-04-12T22:07:32.191Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17ae65fbb4ec061b71ca",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T22:07:42.374Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17b865fbb4ec061b71cd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:07:52.404Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17c265fbb4ec061b71d1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T22:08:02.240Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17cc65fbb4ec061b71d7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:08:12.270Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17d665fbb4ec061b71da",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:08:22.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17e065fbb4ec061b71dd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T22:08:32.315Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17ea65fbb4ec061b71e0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.2,
+    "timestamp": "2026-04-12T22:08:42.367Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17f465fbb4ec061b71e3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:08:52.413Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc17fe65fbb4ec061b71e7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 34,
+    "spo2": 93,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:09:02.340Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc180865fbb4ec061b71ed",
+    "deviceId": "BRAC_163c",
+    "heartRate": 34,
+    "spo2": 93,
+    "temperature": 24.2,
+    "timestamp": "2026-04-12T22:09:12.476Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc181265fbb4ec061b71f0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 35,
+    "spo2": 93,
+    "temperature": 24.2,
+    "timestamp": "2026-04-12T22:09:22.366Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc181c65fbb4ec061b71f3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 35,
+    "spo2": 93,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:09:32.396Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc182665fbb4ec061b71f6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.1,
+    "timestamp": "2026-04-12T22:09:42.391Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc183065fbb4ec061b71f9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:09:52.688Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc183a65fbb4ec061b71fd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:10:02.473Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc184465fbb4ec061b7203",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.9,
+    "timestamp": "2026-04-12T22:10:12.481Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc184e65fbb4ec061b7206",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T22:10:22.727Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc185865fbb4ec061b7209",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T22:10:32.522Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc186265fbb4ec061b720c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:10:42.596Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc186c65fbb4ec061b720f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T22:10:52.547Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc187665fbb4ec061b7213",
+    "deviceId": "BRAC_163c",
+    "heartRate": 91,
+    "spo2": 90,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T22:11:02.576Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc188065fbb4ec061b721a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 95,
+    "spo2": 91,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:11:12.696Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc188a65fbb4ec061b721d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 59,
+    "spo2": 91,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T22:11:22.592Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc189465fbb4ec061b7220",
+    "deviceId": "BRAC_163c",
+    "heartRate": 40,
+    "spo2": 91,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:11:32.622Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc189e65fbb4ec061b7223",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:11:42.803Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18a865fbb4ec061b7226",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:11:52.834Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18b265fbb4ec061b722a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:12:02.866Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18bc65fbb4ec061b7230",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T22:12:12.707Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18c665fbb4ec061b7233",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:12:22.731Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18d065fbb4ec061b7236",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.2,
+    "timestamp": "2026-04-12T22:12:32.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18da65fbb4ec061b7239",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.2,
+    "timestamp": "2026-04-12T22:12:42.719Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18e465fbb4ec061b723c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 99,
+    "spo2": 92,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:12:52.840Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18ee65fbb4ec061b7240",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T22:13:02.768Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc18f865fbb4ec061b7246",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T22:13:12.799Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc190265fbb4ec061b7249",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:13:22.947Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc190c65fbb4ec061b724c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 35.1,
+    "timestamp": "2026-04-12T22:13:32.836Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc191665fbb4ec061b724f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T22:13:42.861Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc192165fbb4ec061b7252",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:13:53.053Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc192a65fbb4ec061b7256",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:14:02.890Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc193465fbb4ec061b725c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:14:12.899Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc193f65fbb4ec061b725f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:14:23.157Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc194865fbb4ec061b7262",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T22:14:32.984Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc195365fbb4ec061b7265",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:14:43.030Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc195c65fbb4ec061b7268",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.4,
+    "timestamp": "2026-04-12T22:14:52.982Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc196765fbb4ec061b726c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 20.9,
+    "timestamp": "2026-04-12T22:15:03.094Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc197165fbb4ec061b7272",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 21.4,
+    "timestamp": "2026-04-12T22:15:13.131Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc197b65fbb4ec061b7275",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 22.8,
+    "timestamp": "2026-04-12T22:15:23.101Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc198565fbb4ec061b7278",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T22:15:33.063Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc198f65fbb4ec061b727b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T22:15:43.089Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc199965fbb4ec061b727e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T22:15:53.273Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19a365fbb4ec061b7282",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:16:03.308Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19ad65fbb4ec061b7288",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:16:13.171Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19b765fbb4ec061b728b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T22:16:23.136Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19c165fbb4ec061b728e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:16:33.167Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19cb65fbb4ec061b7291",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T22:16:43.243Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19d565fbb4ec061b7294",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.4,
+    "timestamp": "2026-04-12T22:16:53.277Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19df65fbb4ec061b7298",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.4,
+    "timestamp": "2026-04-12T22:17:03.314Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19e965fbb4ec061b729e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.4,
+    "timestamp": "2026-04-12T22:17:13.212Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc19fd65fbb4ec061b72a1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T22:17:33.238Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a0765fbb4ec061b72a4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T22:17:43.248Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a1165fbb4ec061b72a7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:17:53.482Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a1b65fbb4ec061b72ab",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.5,
+    "timestamp": "2026-04-12T22:18:03.293Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a2565fbb4ec061b72b1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:18:13.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a2f65fbb4ec061b72b4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T22:18:23.354Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a3965fbb4ec061b72b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.5,
+    "timestamp": "2026-04-12T22:18:33.420Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a4365fbb4ec061b72ba",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:18:43.359Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a4d65fbb4ec061b72bd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:18:53.491Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a5765fbb4ec061b72c1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:19:03.401Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a6165fbb4ec061b72c7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 125,
+    "spo2": 90,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:19:13.430Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a6b65fbb4ec061b72ca",
+    "deviceId": "BRAC_163c",
+    "heartRate": 125,
+    "spo2": 90,
+    "temperature": 31.2,
+    "timestamp": "2026-04-12T22:19:23.428Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a7565fbb4ec061b72cd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 106,
+    "spo2": 90,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:19:33.459Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a7f65fbb4ec061b72d0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 106,
+    "spo2": 90,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:19:43.507Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a8965fbb4ec061b72d3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 95,
+    "spo2": 90,
+    "temperature": 31.3,
+    "timestamp": "2026-04-12T22:19:53.475Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a9365fbb4ec061b72d7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:20:03.543Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1a9d65fbb4ec061b72dd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:20:13.605Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1aa765fbb4ec061b72e0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.1,
+    "timestamp": "2026-04-12T22:20:23.607Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ab165fbb4ec061b72e3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:20:33.675Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1abb65fbb4ec061b72e6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.9,
+    "timestamp": "2026-04-12T22:20:43.551Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ac565fbb4ec061b72e9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:20:53.581Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1acf65fbb4ec061b72ed",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T22:21:03.743Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ad965fbb4ec061b72f3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.5,
+    "timestamp": "2026-04-12T22:21:13.646Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ae365fbb4ec061b72f6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:21:23.814Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1aed65fbb4ec061b72f9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T22:21:33.647Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1be365fbb4ec061b7386",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 30.7,
+    "timestamp": "2026-04-12T22:25:39.631Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1bed65fbb4ec061b739c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 30.8,
+    "timestamp": "2026-04-12T22:25:49.676Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1bf765fbb4ec061b73a0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 30.8,
+    "timestamp": "2026-04-12T22:25:59.693Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c0165fbb4ec061b73a3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 30.9,
+    "timestamp": "2026-04-12T22:26:09.919Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c1265fbb4ec061b73a8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:26:26.513Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c1c65fbb4ec061b73ab",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:26:36.490Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c2665fbb4ec061b73ae",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 91,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:26:46.526Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c3065fbb4ec061b73b1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:26:56.621Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c3a65fbb4ec061b73b5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:27:06.607Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c4465fbb4ec061b73bb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.2,
+    "timestamp": "2026-04-12T22:27:16.684Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c4e65fbb4ec061b73be",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 92,
+    "temperature": 31.2,
+    "timestamp": "2026-04-12T22:27:26.715Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c5865fbb4ec061b73c1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T22:27:36.584Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c6265fbb4ec061b73c4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.3,
+    "timestamp": "2026-04-12T22:27:46.792Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c6c65fbb4ec061b73c7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.4,
+    "timestamp": "2026-04-12T22:27:56.647Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c7665fbb4ec061b73cb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.5,
+    "timestamp": "2026-04-12T22:28:06.855Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c8065fbb4ec061b73d1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.3,
+    "timestamp": "2026-04-12T22:28:16.714Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c8a65fbb4ec061b73d4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.4,
+    "timestamp": "2026-04-12T22:28:26.928Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c9465fbb4ec061b73d7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:28:36.962Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1c9e65fbb4ec061b73da",
+    "deviceId": "BRAC_163c",
+    "heartRate": 55,
+    "spo2": 100,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T22:28:46.998Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ca865fbb4ec061b73f0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 51,
+    "spo2": 100,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T22:28:56.795Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cb265fbb4ec061b742d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 48,
+    "spo2": 100,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:29:06.831Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cbc65fbb4ec061b745b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 72,
+    "spo2": 100,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:29:16.956Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cc665fbb4ec061b7489",
+    "deviceId": "BRAC_163c",
+    "heartRate": 88,
+    "spo2": 100,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:29:26.938Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cd065fbb4ec061b74bb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 88,
+    "spo2": 100,
+    "temperature": 26.9,
+    "timestamp": "2026-04-12T22:29:36.984Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cdb65fbb4ec061b74e7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 93,
+    "spo2": 100,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:29:47.005Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ce565fbb4ec061b7515",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 100,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:29:57.042Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cee65fbb4ec061b7548",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 100,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:30:06.930Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1cf865fbb4ec061b7576",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:30:16.950Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d0365fbb4ec061b75a4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26,
+    "timestamp": "2026-04-12T22:30:27.148Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d0c65fbb4ec061b75d6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 54,
+    "spo2": 91,
+    "temperature": 26,
+    "timestamp": "2026-04-12T22:30:36.999Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d1765fbb4ec061b75e1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 56,
+    "spo2": 91,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:30:47.218Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d2165fbb4ec061b75e4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 70,
+    "spo2": 91,
+    "temperature": 26,
+    "timestamp": "2026-04-12T22:30:57.031Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d2b65fbb4ec061b75ec",
+    "deviceId": "BRAC_163c",
+    "heartRate": 74,
+    "spo2": 91,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:31:07.033Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d3565fbb4ec061b7608",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 91,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:31:17.115Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1d3f65fbb4ec061b760b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 66,
+    "spo2": 91,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:31:27.078Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1da565fbb4ec061b772f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:33:09.551Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1daf65fbb4ec061b7759",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:33:19.584Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1db965fbb4ec061b7785",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33,
+    "timestamp": "2026-04-12T22:33:29.426Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1dc365fbb4ec061b77b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.3,
+    "timestamp": "2026-04-12T22:33:39.657Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1dcd65fbb4ec061b77e1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.8,
+    "timestamp": "2026-04-12T22:33:49.444Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1dd765fbb4ec061b780e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:33:59.526Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1de165fbb4ec061b7840",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 100,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T22:34:09.450Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1deb65fbb4ec061b786a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 100,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T22:34:19.593Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1df565fbb4ec061b7898",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 100,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T22:34:29.624Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1dff65fbb4ec061b78c6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 100,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T22:34:39.509Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e0965fbb4ec061b78f2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:34:49.531Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e1365fbb4ec061b7921",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 22.4,
+    "timestamp": "2026-04-12T22:34:59.731Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e1d65fbb4ec061b794f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T22:35:09.562Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e2765fbb4ec061b795a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.3,
+    "timestamp": "2026-04-12T22:35:19.600Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e3165fbb4ec061b795d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:35:29.569Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e3b65fbb4ec061b7960",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.3,
+    "timestamp": "2026-04-12T22:35:39.669Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e4565fbb4ec061b7963",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:35:49.704Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e4f65fbb4ec061b7967",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T22:35:59.611Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e5965fbb4ec061b796a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:36:09.666Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e6365fbb4ec061b7988",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:36:19.847Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e6d65fbb4ec061b798b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:36:29.663Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e7765fbb4ec061b798e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.2,
+    "timestamp": "2026-04-12T22:36:39.878Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e8165fbb4ec061b7991",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.3,
+    "timestamp": "2026-04-12T22:36:49.710Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e8b65fbb4ec061b7995",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30,
+    "timestamp": "2026-04-12T22:36:59.747Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e9565fbb4ec061b7998",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T22:37:09.709Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1e9f65fbb4ec061b79b6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T22:37:19.726Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ea965fbb4ec061b79b9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:37:29.744Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1eb365fbb4ec061b79bc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:37:39.885Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ebd65fbb4ec061b79da",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:37:49.769Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ec765fbb4ec061b7a07",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:37:59.954Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ed165fbb4ec061b7a37",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:38:09.995Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1edc65fbb4ec061b7a63",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:38:20.048Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ee565fbb4ec061b7a8f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:38:29.830Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1eef65fbb4ec061b7abf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:38:39.843Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ef965fbb4ec061b7aeb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:38:49.874Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f0365fbb4ec061b7af1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T22:38:59.961Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f0d65fbb4ec061b7af4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T22:39:09.890Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f1865fbb4ec061b7b12",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T22:39:20.028Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f2165fbb4ec061b7b15",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:39:29.915Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f2c65fbb4ec061b7b18",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:39:40.136Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f3565fbb4ec061b7b1b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:39:49.935Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f3f65fbb4ec061b7b1f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T22:39:59.964Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f4a65fbb4ec061b7b22",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:40:10.240Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f5465fbb4ec061b7b40",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T22:40:20.031Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f5e65fbb4ec061b7b43",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:40:30.075Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f6865fbb4ec061b7b46",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:40:40.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f7265fbb4ec061b7b49",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T22:40:50.075Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f7c65fbb4ec061b7b4d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.2,
+    "timestamp": "2026-04-12T22:41:00.078Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f8665fbb4ec061b7b50",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T22:41:10.112Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f9065fbb4ec061b7b6e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.8,
+    "timestamp": "2026-04-12T22:41:20.251Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1f9a65fbb4ec061b7b71",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.8,
+    "timestamp": "2026-04-12T22:41:30.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fa465fbb4ec061b7b74",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:41:40.322Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fae65fbb4ec061b7b77",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:41:50.351Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fb865fbb4ec061b7b7b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:42:00.176Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fc265fbb4ec061b7b7e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:42:10.217Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fcc65fbb4ec061b7b9c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:42:20.258Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fd665fbb4ec061b7b9f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23,
+    "timestamp": "2026-04-12T22:42:30.174Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fe065fbb4ec061b7ba2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.4,
+    "timestamp": "2026-04-12T22:42:40.365Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1fea65fbb4ec061b7ba5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.4,
+    "timestamp": "2026-04-12T22:42:50.226Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ff465fbb4ec061b7ba9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:43:00.216Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc1ffe65fbb4ec061b7bac",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.5,
+    "timestamp": "2026-04-12T22:43:10.426Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc200865fbb4ec061b7bca",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:43:20.500Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc201265fbb4ec061b7bcd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.5,
+    "timestamp": "2026-04-12T22:43:30.292Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc201c65fbb4ec061b7bd0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.6,
+    "timestamp": "2026-04-12T22:43:40.328Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc202665fbb4ec061b7bd3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T22:43:50.363Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc203065fbb4ec061b7bd7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:44:00.372Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc203a65fbb4ec061b7bda",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.7,
+    "timestamp": "2026-04-12T22:44:10.401Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc204465fbb4ec061b7bf8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T22:44:20.476Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc204e65fbb4ec061b7bfb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:44:30.505Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc205865fbb4ec061b7bfe",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.6,
+    "timestamp": "2026-04-12T22:44:40.540Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc206265fbb4ec061b7c01",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:44:50.448Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc206c65fbb4ec061b7c05",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:45:00.613Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc207665fbb4ec061b7c08",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T22:45:10.493Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc208065fbb4ec061b7c26",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T22:45:20.514Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc208a65fbb4ec061b7c29",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.8,
+    "timestamp": "2026-04-12T22:45:30.533Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc209465fbb4ec061b7c2c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T22:45:40.560Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc209e65fbb4ec061b7c2f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.7,
+    "timestamp": "2026-04-12T22:45:50.788Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20a865fbb4ec061b7c33",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.2,
+    "timestamp": "2026-04-12T22:46:00.611Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20b265fbb4ec061b7c36",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T22:46:10.602Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20bc65fbb4ec061b7c54",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:46:20.621Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20c665fbb4ec061b7c57",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.9,
+    "timestamp": "2026-04-12T22:46:30.723Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20d065fbb4ec061b7c5a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:46:40.757Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20da65fbb4ec061b7c5d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:46:50.665Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20e465fbb4ec061b7c61",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:47:00.826Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20ee65fbb4ec061b7c7f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:47:10.861Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc20f865fbb4ec061b7c82",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:47:20.897Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc210265fbb4ec061b7c85",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T22:47:30.745Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc210c65fbb4ec061b7c88",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.3,
+    "timestamp": "2026-04-12T22:47:40.796Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc211665fbb4ec061b7c8b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T22:47:50.810Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc212165fbb4ec061b7c8f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T22:48:01.037Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc212a65fbb4ec061b7cad",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:48:10.841Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc213465fbb4ec061b7cb0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T22:48:20.843Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc213e65fbb4ec061b7cb3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:48:30.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc214865fbb4ec061b7cb6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:48:40.977Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc215265fbb4ec061b7cb9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:48:50.872Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc215d65fbb4ec061b7cbd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:49:01.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc216665fbb4ec061b7cdb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:49:10.901Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc217065fbb4ec061b7cde",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T22:49:20.938Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc217b65fbb4ec061b7ce1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26,
+    "timestamp": "2026-04-12T22:49:31.150Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc218565fbb4ec061b7ce4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:49:41.183Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc219365fbb4ec061b7ce7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27,
+    "timestamp": "2026-04-12T22:49:55.017Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc219d65fbb4ec061b7ceb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.3,
+    "timestamp": "2026-04-12T22:50:05.022Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21ac65fbb4ec061b7d09",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 96.4,
+    "timestamp": "2026-04-12T22:50:20.094Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21b565fbb4ec061b7d0c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 97.1,
+    "timestamp": "2026-04-12T22:50:29.960Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21c065fbb4ec061b7d0f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T22:50:40.001Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21ca65fbb4ec061b7d12",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T22:50:50.002Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21d465fbb4ec061b7d16",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T22:51:00.032Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21e165fbb4ec061b7d34",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 99.4,
+    "timestamp": "2026-04-12T22:51:13.448Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21eb65fbb4ec061b7d37",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.8,
+    "timestamp": "2026-04-12T22:51:23.583Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21f565fbb4ec061b7d3a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.7,
+    "timestamp": "2026-04-12T22:51:33.623Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc21ff65fbb4ec061b7d3d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.9,
+    "timestamp": "2026-04-12T22:51:43.532Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc220965fbb4ec061b7d40",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T22:51:53.560Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc221365fbb4ec061b7d44",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.8,
+    "timestamp": "2026-04-12T22:52:03.724Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc221d65fbb4ec061b7d62",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29,
+    "timestamp": "2026-04-12T22:52:13.758Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc222765fbb4ec061b7d65",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.3,
+    "timestamp": "2026-04-12T22:52:23.585Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc223165fbb4ec061b7d68",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.9,
+    "timestamp": "2026-04-12T22:52:33.593Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc223b65fbb4ec061b7d6b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.9,
+    "timestamp": "2026-04-12T22:52:43.621Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc224565fbb4ec061b7d6e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-12T22:52:53.623Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc225465fbb4ec061b7d72",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 43.7,
+    "timestamp": "2026-04-12T22:53:08.420Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc225e65fbb4ec061b7d90",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T22:53:18.481Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc226865fbb4ec061b7d93",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.1,
+    "timestamp": "2026-04-12T22:53:28.512Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc227265fbb4ec061b7d96",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.7,
+    "timestamp": "2026-04-12T22:53:38.542Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc227c65fbb4ec061b7d99",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T22:53:48.461Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc228665fbb4ec061b7d9d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.9,
+    "timestamp": "2026-04-12T22:53:58.613Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc229065fbb4ec061b7da0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T22:54:08.653Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc229a65fbb4ec061b7dbe",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.2,
+    "timestamp": "2026-04-12T22:54:18.523Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22a465fbb4ec061b7dc1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.5,
+    "timestamp": "2026-04-12T22:54:28.720Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22ae65fbb4ec061b7dc4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T22:54:38.583Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22b865fbb4ec061b7dc7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.8,
+    "timestamp": "2026-04-12T22:54:48.795Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22c265fbb4ec061b7dcb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.3,
+    "timestamp": "2026-04-12T22:54:58.824Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22cc65fbb4ec061b7dce",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T22:55:08.859Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22d665fbb4ec061b7dec",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.2,
+    "timestamp": "2026-04-12T22:55:18.675Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22e065fbb4ec061b7def",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.3,
+    "timestamp": "2026-04-12T22:55:28.685Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22ea65fbb4ec061b7df2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T22:55:38.706Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22f465fbb4ec061b7df5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26,
+    "timestamp": "2026-04-12T22:55:48.799Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc22fe65fbb4ec061b7df9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.2,
+    "timestamp": "2026-04-12T22:55:58.718Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc230865fbb4ec061b7dfc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.5,
+    "timestamp": "2026-04-12T22:56:08.868Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc231265fbb4ec061b7e1a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T22:56:18.902Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc231d65fbb4ec061b7e1d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31,
+    "timestamp": "2026-04-12T22:56:29.013Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc232665fbb4ec061b7e20",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T22:56:38.807Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc233165fbb4ec061b7e23",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.9,
+    "timestamp": "2026-04-12T22:56:49.007Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc233b65fbb4ec061b7e27",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T22:56:59.041Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc234465fbb4ec061b7e2a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.4,
+    "timestamp": "2026-04-12T22:57:08.826Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc234e65fbb4ec061b7e48",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:57:18.827Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc235865fbb4ec061b7e4b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.4,
+    "timestamp": "2026-04-12T22:57:28.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc236265fbb4ec061b7e4e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:57:38.981Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc236c65fbb4ec061b7e51",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29,
+    "timestamp": "2026-04-12T22:57:48.878Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc237765fbb4ec061b7e55",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T22:57:59.049Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc238065fbb4ec061b7e58",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.8,
+    "timestamp": "2026-04-12T22:58:08.932Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc238a65fbb4ec061b7e76",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.2,
+    "timestamp": "2026-04-12T22:58:18.979Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc239565fbb4ec061b7e79",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.3,
+    "timestamp": "2026-04-12T22:58:29.197Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc239f65fbb4ec061b7e7c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T22:58:39.191Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23a965fbb4ec061b7e7f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:58:49.017Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23b365fbb4ec061b7e83",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T22:58:59.059Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23bd65fbb4ec061b7e86",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.5,
+    "timestamp": "2026-04-12T22:59:09.009Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23c765fbb4ec061b7ea4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T22:59:19.029Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23d165fbb4ec061b7ea7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.5,
+    "timestamp": "2026-04-12T22:59:29.160Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23db65fbb4ec061b7eaa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T22:59:39.052Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23e565fbb4ec061b7ead",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.9,
+    "timestamp": "2026-04-12T22:59:49.230Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23ef65fbb4ec061b7eb1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.5,
+    "timestamp": "2026-04-12T22:59:59.086Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc23f965fbb4ec061b7eb4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T23:00:09.096Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc240365fbb4ec061b7ed2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.6,
+    "timestamp": "2026-04-12T23:00:19.336Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc240d65fbb4ec061b7ed5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.6,
+    "timestamp": "2026-04-12T23:00:29.137Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc241765fbb4ec061b7ed8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T23:00:39.204Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc242165fbb4ec061b7edb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34.1,
+    "timestamp": "2026-04-12T23:00:49.160Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc242b65fbb4ec061b7edf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34.3,
+    "timestamp": "2026-04-12T23:00:59.268Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc243565fbb4ec061b7ee2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.8,
+    "timestamp": "2026-04-12T23:01:09.337Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc243f65fbb4ec061b7f00",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.7,
+    "timestamp": "2026-04-12T23:01:19.202Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc244965fbb4ec061b7f03",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:01:29.377Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc245365fbb4ec061b7f06",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.1,
+    "timestamp": "2026-04-12T23:01:39.413Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc245d65fbb4ec061b7f09",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.3,
+    "timestamp": "2026-04-12T23:01:49.271Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc292665fbb4ec061b8158",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:22:14.964Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc293065fbb4ec061b815b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:22:24.992Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc293a65fbb4ec061b815e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:22:34.992Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc294565fbb4ec061b8161",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:22:45.064Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc294f65fbb4ec061b8164",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:22:55.021Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc295965fbb4ec061b8168",
+    "deviceId": "BRAC_163c",
+    "heartRate": 65,
+    "spo2": 99,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:05.075Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc296365fbb4ec061b8186",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 99,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:15.062Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc296d65fbb4ec061b8189",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 99,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:25.072Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc297765fbb4ec061b818c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 99,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:35.250Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc298565fbb4ec061b818f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 57,
+    "spo2": 99,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:49.882Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc298b65fbb4ec061b8192",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 98,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:23:55.318Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc299565fbb4ec061b8196",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 98,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:05.141Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc299f65fbb4ec061b81b4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 60,
+    "spo2": 98,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:15.175Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29a965fbb4ec061b81b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 46,
+    "spo2": 98,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:25.131Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29b365fbb4ec061b81ba",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:35.162Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29bd65fbb4ec061b81bd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:45.284Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29c765fbb4ec061b81c0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:24:55.323Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29d165fbb4ec061b81c4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T23:25:05.186Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29e565fbb4ec061b81c7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:25:25.638Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29f065fbb4ec061b81ca",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:25:36.270Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc29fa65fbb4ec061b81cd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:25:46.930Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a0565fbb4ec061b81d0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:25:57.577Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a1065fbb4ec061b81d4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.6,
+    "timestamp": "2026-04-12T23:26:08.228Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a1a65fbb4ec061b81d7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:26:18.878Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a3a7bfef911ec2bd9db",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:26:50.776Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a457bfef911ec2bd9de",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:27:01.260Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a4f7bfef911ec2bd9e1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:27:11.725Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a5a7bfef911ec2bd9e4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:27:22.188Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a647bfef911ec2bd9e7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:27:32.652Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a6f7bfef911ec2bd9ea",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:27:43.127Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a797bfef911ec2bd9ee",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:27:53.696Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a847bfef911ec2bd9f1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:28:04.348Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a8f7bfef911ec2bd9f4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.9,
+    "timestamp": "2026-04-12T23:28:15.039Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2a987bfef911ec2bd9f7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:28:24.917Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2aa37bfef911ec2bd9fa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:28:35.274Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2aeb7bfef911ec2bdae5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:29:47.570Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2af57bfef911ec2bdb14",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:29:57.405Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2aff7bfef911ec2bdb3e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 25.1,
+    "timestamp": "2026-04-12T23:30:07.416Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b097bfef911ec2bdb66",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T23:30:17.436Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b137bfef911ec2bdb94",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T23:30:27.498Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b1d7bfef911ec2bdbc0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:30:37.541Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b277bfef911ec2bdbec",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T23:30:47.572Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b317bfef911ec2bdc1d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:30:57.605Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b3b7bfef911ec2bdc49",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T23:31:07.658Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b457bfef911ec2bdc75",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.7,
+    "timestamp": "2026-04-12T23:31:17.633Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b4f7bfef911ec2bdca5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 45,
+    "spo2": 93,
+    "temperature": 32.9,
+    "timestamp": "2026-04-12T23:31:27.660Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b597bfef911ec2bdcd1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 45,
+    "spo2": 93,
+    "temperature": 33,
+    "timestamp": "2026-04-12T23:31:37.696Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b637bfef911ec2bdcfd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 45,
+    "spo2": 93,
+    "temperature": 34,
+    "timestamp": "2026-04-12T23:31:47.780Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b6d7bfef911ec2bdd2e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34.5,
+    "timestamp": "2026-04-12T23:31:57.729Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b777bfef911ec2bdd5a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:07.772Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b817bfef911ec2bdd86",
+    "deviceId": "BRAC_163c",
+    "heartRate": 40,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:17.786Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b8b7bfef911ec2bddb6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 40,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:27.924Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b957bfef911ec2bdde2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:37.957Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2b9f7bfef911ec2bde0e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:47.991Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ba97bfef911ec2bde49",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:32:57.835Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bb37bfef911ec2bde75",
+    "deviceId": "BRAC_163c",
+    "heartRate": 50,
+    "spo2": 91,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:33:07.885Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bbe7bfef911ec2bdea1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 41,
+    "spo2": 91,
+    "temperature": 34.9,
+    "timestamp": "2026-04-12T23:33:18.097Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bc77bfef911ec2bded1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 73,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:33:27.929Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bd17bfef911ec2bdefd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 90,
+    "temperature": 35,
+    "timestamp": "2026-04-12T23:33:37.913Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bdb7bfef911ec2bdf29",
+    "deviceId": "BRAC_163c",
+    "heartRate": 46,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:33:47.940Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2be67bfef911ec2bdf5a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 54,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:33:58.030Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bf07bfef911ec2bdf7e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 45,
+    "spo2": 90,
+    "temperature": 34.9,
+    "timestamp": "2026-04-12T23:34:08.073Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2bfa7bfef911ec2bdf98",
+    "deviceId": "BRAC_163c",
+    "heartRate": 46,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:34:18.105Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c047bfef911ec2bdf9f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 46,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:34:28.141Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c0e7bfef911ec2bdfa2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 56,
+    "spo2": 89,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:34:38.174Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c187bfef911ec2bdfa5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 49,
+    "spo2": 89,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:34:48.212Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c227bfef911ec2bdfad",
+    "deviceId": "BRAC_163c",
+    "heartRate": 62,
+    "spo2": 89,
+    "temperature": 34.7,
+    "timestamp": "2026-04-12T23:34:58.037Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c2c7bfef911ec2bdfb0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 58,
+    "spo2": 89,
+    "temperature": 34.7,
+    "timestamp": "2026-04-12T23:35:08.074Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c367bfef911ec2bdfca",
+    "deviceId": "BRAC_163c",
+    "heartRate": 56,
+    "spo2": 90,
+    "temperature": 34.7,
+    "timestamp": "2026-04-12T23:35:18.042Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2c407bfef911ec2bdfd1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 56,
+    "spo2": 90,
+    "temperature": 34.8,
+    "timestamp": "2026-04-12T23:35:28.147Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ca27bfef911ec2be0e9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 35,
+    "timestamp": "2026-04-12T23:37:06.572Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2cac7bfef911ec2be113",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.8,
+    "timestamp": "2026-04-12T23:37:16.691Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2cb67bfef911ec2be116",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.6,
+    "timestamp": "2026-04-12T23:37:26.559Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2cc07bfef911ec2be119",
+    "deviceId": "BRAC_163c",
+    "heartRate": 88,
+    "spo2": 87,
+    "temperature": 33.6,
+    "timestamp": "2026-04-12T23:37:36.765Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d3c7bfef911ec2be154",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.8,
+    "timestamp": "2026-04-12T23:39:40.182Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d467bfef911ec2be158",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.1,
+    "timestamp": "2026-04-12T23:39:50.289Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d507bfef911ec2be15b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.6,
+    "timestamp": "2026-04-12T23:40:00.324Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d5a7bfef911ec2be15e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33,
+    "timestamp": "2026-04-12T23:40:10.214Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d647bfef911ec2be17c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.4,
+    "timestamp": "2026-04-12T23:40:20.394Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d6e7bfef911ec2be17f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33,
+    "timestamp": "2026-04-12T23:40:30.244Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d787bfef911ec2be182",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.5,
+    "timestamp": "2026-04-12T23:40:40.461Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d827bfef911ec2be186",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.9,
+    "timestamp": "2026-04-12T23:40:50.292Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d8c7bfef911ec2be189",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.1,
+    "timestamp": "2026-04-12T23:41:00.334Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2d967bfef911ec2be18c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.1,
+    "timestamp": "2026-04-12T23:41:10.367Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2da07bfef911ec2be1aa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33,
+    "timestamp": "2026-04-12T23:41:20.400Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2daa7bfef911ec2be1ad",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33,
+    "timestamp": "2026-04-12T23:41:30.296Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2db47bfef911ec2be1b0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.3,
+    "timestamp": "2026-04-12T23:41:40.470Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2dbe7bfef911ec2be1b4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.6,
+    "timestamp": "2026-04-12T23:41:50.332Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2dc87bfef911ec2be1b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.7,
+    "timestamp": "2026-04-12T23:42:00.540Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2dd27bfef911ec2be1ba",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.4,
+    "timestamp": "2026-04-12T23:42:10.577Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ddc7bfef911ec2be1d8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:42:20.613Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2de67bfef911ec2be1db",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:42:30.645Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2df07bfef911ec2be1de",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:42:40.477Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2dfa7bfef911ec2be1e2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:42:50.514Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e047bfef911ec2be1e5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:43:00.462Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e0e7bfef911ec2be1e8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:43:10.579Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e187bfef911ec2be206",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:43:20.514Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e227bfef911ec2be209",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:43:30.647Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e2c7bfef911ec2be20c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:43:40.687Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e367bfef911ec2be210",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:43:50.723Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e407bfef911ec2be213",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.7,
+    "timestamp": "2026-04-12T23:44:00.758Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e4a7bfef911ec2be216",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:44:10.619Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e547bfef911ec2be234",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:44:20.629Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e5e7bfef911ec2be237",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:44:30.597Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e687bfef911ec2be23a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.8,
+    "timestamp": "2026-04-12T23:44:40.614Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e727bfef911ec2be23e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 26.1,
+    "timestamp": "2026-04-12T23:44:50.727Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e7c7bfef911ec2be241",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.7,
+    "timestamp": "2026-04-12T23:45:00.763Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e867bfef911ec2be252",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.7,
+    "timestamp": "2026-04-12T23:45:10.658Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e907bfef911ec2be262",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:45:20.693Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2e9a7bfef911ec2be265",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:45:30.868Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ea47bfef911ec2be268",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.6,
+    "timestamp": "2026-04-12T23:45:40.902Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2eae7bfef911ec2be26c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:45:50.734Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2eb87bfef911ec2be26f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:46:00.718Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ec27bfef911ec2be28d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:46:10.799Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ecc7bfef911ec2be290",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:46:20.848Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ed67bfef911ec2be293",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:46:30.766Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ee07bfef911ec2be296",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:46:40.798Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2eea7bfef911ec2be29a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-12T23:46:50.826Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ef47bfef911ec2be29d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:47:00.979Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2eff7bfef911ec2be2bb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:47:11.012Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f087bfef911ec2be2be",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.3,
+    "timestamp": "2026-04-12T23:47:20.877Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f127bfef911ec2be2c1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:47:30.921Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f1d7bfef911ec2be2c4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:47:41.116Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f277bfef911ec2be2c8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.4,
+    "timestamp": "2026-04-12T23:47:51.156Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f307bfef911ec2be2cb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.9,
+    "timestamp": "2026-04-12T23:48:00.947Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f3b7bfef911ec2be2e9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 33.3,
+    "timestamp": "2026-04-12T23:48:11.021Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f447bfef911ec2be2ec",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 32.5,
+    "timestamp": "2026-04-12T23:48:20.968Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f4e7bfef911ec2be2ef",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34,
+    "timestamp": "2026-04-12T23:48:30.999Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f587bfef911ec2be2f2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.3,
+    "timestamp": "2026-04-12T23:48:40.993Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f637bfef911ec2be2f6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.4,
+    "timestamp": "2026-04-12T23:48:51.156Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f6d7bfef911ec2be2f9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34,
+    "timestamp": "2026-04-12T23:49:01.195Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f777bfef911ec2be317",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 34.2,
+    "timestamp": "2026-04-12T23:49:11.045Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f817bfef911ec2be31a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.1,
+    "timestamp": "2026-04-12T23:49:21.265Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f8b7bfef911ec2be31d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.2,
+    "timestamp": "2026-04-12T23:49:31.300Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f957bfef911ec2be320",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T23:49:41.104Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2f9f7bfef911ec2be324",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.3,
+    "timestamp": "2026-04-12T23:49:51.109Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fa97bfef911ec2be327",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:50:01.202Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fb37bfef911ec2be345",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:50:11.233Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fbd7bfef911ec2be348",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:50:21.275Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fc77bfef911ec2be34b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:50:31.304Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fd17bfef911ec2be34e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:50:41.343Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fdb7bfef911ec2be352",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.5,
+    "timestamp": "2026-04-12T23:50:51.181Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fe57bfef911ec2be355",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.4,
+    "timestamp": "2026-04-12T23:51:01.409Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2fef7bfef911ec2be373",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.9,
+    "timestamp": "2026-04-12T23:51:11.240Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc2ff97bfef911ec2be376",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.9,
+    "timestamp": "2026-04-12T23:51:21.282Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30037bfef911ec2be379",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.1,
+    "timestamp": "2026-04-12T23:51:31.312Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc300d7bfef911ec2be37c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.1,
+    "timestamp": "2026-04-12T23:51:41.218Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30177bfef911ec2be380",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.2,
+    "timestamp": "2026-04-12T23:51:51.382Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30217bfef911ec2be383",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 31.2,
+    "timestamp": "2026-04-12T23:52:01.420Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc302b7bfef911ec2be3a1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25.6,
+    "timestamp": "2026-04-12T23:52:11.255Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30357bfef911ec2be3a4",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.7,
+    "timestamp": "2026-04-12T23:52:21.494Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc303f7bfef911ec2be3a7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.6,
+    "timestamp": "2026-04-12T23:52:31.320Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc304f7bfef911ec2be3aa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T23:52:47.365Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30597bfef911ec2be3ae",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.1,
+    "timestamp": "2026-04-12T23:52:57.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30637bfef911ec2be3b1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T23:53:07.401Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc306d7bfef911ec2be3cf",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:53:17.445Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30777bfef911ec2be3d2",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:53:27.634Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30817bfef911ec2be3d5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:53:37.510Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc308b7bfef911ec2be3d8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:53:47.500Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30957bfef911ec2be3dc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:53:57.521Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc309f7bfef911ec2be3df",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:54:07.572Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30a97bfef911ec2be3fd",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 25,
+    "timestamp": "2026-04-12T23:54:17.612Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30b37bfef911ec2be400",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:54:27.552Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30bd7bfef911ec2be403",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:54:37.591Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30c77bfef911ec2be406",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:54:47.712Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30d17bfef911ec2be40a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:54:57.757Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30db7bfef911ec2be40d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24,
+    "timestamp": "2026-04-12T23:55:07.594Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30e57bfef911ec2be42b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.4,
+    "timestamp": "2026-04-12T23:55:17.623Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30ef7bfef911ec2be42e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 29.9,
+    "timestamp": "2026-04-12T23:55:27.854Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc30f97bfef911ec2be431",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 27.2,
+    "timestamp": "2026-04-12T23:55:37.655Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc31037bfef911ec2be434",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.2,
+    "timestamp": "2026-04-12T23:55:47.658Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc310d7bfef911ec2be438",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28,
+    "timestamp": "2026-04-12T23:55:57.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc31177bfef911ec2be43b",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-12T23:56:07.796Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc31217bfef911ec2be459",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.6,
+    "timestamp": "2026-04-12T23:56:17.736Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc312b7bfef911ec2be45c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 23.5,
+    "timestamp": "2026-04-12T23:56:27.862Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc314f7bfef911ec2be460",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 30.1,
+    "timestamp": "2026-04-12T23:57:03.311Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc31597bfef911ec2be47e",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.9,
+    "timestamp": "2026-04-12T23:57:13.535Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc31637bfef911ec2be481",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 28.8,
+    "timestamp": "2026-04-12T23:57:23.366Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36417bfef911ec2be6b5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:18:09.875Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc364c7bfef911ec2be6d3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.9,
+    "timestamp": "2026-04-13T00:18:20.012Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36557bfef911ec2be6d6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-13T00:18:29.904Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36607bfef911ec2be6d9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.2,
+    "timestamp": "2026-04-13T00:18:40.073Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36877bfef911ec2be6f8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24,
+    "timestamp": "2026-04-13T00:19:19.385Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36917bfef911ec2be6fb",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24.1,
+    "timestamp": "2026-04-13T00:19:29.428Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc369b7bfef911ec2be6fe",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 88,
+    "temperature": 24.2,
+    "timestamp": "2026-04-13T00:19:39.464Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36a57bfef911ec2be701",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 88,
+    "temperature": 24.1,
+    "timestamp": "2026-04-13T00:19:49.499Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36af7bfef911ec2be705",
+    "deviceId": "BRAC_163c",
+    "heartRate": 42,
+    "spo2": 88,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:19:59.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36c67bfef911ec2be723",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:20:22.373Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc36d07bfef911ec2be726",
+    "deviceId": "BRAC_163c",
+    "heartRate": 34,
+    "spo2": 92,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:20:32.388Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc380e7bfef911ec2be7b6",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 98,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:25:50.357Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc38187bfef911ec2be7b9",
+    "deviceId": "BRAC_163c",
+    "heartRate": 31,
+    "spo2": 100,
+    "temperature": 24.2,
+    "timestamp": "2026-04-13T00:26:00.592Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc38227bfef911ec2be7bc",
+    "deviceId": "BRAC_163c",
+    "heartRate": 31,
+    "spo2": 100,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:26:10.392Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc382c7bfef911ec2be7da",
+    "deviceId": "BRAC_163c",
+    "heartRate": 31,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:26:20.461Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39ad7bfef911ec2be885",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.1,
+    "timestamp": "2026-04-13T00:32:45.275Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39b77bfef911ec2be889",
+    "deviceId": "BRAC_163c",
+    "heartRate": 0,
+    "spo2": 0,
+    "temperature": 24.2,
+    "timestamp": "2026-04-13T00:32:55.307Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39c17bfef911ec2be88c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 166,
+    "spo2": 100,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:33:05.347Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39cb7bfef911ec2be8aa",
+    "deviceId": "BRAC_163c",
+    "heartRate": 166,
+    "spo2": 100,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:33:15.365Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39d57bfef911ec2be8ad",
+    "deviceId": "BRAC_163c",
+    "heartRate": 166,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:33:25.416Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39df7bfef911ec2be8b0",
+    "deviceId": "BRAC_163c",
+    "heartRate": 166,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:33:35.655Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39e97bfef911ec2be8b3",
+    "deviceId": "BRAC_163c",
+    "heartRate": 166,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:33:45.448Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39f37bfef911ec2be8b7",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:33:55.523Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc39fd7bfef911ec2be8ba",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:34:05.475Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a077bfef911ec2be8d8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:34:15.597Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a117bfef911ec2be8db",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:34:25.632Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a1b7bfef911ec2be8de",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.3,
+    "timestamp": "2026-04-13T00:34:35.668Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a257bfef911ec2be8e1",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:34:45.556Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a2f7bfef911ec2be8e5",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:34:55.570Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a397bfef911ec2be8e8",
+    "deviceId": "BRAC_163c",
+    "heartRate": 98,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:35:05.768Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a437bfef911ec2be906",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:35:15.838Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a4d7bfef911ec2be909",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:35:25.879Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a577bfef911ec2be90c",
+    "deviceId": "BRAC_163c",
+    "heartRate": 75,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:35:35.661Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a617bfef911ec2be90f",
+    "deviceId": "BRAC_163c",
+    "heartRate": 90,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:35:45.661Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a6b7bfef911ec2be913",
+    "deviceId": "BRAC_163c",
+    "heartRate": 97,
+    "spo2": 100,
+    "temperature": 24.4,
+    "timestamp": "2026-04-13T00:35:55.739Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a757bfef911ec2be916",
+    "deviceId": "BRAC_163c",
+    "heartRate": 89,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:36:05.690Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a7f7bfef911ec2be934",
+    "deviceId": "BRAC_163c",
+    "heartRate": 89,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:36:15.819Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a897bfef911ec2be937",
+    "deviceId": "BRAC_163c",
+    "heartRate": 67,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:36:25.843Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a937bfef911ec2be93a",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:36:35.878Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3a9d7bfef911ec2be93d",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 100,
+    "temperature": 24.6,
+    "timestamp": "2026-04-13T00:36:45.913Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3aa77bfef911ec2be941",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 100,
+    "temperature": 24.5,
+    "timestamp": "2026-04-13T00:36:55.751Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc3ab17bfef911ec2be944",
+    "deviceId": "BRAC_163c",
+    "heartRate": 43,
+    "spo2": 100,
+    "temperature": 24.6,
+    "timestamp": "2026-04-13T00:37:05.982Z",
+    "__v": 0
+  }
+]

@@ -1,0 +1,224 @@
+[
+  {
+    "_id": "69cae700cc1bc598cf3d4520",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "truck_3C40",
+    "name": "fff",
+    "model": "ISUZU V1",
+    "serial": "fmf",
+    "description": "ffmf",
+    "status": "offline",
+    "health": {
+      "temp": "ok",
+      "oil": "ok",
+      "fuel": null,
+      "fuel_nc": false,
+      "temp_nc": false
+    },
+    "addedDate": "2026-03-30T21:11:28.603Z",
+    "lastSeen": "2026-04-05T00:25:36.364Z",
+    "__v": 0,
+    "lastFuelLiters": 3.6,
+    "trip": {
+      "lastFuelLevel": 3.6,
+      "isRunning": true,
+      "startTime": "2026-04-04T23:40:48.881Z",
+      "startFuel": 7.3,
+      "fuelConsumed": 6.399999999999972,
+      "mileage": 0.3562586915629884,
+      "lastLat": 35.290161,
+      "lastLon": 11.026892,
+      "lastCalcTime": "2026-04-05T00:25:36.355Z"
+    },
+    "geofence": null,
+    "odometer": 0.3562586915629884
+  },
+  {
+    "_id": "69cc404b8bf8be7443c63fbc",
+    "ownerId": "69cc42e18bf8be7443c645f0",
+    "deviceId": "truck_01",
+    "name": "ee",
+    "model": "ISUZU V1",
+    "serial": "dd",
+    "description": "ddd",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-03-31T21:44:43.938Z",
+    "lastSeen": "2026-03-31T21:44:43.938Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc43048bf8be7443c6464f",
+    "ownerId": "69cc42e18bf8be7443c645f0",
+    "deviceId": "truch_ur",
+    "name": "fff",
+    "model": "ISUZU V1",
+    "serial": "ghffttter",
+    "description": "dawser",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-03-31T21:56:20.701Z",
+    "lastSeen": "2026-03-31T21:56:20.701Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc4ae48bf8be7443c65a57",
+    "ownerId": "69caf0c7090a2d7bb123e714",
+    "deviceId": "truck_256",
+    "name": "dawser",
+    "model": "Chinois Type B",
+    "serial": "fdawser",
+    "description": "dawser",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-03-31T22:29:56.181Z",
+    "lastSeen": "2026-03-31T22:29:56.181Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc655f59c303fe9b3eee7c",
+    "ownerId": "69cc42e18bf8be7443c645f0",
+    "deviceId": "tr",
+    "name": "izuzu",
+    "model": "ISUZU V2",
+    "serial": "fklfl",
+    "description": "dfd",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-04-01T00:22:55.274Z",
+    "lastSeen": "2026-04-01T00:22:55.274Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc65ad59c303fe9b3eeed8",
+    "ownerId": "69caf85d21dcb40b7b8544fe",
+    "deviceId": "truck_011",
+    "name": "iio",
+    "model": "ISUZU V1",
+    "serial": "fdljdfl",
+    "description": "ldfjkdfl",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-04-01T00:24:13.370Z",
+    "lastSeen": "2026-04-01T00:24:13.370Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc66cb59c303fe9b3ef1be",
+    "ownerId": "69cc42e18bf8be7443c645f0",
+    "deviceId": "fffl",
+    "name": "dawser",
+    "model": "ISUZU V2",
+    "serial": "dffl!!",
+    "description": "ddoododod",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-04-01T00:28:59.262Z",
+    "lastSeen": "2026-04-01T00:28:59.262Z",
+    "__v": 0
+  },
+  {
+    "_id": "69d07efaaff8fb0d250fbc6b",
+    "ownerId": "69d07ca6aff8fb0d250fbb88",
+    "deviceId": "truh",
+    "name": "hhhhh",
+    "model": "ISUZU V4",
+    "serial": "hh",
+    "description": "hh",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "trip": {
+      "isRunning": false,
+      "startTime": null,
+      "startFuel": 0,
+      "fuelConsumed": 0,
+      "mileage": 0,
+      "lastLat": null,
+      "lastLon": null,
+      "lastCalcTime": null
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-04-04T03:01:14.502Z",
+    "lastSeen": "2026-04-04T03:01:14.502Z",
+    "__v": 0
+  },
+  {
+    "_id": "69d11cdcb4e1028dabf4adef",
+    "ownerId": "69d11c9fb4e1028dabf4ad7f",
+    "deviceId": "TRUCK_240",
+    "name": "izuzzU",
+    "model": "Chinois Type A",
+    "serial": "ffk",
+    "description": "zoneA",
+    "status": "offline",
+    "health": {
+      "temp": null,
+      "oil": null,
+      "fuel": 0,
+      "temp_nc": false,
+      "fuel_nc": false
+    },
+    "trip": {
+      "isRunning": false,
+      "startTime": null,
+      "startFuel": 0,
+      "fuelConsumed": 0,
+      "mileage": 0,
+      "lastLat": null,
+      "lastLon": null,
+      "lastCalcTime": null
+    },
+    "lastFuelLiters": 0,
+    "addedDate": "2026-04-04T14:14:52.629Z",
+    "lastSeen": "2026-04-04T14:14:52.629Z",
+    "__v": 0
+  }
+]

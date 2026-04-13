@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "69d07f37f44fbc23ed7374d6",
+    "deviceId": "truh",
+    "__v": 0,
+    "fuelEmpty": 12,
+    "fuelFull": 166,
+    "fuelTank": 60,
+    "tempBeta": 3950,
+    "tempOffset": 0,
+    "tempR0": 3025,
+    "timestamp": "2026-04-04T03:02:15.318Z"
+  },
+  {
+    "_id": "69d194643d5c09a6c71affc7",
+    "deviceId": "truck_3C40",
+    "__v": 0,
+    "fuelEmpty": 12,
+    "fuelFull": 166,
+    "fuelTank": 60,
+    "tempBeta": 3950,
+    "tempOffset": 0,
+    "tempR0": 771,
+    "timestamp": "2026-04-04T22:45:29.567Z"
+  }
+]

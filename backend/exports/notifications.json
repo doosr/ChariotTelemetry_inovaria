@@ -1,0 +1,90 @@
+[
+  {
+    "_id": "69d8eb392be14b386fdde91d",
+    "ownerId": "69cacc1404960462a6624b74",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion Google",
+    "message": "dawserbelgacem122@gmail.com connecté via Google.",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-10T12:21:13.394Z",
+    "__v": 0
+  },
+  {
+    "_id": "69d8fa9c55a0698d05a8a77d",
+    "ownerId": "69cacc1404960462a6624b74",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion Google",
+    "message": "dawserbelgacem122@gmail.com connecté via Google.",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-10T13:26:52.570Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dbf086183e449ebb0112ad",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "🔐 SECURITE",
+    "title": "Échec de connexion",
+    "message": "Échec connexion dawserbelgacem122@gmail.com. IP: 127.0.0.1. Échec N°1",
+    "type": "warning",
+    "isRead": false,
+    "timestamp": "2026-04-12T19:20:38.479Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dbf088183e449ebb0112b1",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "🔐 SECURITE",
+    "title": "Échec de connexion",
+    "message": "Échec connexion dawserbelgacem122@gmail.com. IP: 127.0.0.1. Échec N°2",
+    "type": "warning",
+    "isRead": false,
+    "timestamp": "2026-04-12T19:20:40.496Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dbf091183e449ebb0112b4",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion réussie",
+    "message": "dawserbelgacem122@gmail.com connecté. IP: 127.0.0.1",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-12T19:20:49.535Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dbf1ed183e449ebb01133d",
+    "ownerId": "69cae6b6cc1bc598cf3d4502",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion réussie",
+    "message": "dawserbelgacem122@gmail.com connecté. IP: 127.0.0.1",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-12T19:26:37.405Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dbfd6271f5563ba467c03c",
+    "ownerId": "69cacc1404960462a6624b74",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion Google",
+    "message": "dawserbelgacem122@gmail.com connecté via Google.",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-12T20:15:30.513Z",
+    "__v": 0
+  },
+  {
+    "_id": "69dc0fe1f3e9836f10164678",
+    "ownerId": "69cacc1404960462a6624b74",
+    "deviceId": "🔐 SECURITE",
+    "title": "✅ Connexion Google",
+    "message": "dawserbelgacem122@gmail.com connecté via Google.",
+    "type": "info",
+    "isRead": false,
+    "timestamp": "2026-04-12T21:34:25.978Z",
+    "__v": 0
+  }
+]
