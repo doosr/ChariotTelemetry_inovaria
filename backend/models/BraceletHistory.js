@@ -5,7 +5,7 @@ const braceletHistorySchema = new mongoose.Schema({
     heartRate:   { type: Number, default: null },
     spo2:        { type: Number, default: null },
     temperature: { type: Number, default: null },
-    timestamp:   { type: Date,   default: Date.now, index: true }
+    timestamp:   { type: Date,   default: Date.now }
 });
 
 // Index composé pour les requêtes par deviceId + timestamp

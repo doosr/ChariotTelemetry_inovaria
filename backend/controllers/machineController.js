@@ -80,7 +80,7 @@ exports.updateMachine = async (req, res) => {
         const machine = await Machine.findOneAndUpdate(
             { deviceId: req.params.deviceId },
             { $set: req.body },
-            { new: true }
+            { returnDocument: 'after' }
         );
         if (!machine) return res.status(404).json({ error: 'Chariot introuvable' });
         res.json(machine);
@@ -110,7 +110,7 @@ exports.updateMachineOwner = async (req, res) => {
         const machine = await Machine.findOneAndUpdate(
             { deviceId },
             { ownerId: newOwnerId },
-            { new: true }
+            { returnDocument: 'after' }
         );
         if (!machine) return res.status(404).json({ error: "Machine non trouvée." });
 
@@ -133,7 +133,7 @@ exports.updateMachine = async (req, res) => {
         const machine = await Machine.findOneAndUpdate(
             { deviceId },
             { $set: updateData },
-            { new: true, runValidators: true }
+            { returnDocument: 'after', runValidators: true }
         );
 
         if (!machine) {

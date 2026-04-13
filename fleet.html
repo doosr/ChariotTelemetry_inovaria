@@ -744,8 +744,8 @@
 
         /* ===== BRACELET DETAIL MODAL ===== */
         .brac-modal-content {
-            background: linear-gradient(145deg, rgba(8,12,35,0.98) 0%, rgba(4,8,25,0.99) 100%);
-            border: 1px solid rgba(0,212,255,0.18);
+            background: linear-gradient(145deg, rgba(8, 12, 35, 0.98) 0%, rgba(4, 8, 25, 0.99) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.18);
             border-radius: 28px;
             padding: 2rem;
             width: 95%;
@@ -755,9 +755,18 @@
             position: relative;
         }
 
-        .brac-modal-content::-webkit-scrollbar { width: 6px; }
-        .brac-modal-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
-        .brac-modal-content::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 3px; }
+        .brac-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .brac-modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .brac-modal-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 3px;
+        }
 
         .brac-status-banner {
             display: flex;
@@ -770,27 +779,47 @@
             font-size: 1rem;
             letter-spacing: 0.5px;
         }
+
         .brac-status-banner.online {
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05));
-            border: 1px solid rgba(16,185,129,0.4);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.4);
             color: #10b981;
         }
+
         .brac-status-banner.offline {
-            background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
-            border: 1px solid rgba(239,68,68,0.4);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+            border: 1px solid rgba(239, 68, 68, 0.4);
             color: #ef4444;
         }
+
         .brac-pulse {
-            width: 12px; height: 12px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: currentColor;
             animation: brac-pulse 1.8s ease-in-out infinite;
             flex-shrink: 0;
         }
-        .brac-status-banner.offline .brac-pulse { animation: none; opacity: 0.5; }
+
+        .brac-status-banner.offline .brac-pulse {
+            animation: none;
+            opacity: 0.5;
+        }
+
         @keyframes brac-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 currentColor; }
-            50% { transform: scale(1.2); opacity: 0.9; box-shadow: 0 0 0 6px transparent; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 0 0 currentColor;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.9;
+                box-shadow: 0 0 0 6px transparent;
+            }
         }
 
         .brac-vitals-grid {
@@ -799,51 +828,116 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
+
         .brac-vital-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 1.25rem;
             text-align: center;
             transition: all 0.3s;
         }
-        .brac-vital-card:hover { border-color: rgba(0,212,255,0.35); background: rgba(0,212,255,0.04); }
-        .brac-vital-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
-        .brac-vital-value {
-            font-size: 2rem; font-weight: 800;
-            background: linear-gradient(135deg, #00d4ff, #7f5af0);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .brac-vital-value.danger { background: linear-gradient(135deg, #ef4444, #f97316) !important;
-            -webkit-background-clip: text; background-clip: text; }
-        .brac-vital-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.3rem; }
 
-        .brac-chart-section { margin-top: 1.5rem; }
+        .brac-vital-card:hover {
+            border-color: rgba(0, 212, 255, 0.35);
+            background: rgba(0, 212, 255, 0.04);
+        }
+
+        .brac-vital-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .brac-vital-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7f5af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brac-vital-value.danger {
+            background: linear-gradient(135deg, #ef4444, #f97316) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .brac-vital-label {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 0.3rem;
+        }
+
+        .brac-chart-section {
+            margin-top: 1.5rem;
+        }
+
         .brac-chart-title {
-            font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.7);
-            margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
         .brac-chart-wrap {
-            background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 14px; padding: 1rem;
-            position: relative; height: 160px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 1rem;
+            position: relative;
+            height: 160px;
         }
+
         .brac-no-data {
-            display: flex; align-items: center; justify-content: center;
-            height: 100%; color: rgba(255,255,255,0.3); font-size: 0.9rem;
-            flex-direction: column; gap: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         /* Bracelet card status badge in grid */
         .brac-card-conn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
             margin-top: 6px;
         }
-        .brac-card-conn.online { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.35); }
-        .brac-card-conn.offline { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
-        .brac-card-conn-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-        .brac-card-conn.online .brac-card-conn-dot { animation: brac-pulse 1.8s ease-in-out infinite; }
+
+        .brac-card-conn.online {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .brac-card-conn.offline {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+
+        .brac-card-conn-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .brac-card-conn.online .brac-card-conn-dot {
+            animation: brac-pulse 1.8s ease-in-out infinite;
+        }
     </style>
 </head>
 
@@ -1061,7 +1155,7 @@
                 <div class="modal-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeAdminModal()"
                         style="flex:1">Annuler</button>
-                    <button type="submit" class="btn btn-admin" style="flex:1">✅ Créer Admin</button>
+                    <button type="submit" class="btn btn-admin" style="flex:1"> Créer Admin</button>
                 </div>
             </form>
         </div>
@@ -1149,24 +1243,34 @@
     <div class="modal" id="braceletDetailModal" style="z-index:2500;">
         <div class="brac-modal-content">
             <!-- Worker info banner (shown only when opened from a worker card) -->
-            <div id="bdetWorkerBanner" style="display:none; align-items:center; gap:12px; padding:12px 16px; background:rgba(127,90,240,0.1); border:1px solid rgba(127,90,240,0.3); border-radius:14px; margin-bottom:1.25rem;">
-                <div id="bdetWorkerAvatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#0066ff,#7f5af0); display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:800; color:white; flex-shrink:0;"></div>
+            <div id="bdetWorkerBanner"
+                style="display:none; align-items:center; gap:12px; padding:12px 16px; background:rgba(127,90,240,0.1); border:1px solid rgba(127,90,240,0.3); border-radius:14px; margin-bottom:1.25rem;">
+                <div id="bdetWorkerAvatar"
+                    style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#0066ff,#7f5af0); display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:800; color:white; flex-shrink:0;">
+                </div>
                 <div>
                     <div id="bdetWorkerName" style="font-size:1.1rem; font-weight:800; color:white;"></div>
-                    <div id="bdetWorkerRole" style="font-size:0.78rem; color:rgba(255,255,255,0.45); margin-top:1px;"></div>
+                    <div id="bdetWorkerRole" style="font-size:0.78rem; color:rgba(255,255,255,0.45); margin-top:1px;">
+                    </div>
                 </div>
                 <div style="margin-left:auto; font-size:0.75rem; color:rgba(255,255,255,0.3); text-align:right;">
                     <div>Bracelet</div>
-                    <div id="bdetWorkerDeviceLine" style="font-family:monospace; color:rgba(127,90,240,0.8); font-weight:700;"></div>
+                    <div id="bdetWorkerDeviceLine"
+                        style="font-family:monospace; color:rgba(127,90,240,0.8); font-weight:700;"></div>
                 </div>
             </div>
             <!-- Header -->
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
                 <div>
-                    <h2 style="font-size:1.5rem; font-weight:800; background:linear-gradient(135deg,#00d4ff,#7f5af0); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;" id="bdetDeviceId">BRAC_XXXX</h2>
-                    <div style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin-top:2px;" id="bdetLastSeen">Dernière connexion: --</div>
+                    <h2 style="font-size:1.5rem; font-weight:800; background:linear-gradient(135deg,#00d4ff,#7f5af0); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;"
+                        id="bdetDeviceId">BRAC_XXXX</h2>
+                    <div style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin-top:2px;" id="bdetLastSeen">
+                        Dernière connexion: --</div>
                 </div>
-                <span onclick="closeBraceletDetail()" style="font-size:1.8rem; cursor:pointer; color:rgba(255,255,255,0.4); line-height:1; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</span>
+                <span onclick="closeBraceletDetail()"
+                    style="font-size:1.8rem; cursor:pointer; color:rgba(255,255,255,0.4); line-height:1; transition:color 0.2s;"
+                    onmouseover="this.style.color='white'"
+                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</span>
             </div>
 
             <!-- Connexion Status -->
@@ -1223,170 +1327,171 @@
     <script src="fleet.js"></script>
     <script src="nav.js"></script>
     <script>
-    // ===================================================
-    // BRACELET DETAIL MODAL — Status + Charts
-    // ===================================================
-    let _bdetCharts = {};
-    let _bdetRefreshTimer = null;
+        // ===================================================
+        // BRACELET DETAIL MODAL — Status + Charts
+        // ===================================================
+        let _bdetCharts = {};
+        let _bdetRefreshTimer = null;
 
-    // ---- Ouvrir depuis une carte BRACELET ----
-    function openBraceletDetail(deviceId) {
-        // Cacher le bandeau travailleur
-        document.getElementById('bdetWorkerBanner').style.display = 'none';
-        _openDetailModal(deviceId);
-    }
+        // ---- Ouvrir depuis une carte BRACELET ----
+        function openBraceletDetail(deviceId) {
+            // Cacher le bandeau travailleur
+            document.getElementById('bdetWorkerBanner').style.display = 'none';
+            _openDetailModal(deviceId);
+        }
 
-    // ---- Ouvrir depuis une carte TRAVAILLEUR ----
-    function openWorkerDetail(workerName, workerRole, deviceId) {
-        // Afficher et remplir le bandeau travailleur
-        const banner = document.getElementById('bdetWorkerBanner');
-        banner.style.display = 'flex';
-        document.getElementById('bdetWorkerAvatar').textContent = workerName.charAt(0).toUpperCase();
-        document.getElementById('bdetWorkerName').textContent   = workerName;
-        document.getElementById('bdetWorkerRole').textContent   = workerRole;
-        document.getElementById('bdetWorkerDeviceLine').textContent = deviceId;
-        _openDetailModal(deviceId);
-    }
+        // ---- Ouvrir depuis une carte TRAVAILLEUR ----
+        function openWorkerDetail(workerName, workerRole, deviceId) {
+            // Afficher et remplir le bandeau travailleur
+            const banner = document.getElementById('bdetWorkerBanner');
+            banner.style.display = 'flex';
+            document.getElementById('bdetWorkerAvatar').textContent = workerName.charAt(0).toUpperCase();
+            document.getElementById('bdetWorkerName').textContent = workerName;
+            document.getElementById('bdetWorkerRole').textContent = workerRole;
+            document.getElementById('bdetWorkerDeviceLine').textContent = deviceId;
+            _openDetailModal(deviceId);
+        }
 
-    // ---- Logique commune ----
-    function _openDetailModal(deviceId) {
-        document.getElementById('braceletDetailModal').classList.add('show');
-        document.getElementById('bdetDeviceId').textContent = deviceId;
-        document.getElementById('bdetLastSeen').textContent = 'Chargement...';
-        document.getElementById('bdetStatusText').textContent = 'Vérification...';
-        document.getElementById('bdetBpm').textContent = '--';
-        document.getElementById('bdetSpo2').textContent = '--';
-        document.getElementById('bdetTemp').textContent = '--';
+        // ---- Logique commune ----
+        function _openDetailModal(deviceId) {
+            document.getElementById('braceletDetailModal').classList.add('show');
+            document.getElementById('bdetDeviceId').textContent = deviceId;
+            document.getElementById('bdetLastSeen').textContent = 'Chargement...';
+            document.getElementById('bdetStatusText').textContent = 'Vérification...';
+            document.getElementById('bdetBpm').textContent = '--';
+            document.getElementById('bdetSpo2').textContent = '--';
+            document.getElementById('bdetTemp').textContent = '--';
 
-        // Destroy existing charts
-        Object.values(_bdetCharts).forEach(c => c && c.destroy());
-        _bdetCharts = {};
+            // Destroy existing charts
+            Object.values(_bdetCharts).forEach(c => c && c.destroy());
+            _bdetCharts = {};
 
-        _loadBraceletDetail(deviceId);
-        // Refresh toutes les 10s
-        _bdetRefreshTimer = setInterval(() => _loadBraceletDetail(deviceId), 10000);
-    }
+            _loadBraceletDetail(deviceId);
+            // Refresh toutes les 10s
+            _bdetRefreshTimer = setInterval(() => _loadBraceletDetail(deviceId), 10000);
+        }
 
-    function closeBraceletDetail() {
-        document.getElementById('braceletDetailModal').classList.remove('show');
-        clearInterval(_bdetRefreshTimer);
-        Object.values(_bdetCharts).forEach(c => c && c.destroy());
-        _bdetCharts = {};
-    }
+        function closeBraceletDetail() {
+            document.getElementById('braceletDetailModal').classList.remove('show');
+            clearInterval(_bdetRefreshTimer);
+            Object.values(_bdetCharts).forEach(c => c && c.destroy());
+            _bdetCharts = {};
+        }
 
-    async function _loadBraceletDetail(deviceId) {
-        const BASE = window.API_BASE || 'http://localhost:3000';
-        try {
-            // Fetch current status
-            const bRes  = await fetch(`${BASE}/api/bracelets?ownerId=__all__`).catch(() => null);
-            const allB  = bRes && bRes.ok ? await bRes.json() : [];
-            const brac  = allB.find(b => b.deviceId === deviceId);
+        async function _loadBraceletDetail(deviceId) {
+            const BASE = window.API_BASE || 'http://localhost:3000';
+            try {
+                // Fetch current status
+                const bRes = await fetch(`${BASE}/api/bracelets?ownerId=__all__`).catch(() => null);
+                const allB = bRes && bRes.ok ? await bRes.json() : [];
+                const brac = allB.find(b => b.deviceId === deviceId);
 
-            if (brac) {
-                const isOnline = brac.status === 'online' && isRecentlyActive(brac.lastSeen);
-                const banner = document.getElementById('bdetStatusBanner');
-                const txt    = document.getElementById('bdetStatusText');
-                banner.className = 'brac-status-banner ' + (isOnline ? 'online' : 'offline');
-                txt.textContent  = isOnline ? '✅ BRACELET CONNECTÉ — En ligne' : '🔴 BRACELET HORS LIGNE';
+                if (brac) {
+                    const isOnline = brac.status === 'online' && isRecentlyActive(brac.lastSeen);
+                    const banner = document.getElementById('bdetStatusBanner');
+                    const txt = document.getElementById('bdetStatusText');
+                    banner.className = 'brac-status-banner ' + (isOnline ? 'online' : 'offline');
+                    txt.textContent = isOnline ? ' BRACELET CONNECTÉ — En ligne' : ' BRACELET HORS LIGNE';
 
-                const ls = brac.lastSeen ? new Date(brac.lastSeen).toLocaleString('fr-FR') : 'Inconnue';
-                document.getElementById('bdetLastSeen').textContent = 'Dernière activité : ' + ls;
+                    const ls = brac.lastSeen ? new Date(brac.lastSeen).toLocaleString('fr-FR') : 'Inconnue';
+                    document.getElementById('bdetLastSeen').textContent = 'Dernière activité : ' + ls;
 
-                // Vitals
-                const bpmEl  = document.getElementById('bdetBpm');
-                const spo2El = document.getElementById('bdetSpo2');
-                const tempEl = document.getElementById('bdetTemp');
+                    // Vitals
+                    const bpmEl = document.getElementById('bdetBpm');
+                    const spo2El = document.getElementById('bdetSpo2');
+                    const tempEl = document.getElementById('bdetTemp');
 
-                bpmEl.textContent  = brac.heartRate  > 0 ? brac.heartRate  + ' bpm'  : '--';
-                spo2El.textContent = brac.spo2       > 0 ? brac.spo2       + ' %'    : '--';
-                tempEl.textContent = brac.temperature > 0 ? brac.temperature + ' °C' : '--';
+                    bpmEl.textContent = brac.heartRate > 0 ? brac.heartRate + ' bpm' : '--';
+                    spo2El.textContent = brac.spo2 > 0 ? brac.spo2 + ' %' : '--';
+                    tempEl.textContent = brac.temperature > 0 ? brac.temperature + ' °C' : '--';
 
-                // Alert colors
-                bpmEl.className  = (brac.heartRate > 100 || brac.heartRate < 50 && brac.heartRate > 0) ? 'brac-vital-value danger' : 'brac-vital-value';
-                tempEl.className = brac.temperature > 38.0 ? 'brac-vital-value danger' : 'brac-vital-value';
-                spo2El.className = brac.spo2 < 94 && brac.spo2 > 0 ? 'brac-vital-value danger' : 'brac-vital-value';
+                    // Alert colors
+                    bpmEl.className = (brac.heartRate > 100 || brac.heartRate < 50 && brac.heartRate > 0) ? 'brac-vital-value danger' : 'brac-vital-value';
+                    tempEl.className = brac.temperature > 38.0 ? 'brac-vital-value danger' : 'brac-vital-value';
+                    spo2El.className = brac.spo2 < 94 && brac.spo2 > 0 ? 'brac-vital-value danger' : 'brac-vital-value';
+                }
+
+                // Fetch history
+                const hRes = await fetch(`${BASE}/api/bracelets/${deviceId}/history?limit=60`);
+                const hist = hRes.ok ? await hRes.json() : [];
+
+                // Style Cardiologue Professionnel (Néon)
+                _renderChart('chartBpm', 'noDataBpm', hist, 'heartRate', 'BPM', '#00ff00', 30, 220, true);
+                _renderChart('chartSpo2', 'noDataSpo2', hist, 'spo2', 'SpO₂%', '#00e5ff', 85, 100, true);
+                _renderChart('chartTemp', 'noDataTemp', hist, 'temperature', '°C', '#ff00ff', 20, 45, true);
+
+            } catch (e) {
+                console.error('Bracelet detail error:', e);
             }
-
-            // Fetch history
-            const hRes  = await fetch(`${BASE}/api/bracelets/${deviceId}/history?limit=60`);
-            const hist  = hRes.ok ? await hRes.json() : [];
-
-            _renderChart('chartBpm',  'noDataBpm',  hist, 'heartRate',   'BPM',   '#f43f5e', 30,  220);
-            _renderChart('chartSpo2', 'noDataSpo2', hist, 'spo2',        'SpO₂%', '#8b5cf6', 85,  100);
-            _renderChart('chartTemp', 'noDataTemp', hist, 'temperature', '°C',    '#f97316', 34,  42);
-
-        } catch(e) {
-            console.error('Bracelet detail error:', e);
         }
-    }
 
-    function isRecentlyActive(lastSeen, thresholdMs = 60000) {
-        if (!lastSeen) return false;
-        return Date.now() - new Date(lastSeen).getTime() < thresholdMs;
-    }
-
-    function _renderChart(canvasId, noDataId, hist, field, label, color, yMin, yMax) {
-        const data   = hist.filter(h => h[field] !== null && h[field] > 0);
-        const canvas = document.getElementById(canvasId);
-        const noData = document.getElementById(noDataId);
-
-        if (_bdetCharts[canvasId]) { _bdetCharts[canvasId].destroy(); _bdetCharts[canvasId] = null; }
-
-        if (data.length === 0) {
-            canvas.style.display = 'none';
-            noData.style.display = 'flex';
-            return;
+        function isRecentlyActive(lastSeen, thresholdMs = 60000) {
+            if (!lastSeen) return false;
+            return Date.now() - new Date(lastSeen).getTime() < thresholdMs;
         }
-        canvas.style.display = 'block';
-        noData.style.display = 'none';
 
-        const labels = data.map(h => {
-            const d = new Date(h.timestamp);
-            return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0') + ':' + d.getSeconds().toString().padStart(2,'0');
-        });
-        const values = data.map(h => h[field]);
+        function _renderChart(canvasId, noDataId, hist, field, label, color, yMin, yMax, isEcg = false) {
+            const data = hist.filter(h => h[field] !== null && h[field] > 0);
+            const canvas = document.getElementById(canvasId);
+            const noData = document.getElementById(noDataId);
 
-        _bdetCharts[canvasId] = new Chart(canvas, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label,
-                    data: values,
-                    borderColor: color,
-                    backgroundColor: color + '22',
-                    borderWidth: 2,
-                    pointRadius: data.length > 30 ? 0 : 3,
-                    pointHoverRadius: 5,
-                    fill: true,
-                    tension: 0.4,
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                animation: { duration: 400 },
-                scales: {
-                    x: {
-                        ticks: { color: 'rgba(255,255,255,0.35)', maxTicksLimit: 8, font: { size: 10 } },
-                        grid:  { color: 'rgba(255,255,255,0.04)' }
-                    },
-                    y: {
-                        min: yMin, max: yMax,
-                        ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 10 } },
-                        grid:  { color: 'rgba(255,255,255,0.04)' }
-                    }
+            if (_bdetCharts[canvasId]) { _bdetCharts[canvasId].destroy(); _bdetCharts[canvasId] = null; }
+
+            if (data.length === 0) {
+                canvas.style.display = 'none';
+                noData.style.display = 'flex';
+                return;
+            }
+            canvas.style.display = 'block';
+            noData.style.display = 'none';
+
+            const labels = data.map(h => {
+                const d = new Date(h.timestamp);
+                return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + ':' + d.getSeconds().toString().padStart(2, '0');
+            });
+            const values = data.map(h => h[field]);
+
+            _bdetCharts[canvasId] = new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label,
+                        data: values,
+                        borderColor: color,
+                        backgroundColor: isEcg ? 'transparent' : color + '22',
+                        borderWidth: isEcg ? 3 : 2,
+                        pointRadius: isEcg ? 0 : (data.length > 30 ? 0 : 3),
+                        pointHoverRadius: 5,
+                        fill: !isEcg,
+                        tension: isEcg ? 0.1 : 0.4, // Tension plus faible pour ECG (plus net)
+                    }]
                 },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: ctx => ` ${ctx.parsed.y} ${label}`
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    animation: { duration: 400 },
+                    scales: {
+                        x: {
+                            ticks: { color: isEcg ? 'rgba(0,255,0,0.6)' : 'rgba(255,255,255,0.35)', maxTicksLimit: 8, font: { size: 10 } },
+                            grid: { color: isEcg ? 'rgba(0,255,0,0.1)' : 'rgba(255,255,255,0.04)' }
+                        },
+                        y: {
+                            min: yMin, max: yMax,
+                            ticks: { color: isEcg ? 'rgba(0,255,0,0.6)' : 'rgba(255,255,255,0.35)', font: { size: 10 } },
+                            grid: { color: isEcg ? 'rgba(0,255,0,0.1)' : 'rgba(255,255,255,0.04)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ` ${ctx.parsed.y} ${label}`
+                            }
                         }
                     }
                 }
-            }
-        });
-    }
+            });
+        }
     </script>
 
     <!-- ===== MODAL DASHBOARD CHARIOT ===== -->
@@ -1398,9 +1503,12 @@
                 <div style="display:flex; align-items:center; gap:14px;">
                     <div style="font-size:2.5rem; line-height:1;">🚛</div>
                     <div>
-                        <h2 style="font-size:1.5rem; font-weight:800; background:linear-gradient(135deg,#f97316,#ef4444); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;" id="cdName">CHARIOT</h2>
-                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:2px;" id="cdModel">--</div>
-                        <div style="font-size:0.72rem; color:rgba(255,255,255,0.3); font-family:monospace;" id="cdDeviceId">--</div>
+                        <h2 style="font-size:1.5rem; font-weight:800; background:linear-gradient(135deg,#f97316,#ef4444); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;"
+                            id="cdName">CHARIOT</h2>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:2px;" id="cdModel">--
+                        </div>
+                        <div style="font-size:0.72rem; color:rgba(255,255,255,0.3); font-family:monospace;"
+                            id="cdDeviceId">--</div>
                     </div>
                 </div>
                 <div style="display:flex; align-items:center; gap:10px;">
@@ -1408,7 +1516,10 @@
                         style="padding:8px 14px; background:linear-gradient(135deg,#f97316,#ef4444); border:none; border-radius:10px; color:white; font-weight:700; cursor:pointer; font-size:0.82rem; transition:all 0.2s;">
                         📊 Vue complète
                     </button>
-                    <span onclick="closeChariotModal()" style="font-size:1.8rem; cursor:pointer; color:rgba(255,255,255,0.4); line-height:1; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</span>
+                    <span onclick="closeChariotModal()"
+                        style="font-size:1.8rem; cursor:pointer; color:rgba(255,255,255,0.4); line-height:1; transition:color 0.2s;"
+                        onmouseover="this.style.color='white'"
+                        onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</span>
                 </div>
             </div>
 
@@ -1420,7 +1531,8 @@
             </div>
 
             <!-- Live Metrics Grid -->
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:1.5rem;" id="cdMetricsGrid">
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:1.5rem;"
+                id="cdMetricsGrid">
                 <!-- Generated by JS -->
             </div>
 
@@ -1459,163 +1571,163 @@
     </div>
 
     <script>
-    // ===================================================
-    // CHARIOT DASHBOARD MODAL
-    // ===================================================
-    let _cdCharts   = {};
-    let _cdTimer    = null;
-    let _cdDeviceId = null;
+        // ===================================================
+        // CHARIOT DASHBOARD MODAL
+        // ===================================================
+        let _cdCharts = {};
+        let _cdTimer = null;
+        let _cdDeviceId = null;
 
-    function viewDashboard(deviceId) {
-        _cdDeviceId = deviceId;
-        document.getElementById('chariotModal').classList.add('show');
-        document.getElementById('cdName').textContent    = deviceId;
-        document.getElementById('cdModel').textContent   = 'Chargement...';
-        document.getElementById('cdDeviceId').textContent = deviceId;
-        document.getElementById('cdStatusText').textContent = 'Vérification...';
-        document.getElementById('cdMetricsGrid').innerHTML  = '';
-        Object.values(_cdCharts).forEach(c => c && c.destroy());
-        _cdCharts = {};
+        function viewDashboard(deviceId) {
+            _cdDeviceId = deviceId;
+            document.getElementById('chariotModal').classList.add('show');
+            document.getElementById('cdName').textContent = deviceId;
+            document.getElementById('cdModel').textContent = 'Chargement...';
+            document.getElementById('cdDeviceId').textContent = deviceId;
+            document.getElementById('cdStatusText').textContent = 'Vérification...';
+            document.getElementById('cdMetricsGrid').innerHTML = '';
+            Object.values(_cdCharts).forEach(c => c && c.destroy());
+            _cdCharts = {};
 
-        _loadChariotDashboard(deviceId);
-        _cdTimer = setInterval(() => _loadChariotDashboard(deviceId), 15000);
-    }
+            _loadChariotDashboard(deviceId);
+            _cdTimer = setInterval(() => _loadChariotDashboard(deviceId), 15000);
+        }
 
-    function openFullDashboard() {
-        if (_cdDeviceId) window.open(`dashboard.html?id=${_cdDeviceId}`, '_blank');
-    }
+        function openFullDashboard() {
+            if (_cdDeviceId) window.open(`dashboard.html?id=${_cdDeviceId}`, '_blank');
+        }
 
-    function closeChariotModal() {
-        document.getElementById('chariotModal').classList.remove('show');
-        clearInterval(_cdTimer);
-        Object.values(_cdCharts).forEach(c => c && c.destroy());
-        _cdCharts = {};
-        _cdDeviceId = null;
-    }
+        function closeChariotModal() {
+            document.getElementById('chariotModal').classList.remove('show');
+            clearInterval(_cdTimer);
+            Object.values(_cdCharts).forEach(c => c && c.destroy());
+            _cdCharts = {};
+            _cdDeviceId = null;
+        }
 
-    async function _loadChariotDashboard(deviceId) {
-        const BASE    = window.API_BASE || '';
-        const ownerId = (JSON.parse(localStorage.getItem('admin-session') || '{}') || {}).userId || '';
-        const role    = (JSON.parse(localStorage.getItem('admin-session') || '{}') || {}).role || '';
+        async function _loadChariotDashboard(deviceId) {
+            const BASE = window.API_BASE || '';
+            const ownerId = (JSON.parse(localStorage.getItem('admin-session') || '{}') || {}).userId || '';
+            const role = (JSON.parse(localStorage.getItem('admin-session') || '{}') || {}).role || '';
 
-        try {
-            // ── Fetch machine info ──
-            const mRes  = await fetch(`${BASE}/api/machines?ownerId=${ownerId}&requesterRole=${role}&includeTelemetry=true`);
-            const machines = mRes.ok ? await mRes.json() : [];
-            const machine  = machines.find(m => m.deviceId === deviceId);
+            try {
+                // ── Fetch machine info ──
+                const mRes = await fetch(`${BASE}/api/machines?ownerId=${ownerId}&requesterRole=${role}&includeTelemetry=true`);
+                const machines = mRes.ok ? await mRes.json() : [];
+                const machine = machines.find(m => m.deviceId === deviceId);
 
-            if (machine) {
-                document.getElementById('cdName').textContent    = machine.name || deviceId;
-                document.getElementById('cdModel').textContent   = machine.model || '--';
-                document.getElementById('cdDeviceId').textContent = deviceId;
+                if (machine) {
+                    document.getElementById('cdName').textContent = machine.name || deviceId;
+                    document.getElementById('cdModel').textContent = machine.model || '--';
+                    document.getElementById('cdDeviceId').textContent = deviceId;
 
-                const isOnline = machine.status === 'online';
-                const banner   = document.getElementById('cdStatusBanner');
-                const txt      = document.getElementById('cdStatusText');
-                banner.className = 'brac-status-banner ' + (isOnline ? 'online' : 'offline');
-                txt.textContent  = isOnline ? '✅ CHARIOT EN LIGNE — Actif' : '🔴 CHARIOT HORS LIGNE';
-                document.getElementById('cdLastSeen').textContent = machine.lastSeen
-                    ? 'Màj: ' + new Date(machine.lastSeen).toLocaleTimeString('fr-FR') : '';
+                    const isOnline = machine.status === 'online';
+                    const banner = document.getElementById('cdStatusBanner');
+                    const txt = document.getElementById('cdStatusText');
+                    banner.className = 'brac-status-banner ' + (isOnline ? 'online' : 'offline');
+                    txt.textContent = isOnline ? ' CHARIOT EN LIGNE — Actif' : '🔴 CHARIOT HORS LIGNE';
+                    document.getElementById('cdLastSeen').textContent = machine.lastSeen
+                        ? 'Màj: ' + new Date(machine.lastSeen).toLocaleTimeString('fr-FR') : '';
 
-                const tel = machine.telemetry || {};
-                // ── Live metrics ──
-                const metrics = [
-                    { icon:'🌡️', label:'Température',    value: tel.temp       != null ? Number(tel.temp).toFixed(1) + ' °C'  : '--', danger: tel.temp > 105 },
-                    { icon:'🛢️', label:'Pression Huile', value: tel.oil_pressure != null ? Number(tel.oil_pressure).toFixed(1)+' Bar' : '--', danger: tel.oil_pressure < 1 },
-                    { icon:'⛽', label:'Carburant',      value: tel.fuel_percent != null ? Math.round(tel.fuel_percent) + '%' : '--', danger: tel.fuel_percent < 15 },
-                    { icon:'⚙️', label:'RPM',            value: tel.rpm         != null ? tel.rpm + ' tr/min' : '--', danger: false },
-                    { icon:'🏎️', label:'Vitesse',        value: tel.speed       != null ? tel.speed + ' km/h'  : '--', danger: false },
-                    { icon:'⏱️', label:'Heures moteur',  value: tel.engine_hours != null ? Number(tel.engine_hours).toFixed(1) + ' h' : '--', danger: false },
-                ];
-                document.getElementById('cdMetricsGrid').innerHTML = metrics.map(m => `
+                    const tel = machine.telemetry || {};
+                    // ── Live metrics ──
+                    const metrics = [
+                        { icon: '🌡️', label: 'Température', value: tel.temp != null ? Number(tel.temp).toFixed(1) + ' °C' : '--', danger: tel.temp > 105 },
+                        { icon: '🛢️', label: 'Pression Huile', value: tel.oil_pressure != null ? Number(tel.oil_pressure).toFixed(1) + ' Bar' : '--', danger: tel.oil_pressure < 1 },
+                        { icon: '⛽', label: 'Carburant', value: tel.fuel_percent != null ? Math.round(tel.fuel_percent) + '%' : '--', danger: tel.fuel_percent < 15 },
+                        { icon: '⚙️', label: 'RPM', value: tel.rpm != null ? tel.rpm + ' tr/min' : '--', danger: false },
+                        { icon: '🏎️', label: 'Vitesse', value: tel.speed != null ? tel.speed + ' km/h' : '--', danger: false },
+                        { icon: '⏱️', label: 'Heures moteur', value: tel.engine_hours != null ? Number(tel.engine_hours).toFixed(1) + ' h' : '--', danger: false },
+                    ];
+                    document.getElementById('cdMetricsGrid').innerHTML = metrics.map(m => `
                     <div class="brac-vital-card" style="padding:1rem; text-align:center;">
                         <div style="font-size:1.6rem; margin-bottom:4px;">${m.icon}</div>
                         <div class="brac-vital-value${m.danger ? ' danger' : ''}" style="font-size:1.4rem;">${m.value}</div>
                         <div class="brac-vital-label" style="font-size:0.7rem; margin-top:3px;">${m.label}</div>
                     </div>`).join('');
+                }
+
+                // ── Fetch history for charts ──
+                const hRes = await fetch(`${BASE}/api/telemetry/history?deviceId=${deviceId}&ownerId=${ownerId}&requesterRole=${role}&limit=60`);
+                const hist = hRes.ok ? await hRes.json() : [];
+
+                _cdRenderChart('cdChartTemp', 'cdNoTemp', hist, 'temp', '°C', '#f97316', 60, 130);
+                _cdRenderChart('cdChartOil', 'cdNoOil', hist, 'oil_pressure', 'Bar', '#3b82f6', 0, 8);
+                _cdRenderChart('cdChartFuel', 'cdNoFuel', hist, 'fuel_percent', '%', '#10b981', 0, 105);
+                _cdRenderChart('cdChartRpm', 'cdNoRpm', hist, 'rpm', 'tr/mn', '#a78bfa', 0, 4000);
+
+            } catch (e) {
+                console.error('[ChariotModal] Erreur:', e);
             }
-
-            // ── Fetch history for charts ──
-            const hRes  = await fetch(`${BASE}/api/telemetry/history?deviceId=${deviceId}&ownerId=${ownerId}&requesterRole=${role}&limit=60`);
-            const hist  = hRes.ok ? await hRes.json() : [];
-
-            _cdRenderChart('cdChartTemp', 'cdNoTemp', hist, 'temp',         '°C',    '#f97316',  60, 130);
-            _cdRenderChart('cdChartOil',  'cdNoOil',  hist, 'oil_pressure', 'Bar',   '#3b82f6',   0,  8);
-            _cdRenderChart('cdChartFuel', 'cdNoFuel', hist, 'fuel_percent', '%',     '#10b981',   0, 105);
-            _cdRenderChart('cdChartRpm',  'cdNoRpm',  hist, 'rpm',          'tr/mn', '#a78bfa',   0, 4000);
-
-        } catch(e) {
-            console.error('[ChariotModal] Erreur:', e);
         }
-    }
 
-    function _cdRenderChart(canvasId, noDataId, hist, field, label, color, yMin, yMax) {
-        const data   = hist.filter(h => h[field] != null && h[field] !== 0);
-        const canvas = document.getElementById(canvasId);
-        const noData = document.getElementById(noDataId);
-        if (!canvas) return;
+        function _cdRenderChart(canvasId, noDataId, hist, field, label, color, yMin, yMax) {
+            const data = hist.filter(h => h[field] != null && h[field] !== 0);
+            const canvas = document.getElementById(canvasId);
+            const noData = document.getElementById(noDataId);
+            if (!canvas) return;
 
-        if (_cdCharts[canvasId]) { _cdCharts[canvasId].destroy(); _cdCharts[canvasId] = null; }
+            if (_cdCharts[canvasId]) { _cdCharts[canvasId].destroy(); _cdCharts[canvasId] = null; }
 
-        if (data.length === 0) {
-            canvas.style.display = 'none';
-            if (noData) noData.style.display = 'flex';
-            return;
-        }
-        canvas.style.display = 'block';
-        if (noData) noData.style.display = 'none';
+            if (data.length === 0) {
+                canvas.style.display = 'none';
+                if (noData) noData.style.display = 'flex';
+                return;
+            }
+            canvas.style.display = 'block';
+            if (noData) noData.style.display = 'none';
 
-        const labels = data.map(h => {
-            const d = new Date(h.timestamp);
-            return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
-        });
-        const values = data.map(h => Number(Number(h[field]).toFixed(2)));
+            const labels = data.map(h => {
+                const d = new Date(h.timestamp);
+                return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+            });
+            const values = data.map(h => Number(Number(h[field]).toFixed(2)));
 
-        _cdCharts[canvasId] = new Chart(canvas, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label,
-                    data: values,
-                    borderColor: color,
-                    backgroundColor: color + '1a',
-                    borderWidth: 2,
-                    pointRadius: data.length > 30 ? 0 : 3,
-                    pointHoverRadius: 5,
-                    fill: true,
-                    tension: 0.4,
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                animation: { duration: 400 },
-                scales: {
-                    x: {
-                        ticks: { color: 'rgba(255,255,255,0.3)', maxTicksLimit: 7, font: { size: 9 } },
-                        grid:  { color: 'rgba(255,255,255,0.04)' }
-                    },
-                    y: {
-                        min: yMin, max: yMax,
-                        ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 9 } },
-                        grid:  { color: 'rgba(255,255,255,0.04)' }
-                    }
+            _cdCharts[canvasId] = new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label,
+                        data: values,
+                        borderColor: color,
+                        backgroundColor: color + '1a',
+                        borderWidth: 2,
+                        pointRadius: data.length > 30 ? 0 : 3,
+                        pointHoverRadius: 5,
+                        fill: true,
+                        tension: 0.4,
+                    }]
                 },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: { label: ctx => ` ${ctx.parsed.y} ${label}` }
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    animation: { duration: 400 },
+                    scales: {
+                        x: {
+                            ticks: { color: 'rgba(255,255,255,0.3)', maxTicksLimit: 7, font: { size: 9 } },
+                            grid: { color: 'rgba(255,255,255,0.04)' }
+                        },
+                        y: {
+                            min: yMin, max: yMax,
+                            ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 9 } },
+                            grid: { color: 'rgba(255,255,255,0.04)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: ctx => ` ${ctx.parsed.y} ${label}` }
+                        }
                     }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    // Close on backdrop click
-    document.getElementById('chariotModal').addEventListener('click', e => {
-        if (e.target === document.getElementById('chariotModal')) closeChariotModal();
-    });
+        // Close on backdrop click
+        document.getElementById('chariotModal').addEventListener('click', e => {
+            if (e.target === document.getElementById('chariotModal')) closeChariotModal();
+        });
     </script>
 </body>
 
-</html>
+</html>

@@ -68,9 +68,10 @@ exports.assignBracelet = async (req, res) => {
     try {
         const { workerId, braceletId } = req.body;
         // Unassign bracelet from anyone else first (if unique assignment required)
-        if (braceletId) await Worker.updateMany({ braceletId }, { braceletId: null });
-
-        await Worker.findByIdAndUpdate(workerId, { braceletId });
+        if (braceletId) {
+            await Worker.updateMany({ braceletId }, { braceletId: null });
+        }
+        await Worker.findByIdAndUpdate(workerId, { braceletId: braceletId || null });
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -79,13 +80,27 @@ exports.assignBracelet = async (req, res) => {
 
 exports.deleteBracelet = async (req, res) => {
     try {
-        const { deviceId } = req.params;
-        const bracelet = await Bracelet.findOne({ deviceId });
+        // La route utilise :id, on le mappe sur deviceId si on cherche par deviceId
+        // Actuellement route: router.delete('/bracelets/:id', ...) 
+        // Si l'ID passé est le deviceId, on le récupère via req.params.id
+        const deviceId = req.params.id || req.params.deviceId;
+        const bracelet = await Bracelet.findOne({ deviceId: deviceId });
+        
         if (bracelet) {
             await Worker.updateMany({ braceletId: bracelet._id }, { braceletId: null });
-            await Bracelet.deleteOne({ deviceId });
+            await Bracelet.deleteOne({ deviceId: deviceId });
+            return res.json({ success: true });
         }
-        res.json({ success: true });
+        
+        // Tester s'il est cherché par _id natif
+        const braceletById = await Bracelet.findById(deviceId).catch(e => null);
+        if (braceletById) {
+            await Worker.updateMany({ braceletId: braceletById._id }, { braceletId: null });
+            await Bracelet.deleteOne({ _id: braceletById._id });
+            return res.json({ success: true });
+        }
+
+        res.status(404).json({ error: "Bracelet non trouvé" });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -109,7 +124,7 @@ exports.updateBraceletTelemetry = async (req, res) => {
         const bracelet = await Bracelet.findOneAndUpdate(
             { deviceId },
             { $set: updateData },
-            { new: true, upsert: false }
+            { returnDocument: 'after', upsert: false }
         );
 
         if (!bracelet) return res.status(404).json({ error: 'Bracelet not registered' });

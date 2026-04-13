@@ -20,7 +20,7 @@ exports.calibrate = async (req, res) => {
         await Calibration.findOneAndUpdate(
             { deviceId },
             { ...settings, timestamp: new Date() },
-            { upsert: true, new: true }
+            { upsert: true, returnDocument: 'after' }
         );
         console.log(`✅ Calibration sauvegardée/mise à jour pour ${deviceId}`);
 

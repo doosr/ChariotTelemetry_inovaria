@@ -22,8 +22,8 @@
 
 // --- WIFI & SERVER CONFIG (PLACEHOLDERS) ---
 const char* ssid = "Red";
-const char* password = "123456789";
-const char* serverUrl = "http://192.168.0.39:5000/api/personnel/bracelets"; // Route will be appended with deviceId
+const char* password = "12345678";
+const char* serverUrl = "http://192.168.1.127:3000/api/bracelets"; // Route will be appended with deviceId
 
 MAX30105 particleSensor;
 
@@ -39,7 +39,7 @@ Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define LED_INDICATOR_PIN       2   
 #define I2C_SDA                 21
 #define I2C_SCL                 22
-
+#define POWER_BUTTON_PIN        33 // Bouton ON/OFF physique
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 // --- GLOBAL STATE ---
@@ -276,7 +276,7 @@ void drawTemperatureScreen() {
     display.setTextColor(SH110X_WHITE);
     drawStatusBar();
 
-    float objTemp = mlx.readObjectTempC();
+    float objTemp = mlx.readObjectTempC() - 6.0;
     float ambTemp = mlx.readAmbientTempC();
 
     display.setTextSize(1);
@@ -321,9 +321,9 @@ void drawHeartRateScreen() {
 
     display.setTextSize(1);
     display.setCursor(5, 12);
-    display.print("RYTHME CARDIAQUE:");
+    display.print("VITAUX EN DIRECT:");
 
-    // BPM Value
+    // --- BPM Value ---
     display.setTextSize(3);
     display.setCursor(5, 25);
     if (beatAvg < 30) {
@@ -333,13 +333,14 @@ void drawHeartRateScreen() {
     }
     
     display.setTextSize(1);
-    display.setCursor(75, 40);
+    if (beatAvg < 100) display.setCursor(45, 40);
+    else display.setCursor(65, 40);
     display.print("BPM");
 
-    // SpO2
-    display.setCursor(100, 25);
-    display.print("SpO2");
-    display.setCursor(100, 35);
+    // --- SpO2 ---
+    display.setCursor(95, 23);
+    display.print("SpO2:");
+    display.setCursor(95, 33);
     if (beatAvg < 30) {
         display.print("--");
     } else {
@@ -347,17 +348,19 @@ void drawHeartRateScreen() {
         display.print("%");
     }
 
-    // RAW SIGNAL FEEDBACK (Useful for calibration)
+    // --- TEMPERATURE (MLX90614) ---
+    float objTemp = mlx.readObjectTempC() - 6.0;
     display.setTextSize(1);
     display.setCursor(5, 54);
-    display.print("Signal: ");
-    display.print(particleSensor.getIR());
+    display.print("Temp: ");
+    display.print(objTemp, 1);
+    display.print(" C");
 
     // Pulse Animation (Heart icon)
     if (millis() - lastBeat < 200) {
-        display.fillCircle(115, 52, 5, SH110X_WHITE);
+        display.fillCircle(115, 54, 5, SH110X_WHITE);
     } else {
-        display.drawCircle(115, 52, 5, SH110X_WHITE);
+        display.drawCircle(115, 54, 5, SH110X_WHITE);
     }
 
     display.display();
@@ -376,6 +379,7 @@ void sendTelemetry() {
     String json = "{";
     json += "\"heartRate\":" + String(beatAvg) + ",";
     json += "\"spo2\":" + String(spo2Avg) + ",";
+    json += "\"temperature\":" + String(mlx.readObjectTempC() - 6.0, 1) + ",";
     json += "\"battery\":" + String(85) + ","; // Mock battery
     json += "\"status\":\"online\"";
     json += "}";
@@ -398,7 +402,7 @@ void sendTelemetry() {
 void drawTempAlertScreen() {
     display.clearDisplay();
     
-    float objTemp = mlx.readObjectTempC();
+    float objTemp = mlx.readObjectTempC() - 6.0;
     float ambTemp = mlx.readAmbientTempC();
 
     // 1. Draw Detailed Data (Background)
@@ -478,6 +482,11 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
 
 void setup() {
     Serial.begin(115200);
+
+    // --- POWER BUTTON WAKEUP INITIALIZATION ---
+    pinMode(POWER_BUTTON_PIN, INPUT_PULLUP);
+    esp_sleep_enable_ext0_wakeup((gpio_num_t)POWER_BUTTON_PIN, 0); // 0 = logical low (button pressed)
+
     Wire.begin(I2C_SDA, I2C_SCL);
     
     if(!display.begin(0x3C, true)) {
@@ -584,6 +593,35 @@ void setup() {
 }
 
 void loop() {
+    // --- POWER BUTTON LOGIC (HOLD TO SLEEP) ---
+    static unsigned long buttonPressStart = 0;
+    if (digitalRead(POWER_BUTTON_PIN) == LOW) {
+        if (buttonPressStart == 0) {
+            buttonPressStart = millis(); // Commence à chronométrer
+        } else if (millis() - buttonPressStart > 2000) { 
+            // Appui maintenu > 2 secondes -> METTRE EN VEILLE
+            display.clearDisplay();
+            display.setTextSize(2);
+            display.setTextColor(SH110X_WHITE);
+            display.setCursor(20, 25);
+            display.print("ARRET...");
+            display.display();
+            delay(1500);
+            
+            // Éteindre les périphériques
+            display.clearDisplay();
+            display.display();
+            digitalWrite(LED_INDICATOR_PIN, LOW);
+            digitalWrite(ALARM_VIBRATOR_PIN, LOW);
+            digitalWrite(ALARM_BUZZER_PIN, LOW);
+            
+            // Entrer en Deep Sleep (extinction complète)
+            esp_deep_sleep_start();
+        }
+    } else {
+        buttonPressStart = 0; // Réinitialise si relâché
+    }
+
     // Clock Logic
     if (millis() - lastClockUpdate > 60000) {
         minute++;
@@ -731,7 +769,7 @@ void loop() {
         // --- TELEMETRY ---
         if (millis() - lastTelemetryTime > TELEMETRY_INTERVAL) {
             lastTelemetryTime = millis(); // Mettre à jour en premier pour éviter re-entrée
-            float bodyTemp = mlx.readObjectTempC();
+            float bodyTemp = mlx.readObjectTempC() - 6.0;
             if (WiFi.status() == WL_CONNECTED) {
                 HTTPClient http;
                 char fullUrl[128];

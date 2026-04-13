@@ -555,7 +555,7 @@ exports.updateUserStatus = async (req, res) => {
         const updateData = {};
         if (locked !== undefined) updateData.locked = locked;
         if (verified !== undefined) updateData.verified = verified;
-        const user = await User.findByIdAndUpdate(req.params.id, updateData, { new: true });
+        const user = await User.findByIdAndUpdate(req.params.id, updateData, { returnDocument: 'after' });
         if (!user) return res.status(404).json({ error: 'Utilisateur introuvable' });
         res.json({ success: true, user: { email: user.email, locked: user.locked, verified: user.verified } });
     } catch (err) { res.status(500).json({ error: err.message }); }
@@ -566,7 +566,7 @@ exports.updateUserMachines = async (req, res) => {
         const { assignedMachines } = req.body;
         if (!Array.isArray(assignedMachines)) return res.status(400).json({ error: 'assignedMachines doit être un tableau' });
 
-        const user = await User.findByIdAndUpdate(req.params.id, { assignedMachines }, { new: true });
+        const user = await User.findByIdAndUpdate(req.params.id, { assignedMachines }, { returnDocument: 'after' });
         if (!user) return res.status(404).json({ error: 'Utilisateur introuvable' });
 
         res.json({ success: true, assignedMachines: user.assignedMachines });

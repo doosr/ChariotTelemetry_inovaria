@@ -600,20 +600,33 @@ function closeWorkerModal() { document.getElementById('workerModal').classList.r
 function openAddBraceletModal() { document.getElementById('braceletModal').classList.add('show'); }
 function closeBraceletModal() { document.getElementById('braceletModal').classList.remove('show'); }
 function openAssignModal(workerId) {
-    const braceletId = prompt("Entrez le Device ID du bracelet à assigner :");
-    if (braceletId) assignBracelet(workerId, braceletId);
+    const braceletId = prompt("Entrez le Device ID du bracelet à assigner (laissez vide pour désassigner) :");
+    if (braceletId !== null) { // Sauf si l'utilisateur annule
+        assignBracelet(workerId, braceletId.trim());
+    }
 }
 async function assignBracelet(workerId, braceletDeviceId) {
     const ownerId = getCurrentOwnerId();
-    const resB = await fetch(`${API}/api/bracelets?ownerId=${ownerId}`);
-    const bracelets = await resB.json();
-    const bracelet = bracelets.find(b => b.deviceId === braceletDeviceId);
-    if (!bracelet) { alert("Bracelet non trouvé. Vérifiez le Device ID."); return; }
-    await fetch(`${API}/api/bracelets/assign`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ workerId, braceletId: bracelet._id })
-    });
-    displayPersonnel();
+    let targetBraceletId = null;
+
+    if (braceletDeviceId) {
+        const resB = await fetch(`${API}/api/bracelets?ownerId=${ownerId}`);
+        const bracelets = await resB.json();
+        const bracelet = bracelets.find(b => b.deviceId === braceletDeviceId);
+        if (!bracelet) { alert("Bracelet non trouvé. Vérifiez le Device ID."); return; }
+        targetBraceletId = bracelet._id;
+    }
+
+    try {
+        const res = await fetch(`${API}/api/bracelets/assign`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ workerId, braceletId: targetBraceletId })
+        });
+        if (!res.ok) throw new Error("Erreur serveur");
+        displayPersonnel();
+    } catch (err) {
+        alert("Erreur lors de l'assignation : " + err.message);
+    }
 }
 function deleteWorker(id) {
     if (confirm('Supprimer ce travailleur ?')) {
